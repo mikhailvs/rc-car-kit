@@ -1,10 +1,10 @@
 # CVT motor module for a flat cardboard floor, PINCHED disc: GA37RG upright on the Lid (glued over one window), Disc hangs through it; a 15.5 mm Wheel (small LEGO tire 14.5 x 6.23, ID 11.2, stretched onto a 12.2 rim, trim its inner rib flush (it would stretch 33 pct), measure OD after fitting) and a free Roller grip the Disc from below and above inside one C-shaped Shuttle, so the clamp force cancels in the Disc.
-# Window 97.2 x 101.7 mm in the 4 mm cardboard (x -41.8..55.4, y -50.85..50.85, origin on motor axis; hanging parts 93.2 x 97.7 plus 2 mm margin), Lid 117.2 x 121.7 x 5, dia 5 glue holes. Through shaft axis 29 below the floor underside (FLOOR_T 4 unconfirmed); lowest point 17.9 below the shaft axis (ServoArm, plus horn screw heads). Hanger bores are relieved 0.6 mm upward so the shaft can lift as the tyre squeezes.
-# Ratio (contact radius / tyre radius 7.75) 2.06 to 3.36 forward only (contact radius 16 to 26 mm, travel 10 mm), reverse by running the motor backwards; 100 RPM gives 206 to 335 RPM. Print the Disc on a textured plate for more grip. Shift while the disc is turning.
+# Window 97.2 x 101.7 mm in the 4 mm cardboard (x -41.8..55.4, y -50.85..50.85, origin on motor axis; hanging parts 93.2 x 97.7 plus 2 mm margin), Lid 117.2 x 121.7 x 5, dia 5 glue holes. Through shaft axis 29 below the floor underside (FLOOR_T 4 unconfirmed); lowest point 18.3 below the shaft axis (ServoArm underside; the three horn screw heads and the arm pin head are counterbored flush into it). Hanger bores are relieved 0.6 mm upward so the shaft can lift as the tyre squeezes. Hanger and Shuttle bores are 9.9 on the 8 AF hex (corner dia 9.24): 0.33 per side on the corners, so both slide freely (grease them).
+# Ratio (contact radius / tyre radius 7.75) 2.06 to 3.35 forward only (contact radius 16 to 26 mm, travel 10 mm), reverse by running the motor backwards; 100 RPM gives 206 to 335 RPM. Print the Disc on a textured plate for more grip. Shift while the disc is turning. The Wheel with tyre (15.5 OD) squeezes 0.3 mm past the Disc face while it is slid in from +x (soft tyre, expected, it is the pinch squeeze).
 # Clamp: design 35 N (20 to 40), set by two rubber rings (2 mm wire) at x +-6.8, round the Shuttle top bar and the cross pin on the RollerSlider, kept outboard of the hub; check on a kitchen scale pressing the roller. Back the rings off when parked (roller on PLA disc is about 36 MPa Hertz at 35 N). Shuttle sits on the shaft by two bearing collars either side of the Wheel (carry it along the shaft), so the force stays inside it.
-# Disc hub: M3x6 lock screw from -x onto the D flat (usable engage 8.5). Shuttle top bar passes 0.8 from the hub at the innermost position. Servo is flipped (spline down), horn trimmed to 9 mm each side, ServoArm 12 mm, MG995 gives about 76 N at the ends. The pin pushes 32 mm off the shaft line, so the shuttle has a 34 mm tail, a slim 2.4 mm web rib under the shaft (45 degree gusset, rises from the print bed) ending in a third bearing collar: the guide spans 46 mm, giving a binding ratio L/(2a) of 0.73 (locks only above friction 0.73; the old 12 mm span gave 0.2). The lug rides between the servo underside and the ServoArm (1.3 / 0.6 clearance), which stops it rolling about the shaft (under 2 deg). Margins with that side friction: shifting while rolling 1.9 greased (1.1 dry), stopped 1.3 greased (0.7 dry): shift only while the disc turns, and grease the shaft bores.
-# Hardware: 6 x M3x8 motor (up through lid), 1 x M3x6 disc lock, 4 x M3x10 servo (pilots in 4 posts), 1 x M3 horn screw + 2 x dia 2 horn screws, MG995 (brands vary, check body and holes), M3x16 roller axle, M3x8 arm pin screw (steel, from below, counterbored), M3x20 + nut cross pin, 2 x DriveCoupler + M3x16 (wheel_mount.py), rubber rings, and one small LEGO tire (measured 14.5 OD x 6.23 wide, ID 11.2; stretches onto the 12.2 rim to 15.5 OD): trim or squash the tire's inner rib so it sits flat (untrimmed it would stretch 33 pct). Grease the collars and roller axle (and the shaft inside the Shuttle bore): required to drive (dry losses are 73 pct of motor torque, greased 24).
-# Assembly: 0 glue Lid over window; 1 motor, six screws from below; 2 Disc up onto D shaft, set its height with the pinch closed, lock screw; 3 Shuttle with RollerSlider and Roller (slider pushed up) slid in from -x over the Disc; 4 Wheel+tyre slid in from +x into the Shuttle pocket; 5 ThroughShaft in from the rear; 6 cross pin, rubber rings; 7 servo onto posts, ServoArm on horn, pin into lug slot; 8 couplers.
+# Disc hub: M3x6 lock screw from -x onto the D flat (usable engage 8.5). Shuttle top bar passes 0.8 from the hub at the innermost position. Servo is flipped (spline down), horn trimmed to 9 mm each side, ServoArm 12 mm, MG995 gives about 76 N at the ends. The pin pushes 31.9 off the shaft line and 9.5 below it, so the shuttle has a 42 mm tail, a 5 mm thick web rib under the shaft (45 degree gusset, rises from the print bed, 0.28 mm out of plane flex at the pitch load) ending in a third bearing collar: the guide spans 54 mm. Binding is tolerated up to friction 0.88 when the tail carries the pitch (it engages first: the tail collar needs 0.33 mm of tilt, the near pair 3.6 times more) and 0.52 in the worst case where only the near collar pair does (measured centre to centre: 0.82 and 0.43, that case needs 1.7 mm of tail flex). The Shuttle base plate is the lug (2.4 mm, 0.5 under the tyre), centred between the servo underside and the ServoArm: 0.95 each side once the servo screws pull the tabs up to the posts (0.2 slide in gap), servo height tolerance plus or minus 0.9 mm, so the roll stop holds under 2 deg. The lug slot is full round at its closed end 0.3 behind the pin's nearest position, prong lever 1.4 mm. Margins with that side friction: shifting while rolling 1.8 greased (0.8 dry), stopped 1.2 greased (0.5 dry): shift only while the disc turns, and grease the shaft bores.
+# Hardware: 6 x M3x8 motor (up through lid), 1 x M3x6 disc lock, 4 x M3x10 servo (pilots in 4 posts, M3 washers between tab and post if a servo sits high), 1 x M3 horn screw + 2 x dia 2 horn screws (heads counterbored into the ServoArm underside), MG995 (brands vary, check body and holes), M3x16 roller axle, M3x8 arm pin screw (steel, from below, counterbored), M3x20 + nut cross pin, 2 x DriveCoupler + M3x16 (wheel_mount.py), rubber rings, and one small LEGO tire (measured 14.5 OD x 6.23 wide, ID 11.2; stretches onto the 12.2 rim to 15.5 OD): trim or squash the tire's inner rib so it sits flat (untrimmed it would stretch 33 pct). Grease the collars and roller axle (and the shaft inside the Shuttle bore): required to drive (dry losses are 68 pct of motor torque at the outer position, 42 inner; greased 23 and 14).
+# Assembly (bench, Lid NOT yet in the floor, steps checked by the sweeps in verify): 1 motor, six screws from below; 2 Disc up onto D shaft, set its height with the pinch closed, lock screw; 3 Shuttle with RollerSlider and Roller (slider pushed up) slid in from -x over the Disc; 4 Wheel+tyre slid in from +x into the Shuttle pocket (before the servo, the servo body blocks this path); 5 cross pin, rubber rings; 6 servo slid in from +x under its four posts, screws up from below; 7 ServoArm up onto the horn from below, arm pin screw from below into the lug slot; 8 lower the whole module into the floor window and glue the Lid to the floor (the slider post and servo only clear the floor from above); 9 push the ThroughShaft in from the rear; 10 couplers last.
 # All PLA, no supports, no TPU. Lid prints top face down; Shuttle on its leg face (-x); Wheel and Roller flat; Slider upright (use a brim).
 import FreeCAD as App, Part, math
 
@@ -17,7 +17,7 @@ DOC_NAME = "CvtModule"
 OUT = "/home/mikhail/Documents/cad/RC Car/CvtModule.FCStd"
 Y, Z = V(0, 1, 0), V(0, 0, 1)
 
-SOCKET, BORE, PS_PILOT, PILOT, PS_OUT = 8.3, 9.6, 5.9, 2.8, 16.0
+SOCKET, BORE, PS_PILOT, PILOT, PS_OUT = 8.3, 9.9, 5.9, 2.8, 16.0
 CPL_D, CPL_L, CPL_PIN, END_GAP = 14.0, 17.5, 4.0, 0.25
 BOSS_L = PS_OUT - PS_PILOT - CPL_PIN - END_GAP
 
@@ -58,8 +58,10 @@ LEG_T, LEG_GAP = 8.0, 0.8
 LEG_X1 = -(math.sqrt(DISC_R ** 2 - (S_MIN - FY) ** 2) + LEG_GAP)
 LEG_X0 = LEG_X1 - LEG_T
 PL_X1, PL_Z1 = 8.2, BORE_C / 2 + 1.75
-BASE_Z0, BASE_Z1, LUG_X1, TAIL_L = -10.8, -8.4, 38.5, 34.0
-TAIL_W, TAIL_WALL, TAIL_CZ, TAIL_XT, TAIL_SLOPE = 2.4, 2.4, 6.9, -6.0, 0.95
+SV_GAP, LUG_T, LUG_X1, TAIL_L = 0.2, 2.4, 38.5, 42.0
+BASE_Z1 = -(R_T + 0.5)
+BASE_Z0 = BASE_Z1 - LUG_T
+TAIL_W, TAIL_WALL, TAIL_CZ, TAIL_XT, TAIL_SLOPE = 5.0, 2.4, 6.9, -6.0, 0.95
 ROLLER_Z = DISC_TOP + RR
 PRONG_R, PRONG_T, PRONG_W = 2.5, 3.0, 5.0
 FORK_HY = RW / 2 + 0.4 + PRONG_T
@@ -73,15 +75,17 @@ PIN_Z, PIN_D, PIN_L = BAR_Z1 + DN_ST + 1.5, 3.0, 20.0
 POST_X, POST_Y, SLOT_CLR = 3.0, 6.0, 0.4
 POST_TOP = PIN_Z + 3.0
 
-ARM_L, ARM_T, ARM_W, PIN_R, PIN_H, SLOT_W = 12.0, 6.5, 9.0, 1.5, 3.5, 3.4
+ARM_L, ARM_T, ARM_W, PIN_R, PIN_H, SLOT_W = 12.0, 6.5, 9.0, 1.5, 3.7, 3.7
 AP_HEAD_D, AP_HEAD_H, AP_L = 5.5, 2.0, 8.0
+HS_HEAD_D, HS_HEAD_H = 4.2, 1.8
 YS = (S_MIN + S_MAX) / 2
 XS = DISC_R + 1.0 + SV_W / 2
-ARM_Z1 = -11.4
+ARM_Z1 = (BASE_Z0 + BASE_Z1) / 2 - SV_GAP - (HORN_Z - 0.2 - SV_H) / 2
 ARM_Z0 = ARM_Z1 - ARM_T
 SV_ZT = ARM_Z1 + HORN_Z - 0.2
 TAB_TOP = SV_ZT - SV_TAB_Z
-SLOT_X0 = XS - ARM_L - 4.0
+POST_Z0 = TAB_TOP + SV_GAP
+SLOT_XC = XS - ARM_L - 0.3
 
 POS = (16.0, 18.5, 21.0, 23.5, 26.0)
 WI, WT, HX = 37.0, 6.0, 7.5
@@ -186,10 +190,10 @@ def build_lid():
     for sy in (-1, 1):
         yh = cy + sy * SV_HOLE_L / 2
         a, b = (yh - 4.5, min(yh + 4.5, SV_Y0 - 0.4)) if sy < 0 else (max(yh - 4.5, SV_Y1 + 0.4), yh + 4.5)
-        pb = box(XS - SV_HOLE_W / 2 - 4.5, XS + SV_HOLE_W / 2 + 4.5, a, b, TAB_TOP, top)
-        pb = soften(soften(pb, lambda e: vert(e), 3.0), lambda e: flat(e, TAB_TOP), 1.0)
+        pb = box(XS - SV_HOLE_W / 2 - 4.5, XS + SV_HOLE_W / 2 + 4.5, a, b, POST_Z0, top)
+        pb = soften(soften(pb, lambda e: vert(e), 3.0), lambda e: flat(e, POST_Z0), 1.0)
         for sx in (-1, 1):
-            pb = pb.cut(vcyl(PILOT / 2, XS + sx * SV_HOLE_W / 2, yh, TAB_TOP - 1, TAB_TOP + 8))
+            pb = pb.cut(vcyl(PILOT / 2, XS + sx * SV_HOLE_W / 2, yh, POST_Z0 - 1, POST_Z0 + 8))
         posts.append(pb)
     for h in hang + posts:
         lid = lid.fuse(h)
@@ -261,6 +265,10 @@ def tail():
     return col.fuse(prism([V(x, y, -TAIL_W / 2) for x, y in pts], V(0, 0, TAIL_W))).removeSplitter()
 
 
+def slot_cut():
+    return box(SLOT_XC, LUG_X1 + 1, -SLOT_W / 2, SLOT_W / 2, BASE_Z0 - 1, BASE_Z1 + 1).fuse(vcyl(SLOT_W / 2, SLOT_XC, 0, BASE_Z0 - 1, BASE_Z1 + 1))
+
+
 def build_shuttle():
     leg = box(LEG_X0, LEG_X1, -FY, FY, BASE_Z0, BAR_Z1)
     base = box(LEG_X0, LUG_X1, -FY, FY, BASE_Z0, BASE_Z1)
@@ -278,7 +286,7 @@ def build_shuttle():
     sh = soften(sh, lambda e: e.BoundBox.XLength < 1e-6 and abs(e.BoundBox.XMin - LEG_X0) < 1e-6, 0.8, True)
     sh = soften(sh, lambda e: e.BoundBox.YLength < 1e-6 and abs(e.BoundBox.YMin + FY + TAIL_L) < 1e-6, 0.6)
     sh = sh.cut(tear_px(BORE_C / 2, -FY - TAIL_L - 1, FY + 1)).cut(slot_void())
-    return sh.cut(box(XS - ARM_L - 4.0, LUG_X1 + 1, -SLOT_W / 2, SLOT_W / 2, BASE_Z0 - 1, BASE_Z1 + 1)).removeSplitter()
+    return sh.cut(slot_cut()).removeSplitter()
 
 
 def build_slider():
@@ -297,9 +305,9 @@ def build_arm():
     a = soften(soften(a, lambda e: flat(e, z1), 0.9), lambda e: flat(e, z0), 0.6, True)
     zp = z1 - HORN_T - 0.8
     a = a.cut(box(XS - HORN_R - 0.3, XS + HORN_R + 0.3, YS - HORN_W / 2 - 0.2, YS + HORN_W / 2 + 0.2, zp, z1 + 1)).cut(vcyl(HORN_HUB / 2 + 0.15, XS, YS, zp, z1 + 1))
-    a = a.cut(vcyl(HORN_CENTRE_D / 2, XS, YS, z0 - 1, z1 + 1)).cut(vcyl(SV_SPLINE_D / 2 + 0.2, XS, YS, SV_ZT - SV_SPLINE_TOP - 0.2, z1 + 1))
+    a = a.cut(vcyl(HORN_CENTRE_D / 2, XS, YS, z0 - 1, z1 + 1)).cut(vcyl(AP_HEAD_D / 2 + 0.15, XS, YS, z0 - 1, z0 + AP_HEAD_H)).cut(vcyl(SV_SPLINE_D / 2 + 0.2, XS, YS, SV_ZT - SV_SPLINE_TOP - 0.2, z1 + 1))
     for sg in (1, -1):
-        a = a.cut(vcyl(HORN_HOLE_D / 2, XS + sg * HORN_HOLE_PITCH / 2, YS, z0 - 1, z1 + 1))
+        a = a.cut(vcyl(HORN_HOLE_D / 2, XS + sg * HORN_HOLE_PITCH / 2, YS, z0 - 1, z1 + 1)).cut(vcyl(HS_HEAD_D / 2, XS + sg * HORN_HOLE_PITCH / 2, YS, z0 - 1, z0 + HS_HEAD_H))
     a = a.cut(vcyl(PIN_R, XS + ARM_L, YS, z0 - 1, z1 + 1)).cut(vcyl(AP_HEAD_D / 2 + 0.15, XS + ARM_L, YS, z0 - 1, z0 + AP_HEAD_H))
     return a.removeSplitter()
 
@@ -321,14 +329,17 @@ def build_motor():
     return s.fuse(sh)
 
 
-def build_servo(phi):
+def servo_body():
     cy = (SV_Y0 + SV_Y1) / 2
     b = box(XS - SV_W / 2, XS + SV_W / 2, SV_Y0, SV_Y1, SV_ZT - SV_H, SV_ZT)
     b = b.fuse(box(XS - SV_W / 2, XS + SV_W / 2, cy - SV_TAB_SPAN / 2, cy + SV_TAB_SPAN / 2, TAB_TOP - SV_TAB_T, TAB_TOP))
-    b = b.fuse(vcyl(SV_SPLINE_D / 2, XS, YS, SV_ZT - SV_SPLINE_TOP, SV_ZT - SV_H + 0.1))
+    return b.fuse(vcyl(SV_SPLINE_D / 2, XS, YS, SV_ZT - SV_SPLINE_TOP, SV_ZT - SV_H + 0.1))
+
+
+def build_servo(phi):
     z0, z1 = SV_ZT - HORN_Z - HORN_T, SV_ZT - HORN_Z
     horn = box(XS - HORN_R, XS + HORN_R, YS - HORN_W / 2, YS + HORN_W / 2, z0, z1).fuse(vcyl(HORN_HUB / 2, XS, YS, z0, z1))
-    return b.fuse(turn(horn, phi))
+    return servo_body().fuse(turn(horn, phi))
 
 
 def sleeve(y_in, sign):
@@ -357,7 +368,7 @@ def prs(*ps):
 FITS = prs(("Lid", "ThroughShaft"), ("Wheel", "ThroughShaft"), ("Shuttle", "ThroughShaft"), ("Wheel", "Shuttle"), ("Lid", "Motor"), ("Motor", "Disc"), ("Lid", "Servo"),
            ("Servo", "ServoArm"), ("ServoArm", "Shuttle"), ("ServoArm", "ArmPin"), ("ArmPin", "Shuttle"), ("RollerSlider", "Shuttle"), ("RollerSlider", "Roller"), ("RollerSlider", "Axle"), ("Roller", "Axle"),
            ("RollerSlider", "Pin"), ("Roller", "Disc"), ("ThroughShaft", "CplF"), ("ThroughShaft", "CplR"), ("Lid", "CplF"), ("Lid", "CplR"), ("Wheel", "Tyre"), ("Disc", "Tyre"), ("RingP", "Shuttle"), ("RingN", "Shuttle"), ("RingP", "Pin"), ("RingN", "Pin"))
-ZERO = prs(("ServoArm", "ArmPin"), ("Lid", "Motor"), ("Lid", "Servo"), ("Disc", "Tyre"), ("Wheel", "Tyre"), ("Roller", "Disc"), ("RingP", "Shuttle"), ("RingN", "Shuttle"), ("RingP", "Pin"), ("RingN", "Pin"))
+ZERO = prs(("ServoArm", "ArmPin"), ("Lid", "Motor"), ("Disc", "Tyre"), ("Wheel", "Tyre"), ("Roller", "Disc"), ("RingP", "Shuttle"), ("RingN", "Shuttle"), ("RingP", "Pin"), ("RingN", "Pin"))
 PRESS = prs(("Wheel", "Tyre"), ("Disc", "Tyre"))
 
 
@@ -437,21 +448,34 @@ def estimates():
     f_end, f_mid = SV_NM / (ARM_L / 1000) * math.cos(th), SV_NM / (ARM_L / 1000)
     a_push = XS - ARM_L * math.cos(th)
     g_len = 2 * FY + TAIL_L - COL_L
-    bind = g_len / (2 * a_push)
+    zp = -(BASE_Z0 + BASE_Z1) / 2
+    mu = {}
+    for tag, span, near in (("edge", g_len + COL_L, 2 * FY), ("centre", g_len, 2 * (PK + COL_L / 2))):
+        ya, rb = a_push / span, zp / near
+        mu[tag] = (round(span / (2 * math.hypot(a_push, zp)), 3), round(1 / (ya + math.hypot(ya, rb) + rb), 3))
+    bind = min(mu["edge"])
     kd, kg = 1 / (1 - MU_D / bind), 1 / (1 - 0.1 / bind)
     stop = (MU_T + MU_R + 2 * MU_D) * F * kd
     turn_ = ((KIN * MU_T + 0.8 * MU_R) * F + ROT * 2 * MU_D * F) * kd
     stop_g = (MU_T + MU_R + 0.2) * F * kg
     turn_g = ((KIN * MU_T + 0.8 * MU_R) * F + ROT * 0.2 * F) * kg
     lev = 1.8
-    est["bind"] = dict(guide_len_mm=round(g_len, 1), push_offset_mm=round(a_push, 1), ratio_tolerated_mu=round(bind, 3), ratio_before=round((PK + FY) / (2 * a_push), 3), factor_dry=round(kd, 2), factor_greased=round(kg, 2),
+    est["bind"] = dict(guide_len_mm=round(g_len, 1), push_offset_mm=round(a_push, 1), push_below_axis_mm=round(zp, 2), mu_stiff_soft_edge=mu["edge"], mu_stiff_soft_centre=mu["centre"], ratio_tolerated_mu=round(bind, 3), ratio_before=round((PK + FY) / (2 * a_push), 3), factor_dry=round(kd, 2), factor_greased=round(kg, 2),
                        side_force_N_at_72N=round(72.0 * a_push / g_len, 1), roll_up_deg=round(math.degrees(math.atan((SV_ZT - SV_H - BASE_Z1) / LUG_X1)), 2), roll_down_deg=round(math.degrees(math.atan((BASE_Z0 - ARM_Z1) / LUG_X1)), 2))
     f_side, arm, dfl, n = est["bind"]["side_force_N_at_72N"], TAIL_L - COL_L / 2, 0.0, 400
+    f_z, th_z, dz = 72.0 * zp / g_len, 0.0, 0.0
     for i in range(n):
         u = (i + 0.5) * arm / n
         d = min(TAIL_XT - LEG_X0, 3.5 + (u + COL_L / 2) / TAIL_SLOPE)
         dfl += f_side * u * u / (E * TAIL_W * d ** 3 / 12) * arm / n
-    est["tail"] = dict(side_N=f_side, root_MPa_kt1_5=round(1.5 * 6 * f_side * arm / (TAIL_W * (TAIL_XT - LEG_X0) ** 2), 1), deflect_mm=round(dfl, 3), collar_wall_x=TAIL_WALL, collar_wall_z=round(TAIL_CZ - BORE_C / 2, 2))
+    for i in range(n - 1, -1, -1):
+        u = (i + 0.5) * arm / n
+        th_z += f_z * u / (E * min(TAIL_XT - LEG_X0, 3.5 + (u + COL_L / 2) / TAIL_SLOPE) * TAIL_W ** 3 / 12) * arm / n
+        dz += th_z * arm / n
+    est["tail"] = dict(side_N=f_side, root_MPa_kt1_5=round(1.5 * 6 * f_side * arm / (TAIL_W * (TAIL_XT - LEG_X0) ** 2), 1), deflect_mm=round(dfl, 3), side_z_N=round(f_z, 1), deflect_z_mm=round(dz, 3), soft_limit_z_mm=round(2 * (BORE_C / 2 - SHAFT_AF / math.sqrt(3)) * ((g_len + COL_L) / (2 * FY) - 1), 2), root_z_MPa_kt1_5=round(1.5 * 6 * f_z * arm / ((TAIL_XT - LEG_X0) * TAIL_W ** 2), 1), collar_wall_x=TAIL_WALL, collar_wall_z=round(TAIL_CZ - BORE_C / 2, 2))
+    p_st, w_pr, lev_pr = SV_NM / (ARM_L / 1000), FY - SLOT_W / 2, a_push - SLOT_XC
+    est["prong"] = dict(stall_N=round(p_st, 1), lever_mm=round(lev_pr, 2), width_mm=round(w_pr, 2), thick_mm=LUG_T, root_MPa_kt1_5=round(1.5 * 6 * p_st * lev_pr / (LUG_T * w_pr ** 2), 1))
+    est["lug"] = dict(gap_up=round(SV_ZT - SV_H + SV_GAP - BASE_Z1, 3), gap_down=round(BASE_Z0 - ARM_Z1 - SV_GAP, 3))
     est["arm_pin"] = dict(steel_MPa_at_72N=round(72.0 * lev / (math.pi * (2 * PIN_R) ** 3 / 32), 1),
                           pla_bearing_MPa_at_72N=round(72.0 / (2 * PIN_R * ARM_T) + 6 * 72.0 * (lev + ARM_T / 2) / (2 * PIN_R * ARM_T ** 2), 1))
     est["servo"] = dict(arm_deg=round(math.degrees(th), 1), force_end_N=round(f_end, 1), force_mid_N=round(f_mid, 1), need_stopped_dry_N=round(stop, 1),
@@ -494,9 +518,9 @@ def verify(parts):
         s = S_MIN + (S_MAX - S_MIN) * k / 8
         ph = arm_phi(s)
         a, sv, p, pv = turn(arm, ph), move(shut, dy=s), turn(pin_in, ph), turn(pin_v, ph)
-        pin_slot = vol(p, move(box(SLOT_X0, LUG_X1 + 1, -SLOT_W / 2, SLOT_W / 2, BASE_Z0, BASE_Z1), dy=s)) / vol(p, box(-100, 100, -100, 100, BASE_Z0, BASE_Z1))
+        pin_slot = vol(p, move(slot_cut(), dy=s)) / p.Volume
         sw[round(s, 2)] = dict(arm_shuttle=round(vol(a, sv), 4), pin_in_slot=round(pin_slot, 4), pin_gap=round(pv.distToShape(sv)[0], 3),
-                               captive=(vol(pv, move(sv, dy=0.25)) > 0 and vol(pv, move(sv, dy=-0.25)) > 0), pin_y_err=round(YS + ARM_L * math.sin(math.radians(ph)) - s, 6))
+                               captive=(vol(pv, move(sv, dy=SLOT_W / 2 - PIN_R + 0.05)) > 0 and vol(pv, move(sv, dy=-SLOT_W / 2 + PIN_R - 0.05)) > 0), pin_y_err=round(YS + ARM_L * math.sin(math.radians(ph)) - s, 6))
     rep["sweep"] = sw
     steps = {}
     mot_lid = motor.fuse(lid)
@@ -506,13 +530,29 @@ def verify(parts):
         steps["screw%d" % k] = round(vol(path, mot_lid), 4)
     steps["disc_on"] = sweep(disc, mot_lid, [(0, 0, -i * 4.0) for i in range(0, 13)])
     base = mot_lid.fuse(disc)
-    fr = move(shut, dy=S_MIN).fuse(move(sl, dy=S_MIN, dz=UP_ST - 0.1)).fuse(move(roll, dy=S_MIN, dz=UP_ST - 0.1))
+    floor = box(WIN[0] - 10, WIN[1] + 10, WIN[2] - 10, WIN[3] + 10, FLOOR_Z, LID_Z0).cut(box(WIN[0], WIN[1], WIN[2], WIN[3], FLOOR_Z - 1, LID_Z0 + 1))
     ins = [(i * 4.0, 0, 0) for i in range(0, 21)]
-    steps["frame_in"] = sweep(fr, base, [(-x, 0, 0) for x, _, _ in ins])
-    steps["wheel_in"] = sweep(move(wheel, dy=S_MIN), base.fuse(fr), ins)
-    steps["tyre_in"] = sweep(move(build_tyre(), dy=S_MIN), fr, ins)
-    still = base.fuse(fr).fuse(move(wheel, dy=S_MIN))
-    steps["shaft_in"] = sweep(shaft, still, [(0, 2 * TIP_Y * (1 - i / 29.0), 0) for i in range(30)])
+    sv = servo_body()
+    for k in ("frame_in", "wheel_in", "tyre_in", "servo_in", "arm_in", "armpin_in", "floor_in", "shaft_in"):
+        steps[k] = 0.0
+    for s in (S_MIN, S_MAX):
+        fr = move(shut, dy=s).fuse(move(sl, dy=s, dz=UP_ST - 0.1)).fuse(move(roll, dy=s, dz=UP_ST - 0.1))
+        wh = move(wheel, dy=s)
+        ar = turn(arm, arm_phi(s))
+        ap = turn(build_armpin(), arm_phi(s))
+        run = lambda k, v: steps.__setitem__(k, max(steps[k], v))
+        run("frame_in", sweep(fr, base, [(-x, 0, 0) for x, _, _ in ins]))
+        run("wheel_in", sweep(wh, base.fuse(fr), ins))
+        run("tyre_in", sweep(move(build_tyre(), dy=s), fr, ins))
+        full = base.fuse(fr).fuse(wh)
+        run("servo_in", sweep(sv, full, [(d, 0, 0) for d in range(0, 61, 2)]))
+        full = full.fuse(sv)
+        run("arm_in", sweep(ar, full, [(0, 0, -d) for d in range(0, 41, 2)]))
+        full = full.fuse(ar)
+        run("armpin_in", sweep(ap, full, [(0, 0, -d) for d in range(0, 31, 2)]))
+        P = pose(parts, s, motor)
+        run("floor_in", max(sweep(p, floor, [(0, 0, d) for d in range(0, 41, 2)]) for n, p in P.items() if n not in ("ThroughShaft", "CplF", "CplR")))
+        run("shaft_in", sweep(shaft, full.fuse(ap).fuse(floor), [(0, 2 * TIP_Y * (1 - i / 29.0), 0) for i in range(30)]))
     z_lock = Z_FACE + LOCK_H
     full = pose(parts, S_MIN, motor)
     others = None
@@ -563,7 +603,8 @@ def check(rep, est):
     assert all(f >= 5.0 and not bad for f, bad in rep["print"].values()), rep["print"]
     assert est["disc_torque_Nm"]["outer"] > MOT_NM and est["hex_corner_wall"] >= 1.0 and est["servo"]["margin_turning"] >= 1.5 and est["bind"]["ratio_tolerated_mu"] >= 0.5 and max(est["bind"]["roll_up_deg"], est["bind"]["roll_down_deg"]) <= 3.0, est
     assert est["frame"]["corner_MPa_kt1_5"] <= 15.0 and est["hangers_load_N"] == 0.0 and est["loss_greased"]["motor_limited_pct_outer"] <= 30.0, est
-    assert est["tail"]["root_MPa_kt1_5"] <= 15.0 and est["tail"]["deflect_mm"] <= 0.2 and rep["shuttle_cm3"] < 22.0, (est["tail"], rep["shuttle_cm3"])
+    assert est["tail"]["root_MPa_kt1_5"] <= 15.0 and est["tail"]["deflect_mm"] <= 0.2 and est["tail"]["deflect_z_mm"] <= est["tail"]["soft_limit_z_mm"] / 4 and rep["shuttle_cm3"] < 24.0, (est["tail"], rep["shuttle_cm3"])
+    assert est["prong"]["root_MPa_kt1_5"] <= 15.0 and min(est["lug"].values()) >= 0.9, (est["prong"], est["lug"])
     assert est["arm_pin"]["steel_MPa_at_72N"] <= 150.0 and est["arm_pin"]["pla_bearing_MPa_at_72N"] <= 25.0 and est["slider_lid_clear_mm"] >= 0.4, est
 
 

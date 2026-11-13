@@ -1,8 +1,8 @@
 # Axle module, no motor: closed bevel differential in a two-piece clamshell case (CaseTop glue face z 29 hangs under the floor, all shaft axes 29 mm below it). Ratio 36:22 (1.64), input pinion A at +y, output B at -y.
 # Both pinions sit between the 36T carrier ring and a free-spinning 36T IdlerRing that turns opposite, so tooth side loads cancel. Every shaft leaves the case as a 16 mm hex port with a dia 2.8 cross pilot for universal joint yokes.
 # Chaining: the output pinion turns opposite to the input, so mount the next axle in a chain turned 180 degrees about Z. Hardware: 4 x M3x16 pan head (dia 6 x 3.2) from below, 25 mm deep wells: use a long driver.
-# Assembly (verify() sweeps it): CaseTop glue face down as a tray, lay in both PinionShafts with the Pinions slid 7 mm out into the pockets, lower the diff (bushings, IdlerRing on) straight along Z, slide each Pinion in until its
-# hex pocket seats on the shaft head (turn pinion and shaft to find the tooth gap, any phase works), close CaseBottom (its lip backs the pinions), 4 screws. Phases drawn: ring 0, iring 0, pinion 0.
+# Assembly (verify() sweeps it every 0.1 mm near the end): build ONE bundle (diff with bushings and IdlerRing, both Pinions on their PinionShafts pushed inward along Y into mesh), lower it straight along Z into CaseTop (glue face down tray), set CaseBottom on, 4 screws.
+# Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Lowest point 30.6 mm below the axle axis: wheels need radius over 31.
 import FreeCAD as App, Part, math
 import freecad.gears.commands as gc
 
@@ -48,14 +48,14 @@ WH_SOCKET, WH_GLUE_D, WH_GLUE_R = 8.2, 4.0, 15.0
 WH_SCREW_NEAR, WH_SCREW_FAR = 3.4, 2.8
 
 HS_EXT = 0.0
-RING_DX, CARRIER_FLOAT, IDLER_FLOAT, PIN_FLOAT, RING_TRIM_R = 0.1, 0.1, 0.1, 0.1, 27.35
+RING_DX, CARRIER_FLOAT, IDLER_FLOAT, PIN_FLOAT, RING_TRIM_R = 0.03, 0.28, 0.28, 0.2, 26.9
 BUSH_OD, BUSH_J, BUSH_FL_R, BUSH_FT_L, BUSH_FT_R = 14.0, 5.0, 8.2, 3.5, 3.7
-IDL_BORE_R, IDL_COLLAR_R, IDL_COLLAR_IN, IDL_COLLAR_X0, IDL_RECESS_R, THR_R = 7.15, 10.0, 8.4, 16.8, 19.4, 11.0
+IDL_BORE_R, IDL_COLLAR_R, IDL_COLLAR_IN, IDL_COLLAR_X0, IDL_RECESS_R = 7.15, 10.0, 8.4, 16.9, 19.4
 SADDLE_R, WALL_T = 7.1, 5.0
 GROOVE_W, GROOVE_M, GROOVE_R, RIB_R = 2.4, 1.3, 6.0, 6.1
 PS_GROOVE_R, PS_RIB_R = 4.0, 4.1
-PIN_BORE_R, PIN_RETRACT, PIN_BORE_LEN = BORE_BUSH / 2, 7.0, 5.4
-CAV_M, PK1, DRUM_CAV_R, CAV_JOIN = 0.4, 0.3, HOUSE_R + 0.45, 12.4
+PIN_BORE_R, PIN_BORE_LEN, HUB_EXT, SHELL_T = BORE_BUSH / 2, 12.4, 3.6, 2.4
+CAV_M, DRUM_CAV_R, CAV_JOIN = 0.4, HOUSE_R + 0.45, 12.4
 POCKET_R, WALL_CLR = 10.6, 0.4
 CASE_Z, SPLIT_GAP, FILLET_R, CHAMFER_TOP, CHAMFER_BOT = 29.0, 0.05, 3.0, 1.0, 1.5
 SCREW_X, SCREW_Y, SEAT_Z, PILOT_LEN, WELL_R, HOLE_R = (-24.8, 23.2), 37.5, -6.0, 11.0, 3.3, 1.7
@@ -69,12 +69,11 @@ XC = FACE_IN + CAP_T
 BR_X1 = XC + BUSH_FT_R
 TL = BL_X0 - 0.1
 XL = TL - WALL_T
-TR = RING_BACK + IDLER_FLOAT
+TR = RING_BACK + HUB_EXT + IDLER_FLOAT
 XR = TR + WALL_T
 YT = PINION["back"]
-YW = YT + PIN_RETRACT
-YC = YW + PIN_BORE_LEN
-PS_GROOVE_Y = YW + 1.0
+YC = YT + PIN_BORE_LEN
+PS_GROOVE_Y = YT + 1.0
 HB = 30.6
 
 PH = dict(spider=15.0, sideL=0.0, ring=0.0, pinion=0.0, iring=0.0)
@@ -136,6 +135,10 @@ def rot(s, axis, deg):
 
 def yhex(af, y0, y1):
     return rot(hexprism(af, y0, y1), V(0, 0, 1), 90)
+
+
+def mirror_z(s):
+    return s.mirror(O, V(0, 0, 1))
 
 
 def mirror_x(s):
@@ -260,7 +263,8 @@ def build_idler(ring):
     r = ring_x(ring, PH["iring"], 1)
     r = r.cut(cyl(IDL_RECESS_R, 12.0, BR_X1))
     r = r.fuse(cyl(IDL_COLLAR_R, IDL_COLLAR_X0, BR_X1)).cut(cyl(IDL_COLLAR_IN, IDL_COLLAR_X0 - 1, BR_X1))
-    return r.cut(cyl(IDL_BORE_R, BR_X1 - 1, RING_BACK + 1)).removeSplitter()
+    r = r.fuse(cyl(bb(r.common(box(RING_BACK - 0.3, RING_BACK, -40, 40, -40, 40))).ZMax - 0.05, RING_BACK - 0.5, RING_BACK + HUB_EXT))
+    return r.cut(cyl(IDL_BORE_R, BR_X1 - 1, RING_BACK + HUB_EXT + 1)).removeSplitter()
 
 
 def build_pin():
@@ -306,8 +310,9 @@ def case_cavity(sr, sp):
     r0, r1 = (v + 0.1 * k for v, k in zip(grooves(TR, 1), (1, -1)))
     L = RING_DX
     xt = af + (RING_TRIM_R - rf) / (rp - rf) * (ap - af)
-    left = [(-CAV_JOIN, 0), (-CAV_JOIN, rf + m), (-(xt + L), RING_TRIM_R + m), (-(ap + PK1 + L), RING_TRIM_R + m), (-(ab + L) - WALL_CLR, rb + m), (-(ab + L) - WALL_CLR, 0)]
-    right = [(CAV_JOIN, 0), (CAV_JOIN, rf + m), (xt + L, RING_TRIM_R + m), (ap + PK1 + L, RING_TRIM_R + m), (ab + L + WALL_CLR, rb + m), (ab + L + WALL_CLR, THR_R), (TR, THR_R), (TR, 0)]
+    x2 = ap + (rp - RING_TRIM_R) / (rp - rb) * (ab - ap)
+    left = [(-CAV_JOIN, 0), (-CAV_JOIN, rf + m), (-(xt + L), RING_TRIM_R + m), (-(x2 + L), RING_TRIM_R + m), (-(ab + L) - WALL_CLR, rb + m), (-(ab + L) - WALL_CLR, 0)]
+    right = [(CAV_JOIN, 0), (CAV_JOIN, rf + m), (xt + L, RING_TRIM_R + m), (x2 + L, RING_TRIM_R + m), (ab + L, rb + m), (TR, rb + m), (TR, 0)]
     saddle_l = [(XL - 1, 0), (XL - 1, SADDLE_R), (x0, SADDLE_R), (x0, RIB_R), (x1, RIB_R), (x1, SADDLE_R), (TL + 1, SADDLE_R), (TL + 1, 0)]
     saddle_r = [(TR - 1, 0), (TR - 1, SADDLE_R), (r0, SADDLE_R), (r0, RIB_R), (r1, RIB_R), (r1, SADDLE_R), (XR + 1, SADDLE_R), (XR + 1, 0)]
     xs = [rev(left), rev(right), rev(saddle_l), rev(saddle_r),
@@ -318,8 +323,7 @@ def case_cavity(sr, sp):
     g0 = PS_GROOVE_Y
     bore = [(0, yb), (PIN_BORE_R, yb), (PIN_BORE_R, g0 + 0.1), (PS_RIB_R, g0 + 0.1), (PS_RIB_R, g0 + GROOVE_W - 0.1), (PIN_BORE_R, g0 + GROOVE_W - 0.1), (PIN_BORE_R, YC + 1), (0, YC + 1)]
     ya = rev(pin, "y").fuse(rev(bore, "y"))
-    pk = ycyl(rpp + m, yp, YW)
-    return xs, [ya, rot(ya, V(0, 0, 1), 180)], [pk, rot(pk, V(0, 0, 1), 180)]
+    return xs, [ya, rot(ya, V(0, 0, 1), 180)]
 
 
 def outer_block(z0, z1):
@@ -327,12 +331,45 @@ def outer_block(z0, z1):
     return b.makeFillet(FILLET_R, [e for e in b.Edges if abs(e.Vertexes[0].Z - e.Vertexes[1].Z) > 1e-6])
 
 
+def shell(cav, ys, h, boss_r):
+    n = 12
+    w = (XR - XL) / n
+    R = [bb(cav.common(box(XL + i * w, XL + (i + 1) * w, -40, 40, -40, 40))).ZMax + SHELL_T for i in range(n)]
+    R = [max(R[max(i - 1, 0):i + 2]) for i in range(n)]
+    k, top = SHELL_T * math.sqrt(2), h - SHELL_T
+
+    def ext(q, ax, a, b):
+        pts = [V(a, u, v) for u, v in q] if ax == "x" else [V(u, a, v) for u, v in q]
+        return prism(pts, V(b - a, 0, 0) if ax == "x" else V(0, b - a, 0))
+
+    def wedge(r, ax, a, b, a2, b2):
+        t = min(r / math.sqrt(2), h)
+        s = ext([(0, 0), (-t, t), (-h, h), (h, h), (t, t)], ax, a, b)
+        u0 = r / math.sqrt(2)
+        for sg in (1, -1):
+            if top - k - u0 > 2:
+                s = s.cut(ext([(sg * u0, u0 + k), (sg * u0, top), (sg * (top - k), top)], ax, a2, b2))
+        c = min(u0 - SHELL_T, top - r)
+        if c > 1:
+            s = s.cut(ext([(0, r), (c, r + c), (c, top), (-c, top), (-c, r + c)], ax, a2, b2))
+        return s.fuse(cyl(r, a, b) if ax == "x" else ycyl(r, a, b))
+    parts = [wedge(R[i], "x", XL + i * w, XL + (i + 1) * w, XL + i * w + SHELL_T * (i == 0), XL + (i + 1) * w - SHELL_T * (i == n - 1)) for i in range(n)]
+    rp = bb(ys[0]).XLength / 2 + SHELL_T
+    arm = [wedge(rp, "y", 0, YT + SHELL_T, 0, YT), wedge(PIN_BORE_R + SHELL_T, "y", YT, YC, YT + SHELL_T, YC - SHELL_T)]
+    parts += arm + [rot(a, V(0, 0, 1), 180) for a in arm]
+    for sx in SCREW_X:
+        parts.append(box(sx - 1.2, sx + 1.2, -SCREW_Y, SCREW_Y, 0, h))
+        parts += [vcyl(boss_r, sx, sy, 0, h) for sy in (SCREW_Y, -SCREW_Y)]
+    return parts[0].fuse(parts[1:]).removeSplitter()
+
+
 def build_case(sr, sp):
-    xs, ys, pk = case_cavity(sr, sp)
+    xs, ys = case_cavity(sr, sp)
+    cav = xs[0].fuse(xs[1:])
     top = outer_block(0, CASE_Z)
-    top = top.makeChamfer(CHAMFER_TOP, [e for e in top.Edges if all(abs(v.Z - CASE_Z) < 1e-6 for v in e.Vertexes)])
+    top = top.makeChamfer(CHAMFER_TOP, [e for e in top.Edges if all(abs(v.Z - CASE_Z) < 1e-6 for v in e.Vertexes)]).common(shell(cav, ys, CASE_Z, 3.4))
     bot = outer_block(-HB, -SPLIT_GAP)
-    bot = bot.makeChamfer(CHAMFER_BOT, [e for e in bot.Edges if all(abs(v.Z + HB) < 1e-6 for v in e.Vertexes)])
+    bot = bot.makeChamfer(CHAMFER_BOT, [e for e in bot.Edges if all(abs(v.Z + HB) < 1e-6 for v in e.Vertexes)]).common(mirror_z(shell(cav, ys, HB, 4.5)))
     yf = 30.6
     for sg in (1, -1):
         ramp = [V(XL - 1, sg * yf, -HB), V(XL - 1, sg * (YC + 1), -HB + YC + 1 - yf), V(XL - 1, sg * (YC + 1), -HB - 1), V(XL - 1, sg * yf, -HB - 1)]
@@ -342,12 +379,11 @@ def build_case(sr, sp):
         for sy in (SCREW_Y, -SCREW_Y):
             top = top.cut(vcyl(PILOT_D / 2, sx, sy, -1, PILOT_LEN))
             bot = bot.cut(vcyl(HOLE_R, sx, sy, SEAT_Z - 1, 1)).cut(vcyl(WELL_R, sx, sy, -HB - 1, SEAT_Z))
-    keys = [box(x - KEY_W / 2, x + KEY_W / 2, -YC - 1, YC + 1, CASE_Z - KEY_D, CASE_Z + 1) for x in KEY_X]
+    keys = [box(x - KEY_W / 2, x + KEY_W / 2, y0, y1, CASE_Z - KEY_D, CASE_Z + 1) for x in KEY_X for y0, y1 in ((-YC - 1, -29.0), (29.0, YC + 1))]
     keys += [box(XL - 1, XR + 1, y - KEY_W / 2, y + KEY_W / 2, CASE_Z - KEY_D, CASE_Z + 1) for y in KEY_Y]
-    top = top.cut(keys[0].multiFuse(keys[1:]).removeSplitter())
+    top = top.cut(keys[0].fuse(keys[1:]).removeSplitter())
     for c in cut_all:
         top, bot = top.cut(c), bot.cut(c)
-    top = top.cut(pk[0].fuse(pk[1]))
     return max(top.removeSplitter().Solids, key=lambda x: x.Volume), bot.removeSplitter()
 
 
@@ -372,7 +408,7 @@ def vol(a, b):
 
 
 def dist(a, b):
-    return a.distToShape(b)[0]
+    return max(a.distToShape(b)[0] for _ in range(2))
 
 
 def travel(s, ax, blockers, hi=1.0):
@@ -413,29 +449,16 @@ def mesh_run(P, rng):
 
 
 def assembly(P):
-    cluster = [n for n in P if n not in ("CaseTop", "CaseBottom", "PinionA", "PinionB", "PinionShaftA", "PinionShaftB")]
-    pin = {n: P[n].copy() for n in ("PinionA", "PinionB")}
-    pin["PinionA"].translate(V(0, PIN_RETRACT, 0))
-    pin["PinionB"].translate(V(0, -PIN_RETRACT, 0))
-    fixed = [P["CaseTop"], P["PinionShaftA"], P["PinionShaftB"]] + list(pin.values())
-    out = dict(lower=0.0, push=0.0, close=0.0)
-
-    def moved(s, v):
-        t = s.copy()
-        t.translate(v)
-        return t
-    for dz in (-30, -15, -8, -4, -2, -1, -0.5):
-        for n in cluster:
-            t = moved(P[n], V(0, 0, dz))
-            out["lower"] = max([out["lower"]] + [vol(t, f) for f in fixed])
-    seated = [P[n] for n in cluster] + [P["CaseTop"], P["PinionShaftA"], P["PinionShaftB"]]
-    for t in (6.5, 5.5, 4.5, 3.5, 2.5, 1.5, 0.8, 0.4, 0.2):
-        for n, sg in (("PinionA", 1), ("PinionB", -1)):
-            p = moved(P[n], V(0, sg * t, 0))
-            out["push"] = max([out["push"]] + [vol(p, f) for f in seated])
-    for dz in (-12, -4, -1, -0.3):
-        b = moved(P["CaseBottom"], V(0, 0, dz))
-        out["close"] = max([out["close"]] + [vol(b, P[n]) for n in cluster + ["PinionA", "PinionB", "PinionShaftA", "PinionShaftB", "CaseTop"]])
+    bundle = [n for n in P if n not in ("CaseTop", "CaseBottom")]
+    out = dict(lower=0.0, close=0.0)
+    for dz in [-30, -12, -4] + [round(-3 + 0.1 * i, 1) for i in range(31)]:
+        b = P["CaseBottom"].copy()
+        b.translate(V(0, 0, dz))
+        for n in bundle:
+            t = P[n].copy()
+            t.translate(V(0, 0, dz))
+            out["lower"] = max(out["lower"], vol(t, P["CaseTop"]))
+            out["close"] = max(out["close"], vol(b, P[n]))
     return {k: round(v, 4) for k, v in out.items()}
 
 
@@ -513,7 +536,7 @@ def verify(P):
     rep["ground"] = round(-bb(P["CaseBottom"]).ZMin, 3)
     rep["top_wall"] = round(CASE_Z - bb(P["Carrier"]).ZMax - CAV_M, 3)
     circ = []
-    for ax, pos, r in [("x", (XL + min(grooves(TL, -1))) / 2, SADDLE_R), ("x", (TR + XR) / 2 - 1.5, SADDLE_R), ("x", sum(grooves(TL, -1)) / 2, RIB_R), ("x", sum(grooves(TR, 1)) / 2, RIB_R)] + [("y", sg * y, PIN_BORE_R) for sg in (1, -1) for y in (YW + 0.4, YC - 1)]:
+    for ax, pos, r in [("x", (XL + min(grooves(TL, -1))) / 2, SADDLE_R), ("x", (TR + XR) / 2 - 1.5, SADDLE_R), ("x", sum(grooves(TL, -1)) / 2, RIB_R), ("x", sum(grooves(TR, 1)) / 2, RIB_R)] + [("y", sg * y, PIN_BORE_R) for sg in (1, -1) for y in (YT + 0.4, YC - 1)]:
         for k in range(24):
             a = math.radians(7.5 * k + 3.75)
             d = lambda rr: V(pos, rr * math.cos(a), rr * math.sin(a)) if ax == "x" else V(rr * math.cos(a), pos, rr * math.sin(a))
@@ -535,12 +558,10 @@ def check(rep):
         assert all(v < 1e-3 and 0.15 <= g <= 0.45 for v, g in res), (k, res)
     assert not any(rep["assembly"].values()) and KEY_W <= 3.5 and rep["top_wall"] >= 1.2, (rep["assembly"], rep["top_wall"])
     assert rep["idler_heads"] >= 0.4 and all(v >= 0.3 for v in rep["idler_clear"].values()), rep
-    assert all(v >= 0.3 for k, v in rep["case_clear"].items() if k[1] != "IdlerRing"), rep["case_clear"]
-    assert all(abs(v - IDLER_FLOAT) < 0.02 for k, v in rep["case_clear"].items() if k[1] == "IdlerRing"), rep["case_clear"]
-    lo, hi = rep["carrier_float"]
-    assert 0.08 <= lo + hi <= 0.12, rep["carrier_float"]
-    assert 0.08 <= sum(rep["idler_float"]) <= 0.12, rep["idler_float"]
-    assert all(0.08 <= sum(v) <= 0.12 for v in rep["pinion_float"].values()), rep["pinion_float"]
+    assert all(v >= 0.2 for v in rep["case_clear"].values()), rep["case_clear"]
+    assert 0.25 <= sum(rep["carrier_float"]) <= 0.35, rep["carrier_float"]
+    assert 0.2 <= sum(rep["idler_float"]) <= 0.4, rep["idler_float"]
+    assert all(0.2 <= sum(v) <= 0.5 for v in rep["pinion_float"].values()), rep["pinion_float"]
     assert 0 <= rep["split_gap"] <= 0.1, rep["split_gap"]
     assert all(0 < v <= 0.2 for v in rep["tail_clear"].values()), rep["tail_clear"]
     assert rep["pilot_wall"] >= 1.2 and rep["heads_free"] < 1e-3 and rep["bores_closed"], rep

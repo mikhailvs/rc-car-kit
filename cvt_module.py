@@ -605,7 +605,7 @@ def check(rep, est):
     assert est["frame"]["corner_MPa_kt1_5"] <= 15.0 and est["hangers_load_N"] == 0.0 and est["loss_greased"]["motor_limited_pct_outer"] <= 30.0, est
     assert est["tail"]["root_MPa_kt1_5"] <= 15.0 and est["tail"]["deflect_mm"] <= 0.2 and est["tail"]["deflect_z_mm"] <= est["tail"]["soft_limit_z_mm"] / 4 and rep["shuttle_cm3"] < 24.0, (est["tail"], rep["shuttle_cm3"])
     assert est["prong"]["root_MPa_kt1_5"] <= 15.0 and min(est["lug"].values()) >= 1.1, (est["prong"], est["lug"])
-    assert est["arm_pin"]["steel_MPa_at_72N"] <= 150.0 and est["arm_pin"]["pla_bearing_MPa_at_72N"] <= 25.0 and est["slider_lid_clear_mm"] >= 0.3, est
+    assert est["arm_pin"]["steel_MPa_at_72N"] <= 150.0 and est["arm_pin"]["pla_bearing_MPa_at_72N"] <= 25.0 and est["slider_lid_clear_mm"] >= 0.4, est
 
 
 def main():

@@ -8,6 +8,7 @@ Each module is a parametric FreeCAD script that generates its `.FCStd` model. Ru
 |---|---|---|
 | `differential.py` | Enclosed axle module: bevel differential, shaft input, chain-through output | checked on the model |
 | `wheel_mount.py` | Wheel mount, steerable or locked, takes a drive shaft for a powered wheel | checked on the model |
+| `wheel_mount2.py` | Wheel mount, second design: knuckle pushes up onto a single kingpin post under a glue pad | checked on the model |
 | `drive_shaft.py` | Drive shaft with captured universal joints and a telescoping middle | checked on the model |
 | `motor_module.py` | GA37 gearmotor geared 3:1 to a through shaft with front and rear ports | checked on the model |
 | `cvt_module.py` | Servo-shifted pinched-disc CVT motor module | parked: test print showed tight fits, and the sliding carriage is prone to binding |

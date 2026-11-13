@@ -1,8 +1,8 @@
 # Drive shaft: two double-hinge joints and a telescoping hex slide, replaces the wheel_mount.py DriveCoupler + ball-hex Stub; 4 x JointYoke, 2 x JointCross, SlideRod, SlideTube, every end clamps on a kit port.
-# Hardware per shaft, 9 screws: per joint 2 x M3x20 (each through ear, cross block, ear; 12 mm thread in the block, head sunk 0.8 into the ear), per yoke 1 x M3x16 port clamp screw, 1 x M3x4 stop screw in the tube wall.
+# Hardware per shaft, 9 screws: per joint 2 x M3x20 (each through ear, cross block, ear; 12 mm thread in the block, head sunk 0.8 into the ear). Hinge: tighten only until the head seats, then back off a quarter turn; the ear gap is 0.25 per side, so driving further clamps the ear on the block (no geometric stop, M3x20 runs through the block), per yoke 1 x M3x12 port clamp screw, 1 x M3x4 stop screw in the tube wall.
 # Pins: the two pin axes are 2 x AX = 4 mm apart along the shaft (no intersection), so the joint is a double hinge, not a true cardan: output axis runs out 1.0 to 1.07 mm sideways at 30 degrees. Joint centre is the block centre, 12.03 mm from the port tip.
-# Assembly: 1 yoke over a cross, M3x20 in; 2 other yoke over the cross at 90 degrees, M3x20 in; 3 repeat; 4 yokes onto rod and tube ports, then rod into tube, M3x4 through the tube wall into the rod groove; 5 shaft onto the ports, M3x16 through each yoke and port pilot.
-# Max angle: first contact 54 degrees at the worst phase (30 required, checked at every 15 degrees). Stroke: joint centre to joint centre LC_LO to LC_HI, set by the stop screw in the rod groove, 15.5 mm of hex engaged at full extension, swing radius 12.5 with screw heads.
+# Assembly: 1 yoke over a cross, M3x20 in; 2 other yoke over the cross at 90 degrees, M3x20 in; 3 repeat; 4 yokes onto rod and tube ports, then rod into tube, M3x4 through the tube wall into the rod groove; 5 shaft onto the ports, M3x12 through each yoke and port pilot.
+# Max angle: first contact 36.3 degrees at the worst phase (30 required, clear at 10/20/30/35 at every 15 degrees of phase). Stroke: joint centre to joint centre LC_LO to LC_HI, set by the stop screw in the rod groove, 15.5 mm of hex engaged at full extension, swing sphere radius 12.5 measured to the yoke ears (pin screw heads and tips 12.4, clamp screw heads 9.9 off the axis).
 # Prints: yoke standing on its socket mouth (ears up), cross on its 12 x 12 face, rod on the flat opposite the groove (groove on top), tube standing port up. Document: the angled shaft (Shown_*) and the same shaft straight below it (print parts).
 import FreeCAD as App, Part, math
 
@@ -18,15 +18,16 @@ R3 = math.sqrt(3)
 
 SOCKET, BORE, PILOT, PS_OUT, PS_PILOT = 8.3, 8.4, 2.8, 16.0, 5.9
 SOCK_D, BODY_R, SH, SPHERE_R = 10.0, 7.5, 6.0, 12.5
-EAR_T, GAP, PIN_HOLE, EAR_W = 3.0, 12.2, 3.2, 4.0
+EAR_T, GAP, PIN_HOLE, EAR_W = 3.0, 12.5, 3.4, 4.4
 CLAMP_HOLE, CB_D, CB_Z = 3.4, 6.0, 6.5
 BLK_X, BLK, AX = 12.0, 12.0, 2.0
-HEAD_CB, HEAD_CB_D, CROSS_CH = 0.8, 6.0, 2.5
+HEAD_CB, HEAD_CB_D, CROSS_CH = 0.8, 6.0, 1.3
 STOP_W, STOP_D, STOP_S, STOP_L, SLACK = 3.4, 1.2, 8.0, 4.0, 0.5
 CONE_TOP, ROOF_WALL = 2.0, 1.4
 TUBE_R, ROD_L, TUBE_L, ENG_MIN, END_GAP = 7.0, 52.0, 44.0, 15.0, 0.3
 SCREW_D, HEAD_D, HEAD_H = 3.0, 5.5, 3.0
-A_LEN, C_LEN = 20.0, 16.0
+A_LEN, C_LEN = 20.0, 12.0
+OVERHANG_DEG = 45.0
 TORQUE = 500.0
 DISPLAY_DEG = 15.0
 EXP_DY, EXP_DZ = 0.0, -60.0
@@ -101,9 +102,13 @@ def build_yoke():
     return y.removeSplitter()
 
 
-def build_cross():
+def cross_blank():
     b = box(-BLK_X / 2, BLK_X / 2, -BLK / 2, BLK / 2, -BLK / 2, BLK / 2)
-    b = b.makeChamfer(CROSS_CH, [e for e in b.Edges if abs(e.BoundBox.XLength) < 1e-6 and abs(e.BoundBox.Center.x) > BLK_X / 2 - 1e-6])
+    return b.makeChamfer(CROSS_CH, [e for e in b.Edges if abs(e.BoundBox.XLength) < 1e-6 and abs(e.BoundBox.Center.x) > BLK_X / 2 - 1e-6])
+
+
+def build_cross():
+    b = cross_blank()
     return b.cut(yc(PILOT / 2, -10, 10, -AX)).cut(Part.makeCylinder(PILOT / 2, 20, V(AX, 0, -10), Z))
 
 
@@ -273,7 +278,10 @@ def stress():
 
 def thin(kit):
     pa, pb = yc(PILOT / 2, -10, 10, -AX), Part.makeCylinder(PILOT / 2, 20, V(AX, 0, -10), Z)
-    return dict(ear_wall_round_hole=round(EAR_W - PIN_HOLE / 2, 2), ear_t=EAR_T, ear_under_head=round(EAR_T - HEAD_CB, 2),
+    ch = [f for f in cross_blank().Faces if abs(f.normalAt(0, 0).x) > 1e-6 and abs(f.normalAt(0, 0).x) < 1 - 1e-6]
+    pil = pa.fuse(pb)
+    return dict(ear_wall_round_hole=round(EAR_W - PIN_HOLE / 2, 2), ear_cb_wall=round(EAR_W - HEAD_CB_D / 2, 2),
+                cross_ch_wall=round(min(f.distToShape(pil)[0] for f in ch), 3), clamp_far=round(C_LEN - CB_Z - SHAFT_AF / 2, 2), ear_t=EAR_T, ear_under_head=round(EAR_T - HEAD_CB, 2),
                 cross_B_to_A=round(pa.distToShape(pb)[0], 3), cross_x_wall=round(BLK_X / 2 - AX - PILOT / 2, 2),
                 tube_wall_corner=round(TUBE_R - RC_B, 2), tube_wall_flat=round(TUBE_R - BORE / 2, 2),
                 yoke_socket_wall=round(BODY_R - RC_S, 2), clamp_cb_to_flat=round(CB_Z - SOCKET / 2, 2), roof_yoke=ROOF_WALL)
@@ -308,8 +316,10 @@ def overhangs(s, up):
         area = 0.0
         for i, j, k in tris:
             n = (pts[j] - pts[i]).cross(pts[k] - pts[i])
-            if n.Length and n.z / n.Length < -0.75:
-                area += n.Length / 2
+            if n.Length and n.z / n.Length < -math.sin(math.radians(OVERHANG_DEG)) + 0.05:
+                u, v = f.Surface.parameter((pts[i] + pts[j] + pts[k]) * (1 / 3))
+                if f.normalAt(u, v).z < -math.sin(math.radians(OVERHANG_DEG)) - 1e-3:
+                    area += n.Length / 2
         if area > 0.05:
             st = f.Surface
             bad.append((type(st).__name__, round(getattr(st, "Radius", 0.0), 2), round(area, 1), round(f.BoundBox.ZMin, 1)))
@@ -352,7 +362,8 @@ def check(rep):
     p = rep["stop"]
     assert p["core_r"] >= 2.8 - 1e-3 and p["port_gap"] >= 3.0 and p["tip_to_floor"] >= 0.2 - 1e-3 and p["tube_vs_screw"] > 0, p
     assert p["mid_dist"] >= 0.2 - 1e-3 and all(v < 1e-3 for v in p["free_vol"]) and all(v > 1e-3 for v in p["blocked"]), p
-    assert min(t["ear_wall_round_hole"], t["cross_B_to_A"], t["cross_x_wall"], t["tube_wall_corner"]) >= 1.2, t
+    assert min(t["ear_wall_round_hole"], t["ear_cb_wall"], t["cross_ch_wall"], t["cross_B_to_A"], t["cross_x_wall"], t["tube_wall_corner"]) >= 1.2, t
+    assert t["clamp_far"] >= 1.5 - 1e-3, t
     for n, (floor, bad) in rep["print"].items():
         assert floor >= 5.0, (n, floor)
         for kind, rad, area, z in bad:

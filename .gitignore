@@ -1,0 +1,5 @@
+*.FCBak
+*.stl
+*.obj
+*.3mf
+__pycache__/

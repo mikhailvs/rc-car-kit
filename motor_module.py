@@ -1,4 +1,4 @@
-# Motor module: GA37RG gearmotor sits ON TOP of the cardboard floor (bracket glued flat by its pad); only ShaftGear, the lower rim of MotorGear and the 8 mm hex through shaft (Y, ports front and rear) hang below.
+# Motor module: GA37RG gearmotor sits ON TOP of the cardboard floor (bracket glued flat by its pad); only the bracket tongue (20 wide) and bearing tube, ShaftGear, the lower rim of MotorGear and the 8 mm hex through shaft (Y, ports front and rear) hang below.
 # Floor slot to cut: 74 wide (x, centred on the bracket) by 47.5 long (y, from 16 ahead of the plate front face to 31.5 behind it); shaft axis is 29 mm below the floor underside.
 # FLOOR_T = 4 mm cardboard is assumed (unconfirmed); the tooth counts re-pick from it (motor to pad gap must land in 1 to 3.5 mm) and the slot follows.
 # Hardware: GA37RG, 6 x M3x8 motor (from the front), 1 x M3x6 MotorGear lock screw (from above), 2 x DriveCoupler + M3x16 (wheel_mount.py), hot glue through the pad holes.
@@ -56,14 +56,14 @@ MG_TIP = PLATE_T - MOT_SH_L
 G0M, G1M = -MG_GAP - FACE, -MG_GAP
 MG_HUB_L = G0M - MG_TIP + MG_FLOOR
 MG_LOCK_Y = G0M - MG_HUB_L / 2
-MG_BORE, MG_FLAT_AF = 6.15, 5.6
+MG_BORE, MG_FLAT_AF = 6.15, 5.675
 TIP_F, TIP_R = G0 - PS_OUT, TUBE_END - SG_HUB + PS_OUT
 JF_Y, JR_L = (0.3, PLATE_T + 0.6), 8.0
 JR_Y = (TUBE_END - JR_L, TUBE_END - 0.25)
 
 PAD_Y1 = PLATE_T + MOT_BODY + 3.2
 RAIL_X, RAIL_Y1, RAIL_CLR = (9.0, 13.0), PLATE_T + MOT_BODY, 0.3
-GUS_X0, GUS_H, GUS_L = 20.0, 11.0, 14.0
+GUS_X0, GUS_H, GUS_L = 20.0, 11.0, 25.0
 GLUE_D = 5.0
 GLUES = [(sx * 21.5, y) for sx in (-1, 1) for y in (38.0, 50.0, 62.0)]
 SLOT_X, SLOT_Y0, SLOT_Y1 = 74.0, -16.0, 31.5
@@ -204,7 +204,7 @@ def mesh(mg, sg):
 
 
 def engagement(mg):
-    z = MZ + MOT_FLAT_AF - MOT_SH_D / 2 + 0.05
+    z = MZ + MOT_FLAT_AF - MOT_SH_D / 2 + 0.15
     lo = PLATE_T - MOT_SH_L + 0.5
     hi = PLATE_T - MOT_SH_L + MOT_FLAT_L
     ys = [lo + 0.25 * i for i in range(int((hi - lo) / 0.25) + 1)]
@@ -234,6 +234,8 @@ def verify(parts):
     rep["mesh"] = mesh(mg, sg)
     rep["cd"] = round(math.hypot(mg.Solids[0].CenterOfMass.x - sg.Solids[0].CenterOfMass.x, mg.Solids[0].CenterOfMass.z - sg.Solids[0].CenterOfMass.z), 3)
     rep["engage"] = engagement(mg)
+    bw = min(mg.slice(Y, MG_TIP + 0.5), key=lambda w: w.BoundBox.ZLength)
+    rep["flat_clr"] = round(bw.BoundBox.ZMax - (MZ + MOT_FLAT_AF - MOT_SH_D / 2), 3)
     rep["end_float"] = round(cf.distToShape(sg)[0] + cr.distToShape(br)[0] + sg.distToShape(br)[0], 3)
     rep["bbox"] = {n: tuple(round(v, 2) for v in (s.BoundBox.XLength, s.BoundBox.YLength, s.BoundBox.ZLength)) for n, s in parts.items()}
     rep["bbox_min"] = {n: tuple(round(v, 2) for v in (s.BoundBox.XMin, s.BoundBox.YMin, s.BoundBox.ZMin)) for n, s in parts.items()}
@@ -276,6 +278,7 @@ def check(rep):
     assert all(v >= 1.5 for v in rep["clear"].values()), rep["clear"]
     assert all(r[1] <= 0.3 and r[2] > 0 for r in rep["mesh"]), rep["mesh"]
     assert abs(rep["cd"] - CD) < 0.05 and rep["engage"] >= 8.0, rep
+    assert 0.08 <= rep["flat_clr"] <= 0.15, rep["flat_clr"]
     assert rep["rail_motor"] >= 0.25 and rep["gus_motor"] >= 1.5, rep
     assert rep["fits"][("Bracket", "MotorGear")] >= 0.25, rep["fits"]
     assert 0.3 <= rep["end_float"] <= 0.8, rep["end_float"]

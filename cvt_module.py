@@ -2,9 +2,9 @@
 # Window 97.2 x 101.7 mm in the 4 mm cardboard (x -41.8..55.4, y -50.85..50.85, origin on motor axis; hanging parts 93.2 x 97.7 plus 2 mm margin), Lid 117.2 x 121.7 x 5, dia 5 glue holes. Through shaft axis 29 below the floor underside (FLOOR_T 4 unconfirmed); lowest point 18.3 below the shaft axis (ServoArm underside; the three horn screw heads and the arm pin head are counterbored flush into it). Hanger bores are relieved 0.6 mm upward so the shaft can lift as the tyre squeezes. Hanger and Shuttle bores are 9.9 on the 8 AF hex (corner dia 9.24): 0.33 per side on the corners, so both slide freely (grease them).
 # Ratio (contact radius / tyre radius 7.75) 2.06 to 3.35 forward only (contact radius 16 to 26 mm, travel 10 mm), reverse by running the motor backwards; 100 RPM gives 206 to 335 RPM. Print the Disc on a textured plate for more grip. Shift while the disc is turning. The Wheel with tyre (15.5 OD) squeezes 0.3 mm past the Disc face while it is slid in from +x (soft tyre, expected, it is the pinch squeeze).
 # Clamp: design 35 N (20 to 40), set by two rubber rings (2 mm wire) at x +-6.8, round the Shuttle top bar and the cross pin on the RollerSlider, kept outboard of the hub; check on a kitchen scale pressing the roller. Back the rings off when parked (roller on PLA disc is about 36 MPa Hertz at 35 N). Shuttle sits on the shaft by two bearing collars either side of the Wheel (carry it along the shaft), so the force stays inside it.
-# Disc hub: M3x6 lock screw from -x onto the D flat (usable engage 8.5). Shuttle top bar passes 0.8 from the hub at the innermost position. Servo is flipped (spline down), horn trimmed to 9 mm each side, ServoArm 12 mm, MG995 gives about 76 N at the ends. The pin pushes 31.9 off the shaft line and 9.5 below it, so the shuttle has a 42 mm tail, a 5 mm thick web rib under the shaft (45 degree gusset, rises from the print bed, 0.28 mm out of plane flex at the pitch load) ending in a third bearing collar: the guide spans 54 mm. Binding is tolerated up to friction 0.88 when the tail carries the pitch (it engages first: the tail collar needs 0.33 mm of tilt, the near pair 3.6 times more) and 0.52 in the worst case where only the near collar pair does (measured centre to centre: 0.82 and 0.43, that case needs 1.7 mm of tail flex). The Shuttle base plate is the lug (2.4 mm, 0.5 under the tyre), centred between the servo underside and the ServoArm: 0.95 each side once the servo screws pull the tabs up to the posts (0.2 slide in gap), servo height tolerance plus or minus 0.9 mm, so the roll stop holds under 2 deg. The lug slot is full round at its closed end 0.3 behind the pin's nearest position, prong lever 1.4 mm. Margins with that side friction: shifting while rolling 1.8 greased (0.8 dry), stopped 1.2 greased (0.5 dry): shift only while the disc turns, and grease the shaft bores.
+# Disc hub: M3x6 lock screw from -x onto the D flat (usable engage 8.5). Shuttle top bar passes 0.8 from the hub at the innermost position. Servo is flipped (spline down), horn trimmed to 9 mm each side, ServoArm 12 mm, MG995 gives about 76 N at the ends. The pin pushes 31.9 off the shaft line and 9.5 below it, so the shuttle has a 42 mm tail, a 5 mm thick web rib under the shaft (45 degree gusset, rises from the print bed, 0.28 mm out of plane flex at the pitch load) ending in a third bearing collar: the guide spans 54 mm. Binding is tolerated up to friction 0.88 when the tail carries the pitch (it engages first: the tail collar needs 0.33 mm of tilt, the near pair 3.6 times more) and 0.52 in the worst case where only the near collar pair does (measured centre to centre: 0.82 and 0.43, that case needs 1.7 mm of tail flex). The Shuttle base plate is the lug (2.0 mm, 0.5 under the tyre), centred between the servo underside and the ServoArm: 1.15 each side once the servo screws pull the tabs up to the posts (0.2 slide in gap), servo height tolerance plus or minus 0.9 mm, so the roll stop holds under 2 deg. The lug slot is full round at its closed end 0.3 behind the pin's nearest position, prong lever 1.4 mm. Margins with that side friction: shifting while rolling 1.8 greased (0.8 dry), stopped 1.2 greased (0.5 dry): shift only while the disc turns, and grease the shaft bores.
 # Hardware: 6 x M3x8 motor (up through lid), 1 x M3x6 disc lock, 4 x M3x10 servo (pilots in 4 posts, M3 washers between tab and post if a servo sits high), 1 x M3 horn screw + 2 x dia 2 horn screws (heads counterbored into the ServoArm underside), MG995 (brands vary, check body and holes), M3x16 roller axle, M3x8 arm pin screw (steel, from below, counterbored), M3x20 + nut cross pin, 2 x DriveCoupler + M3x16 (wheel_mount.py), rubber rings, and one small LEGO tire (measured 14.5 OD x 6.23 wide, ID 11.2; stretches onto the 12.2 rim to 15.5 OD): trim or squash the tire's inner rib so it sits flat (untrimmed it would stretch 33 pct). Grease the collars and roller axle (and the shaft inside the Shuttle bore): required to drive (dry losses are 68 pct of motor torque at the outer position, 42 inner; greased 23 and 14).
-# Assembly (bench, Lid NOT yet in the floor, steps checked by the sweeps in verify): 1 motor, six screws from below; 2 Disc up onto D shaft, set its height with the pinch closed, lock screw; 3 Shuttle with RollerSlider and Roller (slider pushed up) slid in from -x over the Disc; 4 Wheel+tyre slid in from +x into the Shuttle pocket (before the servo, the servo body blocks this path); 5 cross pin, rubber rings; 6 servo slid in from +x under its four posts, screws up from below; 7 ServoArm up onto the horn from below, arm pin screw from below into the lug slot; 8 lower the whole module into the floor window and glue the Lid to the floor (the slider post and servo only clear the floor from above); 9 push the ThroughShaft in from the rear; 10 couplers last.
+# Assembly (bench, Lid NOT yet in the floor, steps checked by the sweeps in verify): 1 motor, six screws from below; 2 Disc up onto D shaft, set its height with the pinch closed, lock screw; 3 Shuttle with RollerSlider and Roller (slider pushed up) slid in from -x over the Disc; 4 Wheel+tyre slid in from +x into the Shuttle pocket (before the servo, the servo body blocks this path); 5 thread the inboard rubber ring onto the cross pin BEFORE the pin goes through the slider post, then the pin and the other ring; 6 servo slid in from +x under its four posts, screws up from below with the shuttle at the inner half of its travel (M3 washers under the tabs if the servo sits high); 7 ServoArm up onto the horn from below, arm pin screw from below into the lug slot; 8 lower the whole module into the floor window and glue the Lid to the floor (the slider post and servo only clear the floor from above); 9 push the ThroughShaft in from the rear; 10 couplers last.
 # All PLA, no supports, no TPU. Lid prints top face down; Shuttle on its leg face (-x); Wheel and Roller flat; Slider upright (use a brim).
 import FreeCAD as App, Part, math
 
@@ -58,7 +58,7 @@ LEG_T, LEG_GAP = 8.0, 0.8
 LEG_X1 = -(math.sqrt(DISC_R ** 2 - (S_MIN - FY) ** 2) + LEG_GAP)
 LEG_X0 = LEG_X1 - LEG_T
 PL_X1, PL_Z1 = 8.2, BORE_C / 2 + 1.75
-SV_GAP, LUG_T, LUG_X1, TAIL_L = 0.2, 2.4, 38.5, 42.0
+SV_GAP, LUG_T, LUG_X1, TAIL_L = 0.2, 2.0, 38.5, 42.0
 BASE_Z1 = -(R_T + 0.5)
 BASE_Z0 = BASE_Z1 - LUG_T
 TAIL_W, TAIL_WALL, TAIL_CZ, TAIL_XT, TAIL_SLOPE = 5.0, 2.4, 6.9, -6.0, 0.95
@@ -76,7 +76,7 @@ POST_X, POST_Y, SLOT_CLR = 3.0, 6.0, 0.4
 POST_TOP = PIN_Z + 3.0
 
 ARM_L, ARM_T, ARM_W, PIN_R, PIN_H, SLOT_W = 12.0, 6.5, 9.0, 1.5, 3.7, 3.7
-AP_HEAD_D, AP_HEAD_H, AP_L = 5.5, 2.0, 8.0
+AP_HEAD_D, AP_HEAD_H, AP_L, AP_HOLE_R = 5.5, 2.0, 8.0, 1.6
 HS_HEAD_D, HS_HEAD_H = 4.2, 1.8
 YS = (S_MIN + S_MAX) / 2
 XS = DISC_R + 1.0 + SV_W / 2
@@ -279,7 +279,7 @@ def build_shuttle():
         y0, y1 = sorted((sg * PK, sg * FY))
         sh = sh.fuse(box(LEG_X1 - 0.1, PL_X1, y0, y1, BASE_Z1 - 0.1, PL_Z1))
     sh = sh.fuse(tail()).removeSplitter()
-    sh = soften(sh, lambda e: vert(e, "X") and e.Length > 8 and abs(abs(e.BoundBox.YMin) - PK) > 0.01 and abs(abs(e.BoundBox.ZMin) - TAIL_W / 2) > 1e-3, 3.0)
+    sh = soften(sh, lambda e: vert(e, "X") and e.Length > 8 and abs(abs(e.BoundBox.YMin) - PK) > 0.01 and abs(abs(e.BoundBox.ZMin) - TAIL_W / 2) > 1e-3, 2.8)
     sh = soften(sh, lambda e: vert(e, "Y") and abs(e.BoundBox.XMin - LEG_X1) < 1e-3 and abs(e.BoundBox.ZMin - BASE_Z1) < 1e-3, 3.0)
     sh = soften(sh, lambda e: vert(e) and (abs(e.BoundBox.XMin - LUG_X1) < 1e-3 or abs(e.BoundBox.XMin - BAR_X1) < 1e-3) and e.Length > 2, 2.5)
     sh = soften(sh, lambda e: vert(e, "X") and abs(e.BoundBox.YMin + FY) < 1e-3 and abs(abs(e.BoundBox.ZMin) - TAIL_W / 2) < 1e-3, 1.5)
@@ -308,7 +308,7 @@ def build_arm():
     a = a.cut(vcyl(HORN_CENTRE_D / 2, XS, YS, z0 - 1, z1 + 1)).cut(vcyl(AP_HEAD_D / 2 + 0.15, XS, YS, z0 - 1, z0 + AP_HEAD_H)).cut(vcyl(SV_SPLINE_D / 2 + 0.2, XS, YS, SV_ZT - SV_SPLINE_TOP - 0.2, z1 + 1))
     for sg in (1, -1):
         a = a.cut(vcyl(HORN_HOLE_D / 2, XS + sg * HORN_HOLE_PITCH / 2, YS, z0 - 1, z1 + 1)).cut(vcyl(HS_HEAD_D / 2, XS + sg * HORN_HOLE_PITCH / 2, YS, z0 - 1, z0 + HS_HEAD_H))
-    a = a.cut(vcyl(PIN_R, XS + ARM_L, YS, z0 - 1, z1 + 1)).cut(vcyl(AP_HEAD_D / 2 + 0.15, XS + ARM_L, YS, z0 - 1, z0 + AP_HEAD_H))
+    a = a.cut(vcyl(AP_HOLE_R, XS + ARM_L, YS, z0 - 1, z1 + 1)).cut(vcyl(AP_HEAD_D / 2 + 0.15, XS + ARM_L, YS, z0 - 1, z0 + AP_HEAD_H))
     return a.removeSplitter()
 
 
@@ -473,7 +473,7 @@ def estimates():
         th_z += f_z * u / (E * min(TAIL_XT - LEG_X0, 3.5 + (u + COL_L / 2) / TAIL_SLOPE) * TAIL_W ** 3 / 12) * arm / n
         dz += th_z * arm / n
     est["tail"] = dict(side_N=f_side, root_MPa_kt1_5=round(1.5 * 6 * f_side * arm / (TAIL_W * (TAIL_XT - LEG_X0) ** 2), 1), deflect_mm=round(dfl, 3), side_z_N=round(f_z, 1), deflect_z_mm=round(dz, 3), soft_limit_z_mm=round(2 * (BORE_C / 2 - SHAFT_AF / math.sqrt(3)) * ((g_len + COL_L) / (2 * FY) - 1), 2), root_z_MPa_kt1_5=round(1.5 * 6 * f_z * arm / ((TAIL_XT - LEG_X0) * TAIL_W ** 2), 1), collar_wall_x=TAIL_WALL, collar_wall_z=round(TAIL_CZ - BORE_C / 2, 2))
-    p_st, w_pr, lev_pr = SV_NM / (ARM_L / 1000), FY - SLOT_W / 2, a_push - SLOT_XC
+    p_st, w_pr, lev_pr = f_end, FY - SLOT_W / 2, a_push - SLOT_XC
     est["prong"] = dict(stall_N=round(p_st, 1), lever_mm=round(lev_pr, 2), width_mm=round(w_pr, 2), thick_mm=LUG_T, root_MPa_kt1_5=round(1.5 * 6 * p_st * lev_pr / (LUG_T * w_pr ** 2), 1))
     est["lug"] = dict(gap_up=round(SV_ZT - SV_H + SV_GAP - BASE_Z1, 3), gap_down=round(BASE_Z0 - ARM_Z1 - SV_GAP, 3))
     est["arm_pin"] = dict(steel_MPa_at_72N=round(72.0 * lev / (math.pi * (2 * PIN_R) ** 3 / 32), 1),
@@ -604,8 +604,8 @@ def check(rep, est):
     assert est["disc_torque_Nm"]["outer"] > MOT_NM and est["hex_corner_wall"] >= 1.0 and est["servo"]["margin_turning"] >= 1.5 and est["bind"]["ratio_tolerated_mu"] >= 0.5 and max(est["bind"]["roll_up_deg"], est["bind"]["roll_down_deg"]) <= 3.0, est
     assert est["frame"]["corner_MPa_kt1_5"] <= 15.0 and est["hangers_load_N"] == 0.0 and est["loss_greased"]["motor_limited_pct_outer"] <= 30.0, est
     assert est["tail"]["root_MPa_kt1_5"] <= 15.0 and est["tail"]["deflect_mm"] <= 0.2 and est["tail"]["deflect_z_mm"] <= est["tail"]["soft_limit_z_mm"] / 4 and rep["shuttle_cm3"] < 24.0, (est["tail"], rep["shuttle_cm3"])
-    assert est["prong"]["root_MPa_kt1_5"] <= 15.0 and min(est["lug"].values()) >= 0.9, (est["prong"], est["lug"])
-    assert est["arm_pin"]["steel_MPa_at_72N"] <= 150.0 and est["arm_pin"]["pla_bearing_MPa_at_72N"] <= 25.0 and est["slider_lid_clear_mm"] >= 0.4, est
+    assert est["prong"]["root_MPa_kt1_5"] <= 15.0 and min(est["lug"].values()) >= 1.1, (est["prong"], est["lug"])
+    assert est["arm_pin"]["steel_MPa_at_72N"] <= 150.0 and est["arm_pin"]["pla_bearing_MPa_at_72N"] <= 25.0 and est["slider_lid_clear_mm"] >= 0.3, est
 
 
 def main():

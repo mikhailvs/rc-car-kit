@@ -24,13 +24,13 @@ MIN_FLOOR_AREA = 5.0
 
 # document axis that points up on the bed; identical parts are detected from geometry
 UPS = {"WheelMount": {"Mount_R": "-X", "Mount_L": "+X", "Knuckle": "+X", "Stub": "+Z", "WheelHub": "-X"},
-       "WheelMount2": {"Mount": "-Z", "Knuckle": "+Z", "Stub": "+Z", "WheelHub": "-X"},
+       "WheelMount2": {"Mount": "-Z", "Knuckle": "+Z", "Stub": "+Z", "WheelHub": "-X", "Sleeve_1": "+X", "Sleeve_2": "+X"},
        "MotorModule": {"Bracket": "+Y", "MotorGear": "-Y", "ShaftGear": "-Y", "ThroughShaft": "+Z"},
        "CvtModule": {"Lid": "-Z", "Disc": "+Z", "ThroughShaft": "+Z", "Wheel": "+Y", "Shuttle": "+X", "RollerSlider": "+Z", "Roller": "+Y", "ServoArm": "+Z"},
        "DriveShaft": {"JointYoke_1": "+X", "JointYoke_2": "-X", "JointYoke_3": "+X", "JointYoke_4": "-X", "JointCross_1": "+X", "JointCross_2": "-X", "SlideRod": "+Y", "SlideTube": "+X"},
        "Gearbox3": {"Bracket": "+Y", "FrontPlate": "+Y", "MotorCarrier": "-Y", "MotorCap": "-Y", "MotorGear_B": "+Y", "MotorGear_A": "+Y", "MotorGear_C": "+Y", "SlideCarrier": "+Y", "SlideGear_A": "+Y", "SlideGear_B": "+Y", "SlideCap": "-Y", "Layshaft": "+Z", "ThroughShaft": "+Z", "T1": "-Y", "T2": "-Y", "ShiftFork": "-Y", "Rod_1": "+Z", "Rod_2": "+Z", "ServoArm": "-Z", "CasePan": "+Z", "ServoMount": "-X", "Sleeve_1": "+Y", "Sleeve_2": "+Y", "Sleeve_3": "+Y", "Sleeve_4": "+Y"}}
 COPIES = {"WheelMount": {"Mount_R": 1, "Mount_L": 1, "Knuckle": 2, "Stub": 2, "WheelHub": 2},
-          "WheelMount2": {"Mount": 1, "Knuckle": 1, "Stub": 1, "WheelHub": 1},
+          "WheelMount2": {"Mount": 1, "Knuckle": 1, "Stub": 1, "WheelHub": 1, "Sleeve_1": 2, "Sleeve_2": 2},
           "MotorModule": {"Bracket": 1, "MotorGear": 1, "ShaftGear": 1, "ThroughShaft": 1},
           "CvtModule": {"Lid": 1, "Disc": 1, "ThroughShaft": 1, "Wheel": 1, "Shuttle": 1, "RollerSlider": 1, "Roller": 1, "ServoArm": 1},
           "DriveShaft": {"JointYoke_1": 4, "JointCross_1": 2, "SlideRod": 1, "SlideTube": 1},

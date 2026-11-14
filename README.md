@@ -1,6 +1,6 @@
 # RC car kit
 
-3D printed drivetrain modules for a hot-glue-and-cardboard RC car that kids can build. Work in progress: only the wheel mount has been test printed so far.
+3D printed drivetrain modules for a hot-glue-and-cardboard RC car that kids can build. Work in progress: the first wheel mount, the CVT and the differential have been test printed so far.
 
 Each module is a parametric FreeCAD script that generates its `.FCStd` model. Run a script inside FreeCAD 1.1 (the `freecad.gears` workbench is required) to rebuild its model.
 
@@ -11,6 +11,7 @@ Each module is a parametric FreeCAD script that generates its `.FCStd` model. Ru
 | `wheel_mount2.py` | Wheel mount, second design: knuckle pushes up onto a single kingpin post under a glue pad | checked on the model |
 | `drive_shaft.py` | Drive shaft with captured universal joints and a telescoping middle | checked on the model |
 | `motor_module.py` | GA37 gearmotor geared 3:1 to a through shaft with front and rear ports | checked on the model |
+| `gearbox_module.py` | Servo-shifted 3 speed sliding-gear motor module with a bottom case and PTFE liner pockets | checked on the model |
 | `cvt_module.py` | Servo-shifted pinched-disc CVT motor module | parked: test print showed tight fits, and the sliding carriage is prone to binding |
 | `make_print_project.py` | Writes a Bambu Studio `.3mf` print project per module | working |
 

@@ -1,9 +1,17 @@
 # Axle module, no motor: closed bevel differential in a two-piece clamshell case (CaseTop glue face z 29 hangs under the floor, all shaft axes 29 mm below it). Ratio 36:22 (1.64), input pinion A at +y, output B at -y.
-# Both pinions sit between the 36T carrier ring and a free-spinning 36T IdlerRing that turns opposite, so tooth side loads cancel. Every shaft leaves the case as a 16 mm hex port with a dia 2.8 cross pilot for universal joint yokes.
-# Chaining: the output pinion turns opposite to the input, so mount the next axle in a chain turned 180 degrees about Z. Hardware: 4 x M3x16 pan head (dia 6 x 3.2) from below, 25 mm deep wells: use a long driver.
-# Assembly (verify() sweeps it every 0.1 mm near the end): build ONE bundle (diff with bushings and IdlerRing, both Pinions on their PinionShafts pushed inward along Y into mesh), lower it straight along Z into CaseTop (glue face down tray), set CaseBottom on, 4 screws.
-# Ports (the 16 mm stick-out) reference the bushing tail ends and the case y faces; the glue face is under 62.5 x 86.5 mm. Seat each universal joint yoke about 1 mm off the case face: the case is stationary and a yoke on a port touching it would rub.
-# Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Lowest point 30.6 mm below the axle axis: wheels need radius over 31.
+# Both pinions sit between the 36T carrier ring and a free-spinning 36T IdlerRing that turns opposite, so tooth side loads cancel. Every shaft leaves the case as a 16 mm plain 8.0 AF hex port with a dia 2.8 cross pilot 5.9 from the tip for universal joint yokes.
+# Chaining: the output pinion turns opposite to the input, so mount the next axle in a chain turned 180 degrees about Z.
+# Hardware: 4 x M3x16 pan head (dia 6 x 3.2) from below for the case (dia 3.6 pass holes), 25 mm deep wells: use a long driver. 4 x M3x12 pan head (dia 6 x 3.2) for the Cap into the Carrier pilots (dia 2.8, 9 deep). 4 x M3x16 pan head bolts with 4 nuts and 4 washers for the CaseTop ears. 4 PTFE liners 12 x 10 x 8 (later, see below).
+# Liners (A2): PTFE tube 10 ID x 12 OD to be used as plain bearings, 4 liners of LINER_L 8.0 where a shaft turns in the case: Sleeve_1 (HalfShaft_L, x -38.88..-30.88), Sleeve_2 (HalfShaft_R, x 30.88..38.88), Sleeve_3 (PinionShaftA, y 32.65..40.65), Sleeve_4 (PinionShaftB, y -40.65..-32.65), all on the axis. Printed placeholders named Sleeve_1..4, exactly LINER_OD x LINER_ID x LINER_L, one print group (4 copies), standing on end; real PTFE replaces them and nothing else is reprinted. Pocket bore LINER_BORE 12.2 (tune after measuring the tube). The print plate also holds the OutputPlug and the B pinion set although they are alternatives.
+# Each pocket is two half saddles (one in CaseTop, one in CaseBottom) between two lips 1.2 thick with a 10.9 bore (0.83 radial to the hex corners) and a pocket 8.3 long: the liner (8.0) has 0.3 total end play (0.15 each way), is held both ways by the two lips and only by friction against turning. Every lip face has a 0.5 x 45 degree lead-in notch on the split plane. Pocket wall 2.0 or more on the closed case (asserted on a ray scan at 3 axial stations, 2.3 on the x pockets and the y pockets). The liners are slid onto the four port tips BEFORE the bundle goes into CaseTop (step 8) and set by feel: a plain straight Z sweep passes only within 0.15 of the nominal place, with the lead-in notches the sleeve end is caught up to 0.6 off (sweep guided along the notch, asserted); a closed tube cannot be laid in from the side over a shaft, so nothing larger than the 8.0 AF hex sits outboard of a liner. The OutputPlug takes the place of PinionB, PinionShaftB and Sleeve_4 (Sleeve_4 is simply not used when the plug is).
+# Shafts: every shaft is a plain 8.0 AF hex straight through its liner (0.38 radial), no round journals any more (the old dia 9.3 pinion journal and the printed bushing tails are gone). PinionShaft keeps its 11.0 AF head in the pinion hex pocket (head now 2.4 thick, flush with the pinion front, so the PinionA/B shape is untouched). The Bushings only carry the Carrier and the IdlerRing now (journal dia 14.0 in the 14.6 bores, idler hub dia 14.0 in the 14.6 bore, 0.3 radial) and do not touch the shafts (10.9 bore, 0.83 radial to the hex corners).
+# Axial location (all faces modelled with the floats shown, asserted): Bushing_L and Bushing_R are held in the case by a V pad of the case (an arc of 40 degrees either side of the crown, not a full ring: a full ring gives no capture near the split plane where the lowering runs tangent to it) sitting in a V groove ring of the bushing (groove 0.35 deep, 0.6 wide at the bottom, 2.0 wide at the mouth, flanks 26 degrees off the axis; the bushing end stops 0.5 short of the wall). Modelled axial play is zero on purpose, the carrier and idler floats plus the pinion floats already use the whole 0.15 to 0.5 mesh gap window (0.016 of margin), so a flat 0.5 per side clearance cannot be used: the carrier or idler would be free to slide into collision with the pinions. Instead the wedge makes the bundle self-centering: the pad tip (1.0 wide, 0.1 above the groove bottom) is caught within 0.5 of the seat on each side and the bundle is walked into place by the flanks as it is lowered (guided sweep asserted at 0.45 plus the plain sweeps), the seat itself is the printed fit (radial slack 0.1 at the tip). Carrier plus Cap float 0.30 between the Bushing_L flange and the Bushing_R flange; IdlerRing floats 0.30 between the Bushing_R flange and the case wall; each pinion with its shaft floats 0.30 (back of the pinion to the inner lip, head flush on the cavity end wall so inward travel is 0); PinionShaft total float 0.30. Half shafts: inward 0.15 (flange to SpiderPin), outward 0.10 (flange to SideGear front) plus 0.25 (SideGear back to the Bushing journal end, Bushing_L journal reaches x -11.5 like the Bushing_R one), total 0.50 each side. Mesh gaps are checked over these floats. Side gear to spider mesh is asserted at the carrier float extremes: the side gears have no inward stop except the spiders, so at the far carrier extreme the spiders push the free side gear outward (needed push is asserted to stay inside its 0.25 outward float, gap 0 or more, no overlap).
+# Assembly order (verify() sweeps each step as a straight slide in 0.5 mm steps from 60 mm clear, then the bundle every 0.5 mm from 30 mm clear and every 0.1 mm for the last 3 mm into CaseTop): 1 SideGear_L onto HalfShaft_L from the port tip end, that into the Carrier; 2 Bushing_L; 3 SpiderGear_1 and 2 onto SpiderPin, pin with spiders into the Carrier (it collides if SideGear_R is already in);
+# 4 SideGear_R on HalfShaft_R into the Carrier; 5 Cap, then its 4 M3x12 screws (before the IdlerRing, which covers the heads); 6 Bushing_R, IdlerRing; 7 Pinions onto their PinionShafts from the tips and into mesh (they drop in only at the drawn mesh phase: turn the carrier and idler until each pinion drops into mesh, other phases collide); 8 Sleeve_1..4 slid over the four port tips to their pockets, then the bundle straight along Z into CaseTop (OutputPlug is laid in here if used instead of PinionB, PinionShaftB and Sleeve_4); 9 CaseBottom, 4 case screws.
+# Sizes: CaseTop body 80.46 x 84.0 mm (was 62.82 x 86.8); with the bolt ears the flat glue face is 100.46 x 84.0 mm. Both case ends are the same slim tube boss (radius about 12 at the end face, the big drum only behind it). Ports (the 16 mm stick-out) reference the case end faces (x +-40.23) and y faces (+-42.0). A universal joint yoke seats fully on a 16 mm port (socket 10 deep), so its mouth sits 6 mm off the case face and never touches the case.
+# Optional OutputPlug (parked 40 mm out along -y in the FCStd) replaces PinionB and PinionShaftB when the axle is not chained: a dia 11.5 barrel 8.0 long lies in the same -y pocket between the two lips (0.15 axial each way, 0.35 radial, better than the old 0.45 axial per side), its dia 10.2 necks pass the lip bores, and it closes the case.
+# Four bolt ears on CaseTop (4 mm thick, flush with the glue face, fully round outer end, 1.0 chamfer on the underside rim and two 1.8 wide 2 mm 45 degree webs under each ear set 1.0 in from the chamfered rim so no flat ledge hangs over it, where it meets the case end wall (clear of the dia 6 head and driver), dia 3.6 holes for M3x16 pan head bolts from below through the cardboard to a nut and washer on top): holes at x = +-45.23, y = +-36 from the axle centre (90.46 x 72 pattern).
+# Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Inherited, not changed here: Carrier pilot wall 1.4 (asserted 1.2) and Cap clear hole dia 3.2. Lowest point 30.6 mm below the axle axis: wheels need radius over 31. Print: among the parts changed here the only flat overhang left is the 1.2 wide ring under the Bushing_R flange (a cone there would hit the Cap bore and the IdlerRing, which stay as printed); it is asserted at 1.2 and prints without supports.
 import FreeCAD as App, Part, math
 import freecad.gears.commands as gc
 
@@ -38,56 +46,70 @@ FINGER_CLR = 0.15
 CLEAR_D = 3.2
 HEAD_D, HEAD_H = 6.0, 3.2
 PIN_D, PIN_LEN, PIN_FLAT = 5.0, 35.2, 0.6
-SHAFT_AF, SHAFT_X0 = 8.0, 2.9
-FLANGE_D, FLANGE_X1 = 12.0, 5.1
+SHAFT_AF, SHAFT_X0 = 8.0, 2.65
+FLANGE_D, FLANGE_X1 = 12.0, 5.3
 SHAFT_HOLE_D, SHAFT_HOLE_X = 2.8, 67.0
-JOURNAL_D, BORE_BUSH, PORT_LEN, PORT_HOLE = 9.3, 9.9, 16.0, 5.9
-PS_FLANGE_T, PS_FL_IN, HEAD_AF, POCKET_AF, PIN_BORE_D = 2.2, 0.2, 11.0, 11.4, 9.8
-PS_CB_DEEP = PS_FL_IN + PS_FLANGE_T
+PORT_LEN, PORT_HOLE = 16.0, 5.9
+PS_FLANGE_T, HEAD_AF, POCKET_AF, PIN_BORE_D = 2.4, 11.0, 11.4, 9.8
+PS_CB_DEEP = PS_FLANGE_T
 WH_FD, WH_FT, WH_BD, WH_X0, WH_X1 = 44.0, 3.0, 16.0, 58.0, 73.0
 WH_SOCKET, WH_GLUE_D, WH_GLUE_R = 8.2, 4.0, 15.0
 WH_SCREW_NEAR, WH_SCREW_FAR = 3.4, 2.8
 
-HS_EXT = 0.0
-RING_DX, CARRIER_FLOAT, IDLER_FLOAT, PIN_FLOAT, RING_TRIM_R = 0.03, 0.28, 0.28, 0.2, 26.8
-BUSH_OD, BUSH_J, BUSH_FL_R, BUSH_FT_L, BUSH_FT_R = 14.0, 5.0, 8.2, 3.5, 3.7
+RING_DX, CARRIER_FLOAT, IDLER_FLOAT, PIN_FLOAT, RING_TRIM_R = 0.03, 0.3, 0.3, 0.3, 26.8
+LINER_BORE, LINER_OD, LINER_ID, LINER_L = 12.2, 12.0, 10.0, 8.0
+LIP_T, LIP_BORE, LINER_PLAY, LIP_LEAD, LEAD_OFF = 1.2, 10.9, 0.3, 0.5, 0.6
+GRV_B, GRV_D, GRV_LEAD, GRV_OFF, END_GAP, RIB_CLR, RIB_OFF, RIB_ARC = 0.6, 0.35, 0.7, 0.3, 0.5, 0.1, 0.45, 40.0
+SLOPE = GRV_LEAD / GRV_D
+MOUTH = GRV_B + 2 * GRV_LEAD
+CEN = END_GAP + GRV_OFF + MOUTH / 2
+BUSH_CB = CEN + GRV_B / 2 + SLOPE * (GRV_D + 0.1) + 0.1
+BUSH_OD, BUSH_J, BUSH_FL_R, BUSH_FT_R = 14.0, 5.0, 8.2, 3.7
 IDL_BORE_R, IDL_COLLAR_R, IDL_COLLAR_IN, IDL_COLLAR_X0, IDL_RECESS_R = 7.3, 10.0, 8.5, 16.9, 19.62
 IDL_HEAD_R, IDL_TOE_X = 19.9, 14.0
-SADDLE_R, WALL_T = 7.1, 5.0
-GROOVE_W, GROOVE_M, GROOVE_R, RIB_R = 2.4, 1.3, 6.15, 6.25
-PS_GROOVE_R, PS_RIB_R, PS_RIB_SIDE = 3.8, 4.1, 0.15
-PIN_BORE_R, PIN_BORE_LEN, HUB_EXT, SHELL_T = BORE_BUSH / 2, 12.4, 3.6, 2.4
+PK_L = LINER_L + LINER_PLAY
+WALL_T = 2 * LIP_T + PK_L
+LIP_R, PK_R, PLUG_NECK_R, PLUG_PLAY = LIP_BORE / 2, LINER_BORE / 2, LIP_BORE / 2 - 0.35, 0.3
+HUB_EXT, SHELL_T = 3.6, 2.4
 CAV_M, DRUM_CAV_R, CAV_JOIN = 0.8, HOUSE_R + 0.62, 12.4
-POCKET_R, WALL_CLR = 10.6, 0.4
+POCKET_R, WALL_CLR = BUSH_FL_R + 0.1, 0.4
 CASE_Z, SPLIT_GAP, FILLET_R, CHAMFER_TOP, CHAMFER_BOT = 29.0, 0.05, 3.0, 1.0, 1.5
-SCREW_X, SCREW_Y, SEAT_Z, PILOT_LEN, WELL_R, HOLE_R = (-24.8, 23.2), 37.5, -6.0, 11.0, 3.3, 1.7
+SCREW_X, SCREW_Y, SEAT_Z, PILOT_LEN, WELL_R, HOLE_R = (-24.8, 23.2), 37.5, -6.0, 11.0, 3.3, 1.8
 KEY_W, KEY_D = 3.0, 0.6
 KEY_X, KEY_Y = (-24.0, -8.0, 8.0, 24.0), (-36.0, -14.0, 14.0, 36.0)
 
 RING_BACK = RING["back"] + RING_DX
 BL_X1 = -RING_BACK - CARRIER_FLOAT
-BL_X0 = BL_X1 - BUSH_FT_L
 XC = FACE_IN + CAP_T
 BR_X1 = XC + BUSH_FT_R
-TL = BL_X0 - 0.1
-XL = TL - WALL_T
 TR = RING_BACK + HUB_EXT + IDLER_FLOAT
-XR = TR + WALL_T
+TRF = TR + BUSH_CB
+XR = TRF + WALL_T
+TL, XL = -TRF, -XR
+RIB_END_L = -(RING_BACK + WALL_CLR)
+BL_X0 = TL + END_GAP
+BUSH_JL = -FACE_IN - BL_X1
 YT = PINION["back"]
-YC = YT + PIN_BORE_LEN
-PS_GROOVE_Y = YT + 1.0
+YL0 = YT + PIN_FLOAT
+YP0 = YL0 + LIP_T
+YP1 = YP0 + PK_L
+YC = YP1 + LIP_T
 HB = 30.6
+EAR_T, EAR_HOLE_D, EAR_R, EAR_DX, EAR_Y, EAR_TUCK, EAR_CH, EAR_WEB, EAR_WEB_W = 4.0, 3.6, 5.0, 5.0, 36.0, 0.8, 1.0, 2.0, 1.8
+BOLT_L, BOLT_D, BOLT_HEAD_D, BOLT_HEAD_H, DRIVER_D, DRIVER_L = 16.0, 3.0, 6.0, 3.2, 6.0, 60.0
+PLUG_R, PLUG_Y0, PLUG_OUT, PLUG_CH, PLUG_FLAT = PK_R - 0.35, YL0 - 0.5, 0.6, 0.5, 4.6
 
 PH = dict(spider=15.0, sideL=0.0, ring=0.0, pinion=0.0, iring=0.0)
 
 COLORS = dict(Carrier=(0.2, 0.5, 0.9), Cap=(0.9, 0.5, 0.1), Bushing_L=(0.9, 0.9, 0.2), Bushing_R=(0.9, 0.9, 0.2),
               SideGear_L=(0.8, 0.2, 0.2), SideGear_R=(0.8, 0.2, 0.2), SpiderGear_1=(0.2, 0.8, 0.3), SpiderGear_2=(0.2, 0.8, 0.3),
               SpiderPin=(0.6, 0.6, 0.6), HalfShaft_L=(0.7, 0.3, 0.8), HalfShaft_R=(0.7, 0.3, 0.8), PinionA=(0.1, 0.8, 0.8),
-              PinionB=(0.1, 0.8, 0.8), PinionShaftA=(0.7, 0.3, 0.8), PinionShaftB=(0.7, 0.3, 0.8), IdlerRing=(0.9, 0.4, 0.6),
-              CaseTop=(0.5, 0.5, 0.55), CaseBottom=(0.4, 0.4, 0.45))
+              PinionB=(0.1, 0.8, 0.8), PinionShaftA=(0.7, 0.3, 0.8), PinionShaftB=(0.7, 0.3, 0.8), OutputPlug=(0.9, 0.7, 0.2), IdlerRing=(0.9, 0.4, 0.6),
+              CaseTop=(0.5, 0.5, 0.55), CaseBottom=(0.4, 0.4, 0.45), Sleeve_1=(0.95, 0.95, 0.95), Sleeve_2=(0.95, 0.95, 0.95), Sleeve_3=(0.95, 0.95, 0.95), Sleeve_4=(0.95, 0.95, 0.95))
 PRINT_UP = dict(Carrier="+X", Cap="-X", Bushing_L="+X", Bushing_R="+X", SideGear_L="+X", SideGear_R="-X", SpiderGear_1="+Y",
                 SpiderGear_2="-Y", SpiderPin="-Z", HalfShaft_L="+Z", HalfShaft_R="+Z", PinionA="+Y", PinionB="-Y",
-                PinionShaftA="+Z", PinionShaftB="+Z", IdlerRing="-X", CaseTop="-Z", CaseBottom="+Z")
+                PinionShaftA="+Z", PinionShaftB="+Z", OutputPlug="+Z", IdlerRing="-X", CaseTop="-Z", CaseBottom="+Z",
+                Sleeve_1="+X", Sleeve_2="+X", Sleeve_3="+Y", Sleeve_4="+Y")
 
 
 def lib_shape(doc, cls, **props):
@@ -244,21 +266,18 @@ def build_cap():
     return c.cut(cyl(BORE_D / 2, FACE_IN - 1, XC + 1)).removeSplitter()
 
 
-def grooves(t0, sg):
-    return t0 + sg * GROOVE_M, t0 + sg * (GROOVE_M + GROOVE_W)
-
-
 def build_bushing(side):
-    r, f, rb = BUSH_OD / 2, BUSH_FL_R, BORE_BUSH / 2
+    r, f, rb = BUSH_OD / 2, BUSH_FL_R, LIP_BORE / 2
     if side < 0:
-        g0, g1 = sorted(grooves(TL, -1))
-        pts = [(XL, 0), (XL, r), (g0, r), (g0, GROOVE_R), (g1, GROOVE_R), (g1, r), (BL_X0, r), (BL_X0 + f - r, f),
-               (BL_X1, f), (BL_X1, r), (BL_X1 + BUSH_J, r), (BL_X1 + BUSH_J, 0)]
+        s = rev([(BL_X0, 0), (BL_X0, f), (BL_X1, f), (BL_X1, r), (BL_X1 + BUSH_JL, r), (BL_X1 + BUSH_JL, 0)])
+        cx, rg, rr = TL + CEN, f - GRV_D, f
     else:
-        g0, g1 = grooves(TR, 1)
-        pts = [(XC - BUSH_J, 0), (XC - BUSH_J, r), (XC, r), (XC, f), (BR_X1, f), (BR_X1, r), (g0, r), (g0, GROOVE_R),
-               (g1, GROOVE_R), (g1, r), (XR, r), (XR, 0)]
-    return rev(pts).cut(cyl(rb, XL - 1, XR + 1)).removeSplitter()
+        e = TRF - END_GAP
+        s = rev([(XC - BUSH_J, 0), (XC - BUSH_J, r), (XC, r), (XC, f), (BR_X1, f), (BR_X1, r), (e, r), (e, 0)])
+        cx, rg, rr = TRF - CEN, r - GRV_D, r
+    m, b = MOUTH / 2, GRV_B / 2
+    s = s.cut(rev([(cx - m - SLOPE, rr + 1), (cx - m, rr), (cx - b, rg), (cx + b, rg), (cx + m, rr), (cx + m + SLOPE, rr + 1)]))
+    return s.cut(cyl(rb, TL - 1, TRF + 1)).removeSplitter()
 
 
 def build_idler(ring):
@@ -280,19 +299,31 @@ def port_cut(s, x0, x1, ax="x"):
 
 def build_half_shaft(sign):
     ref = XR if sign > 0 else -XL
-    tip = ref + PORT_LEN + HS_EXT
-    s = hexprism(SHAFT_AF, SHAFT_X0, SIDE["back"]).fuse(cyl(FLANGE_D / 2, SHAFT_X0, FLANGE_X1))
-    s = s.fuse(cyl(JOURNAL_D / 2, SIDE["back"], ref)).fuse(hexprism(SHAFT_AF, ref, tip))
+    tip = ref + PORT_LEN
+    s = hexprism(SHAFT_AF, SHAFT_X0, tip).fuse(cyl(FLANGE_D / 2, SHAFT_X0, FLANGE_X1))
     s = port_cut(s, SHAFT_X0, tip).cut(Part.makeCylinder(SHAFT_HOLE_D / 2, 20, V(tip - PORT_HOLE, 0, -10), V(0, 0, 1)))
     return (s if sign > 0 else mirror_x(s)).removeSplitter()
 
 
+def build_plug(y_in=PLUG_Y0):
+    r, n, yo = PLUG_R, PLUG_NECK_R, YC + PLUG_OUT
+    b0, b1 = YP0 + PLUG_PLAY / 2, YP1 - PLUG_PLAY / 2
+    s = rev([(0, y_in), (n, y_in), (n, b0), (r, b0), (r, b1), (n, b1), (n, yo - PLUG_CH), (n - PLUG_CH, yo), (0, yo)], "y")
+    return rot(s.cut(box(-10, 10, 0, 99, -10, -PLUG_FLAT)), V(0, 0, 1), 180).removeSplitter()
+
+
 def build_pinion_shaft(front):
-    y0, tip = front + PS_FL_IN, YC + PORT_LEN
-    s = yhex(HEAD_AF, y0, y0 + PS_FLANGE_T).fuse(ycyl(JOURNAL_D / 2, y0, YC)).fuse(yhex(SHAFT_AF, YC, tip))
-    s = s.cut(ycyl(JOURNAL_D / 2 + 1, PS_GROOVE_Y, PS_GROOVE_Y + GROOVE_W).cut(ycyl(PS_GROOVE_R, PS_GROOVE_Y - 1, PS_GROOVE_Y + GROOVE_W + 1)))
+    y0, tip = front, YC + PORT_LEN
+    s = yhex(HEAD_AF, y0, y0 + PS_FLANGE_T).fuse(yhex(SHAFT_AF, y0, tip))
     s = port_cut(s, y0, tip, "y").cut(vcyl(SHAFT_HOLE_D / 2, 0, tip - PORT_HOLE, -10, 10))
     return s.removeSplitter()
+
+
+def build_sleeve(ax, c0):
+    s = Part.makeCylinder(LINER_OD / 2, LINER_L, V(0, 0, 0), V(0, 0, 1)).cut(Part.makeCylinder(LINER_ID / 2, LINER_L + 2, V(0, 0, -1), V(0, 0, 1)))
+    s = rot(s, V(0, 1, 0), 90) if ax == "x" else rot(s, V(-1, 0, 0), 90)
+    s.translate(V(c0, 0, 0) if ax == "x" else V(0, c0, 0))
+    return s
 
 
 def build_wheel_hub():
@@ -305,25 +336,47 @@ def build_wheel_hub():
     return h.cut(Part.makeCylinder(WH_SCREW_FAR / 2, 10, V(SHAFT_HOLE_X, 0, -10), V(0, 0, 1))).removeSplitter()
 
 
+def pocket_x(a, b, sg):
+    p0, p1 = (a + sg * LIP_T, a + sg * (LIP_T + PK_L))
+    return rev([(a - sg, 0), (a - sg, LIP_R), (p0, LIP_R), (p0, PK_R), (p1, PK_R), (p1, LIP_R), (b, LIP_R), (b, 0)])
+
+
+def lip_lead(ax, u, d):
+    tri = [(u, LIP_LEAD), (u + d * LIP_LEAD, 0), (u, -LIP_LEAD)]
+    if ax == "x":
+        return prism([V(a, -PK_R, z) for a, z in tri], V(0, 2 * PK_R, 0))
+    return prism([V(-PK_R, a, z) for a, z in tri], V(2 * PK_R, 0, 0))
+
+
+def pocket_leads(ax, a, sg):
+    p0, p1 = a + sg * LIP_T, a + sg * (LIP_T + PK_L)
+    return [lip_lead(ax, p0, -sg), lip_lead(ax, p1, sg)]
+
+
+def rib_void(side):
+    r, rg, cx = (POCKET_R, BUSH_FL_R - GRV_D, TL + CEN) if side < 0 else (BUSH_OD / 2 + 0.1, BUSH_OD / 2 - GRV_D, TRF - CEN)
+    ht, hx = GRV_B / 2 + SLOPE * RIB_CLR, GRV_B / 2 + SLOPE * (r + 0.5 - rg)
+    a, b = (TL, RIB_END_L) if side < 0 else (TR - 1, TRF)
+    tooth = rev([(cx - hx, r + 0.5), (cx - ht, rg + RIB_CLR), (cx + ht, rg + RIB_CLR), (cx + hx, r + 0.5)])
+    t, c = 40.0 * math.sin(math.radians(RIB_ARC)), 40.0 * math.cos(math.radians(RIB_ARC))
+    pad = prism([V(-60, 0, 0), V(-60, -t, c), V(-60, t, c)], V(120, 0, 0))
+    return rev([(a, 0), (a, r), (b, r), (b, 0)]).cut(tooth.common(pad))
+
+
 def case_cavity(sr, sp):
     m = CAV_M
     (af, rf), (ap, rp), (ab, rb) = sr
-    x0, x1 = (v + 0.1 * k for v, k in zip(sorted(grooves(TL, -1)), (1, -1)))
-    r0, r1 = (v + 0.1 * k for v, k in zip(grooves(TR, 1), (1, -1)))
     L = RING_DX
     xt = af + (RING_TRIM_R - rf) / (rp - rf) * (ap - af)
     x2 = ap + (rp - RING_TRIM_R) / (rp - rb) * (ab - ap)
     left = [(-CAV_JOIN, 0), (-CAV_JOIN, rf + m), (-(xt + L), RING_TRIM_R + m), (-(x2 + L), RING_TRIM_R + m), (-(ab + L) - WALL_CLR, rb + m), (-(ab + L) - WALL_CLR, 0)]
     right = [(CAV_JOIN, 0), (CAV_JOIN, rf + m), (xt + L, RING_TRIM_R + m), (x2 + L, RING_TRIM_R + m), (ab + L, rb + m), (TR, rb + m), (TR, 0)]
-    saddle_l = [(XL - 1, 0), (XL - 1, SADDLE_R), (x0, SADDLE_R), (x0, RIB_R), (x1, RIB_R), (x1, SADDLE_R), (TL + 1, SADDLE_R), (TL + 1, 0)]
-    saddle_r = [(TR - 1, 0), (TR - 1, SADDLE_R), (r0, SADDLE_R), (r0, RIB_R), (r1, RIB_R), (r1, SADDLE_R), (XR + 1, SADDLE_R), (XR + 1, 0)]
-    xs = [rev(left), rev(right), rev(saddle_l), rev(saddle_r),
-          rev([(TL, 0), (TL, POCKET_R), (-(ab + L) - WALL_CLR, POCKET_R), (-(ab + L) - WALL_CLR, 0)]),
+    xs = [rev(left), rev(right), pocket_x(XL, TL + 1, 1), pocket_x(XR, TR - 1, -1), rib_void(-1), rib_void(1),
           rev([(-CAV_JOIN, 0), (-CAV_JOIN, DRUM_CAV_R), (CAV_JOIN, DRUM_CAV_R), (CAV_JOIN, 0)])]
+    xs += pocket_leads("x", XL, 1) + pocket_leads("x", XR, -1) + pocket_leads("y", YL0, 1) + pocket_leads("y", -YL0, -1)
     (yf, rpf), (yp, rpp), (yb, rpb) = sp
-    pin = [(0, yf - 0.2), (rpf + m, yf - 0.2), (rpp + m, yp), (rpb + m, yb), (rpb + m, yb + PIN_FLOAT), (0, yb + PIN_FLOAT)]
-    g0 = PS_GROOVE_Y
-    bore = [(0, yb), (PIN_BORE_R, yb), (PIN_BORE_R, g0 + PS_RIB_SIDE), (PS_RIB_R, g0 + PS_RIB_SIDE), (PS_RIB_R, g0 + GROOVE_W - PS_RIB_SIDE), (PIN_BORE_R, g0 + GROOVE_W - PS_RIB_SIDE), (PIN_BORE_R, YC + 1), (0, YC + 1)]
+    pin = [(0, yf), (rpf + m, yf), (rpp + m, yp), (rpb + m, yb), (rpb + m, YL0), (0, YL0)]
+    bore = [(0, yb), (LIP_R, yb), (LIP_R, YP0), (PK_R, YP0), (PK_R, YP1), (LIP_R, YP1), (LIP_R, YC + 1), (0, YC + 1)]
     ya = rev(pin, "y").fuse(rev(bore, "y"))
     return xs, [ya, rot(ya, V(0, 0, 1), 180)]
 
@@ -337,7 +390,7 @@ def shell(cav, ys, h, boss_r):
     n = 12
     w = (XR - XL) / n
     R = [bb(cav.common(box(XL + i * w, XL + (i + 1) * w, -40, 40, -40, 40))).ZMax + SHELL_T for i in range(n)]
-    R = [max(R[max(i - 1, 0):i + 2]) for i in range(n)]
+    R = [R[i] if i in (0, n - 1) else max(R[i - 1:i + 2]) for i in range(n)]
     k, top = SHELL_T * math.sqrt(2), h - SHELL_T
 
     def ext(q, ax, a, b):
@@ -357,7 +410,7 @@ def shell(cav, ys, h, boss_r):
         return s.fuse(cyl(r, a, b) if ax == "x" else ycyl(r, a, b))
     parts = [wedge(R[i], "x", XL + i * w, XL + (i + 1) * w, XL + i * w + SHELL_T * (i == 0), XL + (i + 1) * w - SHELL_T * (i == n - 1)) for i in range(n)]
     rp = bb(ys[0]).XLength / 2 + SHELL_T
-    arm = [wedge(rp, "y", 0, YT + SHELL_T, 0, YT), wedge(PIN_BORE_R + SHELL_T, "y", YT, YC, YT + SHELL_T, YC - SHELL_T)]
+    arm = [wedge(rp, "y", 0, YT + SHELL_T, 0, YT), wedge(PK_R + SHELL_T, "y", YT, YC, YT + SHELL_T, YC - SHELL_T)]
     parts += arm + [rot(a, V(0, 0, 1), 180) for a in arm]
     for sx in SCREW_X:
         parts.append(box(sx - 1.2, sx + 1.2, -SCREW_Y, SCREW_Y, 0, h))
@@ -389,6 +442,31 @@ def build_case(sr, sp):
     return max(top.removeSplitter().Solids, key=lambda x: x.Volume), bot.removeSplitter()
 
 
+def ear_pos():
+    return [(xh, sy * EAR_Y) for xh in (XL - EAR_DX, XR + EAR_DX) for sy in (1, -1)]
+
+
+def add_ears(top):
+    z0 = CASE_Z - EAR_T
+    for xh, yh in ear_pos():
+        sg = 1 if xh > 0 else -1
+        xw = sg * (XR if sg > 0 else -XL)
+        tab = box(xh, SCREW_X[0] + EAR_TUCK, yh - EAR_R, yh + EAR_R, z0, CASE_Z) if sg < 0 else box(SCREW_X[1] - EAR_TUCK, xh, yh - EAR_R, yh + EAR_R, z0, CASE_Z)
+        ear = tab.fuse(vcyl(EAR_R, xh, yh, z0, CASE_Z)).removeSplitter()
+        ear = ear.makeChamfer(EAR_CH, [e for e in ear.Edges if all(abs(v.Z - z0) < 1e-6 for v in e.Vertexes) and min(abs(v.X - xw) for v in e.Vertexes) > 1.0])
+        tri = [V(xw - sg * 1.0, 0, z0), V(xw + sg * EAR_WEB, 0, z0), V(xw - sg * 1.0, 0, z0 - EAR_WEB - 1.0)]
+        for ya in (yh - EAR_R + EAR_CH, yh + EAR_R - EAR_CH - EAR_WEB_W):
+            ear = ear.fuse(prism([V(p.x, ya, p.z) for p in tri], V(0, EAR_WEB_W, 0)))
+        top = top.fuse(ear.cut(vcyl(EAR_HOLE_D / 2, xh, yh, z0 - 1, CASE_Z + 1)))
+    return top.removeSplitter()
+
+
+def build_bolt(x, y):
+    zh = CASE_Z - EAR_T
+    b = vcyl(BOLT_D / 2, x, y, zh, zh + BOLT_L).fuse(vcyl(BOLT_HEAD_D / 2, x, y, zh - BOLT_HEAD_H, zh))
+    return b.removeSplitter(), vcyl(DRIVER_D / 2, x, y, zh - BOLT_HEAD_H - DRIVER_L, zh - BOLT_HEAD_H)
+
+
 def build_parts(doc, ph=PH):
     gR, gL, s1, s2 = build_gears(doc, ph)
     rb, pb = bevel_body(doc, RING, 0.0), bevel_body(doc, PINION, ph["pinion"])
@@ -398,7 +476,9 @@ def build_parts(doc, ph=PH):
                 SideGear_L=gL, SideGear_R=gR, SpiderGear_1=s1, SpiderGear_2=s2, SpiderPin=build_pin(),
                 HalfShaft_L=build_half_shaft(-1), HalfShaft_R=build_half_shaft(1), PinionA=pin, PinionB=rot(pin, V(1, 0, 0), 180),
                 PinionShaftA=build_pinion_shaft(PINION["front"]), PinionShaftB=rot(build_pinion_shaft(PINION["front"]), V(0, 0, 1), 180),
-                IdlerRing=build_idler(rb), CaseTop=top, CaseBottom=bot)
+                IdlerRing=build_idler(rb), CaseTop=add_ears(top), CaseBottom=bot,
+                Sleeve_1=build_sleeve("x", XL + LIP_T + LINER_PLAY / 2), Sleeve_2=build_sleeve("x", XR - LIP_T - PK_L + LINER_PLAY / 2),
+                Sleeve_3=build_sleeve("y", YP0 + LINER_PLAY / 2), Sleeve_4=build_sleeve("y", -YP1 + LINER_PLAY / 2))
 
 
 def bb(s):
@@ -410,7 +490,7 @@ def vol(a, b):
 
 
 def dist(a, b):
-    return max(a.distToShape(b)[0] for _ in range(2))
+    return a.distToShape(b)[0]
 
 
 def travel(s, ax, blockers, hi=1.0):
@@ -450,10 +530,43 @@ def mesh_run(P, rng):
     return rep
 
 
+def side_mesh(P, rng, outs):
+    pitch = 360.0 / SPIDER_N
+    s1, s2, res = P["SpiderGear_1"], P["SpiderGear_2"], {}
+    for n in "LR":
+        g, out = P["SideGear_" + n], (-1 if n == "L" else 1)
+        ok = [k for k in (1, -1) if vol(rot(s1, V(0, 1, 0), pitch / 4), rot(g, V(1, 0, 0), k * pitch / 4 * SPIDER_N / SIDE_N)) < 1e-3]
+        assert len(ok) == 1, (n, ok)
+        rep = dict(nominal=99.0, nominal_push=0.0, push=0.0, gap=99.0, overlap=0.0)
+        for k in range(4):
+            th = pitch * k / 4
+            ga = rot(g, V(1, 0, 0), ok[0] * th * SPIDER_N / SIDE_N)
+            for sh in (0.0, rng[0], rng[1]):
+                sp = [rot(s1, V(0, 1, 0), th), rot(s2, V(0, 1, 0), -th)]
+                for q in sp:
+                    q.translate(V(sh, 0, 0))
+                push = 0.0
+                while True:
+                    t = ga.copy()
+                    t.translate(V(out * push, 0, 0))
+                    if max(vol(t, q) for q in sp) < 1e-3 or push > outs[n] + 0.1:
+                        break
+                    push += 0.05
+                gap = min(dist(t, q) for q in sp)
+                if sh == 0.0:
+                    rep["nominal"] = min(rep["nominal"], gap)
+                    rep["nominal_push"] = max(rep["nominal_push"], push)
+                rep["push"] = max(rep["push"], push)
+                rep["gap"] = min(rep["gap"], gap)
+                rep["overlap"] = max(rep["overlap"], *(vol(t, q) for q in sp))
+        res[n] = {k: round(v, 4) for k, v in rep.items()}
+    return res
+
+
 def assembly(P):
     bundle = [n for n in P if n not in ("CaseTop", "CaseBottom")]
     out = dict(lower=0.0, close=0.0)
-    for dz in [-30, -12, -4] + [round(-3 + 0.1 * i, 1) for i in range(31)]:
+    for dz in [-30 + 0.5 * i for i in range(55)] + [round(-3 + 0.1 * i, 1) for i in range(31)]:
         b = P["CaseBottom"].copy()
         b.translate(V(0, 0, dz))
         for n in bundle:
@@ -476,7 +589,7 @@ def oriented(s, up):
 def print_report(name, s):
     t = oriented(s, name)
     floor = sum(f.Area for f in t.Faces if f.BoundBox.ZMax < 1e-4 and isinstance(f.Surface, Part.Plane))
-    bad = []
+    bad, ledge = [], []
     for f in t.Faces:
         u0, u1, v0, v1 = f.ParameterRange
         hit = [1 for i in range(6) for j in range(6) if f.isPartOfDomain(u0 + (u1 - u0) * (i + .5) / 6, v0 + (v1 - v0) * (j + .5) / 6)
@@ -485,10 +598,14 @@ def print_report(name, s):
         if not hit:
             continue
         k = f.Surface
-        if getattr(k, "Radius", 99) <= 3.5 or 2 * f.Area / f.Length <= 3.5:
+        if getattr(k, "Radius", 99) <= 3.5:
+            continue
+        if 2 * f.Area / f.Length <= 3.5:
+            if isinstance(k, Part.Plane):
+                ledge.append((round(2 * f.Area / f.Length, 2), round(f.CenterOfMass.z, 1)))
             continue
         bad.append((type(k).__name__, round(f.Area, 1), round(f.CenterOfMass.z, 1)))
-    return round(floor, 1), bad
+    return round(floor, 1), bad, ledge
 
 
 def port(sh, ref, ax, sg):
@@ -502,54 +619,233 @@ def port(sh, ref, ax, sg):
                 af=round(c.ZLength, 3), corners=round(c.YLength if ax == "x" else c.XLength, 3))
 
 
+def insert(items, d, blockers, near=60.0):
+    c = Part.makeCompound(items)
+    worst = 0.0
+    for o in [near - 0.5 * k for k in range(int(near / 0.5) + 1)]:
+        t = c.copy()
+        t.translate(d * o)
+        worst = max(worst, max(vol(t, b) for b in blockers))
+    return round(worst, 4)
+
+
+def ear_wall(top):
+    w = 99.0
+    for xh, yh in ear_pos():
+        loc = top.common(box(xh - 9, xh + 9, yh - 9, yh + 9, CASE_Z - EAR_T / 2 - 0.5, CASE_Z - EAR_T / 2 + 0.5))
+        for a in range(0, 360, 10):
+            u = V(math.cos(math.radians(a)), math.sin(math.radians(a)), 0)
+            r = EAR_HOLE_D / 2 + 0.02
+            while r < 9 and loc.isInside(V(xh, yh, CASE_Z - EAR_T / 2) + u * r, 1e-6, True):
+                r += 0.05
+            w = min(w, r - EAR_HOLE_D / 2)
+    return round(w, 2)
+
+
+def slide(sh, sg, step=0.5):
+    b, g = bb(sh), bb(sg)
+    sign = 1 if (b.XMax + b.XMin) > 0 else -1
+    span = (b.XMax - g.XMin) if sign > 0 else (g.XMax - b.XMin)
+    worst = 0.0
+    for k in range(int(span / step) + 2):
+        t = sg.copy()
+        t.translate(V(sign * k * step, 0, 0))
+        worst = max(worst, vol(t, sh))
+    return round(worst, 4)
+
+
+def pocket_wall(top, bot, ax, c):
+    inside = lambda p: top.isInside(p, 1e-6, True) or bot.isInside(p, 1e-6, True)
+    w = 99.0
+    for k in range(36):
+        a = math.radians(10 * k + 5)
+        q = (lambda r: V(c, r * math.cos(a), r * math.sin(a))) if ax == "x" else (lambda r: V(r * math.cos(a), c, r * math.sin(a)))
+        r = PK_R + 0.02
+        while r < 14 and r - PK_R - 0.1 < w and inside(q(r)):
+            r += 0.1
+        w = min(w, r - 0.1 - PK_R)
+    return round(w, 2)
+
+
+def lead_sweep(P, top):
+    worst, zs = 0.0, [-LINER_OD / 2 - 0.5 + 0.1 * i for i in range(16)] + [-LINER_OD / 2 + 1.5 + 0.5 * i for i in range(10)]
+    for k, ax in ((1, V(1, 0, 0)), (2, V(1, 0, 0)), (3, V(0, 1, 0)), (4, V(0, 1, 0))):
+        for sg in (1, -1):
+            for dz in zs:
+                off = sg * min(LEAD_OFF, LINER_PLAY / 2 + max(0.0, LIP_LEAD - max(dz + LINER_OD / 2, 0.0)))
+                t = P["Sleeve_%d" % k].copy()
+                t.translate(ax * off + V(0, 0, dz))
+                worst = max(worst, vol(t, top))
+    return round(worst, 4)
+
+
+def rib_sweep(P, top):
+    worst = 0.0
+    for n in "LR":
+        for sg in (1, -1):
+            for i in range(21):
+                dz = -2.0 + 0.1 * i
+                t = P["Bushing_" + n].copy()
+                t.translate(V(sg * min(RIB_OFF, SLOPE * math.cos(math.radians(RIB_ARC)) * -dz), 0, dz))
+                worst = max(worst, vol(t, top))
+    return round(worst, 4)
+
+
+def lip_runs(top, ax, c0, c1, step=0.02):
+    q = (lambda t: V(t, 0, (LIP_R + PK_R) / 2)) if ax == "x" else (lambda t: V(0, t, (LIP_R + PK_R) / 2))
+    runs, cur = [], 0.0
+    for k in range(int((c1 - c0) / step)):
+        if top.isInside(q(c0 + k * step), 1e-6, True):
+            cur += step
+        elif cur:
+            runs.append(round(cur, 2))
+            cur = 0.0
+    return runs + ([round(cur, 2)] if cur else [])
+
+
 def verify(P):
     names = list(P)
     rep = {}
     rep["bbox"] = {n: tuple(round(v, 2) for v in (bb(s).XLength, bb(s).YLength, bb(s).ZLength)) for n, s in P.items()}
     rep["overlap"] = {(a, b): round(vol(P[a], P[b]), 4) for i, a in enumerate(names) for b in names[i + 1:] if vol(P[a], P[b]) > 1e-3}
-    rep["carrier_float"] = travel(Part.makeCompound([P["Carrier"], P["Cap"]]), V(1, 0, 0), [P["Bushing_L"], P["Bushing_R"]])
-    rep["idler_float"] = travel(P["IdlerRing"], V(1, 0, 0), [P["Bushing_R"], P["CaseTop"], P["CaseBottom"], P["Cap"]])
-    rep["pinion_float"] = {n: travel(P["Pinion" + n], V(0, 1, 0), [P["PinionShaft" + n], P["CaseTop"], P["CaseBottom"]]) for n in "AB"}
+    X, Y = V(1, 0, 0), V(0, 1, 0)
+    cs = dict(CaseTop=P["CaseTop"], CaseBottom=P["CaseBottom"])
+    rep["carrier_float"] = travel(Part.makeCompound([P["Carrier"], P["Cap"]]), X, [P["Bushing_L"], P["Bushing_R"]])
+    rep["idler_float"] = travel(P["IdlerRing"], X, [P["Bushing_R"], P["CaseTop"], P["CaseBottom"], P["Cap"]])
+    rep["pinion_float"] = {n: travel(P["Pinion" + n], Y, [P["PinionShaft" + n], P["CaseTop"], P["CaseBottom"]]) for n in "AB"}
+    rep["pinion_shaft_float"] = {n: travel(Part.makeCompound([P["PinionShaft" + n], P["Pinion" + n]]), Y, list(cs.values())) for n in "AB"}
     rng = dict(Carrier=rep["carrier_float"], IdlerRing=rep["idler_float"], PinionA=rep["pinion_float"]["A"], PinionB=rep["pinion_float"]["B"])
-    rep["mesh"] = mesh_run(P, {k: (-v[1], v[0]) for k, v in rng.items()})
+    mr = {k: (-v[1], v[0]) for k, v in rng.items()}
+    rep["mesh_ranges"] = mr
+    rep["mesh"] = mesh_run(P, mr)
     rep["assembly"] = assembly(P)
     heads = [Part.makeCylinder(HEAD_D / 2, HEAD_H, V(XC, sy * BOSS_Y, sz * BOSS_Z), V(1, 0, 0)) for sy in (1, -1) for sz in (1, -1)]
     rep["idler_heads"] = round(min(dist(P["IdlerRing"].common(box(-99, XC + HEAD_H, -99, 99, -99, 99)), h) for h in heads), 3)
     rep["sg_carrier"] = round(min(dist(P["Carrier"].common(box(-FACE_IN + 0.1, FACE_IN - 0.1, -99, 99, -99, 99)), P["SideGear_" + n]) for n in "LR"), 3)
     rep["idler_clear"] = {n: round(dist(P["IdlerRing"], P[n].common(box(-99, XC - 1, -99, 99, -99, 99)) if n == "Cap" else P[n]), 3) for n in ("Carrier", "Cap")}
-    cs = dict(CaseTop=P["CaseTop"], CaseBottom=P["CaseBottom"])
     rep["heads_case"] = round(min(dist(c, h) for c in cs.values() for h in heads), 3)
-    rep["case_clear"] = {(c, n): round(dist(cs[c], P[n].common(box(-99, TR - 1, -99, 99, -99, 99)) if n == "IdlerRing" else P[n]), 3) for c in cs for n in ("Carrier", "Cap", "IdlerRing", "SideGear_L", "SideGear_R", "SpiderGear_1", "SpiderGear_2")}
+    rep["case_clear"] = {(c, n): round(dist(cs[c], P[n]), 3) for c in cs for n in ("Carrier", "Cap", "IdlerRing", "SideGear_L", "SideGear_R", "SpiderGear_1", "SpiderGear_2")}
     rep["pinion_case"] = {(c, n): round(dist(cs[c], P[n]), 3) for c in cs for n in ("PinionA", "PinionB")}
-    rep["shaft_play"] = {n: travel(P["PinionShaft" + n], V(0, 1, 0), [P["CaseTop"], P["CaseBottom"]], 0.5) for n in "AB"}
-    rep["bushing_play"] = {n: travel(P["Bushing_" + n], V(1, 0, 0), [P["CaseTop"], P["CaseBottom"]], 0.5) for n in "LR"}
     rep["split_gap"] = round(dist(P["CaseTop"], P["CaseBottom"]), 3)
+    rep["bushing_play"] = {n: travel(P["Bushing_" + n], X, list(cs.values()), 0.5) for n in "LR"}
     rep["tail_clear"] = {(n, c): round(dist(P["Bushing_" + n], cs[c]), 3) for n in "LR" for c in cs}
     pil = vcyl(PILOT_D / 2, SCREW_X[0], SCREW_Y, 0, PILOT_LEN)
     others = [f for f in P["CaseTop"].Faces if not (f.BoundBox.XMax - f.BoundBox.XMin < 3.0 and f.BoundBox.YMax - f.BoundBox.YMin < 3.0 and abs(f.BoundBox.XMin - SCREW_X[0]) < 1.6) and f.BoundBox.ZMax > 1e-6]
+    rep["pass_hole"] = round(2 * min(f.Surface.Radius for f in P["CaseBottom"].Faces if isinstance(f.Surface, Part.Cylinder) and f.Surface.Radius < 2.6), 3)
     rep["pilot_wall"] = round(min(dist(f, pil) for f in others if f.BoundBox.ZMin < PILOT_LEN + 1), 3)
     col = [vcyl(WELL_R - 0.05, sx, sy, -HB - 1, SEAT_Z - HEAD_H) for sx in SCREW_X for sy in (SCREW_Y, -SCREW_Y)]
     hd = [vcyl(HEAD_D / 2, sx, sy, SEAT_Z - HEAD_H, SEAT_Z) for sx in SCREW_X for sy in (SCREW_Y, -SCREW_Y)]
     rep["heads_free"] = max(vol(c, P[n]) for c in col + hd for n in names)
     top = P["CaseTop"]
     glue = [f for f in top.Faces if isinstance(f.Surface, Part.Plane) and abs(f.BoundBox.ZMin - CASE_Z) < 1e-6 and abs(f.BoundBox.ZMax - CASE_Z) < 1e-6]
-    gb = bb(Part.makeCompound(glue))
-    rep["glue"] = dict(x=round(gb.XLength, 2), y=round(gb.YLength, 2), area=round(sum(f.Area for f in glue), 1), zmax=round(bb(top).ZMax, 3))
+    bt, bo = bb(top.common(box(-99, 99, -99, 99, CASE_Z - EAR_T - EAR_WEB - 2.5, CASE_Z - EAR_T - EAR_WEB - 1.5))), bb(top)
+    rep["glue"] = dict(body=(round(bt.XLength, 2), round(bt.YLength, 2)), overall=(round(bo.XLength, 2), round(bo.YLength, 2)), area=round(sum(f.Area for f in glue), 1), zmax=round(bo.ZMax, 3))
     cb = bb(Part.makeCompound([top, P["CaseBottom"]]))
     rep["case_size"] = (round(cb.XLength, 2), round(cb.YLength, 2), round(cb.ZLength, 2))
     rep["ground"] = round(-bb(P["CaseBottom"]).ZMin, 3)
     rep["top_wall"] = round(CASE_Z - bb(P["Carrier"]).ZMax - CAV_M, 3)
     circ = []
-    for ax, pos, r in [("x", (XL + min(grooves(TL, -1))) / 2, SADDLE_R), ("x", (TR + XR) / 2 - 1.5, SADDLE_R), ("x", sum(grooves(TL, -1)) / 2, RIB_R), ("x", sum(grooves(TR, 1)) / 2, RIB_R)] + [("y", sg * y, PIN_BORE_R) for sg in (1, -1) for y in (YT + 0.4, YC - 1)]:
+    spots = [("x", XL + LIP_T / 2, LIP_R), ("x", XL + LIP_T + PK_L / 2, PK_R), ("x", TL - LIP_T / 2, LIP_R), ("x", TL + 0.1, POCKET_R), ("x", TL + CEN + MOUTH, POCKET_R),
+             ("x", XR - LIP_T / 2, LIP_R), ("x", XR - LIP_T - PK_L / 2, PK_R), ("x", TRF + LIP_T / 2, LIP_R), ("x", TRF - 0.2, BUSH_OD / 2 + 0.1)]
+    spots += [("y", sg * y, r) for sg in (1, -1) for y, r in ((YL0 + LIP_T / 2, LIP_R), (YP0 + PK_L / 2, PK_R), (YC - LIP_T / 2, LIP_R))]
+    for ax, pos, r in spots:
         for k in range(24):
             a = math.radians(7.5 * k + 3.75)
             d = lambda rr: V(pos, rr * math.cos(a), rr * math.sin(a)) if ax == "x" else V(rr * math.cos(a), pos, rr * math.sin(a))
             inside = lambda p: top.isInside(p, 1e-6, True) or P["CaseBottom"].isInside(p, 1e-6, True)
             circ.append(inside(d(r + 0.05)) and not inside(d(r - 0.05)))
     rep["bores_closed"] = all(circ)
-    rep["ports"] = dict(HalfShaft_L=port(P["HalfShaft_L"], bb(P["Bushing_L"]).XMin, "x", -1), HalfShaft_R=port(P["HalfShaft_R"], bb(P["Bushing_R"]).XMax, "x", 1),
+    ends = [bb(top.common(box(-99, 99, -9, 9, -9, 9)))]
+    rep["ports"] = dict(HalfShaft_L=port(P["HalfShaft_L"], ends[0].XMin, "x", -1), HalfShaft_R=port(P["HalfShaft_R"], ends[0].XMax, "x", 1),
                         PinionShaftA=port(P["PinionShaftA"], bb(top).YMax, "y", 1), PinionShaftB=port(P["PinionShaftB"], bb(top).YMin, "y", -1))
+    lin = {}
+    for k, ax, c0, shn in ((1, "x", XL, "HalfShaft_L"), (2, "x", XR - WALL_T, "HalfShaft_R"), (3, "y", YL0, "PinionShaftA"), (4, "y", -YC, "PinionShaftB")):
+        sl, u = P["Sleeve_%d" % k], (X if ax == "x" else Y)
+        mid = c0 + LIP_T + PK_L / 2
+        lat = (bb(sl).YLength, bb(sl).ZLength) if ax == "x" else (bb(sl).XLength, bb(sl).ZLength)
+        lin[k] = dict(vol=round(sl.Volume, 1), od=round(max(lat), 3), length=round(bb(sl).XLength if ax == "x" else bb(sl).YLength, 3), play=travel(sl, u, list(cs.values()), 0.5),
+                      hex=round(dist(P[shn], sl), 3), pocket=round(min(dist(sl, c) for c in cs.values()), 3), wall=min(pocket_wall(top, P["CaseBottom"], ax, mid + d) for d in (-3.0, 0.0, 3.0)),
+                      lips=lip_runs(top, ax, c0 - 1, c0 + WALL_T + 1))
+    rep["liner"] = lin
+    rep["lead"] = lead_sweep(P, top)
+    rep["rib_lead"] = rib_sweep(P, top)
+    rep["slide"] = {n: slide(P["HalfShaft_" + n], P["SideGear_" + n]) for n in "LR"}
+    hf = {}
+    for n in "LR":
+        sh, gr = P["HalfShaft_" + n], P["SideGear_" + n]
+        rest = [P[m] for m in names if m not in ("HalfShaft_" + n, "SideGear_" + n, "OutputPlug") and not m.startswith("Sleeve")]
+        tin = travel(sh, X, rest + [gr], 0.5)
+        ggo = travel(gr, X, rest, 0.5)
+        sg = -1 if n == "L" else 1
+        inward, gap = (tin[0], tin[1]) if n == "L" else (tin[1], tin[0])
+        gear_out = ggo[1] if n == "L" else ggo[0]
+        hf[n] = dict(inward=inward, flange_gap=gap, gear_out=gear_out, total=round(inward + gap + gear_out, 3))
+    rep["half_float"] = hf
+    rep["side_mesh"] = side_mesh(P, mr["Carrier"], {n: hf[n]["gear_out"] for n in "LR"})
+    c, sgl, hsl, sgr, hsr = (P[n] for n in ("Carrier", "SideGear_L", "HalfShaft_L", "SideGear_R", "HalfShaft_R"))
+    sp = [P["SpiderGear_1"], P["SpiderGear_2"], P["SpiderPin"]]
+    screws = [cyl(1.35, XC - 12, XC, sg * BOSS_Y, zz * BOSS_Z).fuse(cyl(HEAD_D / 2, XC, XC + HEAD_H, sg * BOSS_Y, zz * BOSS_Z)) for sg in (1, -1) for zz in (1, -1)]
+    od = {"L_in": insert([sgl, hsl], X, [c])}
+    cum = [c, sgl, hsl]
+    od["bushing_L"] = insert([P["Bushing_L"]], -X, cum)
+    cum.append(P["Bushing_L"])
+    od["spiders_with_R"] = insert(sp, X, cum + [sgr, hsr])
+    od["spiders"] = insert(sp, X, cum)
+    cum += sp
+    od["R_in"] = insert([sgr, hsr], X, cum)
+    cum += [sgr, hsr]
+    od["cap"] = insert([P["Cap"]], X, cum)
+    cum.append(P["Cap"])
+    od["cap_screws"] = insert(screws, X, cum)
+    cum += screws
+    od["bushing_R"] = insert([P["Bushing_R"]], X, cum)
+    cum.append(P["Bushing_R"])
+    od["idler"] = insert([P["IdlerRing"]], X, cum)
+    for n, d in (("A", Y), ("B", -Y)):
+        od["pinion_" + n] = insert([P["Pinion" + n]], d, [P["PinionShaft" + n]])
+    fixed_b = [P[n] for n in names if n not in ("CaseTop", "CaseBottom") and not n.startswith("Sleeve")]
+    for k, d in ((1, -X), (2, X), (3, Y), (4, -Y)):
+        od["sleeve_%d" % k] = insert([P["Sleeve_%d" % k]], d, fixed_b)
+    rep["order"] = od
+    pl = build_plug()
+    spin = [P[n] for n in names if n not in ("CaseTop", "CaseBottom", "PinionB", "PinionShaftB", "Sleeve_4")]
+    zs = 0.0
+    for k in range(int(60 / 0.5) + 1):
+        t = pl.copy()
+        t.translate(V(0, 0, 0.5 * k - 60))
+        zs = max(zs, vol(t, P["CaseTop"]), *(vol(t, b) for b in spin))
+    rep["plug"] = dict(vol=round(pl.Volume, 1), case=round(min(dist(pl, cs[c]) for c in cs), 3), spin=round(min(dist(pl, b) for b in spin), 3), overlap=round(max(vol(pl, b) for b in spin + list(cs.values())), 4),
+                       play=travel(pl, V(0, 1, 0), list(cs.values()), 1.0), zsweep=round(zs, 4), out=round(-bb(pl).YMin - YC, 3), inner=round(-bb(pl).YMax, 3))
+    S = {"NO_RUN": True, "__name__": "drive_shaft"}
+    exec(compile(open("/home/mikhail/Documents/cad/RC Car/drive_shaft.py").read(), "drive_shaft.py", "exec"), S)
+    yk0, yokes = S["build_yoke"](), []
+    sock = S["XB"] - bb(yk0).XMin
+    off = PORT_LEN - sock
+    for roll in (0, 90):
+        yk = rot(yk0, V(1, 0, 0), roll)
+        for a, tgt in ((0, XR + off), (180, XL - off), (90, YC + off), (-90, -YC - off)):
+            y = rot(yk, V(0, 0, 1), a)
+            b = bb(y)
+            lead = {0: b.XMin, 180: b.XMax, 90: b.YMin, -90: b.YMax}[a]
+            y.translate(V(tgt - lead, 0, 0) if a in (0, 180) else V(0, tgt - lead, 0))
+            yokes.append(y)
+    fixed = list(P.values()) + yokes
+    bolts = [build_bolt(x, y) for x, y in ear_pos()]
+    sw, gap = 0.0, 99.0
+    for bolt, drv in bolts:
+        full = bolt.fuse(drv)
+        gap = min(gap, min(dist(full, o) for o in fixed if o is not top))
+        for k in range(int(70 / 0.5) + 1):
+            t = full.copy()
+            t.translate(V(0, 0, 0.5 * k - 70))
+            sw = max(sw, *(vol(t, o) for o in fixed))
+    rep["ears"] = dict(holes=[(round(x, 2), round(y, 2)) for x, y in ear_pos()], sweep=round(sw, 4), gap=round(gap, 3), yoke_face=round(min(dist(top, y) for y in yokes), 3),
+                       wall=ear_wall(top), yoke_off=round(off, 3), size=(round(bb(top).XLength, 2), round(bb(top).YLength, 2)), top_vol=round(top.Volume, 1))
     rep["print"] = {n: print_report(n, P[n]) for n in names}
+    rep["print"]["OutputPlug"] = print_report("OutputPlug", pl)
+    rep["plastic_cm3"] = round(sum(s.Volume for s in P.values()) / 1000, 1)
+    rep["volumes"] = {n: round(s.Volume, 1) for n, s in P.items()}
+    rep["volumes"]["OutputPlug"] = round(pl.Volume, 1)
     return rep
 
 
@@ -562,19 +858,34 @@ def check(rep):
         assert all(v < 1e-3 and 0.15 <= g <= 0.5 for v, g in res), (k, res)
     assert not any(rep["assembly"].values()) and KEY_W <= 3.5 and rep["top_wall"] >= 1.2, (rep["assembly"], rep["top_wall"])
     assert rep["idler_heads"] >= 0.65 and BR_X1 - XC - HEAD_H >= 0.4 and rep["heads_case"] >= 0.55 and HOUSE_R - math.hypot(BOSS_Y, BOSS_Z) - CLEAR_D / 2 >= 1.15 and HOUSE_R - math.hypot(BOSS_Y, BOSS_Z) - PILOT_D / 2 >= 1.2 and all(v >= 0.3 for v in rep["idler_clear"].values()), rep
-    assert min((BORE_D - BUSH_OD) / 2, IDL_BORE_R - BUSH_OD / 2, IDL_COLLAR_IN - BUSH_FL_R, (BORE_BUSH - JOURNAL_D) / 2, (SPIDER_BORE - PIN_D) / 2, PS_RIB_R - PS_GROOVE_R) >= 0.25 - 1e-9
+    assert min((SPIDER_BORE - PIN_D) / 2, (PIN_BORE_D - SHAFT_AF * 2 / math.sqrt(3)) / 2) >= 0.25 - 1e-9
+    assert min((BORE_D - BUSH_OD) / 2, IDL_BORE_R - BUSH_OD / 2, IDL_COLLAR_IN - BUSH_FL_R) >= 0.3 - 1e-9 and LIP_BORE / 2 - SHAFT_AF / math.sqrt(3) >= 0.8 and LINER_ID / 2 - SHAFT_AF / math.sqrt(3) >= 0.3 and (LINER_BORE - LINER_OD) / 2 >= 0.1 - 1e-9 and BUSH_OD / 2 - GRV_D - LIP_BORE / 2 >= 1.2 - 1e-9 and GRV_LEAD - SLOPE * RIB_CLR >= 0.5 - 1e-9 and END_GAP >= RIB_OFF and CEN - MOUTH / 2 >= GRV_OFF
     assert IDL_RECESS_R - HOUSE_R >= 0.6 and DRUM_CAV_R - HOUSE_R >= 0.55 and rep["idler_clear"]["Cap"] >= 0.6 and rep["sg_carrier"] >= 0.7, rep
-    assert all(v >= 0.4 for v in rep["case_clear"].values()), rep["case_clear"]
-    assert 0.25 <= sum(rep["carrier_float"]) <= 0.35, rep["carrier_float"]
-    assert 0.2 <= sum(rep["idler_float"]) <= 0.4, rep["idler_float"]
-    assert all(0.2 <= sum(v) <= 0.5 for v in rep["pinion_float"].values()), rep["pinion_float"]
+    assert all(v >= (IDLER_FLOAT - 1e-3 if n == "IdlerRing" else 0.4) for (c, n), v in rep["case_clear"].items()), rep["case_clear"]
+    fl = lambda v: 0.3 - 1e-3 <= sum(v) <= 0.5
+    assert fl(rep["carrier_float"]) and fl(rep["idler_float"]) and all(fl(v) for v in rep["pinion_float"].values()) and all(fl(v) for v in rep["pinion_shaft_float"].values()), rep
+    assert all(0.3 - 1e-3 <= v["total"] <= 0.6 for v in rep["half_float"].values()), rep["half_float"]
+    for k, l in rep["liner"].items():
+        assert abs(l["od"] - LINER_OD) < 1e-3 and abs(l["length"] - LINER_L) < 1e-3 and 8.0 <= LINER_L <= 10.0 and abs(l["vol"] - math.pi * (LINER_OD ** 2 - LINER_ID ** 2) / 4 * LINER_L) < 0.2, l
+        assert 0.2 - 1e-3 <= sum(l["play"]) <= 0.4 and l["hex"] >= 0.3 and l["pocket"] >= 0.1 - 1e-3 and l["wall"] >= 2.0 and len(l["lips"]) == 2 and min(l["lips"]) >= LIP_T, (k, l)
+    assert rep["lead"] < 1e-3 and rep["rib_lead"] < 1e-3 and RIB_OFF <= GRV_LEAD - SLOPE * RIB_CLR and LEAD_OFF <= LINER_PLAY / 2 + LIP_LEAD and LIP_LEAD >= 0.5, rep["lead"]
     assert 0 <= rep["split_gap"] <= 0.1, rep["split_gap"]
-    assert all(0 < v <= 0.2 for v in rep["tail_clear"].values()), rep["tail_clear"]
-    assert rep["pilot_wall"] >= 1.2 and rep["heads_free"] < 1e-3 and rep["bores_closed"], rep
+    assert all(0 <= v <= 0.2 for v in rep["tail_clear"].values()) and all(sum(v) < 5e-3 for v in rep["bushing_play"].values()), (rep["tail_clear"], rep["bushing_play"])
+    assert rep["pilot_wall"] >= 2.0 and rep["pass_hole"] >= 3.6 and EAR_HOLE_D >= 3.6 and rep["heads_free"] < 1e-3 and rep["bores_closed"], rep
     g = rep["glue"]
-    assert g["zmax"] == CASE_Z and g["x"] <= 62.5 and g["y"] <= 86.5, g
+    assert g["zmax"] == CASE_Z and g["body"][0] <= XR - XL + 0.01 and g["body"][1] <= 2 * YC + 0.01 and g["overall"][0] <= 2 * (XR + EAR_DX + EAR_R) + 0.01 and g["overall"][1] <= 2 * YC + 0.01, g
     assert all(p["stick"] == PORT_LEN and p["hole_open"] and abs(p["af"] - SHAFT_AF) < 1e-3 and abs(p["corners"] - SHAFT_AF * 2 / math.sqrt(3)) < 1e-3 for p in rep["ports"].values()), rep["ports"]
-    assert all(f >= 5.0 and not b for f, b in rep["print"].values()), {k: v for k, v in rep["print"].items() if v[0] < 5.0 or v[1]}
+    assert all(v < 1e-3 for v in rep["slide"].values()), rep["slide"]
+    for n, sm in rep["side_mesh"].items():
+        assert sm["nominal"] >= 0.15 and sm["nominal_push"] == 0.0 and sm["push"] <= rep["half_float"][n]["gear_out"] + 1e-6 and sm["gap"] >= 0.0 and sm["overlap"] < 1e-3, (n, sm)
+    od = rep["order"]
+    assert all(v < 1e-3 for k, v in od.items() if k != "spiders_with_R") and od["spiders_with_R"] > 1e-3, od
+    ea = rep["ears"]
+    assert ea["sweep"] < 1e-3 and ea["gap"] >= 2.0 and ea["wall"] >= 3.0 and ea["yoke_face"] >= ea["yoke_off"] - 0.1, ea
+    pg = rep["plug"]
+    assert pg["case"] >= LINER_PLAY / 2 - 1e-3 and pg["spin"] >= 0.8 and pg["overlap"] < 1e-3 and pg["zsweep"] < 1e-3 and 0.2 <= sum(pg["play"]) <= 0.4, pg
+    assert all(f >= 5.0 and not b for f, b, _ in rep["print"].values()), {k: v for k, v in rep["print"].items() if v[0] < 5.0 or v[1]}
+    assert all(not l for n, (_, _, l) in rep["print"].items() if n not in ("Bushing_R", "CaseBottom", "PinionA", "PinionB", "SpiderGear_1", "SpiderGear_2")) and all(w <= 1.2 + 1e-2 for w, _ in rep["print"]["Bushing_R"][2]), {k: v[2] for k, v in rep["print"].items()}
 
 
 def main():
@@ -583,12 +894,18 @@ def main():
         App.closeDocument(DOC_NAME)
     doc = App.newDocument(DOC_NAME)
     P = build_parts(doc)
+    plug = build_plug()
+    assert plug.isValid() and len(plug.Solids) == 1
     for name, shp in P.items():
         assert shp.isValid() and len(shp.Solids) == 1, name
         o = doc.addObject("Part::Feature", name)
         o.Shape = shp
         if App.GuiUp:
             o.ViewObject.ShapeColor = COLORS[name]
+    o = doc.addObject("Part::Feature", "OutputPlug")
+    o.Shape = plug.translated(V(0, -40, 0))
+    if App.GuiUp:
+        o.ViewObject.ShapeColor = COLORS["OutputPlug"]
     rep = verify(P)
     print("report", rep, flush=True)
     check(rep)

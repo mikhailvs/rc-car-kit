@@ -6,7 +6,7 @@ Each module is a parametric FreeCAD script that generates its `.FCStd` model. Ru
 
 | Script | Module | State |
 |---|---|---|
-| `differential.py` | Enclosed axle module: bevel differential, shaft input, chain-through output | checked on the model |
+| `differential.py` | Enclosed axle module: bevel differential, shaft input, chain-through output or plug, bolt ears, PTFE liner pockets | checked on the model |
 | `wheel_mount.py` | Wheel mount, steerable or locked, takes a drive shaft for a powered wheel | checked on the model |
 | `wheel_mount2.py` | Wheel mount, second design: knuckle pushes up onto a single kingpin post under a glue pad, axle runs in PTFE liner pockets | checked on the model |
 | `drive_shaft.py` | Drive shaft with captured universal joints and a telescoping middle | checked on the model |

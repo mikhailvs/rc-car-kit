@@ -2,18 +2,18 @@
 # Shafts in one plane (x = 0): motor axis z 57.9, layshaft z 25.7, through shaft z 0. Module 1, shift pairs sum to 64 (centre distance 32.2): C 44:20, B 38:26, A 31:33 (motor gear first); fixed transfer 28:23 (centre distance 25.7). Largest gear tip dia 46.0 (MotorGear_C).
 # Ratios and shaft rpm at 100 rpm motor: A 1.144 (114 rpm), B 1.779 (178 rpm), C 2.678 (268 rpm). Servo positions in stroke order: B (rear), A (mid), C (front), 0.8 mm gear to gear gap at each neutral midpoint (shift step 2 x (face 5.1 + 0.8) = 11.8, stroke 23.6). The order B, A, C is forced (A, B, C or C, B, A put a motor tip circle across a non partner slide gear). Shift only while the gears turn slowly.
 # Servo force (B6, accepted): stroke 23.6 within +-40 deg needs an 18.4 mm pin radius, so a 0.08 N.m servo gives 4.36 N at the fork (asserted at 4.35 unrounded); the guide friction (mu about 0.4 times the push) takes roughly 40 percent of that, leaving about 2.6 N to move the fork. estimates() asserts every stress under 15 MPa at that force, ring wall 1.6 included.
-# Sizes: footprint on the floor (parts above the floor top) 93.8 x 153.4 (x -42.8 to +51.0: ears and ServoMount wall; y +65 to -88.4: Bracket pad to ServoMount crossbar). Floor cut-out 64.0 x 99.4 (x -32..32, y +13.2 behind to -86.2 ahead, y = 0 is the Bracket front face): the length is over the 92 allowance (accepted, asserted at most the measured extent of the parts through the slab plus 2.0, i.e. 1.0 clear all round) mostly because the 23.6 stroke and the 49.6 long fork guide set UF = 82.2 (plus the plate for the front edge), and the layshaft rear boss and thrust head (z up to 32, inside the 4 mm floor) set the rear edge at +13.2. Lower plates are 59.6 wide (2.2 clear each side; the fork tower and block are inside 1.4 or more). Plastic 168.5 cm3 (CasePan 38.0 cm3).
-# CasePan (A1): printed pan under the floor, 2.0 walls, outer x +-32.2, y +15.1 to -87.3 (long with the 16 mm hex ports passing through slots 11.4 wide in both end walls), floor outer z -15.4, rim z 28.2 (0.8 under the floor underside). Depth below the floor underside 44.4; with 100 mm wheels on the through shaft axis the pan bottom is 34.6 above the ground. 4 x M3x8 from below, heads fully sunk in 3.2 deep counterbores (M3 cap head is 3.0 tall, so the bottom is flush), through posts into pilots in 4 rails (two on the Bracket rear face, two on the FrontPlate rear face, x +-19), asserted 2.0 wall. Gaps: 0.9 to the shafts and T2, 1.0 to the fork block, 0.4 to the lower plates, 0.8 to the floor. Prints open side up, no supports; vertical corners r4, 2.0 chamfer at the base (45 deg), rim 0.8 chamfer, 0.8 fillets blend the end slot edges. The case is not fully closed: the end wall slots (about 330 mm2 per end) run up to the rim because the pan has to lift on from below past the shaft, a lid for them is not modelled. Removal order: take the CasePan off first, then pull the ThroughShaft (its dia 12.6 head would hit the 11.4 end slot with the pan on).
+# Sizes: footprint on the floor (parts above the floor top) 93.8 x 153.4 (x -42.8 to +51.0: ears and ServoMount wall; y +65 to -88.4: Bracket pad to ServoMount crossbar). Floor cut-out 64.0 x 102.6 (x -32..32, y +13.2 behind to -89.4 ahead, y = 0 is the Bracket front face): the length is over the 92 allowance (accepted, asserted at most the measured extent of the parts through the slab plus 2.0, i.e. 1.0 clear all round) mostly because the 23.6 stroke and the 49.6 long fork guide set UF = 82.2 (plus the plate and the two rod screw heads for the front edge), and the layshaft rear boss and thrust head (z up to 32, inside the 4 mm floor) set the rear edge at +13.2. Lower plates are 59.6 wide (2.2 clear each side; the fork tower and block are inside 1.4 or more). Plastic 168.5 cm3 (CasePan 38.0 cm3).
+# CasePan (A1): printed pan under the floor, 2.0 walls, outer x +-32.2, y +15.1 to -87.3 (long with the 16 mm hex ports passing through slots 11.4 wide in both end walls), floor outer z -15.4, rim z 28.2 (0.8 under the floor underside). Depth below the floor underside 44.4; with 100 mm wheels on the through shaft axis the pan bottom is 34.6 above the ground. 4 x M3x8 from below, heads fully sunk in 3.2 deep dia 6.6 counterbores (M3 pan head is dia 6 x 3.2, so the bottom is flush, 0.3 radial), through posts into pilots in 4 rails (two on the Bracket rear face, two on the FrontPlate rear face, x +-19), asserted 2.0 wall. Gaps: 0.9 to the shafts and T2, 1.0 to the fork block, 0.4 to the lower plates, 0.8 to the floor. Prints open side up, no supports; vertical corners r4, 2.0 chamfer at the base (45 deg), rim 0.8 chamfer, 0.8 fillets blend the end slot edges. The case is not fully closed: the end wall slots (about 330 mm2 per end) run up to the rim because the pan has to lift on from below past the shaft, a lid for them is not modelled. The front wall has a notch 8 wide (1.0 clear round each dia 6 rod screw head) from z 23.9 up to the rim so the two FrontPlate rod screw heads, which stand 3.2 proud of the plate, clear it while it lifts on. Removal order: take the CasePan off first, then pull the ThroughShaft (its dia 12.6 head would hit the 11.4 end slot with the pan on).
 # Liners (A2): PTFE tube 10 ID x 12 OD to be used as plain bearings, 4 liners of LINER_L 8.0: Sleeve_1 (through shaft rear) y 1.6..9.6 z 0, Sleeve_2 (through shaft front) u 75.3..83.3 z 0, Sleeve_3 (layshaft rear) y 1.6..9.6 z 25.7, Sleeve_4 (layshaft front) u 75.3..83.3 z 25.7. Printed placeholders named Sleeve_1..4 (one print group, 4 copies, standing on end). Pocket bore LINER_BORE 12.2 (tune after measuring the tube), 2.0 wall boss with cone blend, 1.6 lip with a 10.6 bore (layshaft front pocket is blind, 1.6 floor). Rear liners go in from the rear to the front lip; front liners go in from the plate rear face to the front lip. Retention the other way: the thrust heads (dia 12.6 round collars on the REAR end of both shafts, 0.2 off the liner end) hold the rear liners, the T2 and T1 hub ends (0.2 off the liner end) hold the front liners. Nothing larger than the hex ever passes through a liner (heads and hubs stay behind or in front of them). 8.0 AF hex (9.24 across corners) in the dia 10.0 bore: 0.38 radial. Each shaft floats 0.4 total (0.2 head face, 0.2 hub face). MotorCap stub bore: no liner (stub dia 10 runs in a 10.6 bore beside a 9.0 boss; a 16.2 boss would hit the gear C hub), so it stays a printed bore.
-# ServoMount (A3, A5): a bridge fastened at BOTH ends: front end (crossbar) to the FrontPlate with 2 x M3x12, rear end (a 4.0 thick tie plate over the rear +x Bracket ear, x 33.2 to 50.8, y -3.1 to +16.8, corners r2, 0.8 bed chamfer) to the Bracket with the ear bolt at x 38, y 12 (dia 3.6 pass hole, 3.0 ring wall asserted), which becomes an M3x16 through tie, ear and cardboard with a nut below the floor. Own part, prints on its outer wall face (-X up), no supports, everything is a prism along x and every strip stays inside the wall outline (the old 5 mm rear chamfer of the wall left the strip corner floating, removed). Crossbar (3.2 thick, in front of the FrontPlate) is held by 2 x M3x12 from the front (holes x 33.6 and 39.9, 6.3 apart: heads dia 5.7 never overlap, asserted spacing at least head + 0.5, and the heads are modelled in the dia 6 driver sweeps) into pilots in a bar on the FrontPlate rear face (FrontPlate is a plain plate plus the screw bar, a flat wing and a short -x glue lip, prints front face down); base slab, 3.2 wall rail, post and strip under each servo tab, 0.8 chamfer round the bed face. Solid sections measured on the shape: crossbar 3.2 x 7.8, slab 4.0 x 7.6, wall 3.2 x 21.7, tab strips 6.7 x 21.7 and 4.8 x 6.7, FrontPlate 3.0 x 10.7, bar 11.0 x 7.0, rod 6.8 x 6.8, tie plate 4.0 x 17.8, Bracket ear 4.0 x 18.0 (all at least 3 x 6). Servo tab screws are the servo kit M2 thread forming screws into dia 1.6 pilots, slotted 1 mm outward, driven with a tilted driver; the hole is 2.25 from the body end so the body side wall cannot reach 2.0: measured 0.86 (MISSED). The pilots are slotted 1 mm outward (covers hole spacing +1) but not inward: a spacing of 26.5 (-1) puts the holes 0.5 inside, and the strip cannot grow inward because the body is there, so that case is not covered (a through bolt with a clamp strap is the real fix if it strips). TOL_CASES include a shrink case (grow -1) for the arm and mount clearances.
+# ServoMount (A3, A5): a bridge fastened at BOTH ends: front end (crossbar) to the FrontPlate with 2 x M3x12, rear end (a 4.0 thick tie plate over the rear +x Bracket ear, x 33.2 to 50.8, y -3.1 to +16.8, corners r2, 0.8 bed chamfer) to the Bracket with the ear bolt at x 38, y 12 (dia 3.6 pass hole, 3.0 ring wall asserted), which becomes an M3x16 through tie, ear and cardboard with a nut below the floor. Own part, prints on its outer wall face (-X up), no supports, everything is a prism along x and every strip stays inside the wall outline (the old 5 mm rear chamfer of the wall left the strip corner floating, removed). Crossbar (3.2 thick, in front of the FrontPlate) is held by 2 x M3x12 from the front (holes x 33.6 and 40.2, 6.6 apart: heads dia 6.0 never overlap, asserted spacing at least head + 0.5, and the heads are modelled in the dia 6 driver sweeps) into pilots in a bar on the FrontPlate rear face (FrontPlate is a plain plate plus the screw bar, a flat wing and a short -x glue lip, prints front face down); base slab, 3.2 wall rail, post and strip under each servo tab, 0.8 chamfer round the bed face. Solid sections measured on the shape: crossbar 3.2 x 7.8, slab 4.0 x 7.6, wall 3.2 x 21.7, tab strips 6.7 x 21.7 and 4.8 x 6.7, FrontPlate 3.0 x 10.7, bar 11.0 x 7.0, rod 6.8 x 6.8, tie plate 4.0 x 17.8, Bracket ear 4.0 x 18.0 (all at least 3 x 6). Servo tab screws are the servo kit M2 thread forming screws into dia 1.6 pilots, slotted 1 mm outward, driven with a tilted driver; the hole is 2.25 from the body end so the body side wall cannot reach 2.0: measured 0.86 (MISSED). The pilots are slotted 1 mm outward (covers hole spacing +1) but not inward: a spacing of 26.5 (-1) puts the holes 0.5 inside, and the strip cannot grow inward because the body is there, so that case is not covered (a through bolt with a clamp strap is the real fix if it strips). TOL_CASES include a shrink case (grow -1) for the arm and mount clearances.
 # Servo tolerance (B4): every body dimension +-1 mm, tab height +-1, horn height +-1 (arm +-2 total, TOL_CASES in step_tol), plus a rigid shaft shift of +-1 in x and in y (SHIFTS: pin to fork overlap 0). The arm bottom sits ARM_CLR 1.5 + 2 above a pin tower on the fork block (tower z 40.2, slot 11.4 wide in x and 6.4 in y for the dia 4.0 pin, 1.3 side walls, roof corners chamfered 45 deg so the roof bridge is 9.4). Pin 8.2 long: engaged at least 2.7 at the high end, arm 1.5 above the tower at the low end, pin 2.2 above the rod, arm 1.0 from the mount, body clear of the mount: all asserted. The pin sits at the REAR of the block (6.5 behind the tower start), so the arm stays clear of MotorGear_C. Arm to horn recess is only 0.1 deep and 0.3 per side: it is the torque carrying exception to the gap table.
 # Mounting (A4): four corner ears on the Bracket pad flush with its underside, bolt holes dia 3.6 at x +-38, y +12 and +56 (76 x 44 pattern), 3.0 wall (ear radius 4.8, underside chamfered 45 deg or steeper so it prints without support), 3 x M3x12 and 1 x M3x16 (the tie ear at x 38, y 12 also clamps the ServoMount) bolt + nut through the cardboard (Ref_Bolts); driver dia 6 x 60 from above proved. Glue land kept: rear pad 61 mm and 6 dia 5 holes, -x lip 2.4 mm, pad wing now 68 wide (2 mm on the cardboard each side of the cut-out), pad top area 34 cm2; no 10 mm target.
-# Hardware: GA37RG; 6 x M3x8 motor (from the front); 4 x M3x6 grub (motor carrier flat from above, SlideCap from below onto a dimple, T1 45 deg from below left, T2 from below; the T1 and T2 pilots sit 3.5 in front of the gear face so a dia 6 driver clears the gear, proved without excluding the host part); 1 x M3x30 MotorCap (axial, head in a 3.2 deep counterbore in the stub, 0.8 plus clear of the plate bore floor, screw proven by assert to reach 6 mm into the carrier pilot); 2 x M3x10 FrontPlate into Rod ends (from the front); 2 x M3x12 ServoMount to FrontPlate (from the front); 4 x M3x8 CasePan (from below); 2 x M2 servo kit screws in the tabs; servo horn centre screw from the servo kit; 4 ear bolts with 4 nuts through the ears: 3 x M3x12 plus 1 x M3x16 at the tie ear (x 38, y 12), which also clamps the ServoMount tie plate (from above); hot glue through the pad holes; 4 PTFE liners 12 x 10 x 8 (later). No screw solids are modelled except the bolts.
+# Hardware: GA37RG; 6 x M3x8 motor (from the front); 4 x M3x6 grub (motor carrier flat from above, SlideCap from below onto a dimple, T1 45 deg from below left, T2 from below; the T1 and T2 pilots sit 3.5 in front of the gear face so a dia 6 driver clears the gear, proved without excluding the host part); 1 x M3x16 MotorCap (axial, head at the bottom of a dia 6.6 bore 14.2 deep, 10.5 mm above the carrier arbor end, 1.7 stub wall round it, 5.5 mm of thread into the 10 deep carrier pilot; the dia 6 driver runs the bore with 0.3 radial, measured on the shape, and is swept against every step 7 part, before the FrontPlate goes on); 2 x M3x8 FrontPlate into Rod ends (from the front, 6.5 mm of thread into the 9 deep pilot) and 2 x M3x8 Bracket to Rod ends (axial from the rear face of the Bracket, through a dia 3.6 hole in the 1.3 thick pocket floor into a dia 2.8 pilot 9 deep in each rod rear end, 6.7 mm of thread, 2.0 walls; the rear rod positions are free behind the plate, 2.1 under the pad and 17 from the motor body, so no cross screw is needed; the heads stand 3.2 proud on the rear face; the rods sit on the pocket floors so the screws only clamp, and each rod is now a tie bar screwed at both ends: with CasePan and ServoMount off, Bracket, rods and FrontPlate cannot be pulled apart, asserted from the measured pilots and holes); the six motor face counterbores are dia 6.6; 2 x M3x12 ServoMount to FrontPlate (from the front); 4 x M3x8 CasePan (from below); screw totals asserted against the kit list: M3x8 x 14, M3x12 x 5, M3x16 x 2, M3x6 grub x 4; 2 x M2 servo kit screws in the tabs; servo horn centre screw from the servo kit; 4 ear bolts with 4 nuts through the ears: 3 x M3x12 plus 1 x M3x16 at the tie ear (x 38, y 12), which also clamps the ServoMount tie plate (from above); hot glue through the pad holes; 4 PTFE liners 12 x 10 x 8 (later). The ear bolts and the four rod screw heads (Ref_Heads) are modelled, plus the ServoMount heads and the driver in the sweeps.
 # Servo ES08MA II class, dimensions UNVERIFIED catalogue values (SV_*): body 23.0 x 11.5 x 24.0, tab span 32.5, tab 2.0 thick 16.0 below the top, hole spacing 27.5, spline 4.8 dia 2.7 long, horn 14 long.
-# Parts (25, 0 supports): Bracket, FrontPlate, MotorCarrier, MotorCap, MotorGear_B/A/C, SlideCarrier (gear C integral), SlideGear_A/B, SlideCap (spool, 6.8 flange: 2.0 walls round the grub), Layshaft, ThroughShaft, T1, T2, ShiftFork (ring wall 1.6, pin tower), Rod_1/2 (6.8 square, 2.0 pilot walls), ServoArm, CasePan, ServoMount, Sleeve_1..4. PLA, 0.4 nozzle, 0.2 layers. Ref_Motor, Ref_Servo, Ref_Floor, Ref_Bolts are not printed.
+# Parts (25, 0 supports): Bracket, FrontPlate, MotorCarrier, MotorCap, MotorGear_B/A/C, SlideCarrier (gear C integral), SlideGear_A/B, SlideCap (spool, 6.8 flange: 2.0 walls round the grub), Layshaft, ThroughShaft, T1, T2, ShiftFork (ring wall 1.6, pin tower), Rod_1/2 (6.8 square, 2.0 pilot walls), ServoArm, CasePan, ServoMount, Sleeve_1..4. PLA, 0.4 nozzle, 0.2 layers. Ref_Motor, Ref_Servo, Ref_Floor, Ref_Bolts, Ref_Heads are not printed.
 # Print orientation (PRINT_UP): Bracket +Y, FrontPlate +Y (front face down), MotorCarrier -Y, MotorCap -Y, motor and slide gears +Y, SlideCarrier +Y, SlideCap -Y, T1 -Y, T2 -Y, ShiftFork -Y (ring and block rear faces on the bed, 45 deg front slope on the tower, slot roof is a 9 mm bridge between the side walls), shafts and rods +Z (flat on a hex flat), ServoArm -Z, CasePan +Z, ServoMount -X, Sleeves +Y. printable() accepts a flat down face only if it is the bed face, a strip 2.0 wide or less, a face whose real cantilever depth (distance to the nearest edge with material under it) is 2.0 or less, or a bridge of 10 mm or less with material under BOTH ends; concave small cylinders (holes) and spheres up to r5 are treated as round, but convex r5 or smaller cylinders away from the bed are checked like any slope.
-# Assembly order (each step is a 1 mm translation sweep in step_assembly with zero common volume; fork at mid stroke when the servo goes in; floor slab present from step 11): 1 Sleeve_1 and Sleeve_3 into the Bracket from the rear, Sleeve_2 and Sleeve_4 into the FrontPlate from its rear face; 2 motor into the Bracket from the rear, 6 screws from the front; 3 MotorCarrier on the D shaft, grub from above; 4 MotorGear_B; 5 Layshaft pushed in from the REAR through Sleeve_3 (head stops 0.2 from the liner); 6 slide unit built loose on the SlideCarrier (SlideGear_A, SlideGear_B, ShiftFork ring, SlideCap, grub from below), then onto the Layshaft from the front; 7 MotorGear_A, MotorGear_C, MotorCap and its M3x30 screw; 8 T1 on the Layshaft (grub 45 deg from below left, left slack until step 10 because the plate carries the Sleeve_4 gauge face); T2 is NOT fitted yet, so nothing loose falls off the mesh when the module is lowered; 9 Rod_1, Rod_2 from the front through the fork block; 10 FrontPlate (with Sleeve_2, Sleeve_4) from the front, 2 M3x10 into the rod ends; 11 module lowered through the cut-out onto the cardboard, 3 ear bolts (M3x12, not the rear +x ear); 12 T2 raised from below into mesh with T1 (up-sweep proved, hold it by hand), then ThroughShaft pushed in from the rear under the floor through Sleeve_1, T2 and Sleeve_2, T2 grub from below. Axial setting: with a 0.2 mm feeler gauge between each rear head and its Sleeve_1/Sleeve_3 and another between each hub end (T1, T2) and its Sleeve_4/Sleeve_2, push the shaft against the gauges and tighten the T1 grub (after step 10, proved reachable with the plate on) and the T2 grub; the hub grub pilots are only 2.7 to 2.9 deep (the hub wall, 2.85, is the limit) so use M3x6 grubs with thread locker; 13 CasePan up from below, 4 M3x8; 14 ServoMount lowered onto the cardboard against the FrontPlate, 2 M3x12 from the front, then the M3x16 down through the tie plate, rear +x ear and cardboard with a nut below (driver dia 6 x 60 from above proved); 15 servo with horn and ServoArm lowered (pin into the tower slot), 2 M2 servo kit tab screws.
-# Glue and fit calibration: printed bores a part turns in 0.3 radial or more, spinning or sliding to fixed gaps 0.8 or more (1.0 for SlideCap to Bracket and ServoArm to anything fixed), thrust faces 0.2 each (sum 0.3 to 0.5), the ShiftFork block rides Rod_1 in an 8.4 pocket (0.8 per side, BLK_PK) while the Bracket and FrontPlate pockets keep 0.5 per side for the pushed in rods, M3 pass holes dia 3.6, pilots dia 2.8 with 2.0 walls, walls 1.2 or more.
+# Assembly order (each step is a 1 mm translation sweep in step_assembly with zero common volume; fork at mid stroke when the servo goes in; floor slab present from step 11): 1 Sleeve_1 and Sleeve_3 into the Bracket from the rear, Sleeve_2 and Sleeve_4 into the FrontPlate from its rear face; 2 motor into the Bracket from the rear, 6 screws from the front; 3 MotorCarrier on the D shaft, grub from above; 4 MotorGear_B; 5 Layshaft pushed in from the REAR through Sleeve_3 (head stops 0.2 from the liner); 6 slide unit built loose on the SlideCarrier (SlideGear_A, SlideGear_B, ShiftFork ring, SlideCap, grub from below), then onto the Layshaft from the front; 7 MotorGear_A, MotorGear_C, MotorCap and its M3x16 screw; 8 T1 on the Layshaft (grub 45 deg from below left, left slack until step 10 because the plate carries the Sleeve_4 gauge face); T2 is NOT fitted yet, so nothing loose falls off the mesh when the module is lowered; 9 Rod_1, Rod_2 from the front through the fork block; 10 FrontPlate (with Sleeve_2, Sleeve_4) from the front, 2 M3x8 into the rod ends, then 2 M3x8 axially from the rear face of the Bracket into the rod rear ends (driver dia 6 x 60 swept from the head top with every part of steps 1 to 10 and the front heads present: motor, gears, slide unit, cap, T1, rods, FrontPlate; nothing else exists yet, and the floor slab must not be there since it would cut the driver, so these are driven before step 11); 11 module lowered through the cut-out onto the cardboard, 3 ear bolts (M3x12, not the rear +x ear); 12 T2 raised from below into mesh with T1 (up-sweep proved, hold it by hand), then ThroughShaft pushed in from the rear under the floor through Sleeve_1, T2 and Sleeve_2, T2 grub from below. Axial setting: with a 0.2 mm feeler gauge between each rear head and its Sleeve_1/Sleeve_3 and another between each hub end (T1, T2) and its Sleeve_4/Sleeve_2, push the shaft against the gauges and tighten the T1 grub (after step 10, proved reachable with the plate on) and the T2 grub; the hub grub pilots are only 2.7 to 2.9 deep (the hub wall, 2.85, is the limit) so use M3x6 grubs with thread locker; 13 CasePan up from below, 4 M3x8; 14 ServoMount lowered onto the cardboard against the FrontPlate, 2 M3x12 from the front, then the M3x16 down through the tie plate, rear +x ear and cardboard with a nut below (driver dia 6 x 60 from above proved); 15 servo with horn and ServoArm lowered (pin into the tower slot), 2 M2 servo kit tab screws.
+# Glue and fit calibration: printed bores a part turns in 0.3 radial or more, spinning or sliding to fixed gaps 0.8 or more (1.0 for SlideCap to Bracket and ServoArm to anything fixed), thrust faces 0.2 each (sum 0.3 to 0.5), the ShiftFork block rides Rod_1 in an 8.4 pocket (0.8 per side, BLK_PK) while the Bracket and FrontPlate pockets keep 0.5 per side for the pushed in rods (the rod ends sit on the pocket floors, 0.0 end gap, so the screws clamp without pulling the plates), M3 pass holes dia 3.6, pilots dia 2.8 with 2.0 walls, walls 1.2 or more.
 import FreeCAD as App, Part, math
 
 D = {"NO_RUN": True, "__name__": "differential"}
@@ -42,7 +42,8 @@ PLATE_T, FPLATE_T = 4.0, 3.0
 
 MOT_GB_D, MOT_GB_L, MOT_CAN_D, MOT_BODY = 37.0, 24.5, 36.2, 57.8
 MOT_SH_D, MOT_FLAT_AF, MOT_FLAT_L, MOT_SH_L, MOT_BOSS_D, MOT_BOSS_L = 6.0, 5.5, 14.0, 20.0, 12.0, 5.0
-MOT_PCD, MOT_HOLE_D, MOT_CB_D, MOT_CB_DEEP, MOT_BOSS_HOLE = 31.0, 3.6, 6.2, 2.5, 12.6
+M3_HEAD_D, M3_HEAD_H, HEAD_BORE = 6.0, 3.2, 6.6
+MOT_PCD, MOT_HOLE_D, MOT_CB_D, MOT_CB_DEEP, MOT_BOSS_HOLE = 31.0, 3.6, HEAD_BORE, 2.5, 12.6
 MG_BORE, MG_FLAT_AF = 6.15, 5.675
 SOCKET, PILOT, PS_OUT, PS_PILOT = 8.3, 2.8, 16.0, 5.9
 SLIDE_AF = 9.0
@@ -184,8 +185,8 @@ PAN_Y_R = HEAD_Y1 + PAN_GAP
 PAN_U_F = UF + FPLATE_T + 0.4
 PAN_ZIN, PAN_ZOUT, PAN_RIM = -13.4, -15.4, AXIS_DEPTH - 0.8
 PAN_XI = 30.2
-HEAD_CB = 3.2
-M3_HEAD_D, M3_HEAD_H = 5.7, 3.0
+HEAD_CB = M3_HEAD_H
+PAN_NOTCH = 1.0
 PAN_XO = PAN_XI + CASE_T
 
 # ---- motor side: carrier (hex arbor, shoulder, D bore), cap with stub, three gears with hubs
@@ -195,7 +196,13 @@ CAP_U0 = GU["C"] + FACE_W + 0.1
 ARB_END = CAP_U0 + 3.0
 STUB_D = 10.0
 STUB_END = UF + 0.8
-CAP_SCREW_L, CAP_PLATE_FLOOR = 30.0, UF + FPLATE_T - 1.2
+CAP_PLATE_FLOOR = UF + FPLATE_T - 1.2
+KIT_LENGTHS = (8.0, 12.0, 16.0)
+CAP_SCREW_L, CAP_ENGAGE, CARR_PILOT = 16.0, 5.5, 10.0
+CAP_SEAT = ARB_END + CAP_SCREW_L - CAP_ENGAGE
+CAP_CB = STUB_END - CAP_SEAT
+ROD_SCREW_L, ROD_REAR_L, ROD_PILOT, MOUNT_SCREW_L, PAN_SCREW_L, MOTOR_SCREW_L, GRUB_L = 8.0, 8.0, 9.0, 12.0, 8.0, 8.0, 6.0
+PILOT_TIP, ROD_POCKET = 0.2, 2.7
 FLANGE_U0 = 2.5
 
 
@@ -203,14 +210,14 @@ def build_motor_carrier():
     c = ycu(HUB_R, FLANGE_U0, M0, 0, MZ).fuse(yhexu(CARR_AF, M0 - 0.01, CAP_U0, 0, MZ)).fuse(ycu(4.0, CAP_U0 - 0.01, ARB_END, 0, MZ))
     c = c.cut(dbore(FLANGE_U0 - 1, FLANGE_U0 + 14.0))
     c = c.cut(radial(PILOT / 2, 0, MZ, 0, 1, (FLANGE_U0 + M0) / 2, 0, HUB_R + 1))
-    c = c.cut(ycu(PILOT / 2, ARB_END - 10, ARB_END + 1, 0, MZ))
+    c = c.cut(ycu(PILOT / 2, ARB_END - CARR_PILOT, ARB_END + 1, 0, MZ))
     return c.removeSplitter()
 
 
 def build_motor_cap():
     c = ycu(8.5, CAP_U0, CAP_U0 + 4.0, 0, MZ).fuse(ycu(STUB_D / 2, CAP_U0 + 3.99, STUB_END, 0, MZ))
     c = c.cut(ycu(4.2, CAP_U0 - 1, CAP_U0 + 3.0, 0, MZ))
-    c = c.cut(ycu(1.8, CAP_U0 - 1, STUB_END + 1, 0, MZ)).cut(ycu(3.1, STUB_END - HEAD_CB, STUB_END + 1, 0, MZ))
+    c = c.cut(ycu(1.8, CAP_U0 - 1, STUB_END + 1, 0, MZ)).cut(ycu(HEAD_BORE / 2, CAP_SEAT, STUB_END + 1, 0, MZ))
     return c.removeSplitter()
 
 
@@ -296,13 +303,14 @@ def build_t2():
     return g.cut(Part.makeCylinder(PILOT / 2, 12, V(0, -GRUB_U, -3.5), V(0, 0, -1))).removeSplitter()
 
 
-ROD_U0, ROD_U1 = -2.2, UF + FPLATE_T - 1.5
+ROD_U0, ROD_U1 = -ROD_POCKET, UF + FPLATE_T - 1.5
 
 
 def build_rod(sx):
     r = box(sx * ROD_X - ROD_S / 2, sx * ROD_X + ROD_S / 2, -ROD_U1, -ROD_U0, ROD_Z - ROD_S / 2, ROD_Z + ROD_S / 2)
     r = r.makeChamfer(0.6, [e for e in r.Edges if abs(e.BoundBox.YLength - (ROD_U1 - ROD_U0)) < 1e-6])
-    return r.cut(ycu(PILOT / 2, ROD_U1 - 9, ROD_U1 + 1, sx * ROD_X, ROD_Z)).removeSplitter()
+    r = r.cut(ycu(PILOT / 2, ROD_U1 - ROD_PILOT, ROD_U1 + 1, sx * ROD_X, ROD_Z))
+    return r.cut(ycu(PILOT / 2, ROD_U0 - 1, ROD_U0 + ROD_PILOT, sx * ROD_X, ROD_Z)).removeSplitter()
 
 
 # ---- shift fork (ring in the spool groove, strap to a guide block on the rod), servo arm, servo and motor references
@@ -365,11 +373,15 @@ WALL_X0 = XS + SV_W / 2 + SV_OVER / 2 + 1.5
 WALL_X1 = WALL_X0 + 3.2
 GLUES_R = [(sx * 21.0, y) for sx in (-1, 1) for y in (12.0, 30.0, 48.0)]
 CUT_X0, CUT_X1 = -32.0, 32.0
-CUT_Y0, CUT_Y1 = -(UF + FPLATE_T + 1.0), HEAD_Y1 + 1.0
+CUT_Y0, CUT_Y1 = -(UF + FPLATE_T + M3_HEAD_H + 1.0), HEAD_Y1 + 1.0
 EAR_X, EAR_YS, EAR_R, EAR_HOLE, BOLT_L = 38.0, (12.0, 56.0), 4.8, 3.6, 12.0
-PX, PZ, WING_Z0, WING_Z1, BAR_L = (33.6, 39.9), 36.5, FLOOR_TOP, FLOOR_TOP + 7.0, 8.0
-RAIL_X, RAIL_W, RAIL_Z1 = 19.0, 6.8, LOW_Z0 + 8.0
-SM_U1 = UF + FPLATE_T + 3.2
+PX, PZ, WING_Z0, WING_Z1, BAR_L = (33.6, 40.2), 36.5, FLOOR_TOP, FLOOR_TOP + 7.0, 8.0
+RAIL_X, RAIL_W, RAIL_Z1 = 19.0, 6.8, LOW_Z0 + 8.2
+XBAR_T = 3.2
+SM_U1 = UF + FPLATE_T + XBAR_T
+MOUNT_PILOT = MOUNT_SCREW_L - XBAR_T + PILOT_TIP
+PAN_PILOT_Z1 = PAN_ZOUT + HEAD_CB + PAN_SCREW_L + PILOT_TIP
+ROD_HEAD_U1 = UF + FPLATE_T + M3_HEAD_H
 STRIP2_Z0 = ARM_Z1 + ARM_TOL + 1.0
 U_BODY0, U_BODY1 = SV_UC - SV_L / 2 - SV_OVER / 2, SV_UC + SV_L / 2 + SV_OVER / 2
 SM_U0, SM_U2 = SV_UC - 18.8, SV_UC + 18.8
@@ -442,9 +454,10 @@ def build_bracket():
         x, z = MOT_PCD / 2 * math.cos(a), MZ + MOT_PCD / 2 * math.sin(a)
         b = b.cut(yc(MOT_HOLE_D / 2, -1, PLATE_T + 1, x, z)).cut(yc(MOT_CB_D / 2, -1, MOT_CB_DEEP, x, z))
     for sx in (-1, 1):
-        b = b.cut(box(sx * ROD_X - ROD_PK / 2, sx * ROD_X + ROD_PK / 2, -1, 2.7, ROD_Z - ROD_PK / 2, ROD_Z + ROD_PK / 2)).cut(mouth(sx * ROD_X, ROD_Z, 0.0, 1, ROD_PK))
+        b = b.cut(box(sx * ROD_X - ROD_PK / 2, sx * ROD_X + ROD_PK / 2, -1, ROD_POCKET, ROD_Z - ROD_PK / 2, ROD_Z + ROD_PK / 2)).cut(mouth(sx * ROD_X, ROD_Z, 0.0, 1, ROD_PK))
+        b = b.cut(yc(1.8, ROD_POCKET - 0.5, PLATE_T + 1, sx * ROD_X, ROD_Z))
         b = b.cut(window(min(sx * 12.0, sx * 22.0), max(sx * 12.0, sx * 22.0), 3.0, 17.0, 0, PLATE_T))
-        b = b.cut(zhole(PILOT / 2, sx * RAIL_X, PLATE_T + RAIL_W / 2, LOW_Z0 - 1, RAIL_Z1 - 0.8))
+        b = b.cut(zhole(PILOT / 2, sx * RAIL_X, PLATE_T + RAIL_W / 2, LOW_Z0 - 1, PAN_PILOT_Z1))
         for y in EAR_YS:
             b = b.cut(zhole(EAR_HOLE / 2, sx * EAR_X, y, PAD_Z0 - 1, PAD_Z1 + 1))
     for x, y in GLUES_R:
@@ -462,7 +475,7 @@ def build_front_plate():
     p = p.fuse(rbox(23.0, PX[1] + 3.4, y0, y1, WING_Z0, WING_Z1, 2.0))
     p = p.fuse(rbox(PX[0] - 3.4, PX[1] + 3.4, y1 - 0.01, y1 + BAR_L, WING_Z0, WING_Z1, 1.0))
     for px in PX:
-        p = p.cut(yc(PILOT / 2, y0 - 1, y0 + FPLATE_T + BAR_L - 2.0, px, PZ))
+        p = p.cut(yc(PILOT / 2, y0 - 1, y0 + MOUNT_PILOT, px, PZ))
     for z in (0.0, ZL):
         p = p.cut(yc(LINER_BORE / 2, y0 + LIP_T, y1 + FB + 1, 0, z))
         p = mouth_cut(p, z, y1 + FB, 1)
@@ -473,7 +486,7 @@ def build_front_plate():
         p = p.cut(mouth(sx * ROD_X, ROD_Z, y1, -1, ROD_PK))
         p = p.cut(yc(1.8, y0 - 1, y1, sx * ROD_X, ROD_Z))
         p = p.fuse(rbox(sx * RAIL_X - RAIL_W / 2, sx * RAIL_X + RAIL_W / 2, y1 - 0.01, y1 + RAIL_W, LOW_Z0, RAIL_Z1, 1.0))
-        p = p.cut(zhole(PILOT / 2, sx * RAIL_X, y1 + RAIL_W / 2, LOW_Z0 - 1, RAIL_Z1 - 0.8))
+        p = p.cut(zhole(PILOT / 2, sx * RAIL_X, y1 + RAIL_W / 2, LOW_Z0 - 1, PAN_PILOT_Z1))
     p = p.cut(window(-26, -12, 1.0, 20.0, y0, y1)).cut(window(12, 26, 1.0, 20.0, y0, y1))
     return p.removeSplitter()
 
@@ -527,11 +540,21 @@ def build_pan():
         pan = pan.cut(slot)
     pan = pan.makeFillet(0.8, [e for e in pan.Edges if (e.BoundBox.YMax > y_hi - 1e-6 or e.BoundBox.YMin < y_lo + 1e-6) and e.BoundBox.YLength < 0.01 and e.BoundBox.ZLength > 0.5])
     for sx in (-1, 1):
+        hr = M3_HEAD_D / 2 + PAN_NOTCH
+        pan = pan.cut(box(sx * ROD_X - hr, sx * ROD_X + hr, -ROD_HEAD_U1 - 1.0, -(UF + FPLATE_T) + 0.2, ROD_Z - hr, PAN_RIM + 1))
         for y in (PLATE_T + RAIL_W / 2, -(UF - RAIL_W / 2)):
             x = sx * RAIL_X
             pan = pan.fuse(zhole(4.4, x, y, PAN_ZIN - 0.01, LOW_Z0)).fuse(Part.makeCone(6.6, 4.4, 2.2, V(x, y, PAN_ZIN - 0.01), Z))
-            pan = pan.cut(zhole(1.8, x, y, PAN_ZOUT - 1, LOW_Z0 + 1)).cut(zhole(3.1, x, y, PAN_ZOUT - 1, PAN_ZOUT + HEAD_CB))
+            pan = pan.cut(zhole(1.8, x, y, PAN_ZOUT - 1, LOW_Z0 + 1)).cut(zhole(HEAD_BORE / 2, x, y, PAN_ZOUT - 1, PAN_ZOUT + HEAD_CB))
     return pan.removeSplitter()
+
+
+def rod_head(sx, front):
+    return Part.makeCylinder(M3_HEAD_D / 2, M3_HEAD_H, V(sx * ROD_X, -(UF + FPLATE_T) if front else PLATE_T, ROD_Z), V(0, -1, 0) if front else Y)
+
+
+def build_rod_heads():
+    return Part.makeCompound([rod_head(sx, f) for sx in (-1, 1) for f in (True, False)])
 
 
 def ear_pos():
@@ -710,6 +733,9 @@ def step_assembly(P, refs):
     for n, st, nn in (("MotorGear_A", 4.0, 20), ("MotorGear_C", 4.0, 20), ("MotorCap", 4.0, 8), ("T1", 4.0, 10)):
         r["on_" + n] = sweep(d[n], base, fwd(nn * st))
         base.append(d[n])
+    cap_head = cyl_dir(M3_HEAD_D / 2, V(0, -CAP_SEAT, MZ), (0, -1, 0), M3_HEAD_H)
+    c = dr(V(0, -(CAP_SEAT + M3_HEAD_H), MZ), (0, -1, 0))
+    r["cap_screw"] = z0(*[(c, s) for s in base if s is not d["T1"]] + [(cap_head, s) for s in base if s is not d["T1"]])
     r["rods_in"] = max(sweep(d[n], base, fwd(84)) for n in ("Rod_1", "Rod_2"))
     base += [d["Rod_1"], d["Rod_2"]]
     front = fp.fuse(S[1]).fuse(S[3])
@@ -722,10 +748,10 @@ def step_assembly(P, refs):
     c = dr(V(0, -(FLANGE_U0 + M0) / 2, MZ + HUB_R + 0.2), (0, 0, 1))
     r["grub_motor"] = z0((c, mot), (c, br))
     r["motor_screws"] = z0(*[(dr(V(MOT_PCD / 2 * math.cos(math.radians(60 * k)), 0, MZ + MOT_PCD / 2 * math.sin(math.radians(60 * k))), (0, -1, 0)), d["MotorCarrier"]) for k in range(6)])
-    c = dr(V(0, -(STUB_END - HEAD_CB), MZ), (0, -1, 0))
-    r["cap_screw"] = z0((c, br), (c, mot))
     r["front_screws"] = z0(*[(dr(V(sx * ROD_X, -(UF + FPLATE_T), ROD_Z), (0, -1, 0)), s) for sx in (-1, 1) for s in bench if s is not front])
-    modl = [d[n] for n in MODULE] + [mot]
+    hf = [rod_head(sx, True) for sx in (-1, 1)]
+    r["rear_screws"] = z0(*[(dr(V(sx * ROD_X, PLATE_T + M3_HEAD_H, ROD_Z), (0, 1, 0)), s) for sx in (-1, 1) for s in bench + hf])
+    modl = [d[n] for n in MODULE] + [mot, d["Ref_Heads"]]
     r["lowering"] = max(sweep(s, [flo], up(78)) for s in modl)
     ts = d["ThroughShaft"]
     t2 = d["T2"]
@@ -872,6 +898,27 @@ def solid_run(s, p, d, lim=40.0, step=0.1):
     return round(tot, 1)
 
 
+def void_run(s, p, d, lim=20.0, step=0.1):
+    """length of the void met walking from p along d (a pilot or a hole) before material"""
+    d = V(*d)
+    d.normalize()
+    t = 0.0
+    while t < lim and not s.isInside(p + d * (t + step / 2), 1e-7, True):
+        t += step
+    return round(t, 1)
+
+
+def hole_open(s, x, z, ya, yb, r):
+    """true when a pass hole of radius r runs from ya to yb: void at r - 0.1 all round, material at r + 0.1"""
+    for k in range(7):
+        y = ya + (yb - ya) * k / 6.0
+        for a in range(8):
+            c, sn = math.cos(math.pi * a / 4), math.sin(math.pi * a / 4)
+            if s.isInside(V(x + (r - 0.1) * c, y, z + (r - 0.1) * sn), 1e-7, True) or not s.isInside(V(x + (r + 0.1) * c, y, z + (r + 0.1) * sn), 1e-7, True):
+                return False
+    return True
+
+
 # minimum gaps (mm) from the kit rules, measured with distToShape; anything not listed must be >= 0.8
 RULE_FACE_MIN, RULE_FACE_MAX = 0.2, 0.25
 RULE_SLIDE, RULE_SPIN, RULE_BORE, RULE_FLOAT_MIN, RULE_FLOAT_MAX, RULE_FORK_PLAY = 0.5, 0.8, 0.3, 0.3, 0.5, 0.4
@@ -883,8 +930,8 @@ FITS = {("Layshaft", "Bracket"): F2, ("T1", "FrontPlate"): F2, ("ThroughShaft", 
         ("ShiftFork", "SlideCap"): RULE_FORK_PLAY, ("ShiftFork", "SlideGear_B"): RULE_FORK_PLAY,
         ("ShiftFork", "Rod_1"): RULE_SPIN, ("ServoArm", "Rod_1"): RULE_SLIDE, ("ShiftFork", "ServoArm"): RULE_SLIDE, ("FrontPlate", "ShiftFork"): RULE_SPIN,
         ("Bracket", "ShiftFork"): RULE_SLIDE, ("ShiftFork", "Ref_Floor"): RULE_SLIDE, ("ServoArm", "Ref_Floor"): RULE_SLIDE,
-        ("Bracket", "Rod_1"): RULE_SLIDE, ("Bracket", "Rod_2"): RULE_SLIDE, ("SlideCap", "Bracket"): 1.0,
-        ("ServoArm", "Ref_Servo"): 0.0, ("Ref_Servo", "FrontPlate"): 0.0, ("Ref_Servo", "ServoMount"): 0.0, ("ServoMount", "FrontPlate"): 0.0, ("ServoMount", "Ref_Floor"): 0.0,
+        ("Bracket", "Rod_1"): 0.0, ("Bracket", "Rod_2"): 0.0, ("SlideCap", "Bracket"): 1.0,
+        ("ServoArm", "Ref_Servo"): 0.0, ("Ref_Servo", "FrontPlate"): 0.0, ("Ref_Servo", "ServoMount"): 0.0, ("ServoMount", "FrontPlate"): 0.0, ("ServoMount", "Ref_Floor"): 0.0, ("FrontPlate", "Ref_Heads"): 0.0, ("Bracket", "Ref_Heads"): 0.0,
         ("FrontPlate", "Rod_1"): 0.0, ("FrontPlate", "Rod_2"): 0.0, ("CasePan", "Bracket"): 0.0, ("CasePan", "FrontPlate"): 0.0, ("CasePan", "ShiftFork"): RULE_SPIN,
         ("Bracket", "Ref_Floor"): 0.0, ("FrontPlate", "Ref_Floor"): 0.0, ("Bracket", "Ref_MotorBody"): 0.0, ("Bracket", "Ref_Bolts"): 0.0, ("ServoMount", "Ref_Bolts"): 0.0, ("ServoMount", "Bracket"): 0.0, ("Ref_Bolts", "Ref_Floor"): 0.0}
 FLOATS = {"Layshaft": (("Layshaft", "Sleeve_3"), ("T1", "Sleeve_4")), "ThroughShaft": (("ThroughShaft", "Sleeve_1"), ("T2", "Sleeve_2"))}
@@ -982,7 +1029,7 @@ def step_misc(P, refs):
     for tau in TAUS:
         d = posed(P, tau, refs)
         for n, s in d.items():
-            if n in ("ThroughShaft", "CasePan", "ServoMount") or n.startswith("Ref_") or not bbo(s, zone):
+            if n in ("ThroughShaft", "CasePan", "ServoMount") or (n.startswith("Ref_") and n != "Ref_Heads") or not bbo(s, zone):
                 continue
             c = s.common(zone)
             if not c.Solids:
@@ -1016,6 +1063,9 @@ def step_misc(P, refs):
     r["glue_area_cm2"] = round(sum(glue) / 100.0, 1)
     r["motor_pad_gap"] = round(refs["Ref_Motor"].BoundBox.ZMin - PAD_Z1, 3)
     r["print"] = {n: printable(n, P[n]) for n in PRINT_UP}
+    drv = cyl_dir(M3_HEAD_D / 2, V(0, -(CAP_SEAT + M3_HEAD_H), MZ), (0, -1, 0), 60)
+    r["cap_bore_clear"] = round(dist(drv, P["MotorCap"]), 3)
+    r["heads_motor"] = round(dist(refs["Ref_Heads"], refs["Ref_MotorBody"]), 2)
     sp = P["SlideCap"]
     pts = []
     for k in range(48):
@@ -1032,12 +1082,13 @@ def step_misc(P, refs):
     rf["motor_carrier"] = ring_fill(P["MotorCarrier"], V(0, -(FLANGE_U0 + M0) / 2, MZ), (0, 0, 1), 1.4, 3.4, 2.8, 8.2)
     for n, sx in (("Rod_1", 1), ("Rod_2", -1)):
         rf[n] = ring_fill(P[n], V(sx * ROD_X, -ROD_U1, ROD_Z), (0, 1, 0), 1.4, 3.4, 0.3, 8.7)
+        rf[n + "_rear"] = ring_fill(P[n], V(sx * ROD_X, -ROD_U0, ROD_Z), (0, -1, 0), 1.4, 3.4, 0.3, 8.7)
     y0 = -(UF + FPLATE_T)
     for i, px in enumerate(PX):
         rf["mount_screw_%d" % i] = ring_fill(P["FrontPlate"], V(px, y0, PZ), (0, 1, 0), 1.4, 3.4, 0.2, 8.8)
     for sx in (-1, 1):
-        rf["rail_rear_%d" % sx] = ring_fill(P["Bracket"], V(sx * RAIL_X, PLATE_T + RAIL_W / 2, LOW_Z0), (0, 0, 1), 1.4, 3.4, 0.2, RAIL_Z1 - 0.8 - LOW_Z0 - 0.2)
-        rf["rail_front_%d" % sx] = ring_fill(P["FrontPlate"], V(sx * RAIL_X, -UF + RAIL_W / 2, LOW_Z0), (0, 0, 1), 1.4, 3.4, 0.2, RAIL_Z1 - 0.8 - LOW_Z0 - 0.2)
+        rf["rail_rear_%d" % sx] = ring_fill(P["Bracket"], V(sx * RAIL_X, PLATE_T + RAIL_W / 2, LOW_Z0), (0, 0, 1), 1.4, 3.4, 0.2, PAN_PILOT_Z1 - LOW_Z0 - 0.2)
+        rf["rail_front_%d" % sx] = ring_fill(P["FrontPlate"], V(sx * RAIL_X, -UF + RAIL_W / 2, LOW_Z0), (0, 0, 1), 1.4, 3.4, 0.2, PAN_PILOT_Z1 - LOW_Z0 - 0.2)
         for y in (PLATE_T + RAIL_W / 2, -UF + RAIL_W / 2):
             rf["post_%d_%.0f" % (sx, y)] = ring_fill(P["CasePan"], V(sx * RAIL_X, y, PAN_ZIN), (0, 0, 1), 1.8, 3.8, PAN_ZOUT + HEAD_CB - PAN_ZIN + 0.05, LOW_Z0 - PAN_ZIN - 0.05)
     for x, y in ear_pos():
@@ -1047,6 +1098,12 @@ def step_misc(P, refs):
         rf["mount_pass_%d" % i] = ring_fill(P["ServoMount"], V(px, -SM_U1, PZ), (0, 1, 0), 1.8, 3.0, 0.05, 3.1)
     r["ring"] = rf
     br, fp, sm = P["Bracket"], P["FrontPlate"], P["ServoMount"]
+    r["frame"] = {n: dict(front_pilot=void_run(P[n], V(sx * ROD_X, -ROD_U1, ROD_Z), (0, 1, 0)), rear_pilot=void_run(P[n], V(sx * ROD_X, -ROD_U0, ROD_Z), (0, -1, 0)),
+                          front_hole=hole_open(fp, sx * ROD_X, ROD_Z, -(UF + FPLATE_T) + 0.2, -(UF + FPLATE_T) + 1.3, 1.8),
+                          rear_hole=hole_open(br, sx * ROD_X, ROD_Z, ROD_POCKET + 0.2, PLATE_T - 0.1, 1.8)) for n, sx in (("Rod_1", 1), ("Rod_2", -1))}
+    r["pilot_depth"] = dict(cap=void_run(P["MotorCarrier"], V(0, -ARB_END, MZ), (0, 1, 0)), mount=min(void_run(fp, V(px, -(UF + FPLATE_T), PZ), (0, 1, 0)) for px in PX),
+                            pan=min(void_run(P["Bracket"], V(sx * RAIL_X, PLATE_T + RAIL_W / 2, LOW_Z0), (0, 0, 1)) for sx in (-1, 1)) + 0.0,
+                            pan_front=min(void_run(fp, V(sx * RAIL_X, -UF + RAIL_W / 2, LOW_Z0), (0, 0, 1)) for sx in (-1, 1)))
     wl = dict(fork_ring=wall_from(P["ShiftFork"], V(-RING_RI, -(RING_U0 + RING_T / 2), ZL), (-1, 0, 0)),
               boss=wall_from(br, V(-LINER_BORE / 2, PLATE_T + RB / 2, 0), (-1, 0, 0)),
               boss_mouth=wall_from(br, V(-LINER_BORE / 2 - 0.3, PLATE_T + RB - 0.02, 0), (-1, 0, 0)),
@@ -1057,7 +1114,8 @@ def step_misc(P, refs):
               rod_pocket_rear=wall_from(br, V(ROD_X + ROD_PK / 2 - 0.05, 1.5, ROD_Z), (1, 0, 0)),
               rod_mouth_rear=wall_from(br, V(ROD_X + 4.5, 0.02, ROD_Z), (1, 0, 0)),
               rod_pocket_front=wall_from(fp, V(ROD_X + ROD_PK / 2 - 0.05, -(UF + 0.75), ROD_Z), (1, 0, 0)),
-              rod_mouth_front=wall_from(fp, V(ROD_X + 4.5, -(UF + 0.02), ROD_Z), (1, 0, 0)))
+              rod_mouth_front=wall_from(fp, V(ROD_X + 4.5, -(UF + 0.02), ROD_Z), (1, 0, 0)),
+              rod_floor_rear=wall_from(br, V(ROD_X + 2.5, ROD_POCKET - 0.3, ROD_Z), (0, 1, 0)))
     r["walls"] = wl
     r["tab_wall"] = [wall_from(sm, V(XS, -U_BODY0, SEAT_Z - 4.0), (0, 1, 0)), wall_from(sm, V(XS, -U_BODY1, SEAT_Z - 1.5), (0, -1, 0))]
     c_y = -(UF + FPLATE_T + 1.6)
@@ -1153,7 +1211,7 @@ def check(rep, asm, est, P):
     assert all(bed >= 5.0 and not bad_ for bed, bad_ in m["print"].values()), {k: v for k, v in m["print"].items() if v[0] < 5.0 or v[1]}
     wall = dict(spool_corner=GROOVE_R - SL_GAF / R3, carrier_flat=(SL_AF - SLIDE_AF) / 2 - 0.5, carrier_flat_plain=(SL_AF - SLIDE_AF) / 2, hubA=SPA_R - SL_GAF / R3,
                 motor_hub=HUB_R - GEAR_AF / R3, ring=m["walls"]["fork_ring"], rod_pilot=(ROD_S - PILOT) / 2, block=min(BLK_Z1 - GRV_Z, ROD_X - BLK_PK / 2 - BLK_X0, ROD_Z - BLK_PK / 2 - BLK_Z0),
-                pilot_flange=(FLANGE_T - PILOT) / 2, tower=min(TW_HALF - TW_SLOT, PIN_U - GRV_W / 2 - BLK_U0, 2.0), strap_ring=STRAP_Z1 - STRAP_Z0, arm_recess=AT - 1.9, arm_recess_side=4.5 - 3.3, boss=min(m["walls"][k] for k in ("boss", "boss_front")), boss_mouth=m["walls"]["boss_mouth"], lip=m["walls"]["lip"], pan=min(m["walls"]["pan_side"], m["walls"]["pan_floor"]), rod_pocket=min(m["walls"][k] for k in ("rod_pocket_rear", "rod_mouth_rear", "rod_pocket_front", "rod_mouth_front")))
+                pilot_flange=(FLANGE_T - PILOT) / 2, tower=min(TW_HALF - TW_SLOT, PIN_U - GRV_W / 2 - BLK_U0, 2.0), strap_ring=STRAP_Z1 - STRAP_Z0, arm_recess=AT - 1.9, arm_recess_side=4.5 - 3.3, boss=min(m["walls"][k] for k in ("boss", "boss_front")), boss_mouth=m["walls"]["boss_mouth"], lip=m["walls"]["lip"], pan=min(m["walls"]["pan_side"], m["walls"]["pan_floor"]), rod_pocket=min(m["walls"][k] for k in ("rod_pocket_rear", "rod_mouth_rear", "rod_pocket_front", "rod_mouth_front", "rod_floor_rear")))
     assert all(v >= 1.2 - 1e-9 for v in wall.values()) and wall["carrier_flat_plain"] >= 2.0 and wall["hubA"] >= 2.0 - 1e-9, wall
     assert wall["ring"] >= 1.6 - 1e-9 and wall["rod_pilot"] >= 2.0 - 1e-9 and wall["pilot_flange"] >= 2.0 - 1e-9 and wall["boss"] >= 2.0 - 1e-9 and wall["pan"] >= 1.6 and wall["lip"] >= 1.2 and wall["boss_mouth"] >= 1.2, wall
     keyed = {"MotorGear_B": (NM["B"], GEAR_AF), "MotorGear_A": (NM["A"], GEAR_AF), "MotorGear_C": (NM["C"], GEAR_AF), "SlideGear_B": (NS["B"], SL_GAF), "SlideGear_A": (NS["A"], SL_GAF),
@@ -1178,15 +1236,28 @@ def check(rep, asm, est, P):
     m["cutout"] = (round(cut_x, 1), round(cut_y, 1))
     assert cut_x <= 64 + 1e-9 and cut_y <= (ext[3] - ext[2]) + 2.0 + 1e-6, (m["cutout"], ext)
     if cut_y > 92:
-        MISSED["cutout_length"] = (m["cutout"], "limit 92: the layshaft rear boss and head (z up to 32 in the floor slab) set the rear edge at y %.1f, and the front plate at y %.1f" % (CUT_Y1, -(UF + FPLATE_T)))
+        MISSED["cutout_length"] = (m["cutout"], "limit 92: the layshaft rear boss and head (z up to 32 in the floor slab) set the rear edge at y %.1f, and the front plate and its rod screw heads at y %.1f" % (CUT_Y1, -(UF + FPLATE_T + M3_HEAD_H)))
     assert m["lowest"] >= -16.0 and m["zmax_vs_motor_top"] <= 5.0 + 1e-6 and m["plastic_cm3"] < 200 and m["footprint"][0] <= 100, m
     m["case"] = dict(depth_below_floor=round(AXIS_DEPTH - PAN_ZOUT, 1), bottom_z=PAN_ZOUT, ground_clearance_100mm_wheels=round(50.0 + PAN_ZOUT, 1), screw_head_clearance=round(50.0 + PAN_ZOUT, 1))
     m["glue_land"] = dict(rear_mm=round(PAD_Y1 - PLATE_T, 1), minus_x_mm=round(CUT_X0 - (-34.4), 1), area_cm2=m["glue_area_cm2"])
     m["bolt_pattern"] = dict(x=EAR_X, y=list(EAR_YS), hole=EAR_HOLE, bolt="M3x%d, M3x%d at the ServoMount tie ear" % (BOLT_L, TIE_BOLT_L))
     assert gapof(gap, "Bracket", "ServoMount") < 1e-3 and gapof(gap, "FrontPlate", "ServoMount") < 1e-3, "ServoMount must touch both the Bracket and the FrontPlate"
     assert est["force_allowed_N"] >= 4.35, est
-    assert STUB_END - HEAD_CB - ARB_END + 6.0 <= CAP_SCREW_L and STUB_END - HEAD_CB - CAP_SCREW_L >= ARB_END - 10.0, "MotorCap screw length"
-    assert CAP_PLATE_FLOOR - (STUB_END - HEAD_CB + 3.0) >= RULE_SPIN - 1e-9, "MotorCap screw head to front plate"
+    cap_eng, rod_eng, rear_eng = CAP_SCREW_L - (CAP_SEAT - ARB_END), ROD_SCREW_L - (UF + FPLATE_T - ROD_U1), ROD_REAR_L - (PLATE_T + ROD_U0)
+    mount_eng, pan_eng, mot_eng = MOUNT_SCREW_L - XBAR_T, PAN_SCREW_L - (LOW_Z0 - (PAN_ZOUT + HEAD_CB)), MOTOR_SCREW_L - (PLATE_T - MOT_CB_DEEP)
+    assert min(cap_eng, rod_eng, rear_eng, mount_eng, pan_eng, mot_eng) >= 5.0 - 1e-9, (cap_eng, rod_eng, rear_eng, mount_eng, pan_eng, mot_eng)
+    pd = m["pilot_depth"]
+    assert pd["cap"] >= cap_eng and pd["mount"] >= mount_eng and pd["pan"] >= pan_eng and pd["pan_front"] >= pan_eng, (pd, cap_eng, mount_eng, pan_eng)
+    assert (STUB_D - HEAD_BORE) / 2 >= 1.5 - 1e-9 and CAP_CB >= M3_HEAD_H and CAP_SEAT - ARB_END >= 4.0 and CAP_PLATE_FLOOR - STUB_END >= RULE_SPIN - 1e-9, "MotorCap counterbore"
+    assert (HEAD_BORE - M3_HEAD_D) / 2 >= RULE_BORE - 1e-9 and m["cap_bore_clear"] >= RULE_BORE - 1e-3, (m["cap_bore_clear"], "driver in the MotorCap bore")
+    assert PAN_ZOUT + HEAD_CB + PAN_SCREW_L <= PAN_PILOT_Z1 and RAIL_Z1 - PAN_PILOT_Z1 >= 1.2 - 1e-9 and FPLATE_T + BAR_L - MOUNT_PILOT >= 2.0 - 1e-9, "pilot ends"
+    for n, f in m["frame"].items():
+        assert f["front_hole"] and f["rear_hole"] and f["front_pilot"] >= rod_eng and f["rear_pilot"] >= rear_eng, (n, f, rod_eng, rear_eng)
+    assert m["heads_motor"] >= RULE_SPIN - 1e-9 and m["walls"]["rod_floor_rear"] >= 1.2 - 1e-9, (m["heads_motor"], m["walls"]["rod_floor_rear"])
+    screws = [("MotorCap", 1, CAP_SCREW_L, 0), ("RodFront", 2, ROD_SCREW_L, 0), ("RodRear", 2, ROD_REAR_L, 0), ("ServoMount", 2, MOUNT_SCREW_L, 0), ("CasePan", 4, PAN_SCREW_L, 0),
+              ("Motor", 6, MOTOR_SCREW_L, 0), ("EarBolt", 3, BOLT_L, 0), ("TieBolt", 1, TIE_BOLT_L, 0), ("Grub", 4, GRUB_L, 1)]
+    assert all(l == GRUB_L if g else l in KIT_LENGTHS for _, _, l, g in screws) and GRUB_L == 6.0, screws
+    m["screws"] = {n: (c, l) for n, c, l, _ in screws}
     if min(m["tab_wall"]) < 2.0:
         MISSED["servo_tab_pilot_wall"] = (m["tab_wall"], "the servo tab hole is %.2f from the body end, so a 2.0 wall body side of the M2 pilot (dia %.1f) is impossible; measured wall shown" % (SV_HOLE_SP / 2 - SV_L / 2, TAB_PILOT))
 
@@ -1194,7 +1265,7 @@ def check(rep, asm, est, P):
 def build_refs():
     mot = build_motor()
     body = mot.cut(yc(MOT_SH_D / 2 + 0.3, -MOT_SH_L - 1, PLATE_T + 0.001, 0, MZ))
-    return dict(Ref_Motor=mot, Ref_MotorBody=body, Ref_Floor=floor_slab(), Ref_Bolts=build_bolts())
+    return dict(Ref_Motor=mot, Ref_MotorBody=body, Ref_Floor=floor_slab(), Ref_Bolts=build_bolts(), Ref_Heads=build_rod_heads())
 
 
 def main():
@@ -1222,7 +1293,7 @@ def main():
     for n in PRINT_UP:
         o = doc.addObject("Part::Feature", n)
         o.Shape = placed[n]
-    for n in ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts"):
+    for n in ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts", "Ref_Heads"):
         o = doc.addObject("Part::Feature", n)
         o.Shape = placed[n]
     doc.recompute()

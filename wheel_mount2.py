@@ -2,16 +2,20 @@
 # Unlike wheel_mount.py (C yoke, trapped knuckle squeezed in sideways, one long M3x40 kingpin in plastic) nothing is trapped and nothing is squeezed: the knuckle slides straight up onto the post, ONE M3 kingpin bolt driven up from below into the post end keeps it there, steering is free on a 0.3 radial fit, the weight rides on a small thrust boss.
 # Layout: the kingpin axis does NOT cross the axle axis. The post sits OFF = 11.55 mm AHEAD of the axle (axle behind the post, arm rearward), so the wheel trails the pivot by 11.55 mm (mechanical trail, self-centring). 11.55 is the smallest offset that keeps 1.2 of solid between the dia 8.6 bolt pocket (washer dia 7 plus 0.8 gap) and the dia 12.2 liner pocket, measured corner to corner at the lip step (1.21 true distance); it was 10.5 with the old dia 9.9 bore. Left and right are mirror images across the car centre line, so ahead is the same y sign on both sides: the Knuckle is x symmetric, the Mount is y symmetric (turn it 180 degrees about the post for the other side). The axle stays 29.0 below the glue face.
 # Modes: FREE STEER (kingpin bolt only), LOCKED for an unsteered wheel (a second M3x16 from below up a deep counterbore and through the knuckle tower into a pad boss: two bolts from below = locked, one = steers; the shank has 0.3 radial in its 3.6 hole at 12.0 from the post axis, so +-1.43 degrees of toe play, about +-1.25 mm at the rim, none once tightened because the clamp pulls the knuckle up onto the thrust boss), POWERED (a JointYoke on the stub port, drive_shaft.py swing envelope, still steerable). The fits are sloppy by design (0.3 radial on the post, 0.4 stub float): expect a few degrees of camber and toe slop. Future suspension: the pad is the only chassis interface, a swing arm carrying the same post can replace it.
-# Axle bearings (same plan as gearbox_module.py): PTFE tube, nominal 10 ID x 12 OD, cut to LINER_L 8.0 (one length for the whole kit), runs as plain liners in the horizontal bore; Sleeve_1 (inboard, x -8.8 to -0.8) and Sleeve_2 (outboard, x 0.8 to 8.8) are printed placeholders of exactly 12.0 x 10.0 x 8.0, printed standing on end, one group of 2; real PTFE replaces them and nothing else is reprinted. The pocket bore LINER_BORE 12.2 (0.1 radial on the tube, tune it after measuring the tube) has a 0.7 lead-in cone at each end and a 1.6 thick lip in the middle with a 10.6 bore; each liner is pushed in by hand from its own end to the lip. Pocket wall 2.0 above and below (R_H 8.1), 1.3 at the mouth, 2.1 to the post socket. The knuckle bore is 17.8 long (was 22.6). Liner retention: the Stub flange (inboard) and the WheelHub face (outboard); liners sit 0.1 behind the knuckle end faces, so each liner has 0.3 end play with the stub centred (0.1 to 0.5 over the stub float). Nothing larger than the hex passes through a liner. The 8.0 AF hex (9.24 across corners) runs directly in the dia 10.0 bore (0.38 radial) and through the lip with 0.68 radial; there is no round journal.
+# Axle bearings (same plan as gearbox_module.py): PTFE tube, nominal 10 ID x 12 OD, cut to LINER_L 8.0 (one length for the whole kit), runs as plain liners in the horizontal bore; Sleeve_1 (inboard, x -8.8 to -0.8) and Sleeve_2 (outboard, x 0.8 to 8.8) are printed placeholders of exactly 12.0 x 10.0 x 8.0, printed standing on end, one group of 2; real PTFE replaces them and nothing else is reprinted. The pocket bore LINER_BORE 12.2 (0.1 radial on the tube, tune it after measuring the tube) has a 0.7 lead-in cone at each end and a 1.6 thick lip in the middle with a 10.6 bore; each liner is pushed in by hand from its own end to the lip. The pockets and the lip bore are printed without supports as teardrops: round R6.1 (R5.3 in the lip) for the lower 270 degrees, then 45 degree flats tangent at 45 degrees from the top, closed by a flat roof 2.85 wide (lip 2.99) at 7.2 (lip 6.0) above the axle axis; the liner (12.0 OD, 0.1 radial) stays located by the lower 270 degrees of the pocket circle and every flat side stays 0.1 off the tube, so the fit is unchanged, and retention is unchanged (lip, stub flange, hub face). The last 0.6 at each end is the 50 degree lead-in cone only, so the thrust faces keep their full area. Wall R_H 8.6: 2.5 under the pocket, 1.4 over the roof (1.26 at the roof corners), 1.8 at the mouth, 1.9 from the roof to the post socket floor, 2.1 to the post socket. The knuckle bore is 17.8 long (was 22.6). Liner retention: the Stub flange (inboard) and the WheelHub face (outboard); liners sit 0.1 behind the knuckle end faces, so each liner has 0.3 end play with the stub centred (0.1 to 0.5 over the stub float). Nothing larger than the hex passes through a liner. The 8.0 AF hex (9.24 across corners) runs directly in the dia 10.0 bore (0.38 radial) and through the lip with 0.68 radial; there is no round journal.
 # Stub axial location: flange inboard (dia 15 x 2.2) and WheelHub outboard bear on the printed Knuckle end faces, not on the liners: 0.2 gap each, 0.4 total float. The liner ends are 0.3 from flange and hub, so thrust never loads a soft PTFE liner and the float does not depend on how accurately the tube is cut. Bearing rings (face area common to both faces): flange on knuckle 21.7 mm2 (annulus from the 6.8 lead-in mouth to the flange rim at 7.5), hub on knuckle 55.8 mm2.
 # Retention and positive stop: the bolt runs up the post axis through a dia 8.6 pocket under a plate in the knuckle. The post end carries a dia 5.2 spigot (pilot dia 2.8 runs through it) that protrudes 0.15 below the plate; the M3 washer (dia 7 x 0.5) and the pan head (dia 6 x 3) bolt onto the spigot end and the bolt stops there, so tightening can never clamp the knuckle. Play does not depend on torque: 0.30 up (plate boss to post end), 0.15 down (plate shoulder to washer), 0.45 total. The washer overlaps the plate hole by 0.6 per side. The clamp screw down the post from the glue face is dropped: no room for 2 mm of solid between its pilot and the 11.5 mm bottom-bolt pilot, and it was only counted as preload; the root bending check is done without it.
-# Hardware per wheel: 1 M3x12 pan head kingpin bolt (11.5 mm thread engaged in spigot and post), 1 M3 washer dia 7 x 0.5, optional 1 M3x16 lock bolt (5.3 mm thread in the pad boss), 1 M3x16 hub cross screw (screws used: M3x12, M3x16 only), 2 PTFE liners 12 x 10 x 8 (placeholders until then). Mount, Knuckle, Stub, WheelHub and the 2 Sleeves are the only prints, ONE Mount and ONE Knuckle serve all four wheels. Heads sit inside the knuckle (kingpin head 0.35 above the axle axis, lock head 15.5 above the bottom at the top of an 18.5 deep dia 6.6 counterbore); the lowest point is the knuckle bottom at 8.1 below the axle axis (was 6.95).
-# Assembly: 1 push Sleeve_1 into the knuckle from the inboard end and Sleeve_2 from the outboard end, each to the lip; 2 Stub through the Knuckle from the inboard side (hex tip first, flange stops 0.2 off the face); 3 WheelHub onto the stub hex; 4 cross screw from above; 5 glue the Mount under the floor; 6 push the Knuckle (with sleeves, stub, hub and wheel) straight up onto the post; 7 kingpin bolt with its washer straight up from below with a dia 6 driver; 8 optional lock bolt likewise (driver dia 6 x 60 up the counterbore). Pull the bolts to take the knuckle off again with the mount glued in place. Steps 1 to 4 and 6 to 8 are translation sweeps with zero common volume in verify(), driver included.
-# Sizes: Mount 40 x 33 x 25.2 mm (pad 2.6 thick, 10.5 cm2 glue face, post dia 14, two lock bosses dia 6.8 at 12.0 either side), Knuckle 18.6 x 53.5 x 28.1 mm, Mount plus Knuckle 12.3 cm3, whole kit 21.5 cm3 (Stub 2.9, WheelHub 5.8, Sleeves 0.55). WheelHub is unchanged from before the liners. Walls 1.2 minimum, 2.0 around the socket and bore pocket. Knuckle = vertical barrel (post socket) blended into a horizontal barrel (liner pockets) with a 3 mm arm flowing out rearward (holes at 20, 27, 34 from the kingpin axis) and a slim front tower (dia 9 up to the counterbore top, 6 above) for the lock bolt, counterbore wall 1.2 round it and 1.4 to the post socket; edges are filleted where the kernel allowed (see report blend).
+# Hardware per wheel: 1 M3x12 pan head kingpin bolt (11.5 mm thread engaged in spigot and post), 1 M3 washer dia 7 x 0.5, optional 1 M3x16 lock bolt (5.3 mm thread in the pad boss), 1 M3x16 hub cross screw (screws used: M3x12, M3x16 only), 2 PTFE liners 12 x 10 x 8 (placeholders until then). Mount, Knuckle, Stub, WheelHub and the 2 Sleeves are the only prints, ONE Mount and ONE Knuckle serve all four wheels. Heads sit inside the knuckle (kingpin head 0.35 above the axle axis, lock head 16.0 above the bottom at the top of a 19.0 deep dia 6.6 counterbore); the lowest point is the knuckle bottom at 8.6 below the axle axis (was 6.95). The lock pilot ends 0.75 past the nominal screw tip, so with the knuckle clamped up by its 0.3 play the tip still has 0.45 of clearance and 1.85 of solid is left above the pilot (1.55 clamped).
+# Assembly: 0 drill out the two 0.2 skins in the Knuckle from below; 1 push Sleeve_1 into the knuckle from the inboard end and Sleeve_2 from the outboard end, each to the lip; 2 Stub through the Knuckle from the inboard side (hex tip first, flange stops 0.2 off the face); 3 WheelHub onto the stub hex; 4 cross screw from above; 5 glue the Mount under the floor; 6 push the Knuckle (with sleeves, stub, hub and wheel) straight up onto the post; 7 kingpin bolt with its washer straight up from below with a dia 6 driver; 8 optional lock bolt likewise (driver dia 6 x 60 up the counterbore). Pull the bolts to take the knuckle off again with the mount glued in place. Steps 1 to 4 and 6 to 8 are translation sweeps with zero common volume in verify(), driver included.
+# Sizes: Mount 40 x 33 x 25.2 mm (pad 2.6 thick, 10.5 cm2 glue face, post dia 14, two lock bosses dia 6.8 at 12.0 either side), Knuckle 18.6 x 55.0 x 28.6 mm, Mount plus Knuckle 12.6 cm3, whole kit 21.9 cm3 (Stub 2.9, WheelHub 5.8, Sleeves 0.55). WheelHub is unchanged from before the liners. Walls 1.2 minimum, 2.0 around the socket and bore pocket. Knuckle = vertical barrel (post socket) blended into a horizontal barrel (liner pockets) with a 3 mm arm flowing out rearward (holes at 20, 27, 34 from the kingpin axis) and a slim front tower (dia 9 up to the counterbore top, 6 above) for the lock bolt, counterbore wall 1.2 round it and 1.4 to the post socket; edges are filleted where the kernel allowed (see report blend).
 # Steering: 60 degrees each way free (swept limit, measured against the Mount, the wheel clears the pad by 6.5 mm, stub 5.1, hub 5.0); powered limited by the universal joint to about 36 degrees (drive_shaft.py), not by the mount. The FLOOR needs a wheel arch: with 2 mm clearance its edge must sit at or inboard of x -7.4 from the post axis for 30 degrees, -22.2 for 45, -35.6 for 60 (worse than with the axle through the kingpin because the wheel trails; the pad's outboard edge is x 11).
 # Strength (15 N vertical at the tyre centre plus 15 N sideways at the tyre contact): root 5.8 MPa (margin 2.1, offset adds 173 Nmm bending and 173 Nmm torsion, 0.3 MPa), socket bearing 3.2 MPa, kingpin bolt pull-out 30 N against 542 N (assumed 10 MPa printed PLA thread shear, an assumption not a measurement), lock bolt 250 N, washer shoulder 5.0 MPa, boss bearing 0.8 MPa, plate shear around the boss 0.35 MPa (3.0 plate).
-# Prints: Mount glue face down (post up), Knuckle flat on its bottom (socket up, arm on the bed; the dia 12.2 horizontal pockets print as unsupported round holes, the top arc within 45 degrees spans 8.6 mm), Stub on its flat, WheelHub flange down, Sleeves standing on end. The hub hex socket (8.2 on 8.0 AF) is the kit standard from differential.py. Steering ranges, volumes, clearances and stresses are printed in the report and asserted in check().
+# Prints (PLA, 0.4 nozzle, 0.2 layers, supports OFF): Mount glue face down (post up), Knuckle flat on its bottom (socket up, arm on the bed), Stub on its flat, WheelHub flange down, Sleeves standing on end. The hub hex socket (8.2 on 8.0 AF) is the kit standard from differential.py. Steering ranges, volumes, clearances, stresses and the print rules are printed in the report and asserted in check().
+# Print rules, measured on every printed part in its print orientation by print_check with no exemptions except the one named below: P1 no down-facing face shallower than 45 degrees except the bed (the underside cones and keel flanks are 50; horizontal round holes of dia 6 or less may stay round, the hub screw holes); P2 every flat down-facing face is a true bridge (straight chords of 10 or less, solid under both ends of every chord, no hole in it), so the glue grooves pass and a counterbore ceiling with a hole in it fails; P5 slicing every 0.2, no region of a layer lies more than 0.3 outside the layer below, except bridges as in P2 and the arch over a hole of dia 6 or less; P6 bed contact at least 60 mm2, height at most 4 x the smaller bed dimension, first layer walls at least 0.8. Sacrificial skins (P3): the Knuckle carries a 0.2 skin across the dia 5.8 kingpin plate hole and one across the dia 3.6 lock bolt hole, modelled as solid so the pocket and counterbore ceilings are true bridges; clear them on assembly (the pocket and counterbore open on the bed side: a 6 mm drill or punch from below for the kingpin hole, a 3.6 drill or the M3 bolt tip for the lock hole), and verify() measures the fits, sweeps and walls on the Knuckle with the skins drilled out. Named exemption: Sleeve_1 and Sleeve_2 bed contact is 34.6 mm2 (ring 12.0 x 10.0 on end, below the 60 floor); they are placeholders replaced by PTFE tube, print them with a slicer brim.
 import FreeCAD as App, Part, math
+from shapely.geometry import Polygon, Point, LineString
+from shapely.ops import unary_union
+from shapely.prepared import prep
 
 D = {"NO_RUN": True, "__name__": "differential"}
 exec(compile(open("/home/mikhail/Documents/cad/RC Car/differential.py").read(), "differential.py", "exec"), D)
@@ -34,7 +38,11 @@ SOCK_R, R_B, R_COL = 7.3, 9.3, 6.0
 LINER_BORE, LINER_OD, LINER_ID, LINER_L = 12.2, 12.0, 10.0, 8.0
 LIP_T, LIP_BORE, LINER_REC, LEAD = 1.6, 10.6, 0.1, 0.7
 BORE_R = LINER_BORE / 2
-R_H = BORE_R + 2.0
+R_H = BORE_R + 2.5
+TAN50 = math.tan(math.radians(50.0))
+LEADX = LEAD / TAN50
+ROOF_Z, LIP_ROOF_Z, SKIN = 7.2, 6.0, 0.2
+ROOF_HW = BORE_R * math.sqrt(2) - ROOF_Z
 OFF = 11.55
 Z_FLOOR, BOSS_R, BOSS_H, BOSS_GAP, DOWN_GAP, PLATE_T = 7.0, 4.5, 0.8, 0.3, 0.15, 3.0
 POST_END = Z_FLOOR + BOSS_H + BOSS_GAP
@@ -53,7 +61,7 @@ R_L, TW_R, TW_BASE_R, LOCK_BOSS_R, CB_R = 12.0, 3.0, 4.5, 3.4, HEAD_D / 2 + 0.3
 LOCK_ENG = 5.3
 Z_B = K_TOP + 0.8 + BOSS_GAP
 Z_LS = Z_B + LOCK_ENG - LOCK_L
-LOCK_PILOT_TOP = Z_LS + LOCK_L + 0.45
+LOCK_PILOT_TOP = Z_LS + LOCK_L + BOSS_GAP + 0.45
 ARM_T, ARM_HOLES, ARM_HOLE, ARM_END_R = 3.0, (20.0, 27.0, 34.0), 3.6, 4.5
 JOIN_FIL, ARM_FIL = 2.0, 1.5
 GLUE_D = 5.0
@@ -79,6 +87,8 @@ LOAD_V, LOAD_S, ALLOW_BEND, ALLOW_BEARING = 15.0, 15.0, 12.0, 12.0
 PULL_N, TAU_THREAD = LOAD_V + LOAD_S, 10.0
 TOP_ANGLE, STEP = 60, 2
 
+LAYER, OVER, SPAN_MAX, ARCH_R, CHORD = 0.2, 0.3, 10.0, 3.0, 0.25
+NO_BED = ('Sleeve_1', 'Sleeve_2')
 PRINT_UP = dict(Mount="-Z", Knuckle="+Z", Stub="+Z", WheelHub="-X", Sleeve_1="+X", Sleeve_2="+X")
 COLORS = dict(Mount=(0.5, 0.5, 0.55), Knuckle=(0.2, 0.5, 0.9), Stub=(0.7, 0.3, 0.8), WheelHub=(0.9, 0.4, 0.6), Sleeve_1=(0.9, 0.9, 0.9), Sleeve_2=(0.9, 0.9, 0.9))
 
@@ -182,9 +192,10 @@ def pear():
 
 
 def build_horizontal():
-    a = R_H * math.sin(math.pi / 4)
-    b = 2 * a + K_BOT
-    kp = [V(-KN_HALF, -OFF + y, z) for y, z in ((-a, -a), (a, -a), (b, K_BOT), (-b, K_BOT))]
+    th = math.radians(50.0)
+    a, z0 = R_H * math.sin(th), -R_H * math.cos(th)
+    b = a - (z0 - K_BOT) / math.tan(th)
+    kp = [V(-KN_HALF, -OFF + y, z) for y, z in ((-a, z0), (a, z0), (b, K_BOT), (-b, K_BOT))]
     keel = Part.Face(Part.makePolygon(kp + kp[:1])).extrude(V(2 * KN_HALF, 0, 0))
     h = Part.makeCylinder(R_H, 2 * KN_HALF, V(-KN_HALF, -OFF, 0), X).fuse(keel).removeSplitter()
     return h
@@ -203,17 +214,26 @@ def build_arm():
 
 
 def pk_void():
-    return revz([(0, K_BOT - 1), (PK_R + 1.5, K_BOT - 1), (PK_R, K_BOT + 0.5), (PK_R, Z_U), (0, Z_U)])
+    return revz([(0, K_BOT - 1), (PK_R + 1.5, K_BOT - 1), (PK_R, K_BOT - 1 + 1.5 * TAN50), (PK_R, Z_U), (0, Z_U)])
+
+
+def tear(r, zr, x0, x1):
+    t, hw = r / math.sqrt(2), r * math.sqrt(2) - zr
+    p = [V(x0, y, z) for y, z in ((-t, 0), (t, 0), (t, t), (hw, zr), (-hw, zr), (-t, t))]
+    return Part.Face(Part.makePolygon(p + p[:1])).extrude(V(x1 - x0, 0, 0))
 
 
 def bore_void():
     r, h, c = BORE_R, LIP_T / 2, KN_HALF
-    return sh(revx([(-c - 1, 0), (-c - 1, r + LEAD + 1), (-c, r + LEAD), (-c + LEAD, r), (-h, r), (-h, LIP_BORE / 2), (h, LIP_BORE / 2), (h, r), (c - LEAD, r), (c, r + LEAD), (c + 1, r + LEAD + 1), (c + 1, 0)]))
+    v = revx([(-c - 1, 0), (-c - 1, r + LEAD + TAN50), (-c, r + LEAD), (-c + LEADX, r), (-h, r), (-h, LIP_BORE / 2), (h, LIP_BORE / 2), (h, r), (c - LEADX, r), (c, r + LEAD), (c + 1, r + LEAD + TAN50), (c + 1, 0)])
+    for r_, z_, x0, x1 in ((r, ROOF_Z, -c + LEADX, -h), (r, ROOF_Z, h, c - LEADX), (LIP_BORE / 2, LIP_ROOF_Z, -h, h)):
+        v = v.fuse(tear(r_, z_, x0, x1))
+    return sh(v.removeSplitter())
 
 
 def build_knuckle():
     vb = revz([(0, Z_U), (R_B, Z_U), (R_B, K_TOP - OUT_CH), (R_B - OUT_CH, K_TOP), (0, K_TOP)])
-    vb = vb.fuse(revz([(0, Z_U - (R_B - R_COL)), (R_COL, Z_U - (R_B - R_COL)), (R_B, Z_U), (0, Z_U)])).removeSplitter()
+    vb = vb.fuse(revz([(0, Z_U - (R_B - R_COL) * TAN50), (R_COL, Z_U - (R_B - R_COL) * TAN50), (R_B, Z_U), (0, Z_U)])).removeSplitter()
     hb = build_horizontal()
     k = blend(vb.fuse(hb).removeSplitter(), vb, hb, JOIN_FIL)
     low = pear().fuse(build_tower()).removeSplitter()
@@ -223,12 +243,16 @@ def build_knuckle():
     k = k.cut(box(-30, 30, -60, 40, K_BOT - 10, K_BOT))
     k = k.cut(revz([(0, Z_FLOOR), (SOCK_R, Z_FLOOR), (SOCK_R, K_TOP - SOCK_CH - 0.1), (SOCK_R + SOCK_CH, K_TOP), (SOCK_R + SOCK_CH, K_TOP + 1), (0, K_TOP + 1)]))
     k = k.fuse(revz([(2.0, Z_FLOOR - 0.1), (BOSS_R, Z_FLOOR - 0.1), (BOSS_R, Z_FLOOR + BOSS_H), (2.0, Z_FLOOR + BOSS_H)]))
-    k = k.cut(vcyl(SPIG_HOLE_R, 0, 0, Z_U - 1, Z_FLOOR + BOSS_H + 1)).cut(Part.makeCone(SPIG_HOLE_R, SPIG_HOLE_R + 0.6, 0.6, V(0, 0, Z_FLOOR + BOSS_H - 0.6), Z))
+    k = k.cut(vcyl(SPIG_HOLE_R, 0, 0, Z_U + SKIN, Z_FLOOR + BOSS_H + 1)).cut(Part.makeCone(SPIG_HOLE_R, SPIG_HOLE_R + 0.6, 0.6, V(0, 0, Z_FLOOR + BOSS_H - 0.6), Z))
     k = k.cut(pk_void()).cut(bore_void())
-    k = k.cut(vcyl(CLR_D / 2, 0, R_L, K_BOT - 1, K_TOP + 1)).cut(vcyl(CB_R, 0, R_L, K_BOT - 1, Z_LS))
+    k = k.cut(vcyl(CLR_D / 2, 0, R_L, Z_LS + SKIN, K_TOP + 1)).cut(vcyl(CB_R, 0, R_L, K_BOT - 1, Z_LS))
     for h in ARM_HOLES:
         k = k.cut(vcyl(ARM_HOLE / 2, 0, -h, K_BOT - 1, K_BOT + ARM_T + 1))
     return k.removeSplitter()
+
+
+def drill(k):
+    return k.cut(vcyl(SPIG_HOLE_R, 0, 0, Z_U - 1, Z_U + SKIN + 0.01)).cut(vcyl(CLR_D / 2, 0, R_L, Z_LS - 1, Z_LS + SKIN + 0.01))
 
 
 def build_stub():
@@ -361,20 +385,54 @@ def driver(p, d):
     return Part.makeCylinder(3.0, 60.0, p, d)
 
 
+def region(wires):
+    r = Polygon()
+    for w in wires:
+        q = [(v.x, v.y) for v in w.discretize(Deflection=0.02)]
+        if len(q) > 3:
+            r = r.symmetric_difference(Polygon(q).buffer(0))
+    return r
+
+
+def bridged(c, below, tol):
+    ok, x0, y0, x1, y1 = prep(below.buffer(tol)), *c.bounds
+    big, cx, cy = math.hypot(x1 - x0, y1 - y0) + 1.0, (x0 + x1) / 2, (y0 + y1) / 2
+    good = []
+    for deg in range(0, 180, 15):
+        a = math.radians(deg)
+        d, n = (math.cos(a), math.sin(a)), (-math.sin(a), math.cos(a))
+        for i in range(-int(big / CHORD / 2) - 1, int(big / CHORD / 2) + 2):
+            o = (cx + n[0] * i * CHORD, cy + n[1] * i * CHORD)
+            seg = c.intersection(LineString([(o[0] - d[0] * big, o[1] - d[1] * big), (o[0] + d[0] * big, o[1] + d[1] * big)]))
+            for g in getattr(seg, "geoms", [seg]):
+                if g.geom_type == "LineString" and 1e-6 < g.length <= SPAN_MAX and all(ok.covers(Point(q)) for q in (g.coords[0], g.coords[-1])):
+                    good.append(g.buffer(CHORD))
+    return c.difference(unary_union(good)).area < 0.15
+
+
 def print_check(s, up):
     sign, axis = up
     u = V(*[(1 if sign == "+" else -1) if a == axis else 0 for a in "XYZ"])
     s = s.copy()
     s.transformShape(App.Placement(V(), App.Rotation(u, Z)).toMatrix())
     s.translate(V(0, 0, -s.optimalBoundingBox(False, False).ZMin))
-    floor, bad = 0.0, []
+    h = s.optimalBoundingBox(False, False).ZMax
+    floor, p1, p2, p5 = 0.0, [], [], []
     lim = -math.sin(math.radians(45.0))
     for f in s.Faces:
-        if f.BoundBox.ZMax < 1e-4 and isinstance(f.Surface, Part.Plane):
+        pl = isinstance(f.Surface, Part.Plane)
+        if pl and f.BoundBox.ZMax < 1e-4:
             floor += f.Area
             continue
+        if pl and f.BoundBox.ZMax - f.BoundBox.ZMin < 1e-6 and f.normalAt(*f.Surface.parameter(f.CenterOfMass)).z < -0.999:
+            if f.Area > 0.05:
+                F = region(f.Wires)
+                below = region(s.slice(Z, max(f.BoundBox.ZMin - 0.1, 0.05)))
+                if any(p.interiors for p in getattr(F, "geoms", [F])) or not all(bridged(p, below, 0.15) for p in getattr(F, "geoms", [F])):
+                    p2.append((round(f.BoundBox.ZMin, 2), round(f.Area, 1)))
+            continue
         pts, tris = f.tessellate(0.1)
-        area, convex = 0.0, False
+        area, hole = 0.0, True
         for i, j, k in tris:
             n = (pts[j] - pts[i]).cross(pts[k] - pts[i])
             if n.Length and n.z / n.Length < lim + 0.05:
@@ -384,16 +442,29 @@ def print_check(s, up):
                     area += n.Length / 2
                     if isinstance(f.Surface, Part.Cylinder):
                         r = (pts[i] + pts[j] + pts[k]) * (1 / 3) - f.Surface.Center
-                        convex = convex or nn.dot(r - f.Surface.Axis * r.dot(f.Surface.Axis)) > 0
+                        hole = hole and nn.dot(r - f.Surface.Axis * r.dot(f.Surface.Axis)) < 0 and f.Surface.Radius <= ARCH_R + 1e-6 and abs(f.Surface.Axis.z) < 0.5
                     else:
-                        convex = True
-        if area > 0.05:
-            bad.append((type(f.Surface).__name__, round(getattr(f.Surface, "Radius", 0.0), 2), round(area, 1), round(4 * f.Area / f.Length, 1), not convex))
-    return round(floor, 1), bad
-
-
-def print_ok(bad):
-    return all((k == "Cylinder" and (r <= 5.05 or (hole and r * math.sqrt(2) <= 10.0))) or (k == "Plane" and span <= 10.0) or (k == "BSplineSurface" and a <= 1.0) for k, r, a, span, hole in bad)
+                        hole = False
+        if area > 0.05 and not hole:
+            p1.append((type(f.Surface).__name__, round(getattr(f.Surface, "Radius", 0.0), 2), round(area, 1)))
+    prev, first = None, None
+    for k in range(int(math.ceil(h / LAYER - 1e-6))):
+        cur = region(s.slice(Z, LAYER * (k + 0.5)))
+        if prev is None:
+            first = cur
+        else:
+            r = cur.difference(prev.buffer(OVER)).buffer(-0.04).buffer(0.04)
+            raw = [c for c in getattr(r, "geoms", [r]) if c.area > 0.05]
+            if raw:
+                arch = unary_union(raw).buffer(ARCH_R).buffer(-ARCH_R)
+                for c in getattr(arch, "geoms", [arch]):
+                    own = [q for q in raw if c.buffer(0.01).contains(q)]
+                    if any(q.interiors for q in own) or not bridged(c, prev, OVER + 0.15):
+                        p5.append((round(LAYER * (k + 0.5), 2), round(sum(q.area for q in own), 2), tuple(round(v, 1) for v in c.bounds)))
+        prev = cur
+    x0, y0, x1, y1 = first.bounds
+    thin = first.difference(first.buffer(-0.4, join_style=2).buffer(0.4, join_style=2)).area
+    return dict(floor=round(floor, 1), height=round(h, 2), bed_dim=round(min(x1 - x0, y1 - y0), 2), thin_mm2=round(thin, 2), p1=p1, p2=p2, p5=p5)
 
 
 def strength(eng_bolt, eng_lock):
@@ -492,12 +563,13 @@ def thick_ok(nom, rule, meas):
     return round(meas, 2)
 
 
-def verify(P):
+def verify(Pk):
+    P = dict(Pk, Knuckle=drill(Pk["Knuckle"]))
     M, K, St, H, Dc, S1, S2 = (P[n] for n in ("Mount", "Knuckle", "Stub", "WheelHub", "Ref_Disc", "Sleeve_1", "Sleeve_2"))
     rep = {}
     rep["valid"] = {n: (P[n].isValid(), len(P[n].Solids)) for n in P}
     ob = lambda s: s.optimalBoundingBox(False, False)
-    rep["vol_mm3"] = dict(Mount=round(M.Volume, 1), Knuckle=round(K.Volume, 1), Stub=round(St.Volume, 1), WheelHub=round(H.Volume, 1), Sleeve=round(S1.Volume, 2), mount_plus_knuckle=round(M.Volume + K.Volume, 1))
+    rep["vol_mm3"] = dict(Mount=round(M.Volume, 1), Knuckle=round(Pk["Knuckle"].Volume, 1), Stub=round(St.Volume, 1), WheelHub=round(H.Volume, 1), Sleeve=round(S1.Volume, 2), mount_plus_knuckle=round(M.Volume + Pk["Knuckle"].Volume, 1))
     rep["bbox"] = {n: tuple(round(v, 2) for v in (ob(P[n]).XMin, ob(P[n]).XMax, ob(P[n]).YMin, ob(P[n]).YMax, ob(P[n]).ZMin, ob(P[n]).ZMax)) for n in PRINT_UP}
     kb, mb = ob(K), ob(M)
     low = min(kb.ZMin, mb.ZMin, ob(P["Ref_KingpinBolt"]).ZMin, ob(P["Ref_LockBolt"]).ZMin, ob(P["Ref_Washer"]).ZMin)
@@ -509,7 +581,7 @@ def verify(P):
     ln = lambda c, a: Part.makeLine(c - a * 60, c + a * 60)
     rep["axes"] = dict(bore_z=round(ba[0].z, 6), bore_y=round(ba[0].y, 6), glue_to_axle=round(mb.ZMax - ba[0].z, 6), axis_dist=round(ln(*ba).distToShape(ln(*pa))[0], 6),
                        bore_dir=tuple(round(abs(c), 3) for c in ba[1]), post_dir=tuple(round(abs(c), 3) for c in pa[1]),
-                       arm_hole_y=sorted(round(-f.Surface.Center.y, 2) for f in K.Faces if isinstance(f.Surface, Part.Cylinder) and abs(f.Surface.Radius - ARM_HOLE / 2) < 1e-6 and f.Surface.Center.y < 0))
+                       arm_hole_y=sorted({round(-f.Surface.Center.y, 2) for f in K.Faces if isinstance(f.Surface, Part.Cylinder) and abs(f.Surface.Radius - ARM_HOLE / 2) < 1e-6 and f.Surface.Center.y < 0}))
     xor = lambda a, b: round(a.cut(b, 1e-3).Volume + b.cut(a, 1e-3).Volume, 3)
     mx = lambda s: s.mirror(O, X)
     St0, H0 = moved(St, Y, OFF), moved(H, Y, OFF)
@@ -538,6 +610,7 @@ def verify(P):
                        boss_gap=round(M.distToShape(boss)[0], 3), play_up=round(play_up, 3), play_down=round(play_dn, 3), play_total=round(play_up + play_dn, 3),
                        washer_to_pocket=round(K.distToShape(moved(P["Ref_Washer"], Z, -1.0))[0], 3), head_to_pocket=round(K.distToShape(moved(P["Ref_KingpinBolt"], Z, -1.0))[0], 3),
                        washer_on_spigot_end=round(P["Ref_Washer"].distToShape(M)[0], 6), lock_boss_gap=round(top.distToShape(K)[0], 3),
+                       lock_tip_clear=round(M.distToShape(Part.Vertex(V(0, R_L, Z_LS + LOCK_L + play_up)))[0], 3),
                        toe_play_deg=tuple(round(t, 2) for t in toe), toe_play_mm_at_rim=tuple(round(WHEEL_D / 2 * math.radians(t), 2) for t in toe),
                        float_in=round(fl.distToShape(K)[0], 3), float_out=round(H.distToShape(K)[0], 3), stub_vs_knuckle=round(St.distToShape(K)[0], 3))
     rep["fits"]["end_float"] = round(rep["fits"]["float_in"] + rep["fits"]["float_out"], 3)
@@ -560,7 +633,8 @@ def verify(P):
                        hex_end_inside_hub=HEX_END < HUB_X1)
     rep["walls"] = dict(
         socket=thick_ok(R_B - SOCK_R, 2.0, run_len(K, V(SOCK_R + 0.005, 0, 15), X, 5)),
-        bore_top=thick_ok(R_H - BORE_R, 2.0, run_len(K, V(5, -OFF, BORE_R + 0.005), Z, 5)),
+        bore_top=thick_ok(R_H - ROOF_Z, WALL_MIN, run_len(K, V(5, -OFF, ROOF_Z + 0.005), Z, 5)),
+        roof_corner=thick_ok(R_H - math.hypot(ROOF_HW, ROOF_Z), WALL_MIN, run_len(K, V(5, -OFF + ROOF_HW * 1.001, ROOF_Z * 1.001), V(0, ROOF_HW, ROOF_Z).normalize(), 5)),
         under_bore=thick_ok(-K_BOT - BORE_R, 2.0, run_len(K, V(5, -OFF, -BORE_R - 0.005), -Z, 5)),
         pocket_bore=round(pk_void().distToShape(bore_void())[0], 3),
         socket_bore=round(revz([(0, Z_FLOOR), (SOCK_R, Z_FLOOR), (SOCK_R, K_TOP), (0, K_TOP)]).distToShape(bore_void())[0], 3),
@@ -578,7 +652,7 @@ def verify(P):
                          hub_stub=thread_len(St, V(SH_X, -OFF, WH_BD / 2), -Z, (X,), SCREW_L_HUB), hub_hub=thread_len(H, V(SH_X, -OFF, WH_BD / 2), -Z, (X,), SCREW_L_HUB))
     rep["blend"] = dict(filleted=BLEND[0], sharp_creases_left=BLEND[1])
     rep["strength"] = strength(rep["engage"]["kingpin_bolt"], rep["engage"]["lock_bolt"])
-    rep["print"] = {n: print_check(P[n], PRINT_UP[n]) for n in PRINT_UP}
+    rep["print"] = {n: print_check(Pk[n], PRINT_UP[n]) for n in PRINT_UP}
     return rep
 
 
@@ -617,7 +691,7 @@ def check(rep):
     w = rep["walls"]
     assert w["mouth"] >= WALL_MIN and w["lip"] >= 0.3 and w["rim_top"] >= WALL_MIN and w["arm_rim"] >= WALL_MIN and w["arm_t"] >= WALL_MIN and w["plate"] >= WALL_MIN and w["kp_pilot_to_glue"] >= WALL_MIN and w["lock_pilot_to_glue"] >= WALL_MIN, w
     nom = math.hypot(LIP_T / 2, OFF - BORE_R) - PK_R
-    assert w["pocket_bore"] >= WALL_MIN and abs(w["pocket_bore"] - nom) < 0.01 and nom >= WALL_MIN and w["socket_bore"] >= 2.0 - 1e-6, (w, nom)
+    assert w["pocket_bore"] >= WALL_MIN and abs(w["pocket_bore"] - nom) < 0.01 and nom >= WALL_MIN and w["socket_bore"] >= 1.8, (w, nom)
     e = rep["engage"]
     screws = dict(kingpin=BOLT_L, lock=LOCK_L, hub=SCREW_L_HUB)
     assert all(L in STD_SCREW_L for L in screws.values()), screws
@@ -626,8 +700,10 @@ def check(rep):
     t = rep["strength"]
     assert t["root_margin"] >= 1.5 and t["bearing_post_socket_MPa"] <= ALLOW_BEARING / 1.5 and t["bolt_pull_margin"] >= 1.5 and t["lock_pull_margin"] >= 1.5, t
     assert t["shoulder_MPa"] <= ALLOW_BEARING / 1.5 and t["boss_bearing_MPa"] <= ALLOW_BEARING / 1.5 and t["web_shear_MPa"] <= ALLOW_BEARING / 1.5, t
-    for n, (floor, bad) in rep["print"].items():
-        assert floor >= 5.0 and print_ok(bad), (n, floor, bad)
+    assert f["lock_tip_clear"] >= 0.45 - 1e-3 and w["lock_pilot_to_glue"] - f["play_up"] >= WALL_MIN, (f, w)
+    for n, r in rep["print"].items():
+        assert not r["p1"] and not r["p2"] and not r["p5"], (n, r)
+        assert (r["floor"] >= 60.0 or n in NO_BED) and r["height"] <= 4 * r["bed_dim"] and r["thin_mm2"] < 0.5, (n, r)
 
 
 def main():

@@ -5,7 +5,7 @@
 # Liners (A2): PTFE tube 10 ID x 12 OD to be used as plain bearings, 4 liners of LINER_L 8.0 where a shaft turns in the case: Sleeve_1 (HalfShaft_L, x -38.88..-30.88), Sleeve_2 (HalfShaft_R, x 30.88..38.88), Sleeve_3 (PinionShaftA, y 32.65..40.65), Sleeve_4 (PinionShaftB, y -40.65..-32.65), all on the axis. Printed placeholders named Sleeve_1..4, exactly LINER_OD x LINER_ID x LINER_L, one print group (4 copies), standing on end; real PTFE replaces them and nothing else is reprinted. Pocket bore LINER_BORE 12.2 (tune after measuring the tube). The print plate also holds the OutputPlug and the B pinion set although they are alternatives.
 # Each pocket is two half saddles (one in CaseTop, one in CaseBottom) between two lips 1.2 thick with a 10.9 bore (0.83 radial to the hex corners) and a pocket 8.3 long: the liner (8.0) has 0.3 total end play (0.15 each way), is held both ways by the two lips and only by friction against turning. Every lip face has a 0.5 x 45 degree lead-in notch on the split plane. Pocket wall 2.0 or more on the closed case (asserted on a ray scan at 3 axial stations, 2.3 on the x pockets and the y pockets). The liners are slid onto the four port tips BEFORE the bundle goes into CaseTop (step 8) and set by feel: a plain straight Z sweep passes only within 0.15 of the nominal place, with the lead-in notches the sleeve end is caught up to 0.6 off (sweep guided along the notch, asserted); a closed tube cannot be laid in from the side over a shaft, so nothing larger than the 8.0 AF hex sits outboard of a liner. The OutputPlug takes the place of PinionB, PinionShaftB and Sleeve_4 (Sleeve_4 is simply not used when the plug is).
 # Shafts: every shaft is a plain 8.0 AF hex straight through its liner (0.38 radial), no round journals any more (the old dia 9.3 pinion journal and the printed bushing tails are gone). PinionShaft keeps its 11.0 AF head in the pinion hex pocket (head now 2.4 thick, flush with the pinion front, so the PinionA/B shape is untouched). The Bushings only carry the Carrier and the IdlerRing now (journal dia 14.0 in the 14.6 bores, idler hub dia 14.0 in the 14.6 bore, 0.3 radial) and do not touch the shafts (10.9 bore, 0.83 radial to the hex corners).
-# Axial location (all faces modelled with the floats shown, asserted): Bushing_L and Bushing_R are held in the case by a V pad of the case (an arc of 40 degrees either side of the crown, not a full ring: a full ring gives no capture near the split plane where the lowering runs tangent to it) sitting in a V groove ring of the bushing (groove 0.35 deep, 0.6 wide at the bottom, 2.0 wide at the mouth, flanks 26 degrees off the axis; the bushing end stops 0.5 short of the wall). Modelled axial play is zero on purpose, the carrier and idler floats plus the pinion floats already use the whole 0.15 to 0.5 mesh gap window (0.016 of margin), so a flat 0.5 per side clearance cannot be used: the carrier or idler would be free to slide into collision with the pinions. Instead the wedge makes the bundle self-centering: the pad tip (1.0 wide, 0.1 above the groove bottom) is caught within 0.5 of the seat on each side and the bundle is walked into place by the flanks as it is lowered (guided sweep asserted at 0.45 plus the plain sweeps), the seat itself is the printed fit (radial slack 0.1 at the tip). Carrier plus Cap float 0.30 between the Bushing_L flange and the Bushing_R flange; IdlerRing floats 0.30 between the Bushing_R flange and the case wall; each pinion with its shaft floats 0.30 (back of the pinion to the inner lip, head flush on the cavity end wall so inward travel is 0); PinionShaft total float 0.30. Half shafts: inward 0.15 (flange to SpiderPin), outward 0.10 (flange to SideGear front) plus 0.25 (SideGear back to the Bushing journal end, Bushing_L journal reaches x -11.5 like the Bushing_R one), total 0.50 each side. Mesh gaps are checked over these floats. Side gear to spider mesh is asserted at the carrier float extremes: the side gears have no inward stop except the spiders, so at the far carrier extreme the spiders push the free side gear outward (needed push is asserted to stay inside its 0.25 outward float, gap 0 or more, no overlap).
+# Axial location (all faces modelled with the floats shown, asserted): Bushing_L and Bushing_R are held in the case by a V pad of the case (an arc of 40 degrees either side of the crown, not a full ring: a full ring gives no capture near the split plane where the lowering runs tangent to it) sitting in a V groove ring of the bushing (groove 0.35 deep, 0.6 wide at the bottom, 2.0 wide at the mouth, flanks 26 degrees off the axis; the bushing end stops 0.5 short of the wall). Modelled axial play is zero on purpose, the carrier and idler floats plus the pinion floats already use the mesh gap window (0.016 of margin at the time, the pinion pairs have since been opened up to 0.4 or more, see the pinion note), so a flat 0.5 per side clearance cannot be used: the carrier or idler would be free to slide into collision with the pinions. Instead the wedge makes the bundle self-centering: the pad tip (1.0 wide, 0.1 above the groove bottom) is caught within 0.5 of the seat on each side and the bundle is walked into place by the flanks as it is lowered (guided sweep asserted at 0.45 plus the plain sweeps), the seat itself is the printed fit (radial slack 0.1 at the tip). Carrier plus Cap float 0.30 between the Bushing_L flange and the Bushing_R flange; IdlerRing floats 0.30 between the Bushing_R flange and the case wall; each pinion with its shaft floats 0.30 (back of the pinion to the inner lip, head flush on the cavity end wall so inward travel is 0); PinionShaft total float 0.30. Half shafts: inward 0.15 (flange to SpiderPin), outward 0.10 (flange to SideGear front) plus 0.25 (SideGear back to the Bushing journal end, Bushing_L journal reaches x -11.5 like the Bushing_R one), total 0.50 each side. Mesh gaps are checked over these floats. Side gear to spider mesh is asserted at the carrier float extremes: the side gears have no inward stop except the spiders, so at the far carrier extreme the spiders push the free side gear outward (needed push is asserted to stay inside its 0.25 outward float, gap 0 or more, no overlap).
 # Assembly order (verify() sweeps each step as a straight slide in 0.5 mm steps from 60 mm clear, then the bundle every 0.5 mm from 30 mm clear and every 0.1 mm for the last 3 mm into CaseTop): 1 SideGear_L onto HalfShaft_L from the port tip end, that into the Carrier; 2 Bushing_L; 3 SpiderGear_1 and 2 onto SpiderPin, pin with spiders into the Carrier (it collides if SideGear_R is already in);
 # 4 SideGear_R on HalfShaft_R into the Carrier; 5 Cap, then its 4 M3x12 screws (before the IdlerRing, which covers the heads); 6 Bushing_R, IdlerRing; 7 Pinions onto their PinionShafts from the tips and into mesh (they drop in only at the drawn mesh phase: turn the carrier and idler until each pinion drops into mesh, other phases collide); 8 Sleeve_1..4 slid over the four port tips to their pockets, then the bundle straight along Z into CaseTop (OutputPlug is laid in here if used instead of PinionB, PinionShaftB and Sleeve_4); 9 CaseBottom, 4 case screws.
 # Sizes: CaseTop body 80.46 x 84.0 mm (was 62.82 x 86.8); with the bolt ears the flat glue face is 100.46 x 84.0 mm. Both case ends are the same slim tube boss (radius about 12 at the end face, the big drum only behind it). Ports (the 16 mm stick-out) reference the case end faces (x +-40.23) and y faces (+-42.0). A universal joint yoke seats fully on a 16 mm port (socket 10 deep), so its mouth sits 6 mm off the case face and never touches the case.
@@ -13,6 +13,7 @@
 # Four bolt ears on CaseTop (4 mm thick, flush with the glue face, fully round outer end, 1.0 chamfer on the underside rim and two 1.8 wide 2 mm 45 degree webs under each ear set 1.0 in from the chamfered rim so no flat ledge hangs over it, where it meets the case end wall (clear of the dia 6 head and driver), dia 3.6 holes for M3x16 pan head bolts from below through the cardboard to a nut and washer on top): holes at x = +-45.23, y = +-36 from the axle centre (90.46 x 72 pattern).
 # Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Inherited, not changed here: Carrier pilot wall 1.4 (asserted 1.2) and Cap clear hole dia 3.2. Lowest point 30.6 mm below the axle axis: wheels need radius over 31. Print (PLA, 0.4 nozzle, 0.2 layers, supports must stay OFF), measured on the shapes by print_report for every unique printed part in its print orientation (twins are tested once) and asserted in check(): P1 no down-facing face under 45 degrees from horizontal (faces sampled on a grid and along their edges; a horizontal round hole of dia 6 or less may stay round, a larger one would fail), CaseTop and CaseBottom ramps and domes sit at exactly 45.0 (no margin, left), HalfShaft flange flanks 48.2 (the 8.0 AF flat they lie on cannot move), OutputPlug 51.1; P2, P3, P5 every 0.2 layer is sliced (0.1 mm raster) and no pixel of a layer may lie more than 0.3 plus half a pixel (0.35) from the layer below (exact distance transform, no erosion), except a true bridge (simply connected, straight, 10 mm or less across, 80 percent of its rim on the layer below: the 3 mm glue grooves in CaseTop and the 6.6 mm roofs of the CaseBottom screw wells); P6 bed contact 60 mm2 or more, first layer wall 0.8 or more, height at most 4 x the smallest bed dimension. Changes: each CaseBottom screw well (dia 6.6) has a sacrificial 0.2 mm skin (SKIN, modelled as solid) across its dia 3.6 pass hole, so the roof is a 6.6 mm round bridge; assembly step: punch the skin with a 3.5 drill or the screw tip before fitting each M3x16. The slicer still puts about 1.7 g of auto support in these wells if supports are on, so keep supports off (with them off the roofs are legal bridges). CaseTop glue grooves sit at x -18, -8, 8, 18 (no cross grooves at y +-36) so none crosses another or runs half under a screw rib: all are straight 3 mm bridges. CaseBottom hollow cells in the y arms have their floor at print height HOLLOW_Z 9.4 so the 45 degree ramp never opens them (the old 0.1 mm skin across a 12 mm cell mouth at z 9.1 is gone). OutputPlug flat is 3.2 below the axis (neck flank 51 degrees). Exemptions by name (EXEMPT, each asserted at its measured value, nothing else is relaxed): SpiderPin P1 (lies on its 0.6 flat, flank 40.5 degrees, printed by the user and unchanged); Bushing_R P5 (1.2 wide flat ring under the flange, measured 1.22: both orientations have it because the tail sits on the other side of the flange, and a chamfer there would hit the Cap bore or the IdlerRing web, which stay as printed); PinionA and PinionB P5 (hex pocket roof 0.8 to 1.45 wide pierced by the bore, measured 1.5, printed by the user); SpiderGear_1 and 2 P5 (0.4 wide flat ledge at the hub, hub r 7.1 to 7.5, measured 0.42 at 12 tooth roots, toothed part printed by the user); CaseBottom P5 (the 45 degree ramp skin meets the round rim of each screw well and leaves 2 mm crescent bridges over the rim, measured 1.02, each anchored at both tips); Sleeve_1 to 4 P6 (bed 34.6 mm2: a placeholder tube of the exact PTFE size, 1.0 wall, 8 tall on 12 dia, brim it if it lifts). IdlerRing has a 0.28 step (r 19.62 to 19.9), under the 0.35 limit, so it needs no exemption. Everything else passes.
 # Plug-in half shaft variant: PlugShaft_L and PlugShaft_R are alternatives to HalfShaft_L/R (SHAFT_SET "Half" or "Plug" says which pair sits in the FCStd and which pair assembly() leaves out of the bundle, the other pair is parked 45 mm above the case; the HalfShaft checks and asserts run unchanged either way, verify_plug and check_plug add the PlugShaft ones). Each PlugShaft is one printed part, L and R identical, 2 copies: an 8.0 AF hex shank (tip x 2.65, like the HalfShaft hex) with a 2.4 long 45 degree hex nose (AF 3.2 at the tip), a shoulder 0.55 off the case end face (x 40.78), a 4.5 thick web (fork floor, full 18.5 x 8.4 section, 1.0 fillets where the floor meets the ear faces: a 1.2 web was too weak, the ear root moment twists it like a 1.2 x 8.4 beam, 52 MPa) and the JointYoke fork (constants PF_*, copied from drive_shaft.py build_yoke: ears 3.0 thick, gap 12.5, pin hole 3.4, dia 6.0 x 0.8 counterbores, pin axis 2.0 short of the cross centre, ear half width 4.4, ear tip a half octagon tangent to R 4.4 like the DoubleFork), so the kit JointCross and its M3x20 pin screws fit unchanged (verify_plug compares them with a JointYoke read from DriveShaft.FCStd, which is only opened and closed, never saved). No new fasteners. The joint centre sits at x 53.28 from the car centre line, 14.98 closer than the 68.26 of the 16 mm port plus clamp-on yoke, the posed JointCross, pins and mating fork stay 5.4 or more clear of both case halves and the bolt ears at 25 degrees bend in every direction (24 phases, 0 hits). Stops: inward the nose tip meets the SpiderPin (travel 0.15 like the flange), backup the shoulder against the case end face (gap 0.55 against at most 0.45 of tip travel at the far carrier float extreme, so it never touches in running); outward nothing in the differential holds a PlugShaft, the car (suspension, wheel hub) must. Fits are the same as the HalfShaft hex: 0.38 radial in the liner, 0.83 in the lips and bushing bores, 0.15 per flat in the 8.3 hex socket, full socket engagement over the whole gear float, side gear outward float and side_mesh unchanged, the 0.10 inward stop of the flange is gone: inward the gear is only held by the spiders, 0.19. Plug assembly: HalfShafts are not used, SideGear_L and R go into the Carrier alone (step 1 and 4), Sleeve_1 and 2 are laid into the CaseTop pockets before the bundle goes in (step 8, only Sleeve_3 and 4 still ride on the pinion shaft ports), the bundle is lowered over them (swept), CaseBottom and the screws close the case, then each PlugShaft is pushed in from outside, nose first, through the lip, liner and bushing into the side gear hex socket (turn it until the hex finds the socket, the 45 degree nose guides it) and pulled out the same way. Side gear centring: with no shaft the side gear can only be moved off the axis by the spider mesh (0.35 or less radially at its nominal place, 0.8 or less at its outward stop, from solids by bisection in verify_plug, asserted), the boss, bushing journal end, Carrier and Cap bores never limit it; the nose (AF 3.2 against the 8.3 socket) takes up to 2.3 of offset and guides the 8.0 hex in, asserted by a sweep with the gear at its worst offset against the shaft pushed 0.3 the other way, the offset closing at 0.8 per mm of travel, so no locating feature was added. Strength (500 N.mm, 15 N radial at the joint centre): hex torsion 5.0 MPa, bending at the lip 3.7, combined 9.4, fork ear root 5.5, web as a torsion beam under the ear root moment 4.5 (Roark rectangle, also the across-layer shear for the lying print), web bending 0.7, all 10 or less (asserted). Print: lying on the hex flat (+Z up), ears vertical walls, pin holes horizontal, nose flanks 45.0 like the case ramps, counterbores are teardrops with a 45 degree gable above them so no roof is bridged, no exemption and no raised cap; no retention: the PlugShaft is not held outward by the differential, and no snap-on keeper fits because the free axial gaps inside the closed case measured on the solids are only 0.2 (side gear back to bushing journal), 0.5 (bushing end to the inner lip) and 0.15 per side of the liner, none near the 2.5 needed, so the suspension and wheel chain must hold it. Walls 1.2 or more everywhere except the bottom of the dia 6.0 counterbores, 1.0 (the hex flat 4.0 from the axis sets the bed plane, 1.2 would need 4.2).
+# Pinion note (PinionA and PinionB only, reprint those two): the printed pinions rubbed (ring tip to pinion root 0.166 toe, flank 0.32, toe face on the case wall). Now: pinion built with backlash 0.8 and clearance 0.9 (PIN_BL, PIN_CL, was 0.42 and 0.25) and its tip trimmed 0.5 normal (PIN_TRIM), so measured on the solids (Carrier ring, the IdlerRing is equal or better, minimum over the 4 mesh phases) ring tip to pinion root 0.473 (was 0.172), pinion tip to ring root 0.481 (was 0.354), flank 0.471 (was 0.322), whole solid 0.468 (was 0.166), asserted 0.45, 0.4, 0.45 and 0.4 at the drawn phase, and mesh_run asserts 0.4 to 0.9 at all 4 phases, nominal and every float extreme. The toothed toe face is recessed 0.4 off the case end wall (PIN_RECESS), so the only inward thrust face is the PinionShaft 11 AF hex head (bearing area 104.8 mm2, corner radius 6.35, the pinion pocket roof pushes on its back as before, float unchanged); the toe end of the teeth and the bed face edge carry a stepped 0.4 chamfer (4 steps of 0.1, radial scaling about the axis so the tooth tips and the outer edge give up 0.4 and the flanks stay radial; a true 45 degree chamfer along the sharp tooth tips grows 0.58 per layer and fails the 0.35 layer rule, flank edges stay square). Hex pocket, bore and the PinionShaft fit are untouched, wall from pocket and bore to the root 4.4 (asserted 1.2). Root bending is the one thing that got worse: Lewis, 500 N.mm at the mid face pitch radius on one tooth, 12.0 MPa before (already over 10) and 21.3 now (root tooth thickness 2.02 to 1.67), asserted 25.0 (PIN_SIGMA_MAX), it follows directly from the 0.45 flank gap. Spider and side gears measured only, not changed (tip to root both ways 0.195 and 0.345, flank 0.26, whole 0.156). Case and cavity are still built from the unchanged pinion silhouette.
 import FreeCAD as App, Part, math
 import numpy as np
 from scipy import ndimage as ndi
@@ -55,6 +56,7 @@ SHAFT_HOLE_D, SHAFT_HOLE_X = 2.8, 67.0
 PORT_LEN, PORT_HOLE = 16.0, 5.9
 PS_FLANGE_T, HEAD_AF, POCKET_AF, PIN_BORE_D = 2.4, 11.0, 11.4, 9.8
 PS_CB_DEEP = PS_FLANGE_T
+PIN_BL, PIN_CL, PIN_RECESS, PIN_CH, PIN_TRIM, PIN_SIGMA_MAX = 0.8, 0.9, 0.4, 0.4, 0.5, 25.0
 WH_FD, WH_FT, WH_BD, WH_X0, WH_X1 = 44.0, 3.0, 16.0, 58.0, 73.0
 WH_SOCKET, WH_GLUE_D, WH_GLUE_R = 8.2, 4.0, 15.0
 WH_SCREW_NEAR, WH_SCREW_FAR = 3.4, 2.8
@@ -195,15 +197,15 @@ def rev(pts, axis="x"):
     return Part.Face(Part.makePolygon(P + [P[0]])).revolve(O, V(1, 0, 0) if axis == "x" else V(0, 1, 0), 360)
 
 
-def bevel_body(doc, g, phase):
+def bevel_body(doc, g, phase, bl=BACKLASH, cl=CLEARANCE):
     n, cone_r, front, back, boss = g["n"], g["cone"], g["front"], g["back"], g["boss"]
     pa = math.asin(n * M / 2 / cone_r)
     s, c = math.sin(pa), math.cos(pa)
     ah, rh = cone_r * c, cone_r * s
     scale = M * n / 2 / math.tan(pa)
     t = lib_shape(doc, gc.BevelGear, num_teeth=n, module="%g mm" % M, pitch_angle="%f deg" % math.degrees(pa),
-                  height="1 mm", pressure_angle="%g deg" % PA, backlash="%g mm" % BACKLASH,
-                  clearance=CLEARANCE, reset_origin=False)
+                  height="1 mm", pressure_angle="%g deg" % PA, backlash="%g mm" % bl,
+                  clearance=cl, reset_origin=False)
     face = [f for f in t.Faces if abs(f.BoundBox.ZMin - scale) < 1e-3 and abs(f.BoundBox.ZMax - scale) < 1e-3][0]
     wires = []
     for z in ((front - 0.5) / scale, (back + 1) / scale):
@@ -247,8 +249,32 @@ def build_gears(doc, ph):
     return gR, gL, s1, s2
 
 
+def toe_chamfer(r, yb):
+    steps = int(round(PIN_CH / 0.1))
+    h = PIN_CH / steps
+    for i in range(steps):
+        w = r.slice(V(0, 1, 0), yb + (i + 1) * h - 0.001)
+        assert len(w) == 1
+        k = 1 - (PIN_CH - i * h) / w[0].BoundBox.XMax
+        m = App.Matrix()
+        m.scale(k, 1, k)
+        f = Part.Face(w[0].transformGeometry(m))
+        f.translate(V(0, yb + i * h - 0.01 - f.BoundBox.YMin, 0))
+        keep = f.extrude(V(0, h + 0.02, 0))
+        r = r.cut(ycyl(40, yb + i * h - 0.01, yb + (i + 1) * h).cut(keep))
+    return r.removeSplitter()
+
+
 def build_pinion(body):
-    return rot(body, V(1, 0, 0), -90).cut(ycyl(PIN_BORE_D / 2, 0, 60)).cut(yhex(POCKET_AF, 0, PINION["front"] + PS_CB_DEEP))
+    yb = PINION["front"]
+    r = rot(body, V(1, 0, 0), -90)
+    tt = max(math.hypot(v.X, v.Z) / v.Y for v in r.Vertexes if v.Y > 1)
+    c0 = -PIN_TRIM * math.sqrt(1 + tt * tt)
+    env = rev([(0, 0), (max(c0, 0), 0), (c0 + 40 * tt, 40), (0, 40)], "y")
+    r = toe_chamfer(r.common(env).cut(ycyl(40, 0, yb + PIN_RECESS)), yb + PIN_RECESS)
+    r = r.cut(ycyl(PIN_BORE_D / 2, 0, 60)).cut(yhex(POCKET_AF, 0, PINION["front"] + PS_CB_DEEP))
+    r.fix(1e-6, 1e-6, 1e-6)
+    return r
 
 
 def ring_x(body, phase, sign):
@@ -529,7 +555,7 @@ def build_bolt(x, y):
 def build_parts(doc, ph=PH):
     gR, gL, s1, s2 = build_gears(doc, ph)
     rb, pb = bevel_body(doc, RING, 0.0), bevel_body(doc, PINION, ph["pinion"])
-    pin = build_pinion(pb)
+    pin = build_pinion(bevel_body(doc, PINION, ph["pinion"], PIN_BL, PIN_CL))
     top, bot = build_case(silhouette(rb, RING), silhouette(pb, PINION))
     return dict(Carrier=build_carrier(ring_x(rb, ph["ring"], -1)), Cap=build_cap(), Bushing_L=build_bushing(-1), Bushing_R=build_bushing(1),
                 SideGear_L=gL, SideGear_R=gR, SpiderGear_1=s1, SpiderGear_2=s2, SpiderPin=build_pin(),
@@ -849,6 +875,48 @@ def lip_runs(top, ax, c0, c1, step=0.02):
     return runs + ([round(cur, 2)] if cur else [])
 
 
+def gear_region(sh, ax, sg, pa, lo, hi):
+    c, t = math.cos(pa), math.tan(pa)
+    pts = [(0.0, max(lo / c, 0)), (50.0, 50 * t + lo / c), (50.0, 50 * t + hi / c), (0.0, max(hi / c, 0))]
+    return sh.common(rev([(sg * a, r) if ax == "x" else (r, sg * a) for a, r in pts], ax))
+
+
+def gear_gaps(a, aax, asg, apa, b, bax, bsg, bpa):
+    ra, rb = {}, {}
+    for k, (lo, hi) in dict(tip=(0.9, 9), root=(-9, -1.65), flank=(-0.6, 0.6)).items():
+        ra[k], rb[k] = gear_region(a, aax, asg, apa, lo, hi), gear_region(b, bax, bsg, bpa, lo, hi)
+    return dict(whole=round(dist(a, b), 3), ring_tip=round(dist(ra["tip"], rb["root"]), 3), pin_tip=round(dist(rb["tip"], ra["root"]), 3), flank=round(dist(ra["flank"], rb["flank"]), 3))
+
+
+def pinion_metrics(P):
+    pa_p, pa_r = math.asin(PINION_N * M / 2 / APEX_R), math.asin(RING_N * M / 2 / APEX_R)
+    out = dict(gaps={})
+    for rn, rs in (("Carrier", -1), ("IdlerRing", 1)):
+        for pn, ps in (("PinionA", 1), ("PinionB", -1)):
+            out["gaps"][(rn, pn)] = gear_gaps(P[rn], "x", rs, pa_r, P[pn], "y", ps, pa_p)
+    cs = [P["CaseTop"], P["CaseBottom"]]
+    fr = PINION["front"]
+    out["toe"] = round(min(dist(P[n].common(box(-30, 30, sg * (fr - 1), sg * (fr + 1.5), -30, 30)), c) for n, sg in (("PinionA", 1), ("PinionB", -1)) for c in cs), 3)
+    out["thrust"] = max(round(dist(P["PinionShaft" + n], c), 3) for n in "AB" for c in cs)
+    out["thrust_area"], out["thrust_r"] = round(math.sqrt(3) / 2 * HEAD_AF ** 2, 1), round(HEAD_AF / math.sqrt(3), 2)
+    wall, y = 99.0, fr + PIN_RECESS + 0.05
+    while y < YT - 0.3:
+        ws = sorted(P["PinionA"].slice(V(0, 1, 0), y), key=lambda w: -w.BoundBox.XLength)
+        wall = min([wall] + [ws[0].distToShape(w)[0] for w in ws[1:]])
+        y += 0.5
+    out["wall"] = round(wall, 2)
+    ym = fr + 3.0
+    w = max(P["PinionA"].slice(V(0, 1, 0), ym), key=lambda w: w.BoundBox.XLength).discretize(Number=4000)
+    rad, ang = [math.hypot(q.x, q.z) for q in w], [math.degrees(math.atan2(q.z, q.x)) for q in w]
+    rr, rt = min(rad), max(rad)
+    a0 = ang[rad.index(rt)]
+    band = [(a - a0 + 180) % 360 - 180 for a, r in zip(ang, rad) if abs(r - (rr + 0.3)) < 0.03]
+    t = (rr + 0.3) * math.radians(min(a for a in band if a > 0) - max(a for a in band if a < 0))
+    rp = ym * math.tan(pa_p)
+    out["lewis"] = dict(r_root=round(rr, 2), r_tip=round(rt, 2), t_root=round(t, 2), sigma=round(6 * PLG_TORQUE / rp * (rp - rr) / (FACE_W * t * t), 2))
+    return out
+
+
 def verify(P):
     names = list(P)
     rep = {}
@@ -991,6 +1059,7 @@ def verify(P):
     rep["plastic_cm3"] = round(sum(s.Volume for s in P.values()) / 1000, 1)
     rep["volumes"] = {n: round(s.Volume, 1) for n, s in P.items()}
     rep["volumes"]["OutputPlug"] = round(pl.Volume, 1)
+    rep["pinion"] = pinion_metrics(P)
     return rep
 
 
@@ -1000,7 +1069,10 @@ def check(rep):
     m = rep["mesh"]
     assert m["dirs"]["Carrier"] == -m["dirs"]["IdlerRing"], m["dirs"]
     for k, res in m["gaps"].items():
-        assert all(v < 1e-3 and 0.15 <= g <= 0.5 for v, g in res), (k, res)
+        assert all(v < 1e-3 and 0.4 <= g <= 0.9 for v, g in res), (k, res)
+    pm = rep["pinion"]
+    assert all(v["ring_tip"] >= 0.45 and v["flank"] >= 0.45 and v["pin_tip"] >= 0.4 and v["whole"] >= 0.4 for v in pm["gaps"].values()), pm["gaps"]
+    assert pm["toe"] >= PIN_RECESS - 1e-3 and pm["thrust"] < 1e-3 and pm["wall"] >= 1.2 and pm["lewis"]["sigma"] <= PIN_SIGMA_MAX, pm
     assert not any(rep["assembly"].values()) and KEY_W <= 3.5 and rep["top_wall"] >= 1.2, (rep["assembly"], rep["top_wall"])
     assert rep["idler_heads"] >= 0.65 and BR_X1 - XC - HEAD_H >= 0.4 and rep["heads_case"] >= 0.55 and HOUSE_R - math.hypot(BOSS_Y, BOSS_Z) - CLEAR_D / 2 >= 1.15 and HOUSE_R - math.hypot(BOSS_Y, BOSS_Z) - PILOT_D / 2 >= 1.2 and all(v >= 0.3 for v in rep["idler_clear"].values()), rep
     assert min((SPIDER_BORE - PIN_D) / 2, (PIN_BORE_D - SHAFT_AF * 2 / math.sqrt(3)) / 2) >= 0.25 - 1e-9

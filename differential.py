@@ -11,8 +11,10 @@
 # Sizes: CaseTop body 80.46 x 84.0 mm (was 62.82 x 86.8); with the bolt ears the flat glue face is 100.46 x 84.0 mm. Both case ends are the same slim tube boss (radius about 12 at the end face, the big drum only behind it). Ports (the 16 mm stick-out) reference the case end faces (x +-40.23) and y faces (+-42.0). A universal joint yoke seats fully on a 16 mm port (socket 10 deep), so its mouth sits 6 mm off the case face and never touches the case.
 # Optional OutputPlug (parked 40 mm out along -y in the FCStd) replaces PinionB and PinionShaftB when the axle is not chained: a dia 11.5 barrel 8.0 long lies in the same -y pocket between the two lips (0.15 axial each way, 0.35 radial, better than the old 0.45 axial per side), its dia 10.2 necks pass the lip bores, and it closes the case.
 # Four bolt ears on CaseTop (4 mm thick, flush with the glue face, fully round outer end, 1.0 chamfer on the underside rim and two 1.8 wide 2 mm 45 degree webs under each ear set 1.0 in from the chamfered rim so no flat ledge hangs over it, where it meets the case end wall (clear of the dia 6 head and driver), dia 3.6 holes for M3x16 pan head bolts from below through the cardboard to a nut and washer on top): holes at x = +-45.23, y = +-36 from the axle centre (90.46 x 72 pattern).
-# Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Inherited, not changed here: Carrier pilot wall 1.4 (asserted 1.2) and Cap clear hole dia 3.2. Lowest point 30.6 mm below the axle axis: wheels need radius over 31. Print: among the parts changed here the only flat overhang left is the 1.2 wide ring under the Bushing_R flange (a cone there would hit the Cap bore and the IdlerRing, which stay as printed); it is asserted at 1.2 and prints without supports.
+# Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Inherited, not changed here: Carrier pilot wall 1.4 (asserted 1.2) and Cap clear hole dia 3.2. Lowest point 30.6 mm below the axle axis: wheels need radius over 31. Print (PLA, 0.4 nozzle, 0.2 layers, supports must stay OFF), measured on the shapes by print_report for every unique printed part in its print orientation (twins are tested once) and asserted in check(): P1 no down-facing face under 45 degrees from horizontal (faces sampled on a grid and along their edges; a horizontal round hole of dia 6 or less may stay round, a larger one would fail), CaseTop and CaseBottom ramps and domes sit at exactly 45.0 (no margin, left), HalfShaft flange flanks 48.2 (the 8.0 AF flat they lie on cannot move), OutputPlug 51.1; P2, P3, P5 every 0.2 layer is sliced (0.1 mm raster) and no pixel of a layer may lie more than 0.3 plus half a pixel (0.35) from the layer below (exact distance transform, no erosion), except a true bridge (simply connected, straight, 10 mm or less across, 80 percent of its rim on the layer below: the 3 mm glue grooves in CaseTop and the 6.6 mm roofs of the CaseBottom screw wells); P6 bed contact 60 mm2 or more, first layer wall 0.8 or more, height at most 4 x the smallest bed dimension. Changes: each CaseBottom screw well (dia 6.6) has a sacrificial 0.2 mm skin (SKIN, modelled as solid) across its dia 3.6 pass hole, so the roof is a 6.6 mm round bridge; assembly step: punch the skin with a 3.5 drill or the screw tip before fitting each M3x16. The slicer still puts about 1.7 g of auto support in these wells if supports are on, so keep supports off (with them off the roofs are legal bridges). CaseTop glue grooves sit at x -18, -8, 8, 18 (no cross grooves at y +-36) so none crosses another or runs half under a screw rib: all are straight 3 mm bridges. CaseBottom hollow cells in the y arms have their floor at print height HOLLOW_Z 9.4 so the 45 degree ramp never opens them (the old 0.1 mm skin across a 12 mm cell mouth at z 9.1 is gone). OutputPlug flat is 3.2 below the axis (neck flank 51 degrees). Exemptions by name (EXEMPT, each asserted at its measured value, nothing else is relaxed): SpiderPin P1 (lies on its 0.6 flat, flank 40.5 degrees, printed by the user and unchanged); Bushing_R P5 (1.2 wide flat ring under the flange, measured 1.22: both orientations have it because the tail sits on the other side of the flange, and a chamfer there would hit the Cap bore or the IdlerRing web, which stay as printed); PinionA and PinionB P5 (hex pocket roof 0.8 to 1.45 wide pierced by the bore, measured 1.5, printed by the user); SpiderGear_1 and 2 P5 (0.4 wide flat ledge at the hub, hub r 7.1 to 7.5, measured 0.42 at 12 tooth roots, toothed part printed by the user); CaseBottom P5 (the 45 degree ramp skin meets the round rim of each screw well and leaves 2 mm crescent bridges over the rim, measured 1.02, each anchored at both tips); Sleeve_1 to 4 P6 (bed 34.6 mm2: a placeholder tube of the exact PTFE size, 1.0 wall, 8 tall on 12 dia, brim it if it lifts). IdlerRing has a 0.28 step (r 19.62 to 19.9), under the 0.35 limit, so it needs no exemption. Everything else passes.
 import FreeCAD as App, Part, math
+import numpy as np
+from scipy import ndimage as ndi
 import freecad.gears.commands as gc
 
 V = App.Vector
@@ -76,7 +78,8 @@ POCKET_R, WALL_CLR = BUSH_FL_R + 0.1, 0.4
 CASE_Z, SPLIT_GAP, FILLET_R, CHAMFER_TOP, CHAMFER_BOT = 29.0, 0.05, 3.0, 1.0, 1.5
 SCREW_X, SCREW_Y, SEAT_Z, PILOT_LEN, WELL_R, HOLE_R = (-24.8, 23.2), 37.5, -6.0, 11.0, 3.3, 1.8
 KEY_W, KEY_D = 3.0, 0.6
-KEY_X, KEY_Y = (-24.0, -8.0, 8.0, 24.0), (-36.0, -14.0, 14.0, 36.0)
+HOLLOW_Z = 9.4
+KEY_X, KEY_Y = (-18.0, -8.0, 8.0, 18.0), (-14.0, 14.0)
 
 RING_BACK = RING["back"] + RING_DX
 BL_X1 = -RING_BACK - CARRIER_FLOAT
@@ -97,7 +100,14 @@ YC = YP1 + LIP_T
 HB = 30.6
 EAR_T, EAR_HOLE_D, EAR_R, EAR_DX, EAR_Y, EAR_TUCK, EAR_CH, EAR_WEB, EAR_WEB_W = 4.0, 3.6, 5.0, 5.0, 36.0, 0.8, 1.0, 2.0, 1.8
 BOLT_L, BOLT_D, BOLT_HEAD_D, BOLT_HEAD_H, DRIVER_D, DRIVER_L = 16.0, 3.0, 6.0, 3.2, 6.0, 60.0
-PLUG_R, PLUG_Y0, PLUG_OUT, PLUG_CH, PLUG_FLAT = PK_R - 0.35, YL0 - 0.5, 0.6, 0.5, 4.6
+PLUG_R, PLUG_Y0, PLUG_OUT, PLUG_CH, PLUG_FLAT = PK_R - 0.35, YL0 - 0.5, 0.6, 0.5, 3.2
+
+PX, LAYER, OVER, BRIDGE_MAX, HOLE_MAX, TILT_MIN, SKIN = 0.1, 0.2, 0.3, 10.0, 3.0, 45.0, 0.2
+GAP = 2 * OVER + PX
+NEAR = np.add.outer(np.arange(-5, 6) ** 2, np.arange(-5, 6) ** 2) <= 25
+CROSS = ndi.generate_binary_structure(2, 1)
+
+EXEMPT = dict(SpiderPin=("P1",), Bushing_R=("P5", 1.3), PinionA=("P5", 1.6), SpiderGear_1=("P5", 0.45), CaseBottom=("P5", 1.1), Sleeve_1=("P6",))
 
 PH = dict(spider=15.0, sideL=0.0, ring=0.0, pinion=0.0, iring=0.0)
 
@@ -397,7 +407,7 @@ def shell(cav, ys, h, boss_r):
         pts = [V(a, u, v) for u, v in q] if ax == "x" else [V(u, a, v) for u, v in q]
         return prism(pts, V(b - a, 0, 0) if ax == "x" else V(0, b - a, 0))
 
-    def wedge(r, ax, a, b, a2, b2):
+    def wedge(r, ax, a, b, a2, b2, top=top):
         t = min(r / math.sqrt(2), h)
         s = ext([(0, 0), (-t, t), (-h, h), (h, h), (t, t)], ax, a, b)
         u0 = r / math.sqrt(2)
@@ -410,7 +420,7 @@ def shell(cav, ys, h, boss_r):
         return s.fuse(cyl(r, a, b) if ax == "x" else ycyl(r, a, b))
     parts = [wedge(R[i], "x", XL + i * w, XL + (i + 1) * w, XL + i * w + SHELL_T * (i == 0), XL + (i + 1) * w - SHELL_T * (i == n - 1)) for i in range(n)]
     rp = bb(ys[0]).XLength / 2 + SHELL_T
-    arm = [wedge(rp, "y", 0, YT + SHELL_T, 0, YT), wedge(PK_R + SHELL_T, "y", YT, YC, YT + SHELL_T, YC - SHELL_T)]
+    arm = [wedge(rp, "y", 0, YT + SHELL_T, 0, YT), wedge(PK_R + SHELL_T, "y", YT, YC, YT + SHELL_T, YC - SHELL_T, h - (HOLLOW_Z if h == HB else SHELL_T))]
     parts += arm + [rot(a, V(0, 0, 1), 180) for a in arm]
     for sx in SCREW_X:
         parts.append(box(sx - 1.2, sx + 1.2, -SCREW_Y, SCREW_Y, 0, h))
@@ -433,7 +443,7 @@ def build_case(sr, sp):
     for sx in SCREW_X:
         for sy in (SCREW_Y, -SCREW_Y):
             top = top.cut(vcyl(PILOT_D / 2, sx, sy, -1, PILOT_LEN))
-            bot = bot.cut(vcyl(HOLE_R, sx, sy, SEAT_Z - 1, 1)).cut(vcyl(WELL_R, sx, sy, -HB - 1, SEAT_Z))
+            bot = bot.cut(vcyl(HOLE_R, sx, sy, SEAT_Z + SKIN, 1)).cut(vcyl(WELL_R, sx, sy, -HB - 1, SEAT_Z))
     keys = [box(x - KEY_W / 2, x + KEY_W / 2, y0, y1, CASE_Z - KEY_D, CASE_Z + 1) for x in KEY_X for y0, y1 in ((-YC - 1, -29.0), (29.0, YC + 1))]
     keys += [box(XL - 1, XR + 1, y - KEY_W / 2, y + KEY_W / 2, CASE_Z - KEY_D, CASE_Z + 1) for y in KEY_Y]
     top = top.cut(keys[0].fuse(keys[1:]).removeSplitter())
@@ -586,26 +596,98 @@ def oriented(s, up):
     return t
 
 
+def fill(polys, org, shape):
+    e = np.concatenate([np.stack([p[:-1], p[1:]], 1) for p in polys])
+    x1, y1, x2, y2 = e[:, 0, 0], e[:, 0, 1], e[:, 1, 0], e[:, 1, 1]
+    j0 = np.ceil((np.minimum(y1, y2) - org[1]) / PX - .5).astype(int)
+    n = np.maximum(np.ceil((np.maximum(y1, y2) - org[1]) / PX - .5).astype(int) - j0, 0)
+    idx = np.repeat(np.arange(len(e)), n)
+    j = j0[idx] + np.arange(n.sum()) - np.repeat(np.cumsum(n) - n, n)
+    x = x1[idx] + (org[1] + (j + .5) * PX - y1[idx]) * (x2[idx] - x1[idx]) / (y2[idx] - y1[idx])
+    i = np.clip(np.ceil((x - org[0]) / PX - .5).astype(int), 0, shape[1])
+    c = np.bincount(j * (shape[1] + 1) + i, minlength=shape[0] * (shape[1] + 1)).reshape(shape[0], shape[1] + 1)
+    return np.cumsum(c, 1)[:, :shape[1]] % 2 == 1
+
+
+def bridge(m, pv):
+    ys, xs = np.nonzero(m)
+    pts = np.c_[xs, ys] * PX
+    edge = m & ~ndi.binary_erosion(m, CROSS)
+    ext = np.ptp(pts @ np.linalg.eigh(np.cov(pts.T))[1], axis=0) + PX if len(xs) > 2 else np.array([PX, PX])
+    held = (edge & ndi.binary_dilation(pv, NEAR)).sum() / max(edge.sum(), 1)
+    ok = not (ndi.binary_fill_holes(m) & ~m).any() and held >= 0.8 and ext.min() + GAP <= BRIDGE_MAX and m.sum() * PX * PX >= 0.7 * ext[0] * ext[1]
+    return ok, round(float(ext.min() + GAP), 1), round(float(ext.max() + GAP), 1)
+
+
+def layers(t):
+    b = bb(t)
+    org, shape = (b.XMin - 1, b.YMin - 1), (int((b.YLength + 2) / PX) + 1, int((b.XLength + 2) / PX) + 1)
+    prev, out = None, dict(bad=[], bridges=[])
+    for k in range(int(math.ceil(b.ZLength / LAYER - 1e-6))):
+        z = min((k + .5) * LAYER + 0.017, (k * LAYER + b.ZLength) / 2)
+        polys = [np.array([(v.x, v.y) for v in e.discretize(Number=max(int(e.Length / 0.05), 2) + 1)]) for w in t.slice(V(0, 0, 1), z) for e in w.Edges]
+        cur = fill(polys, org, shape) if polys else np.zeros(shape, bool)
+        if prev is not None:
+            dist = ndi.distance_transform_edt(~prev) * PX
+            lab, _ = ndi.label(cur & (dist > OVER + PX / 2), np.ones((3, 3)))
+            for c, s in enumerate(ndi.find_objects(lab), 1):
+                s = tuple(slice(max(q.start - 8, 0), q.stop + 8) for q in s)
+                m = lab[s] == c
+                ok, span, length = bridge(m, prev[s])
+                cy, cx = ndi.center_of_mass(m)
+                at = (round(org[0] + (cx + s[1].start + .5) * PX, 1), round(org[1] + (cy + s[0].start + .5) * PX, 1))
+                out["bridges" if ok else "bad"].append((round(z, 1), span, length, at) if ok else (round(z, 1), round(float(dist[s][m].max()), 2), at))
+        prev = cur
+    return out
+
+
+def min_tilt(t):
+    worst = (90.0, None)
+    for f in t.Faces:
+        k = f.Surface
+        u0, u1, v0, v1 = f.ParameterRange
+        uv = [(u0, v0)] if isinstance(k, Part.Plane) else [(u0 + (u1 - u0) * (i + .5) / 10, v0 + (v1 - v0) * (j + .5) / 10) for i in range(10) for j in range(10)]
+        uv = [q for q in uv if isinstance(k, Part.Plane) or f.isPartOfDomain(*q)]
+        if not isinstance(k, Part.Plane):
+            uv += [k.parameter(p) for e in f.Edges for p in e.discretize(Number=9)]
+        for u, v in uv:
+            n = f.normalAt(u, v)
+            if n.z >= 0 or (isinstance(k, Part.Plane) and n.z < -0.9999):
+                continue
+            p = f.valueAt(u, v)
+            if isinstance(k, Part.Cylinder) and abs(k.Axis.z) < 1e-3 and k.Radius <= HOLE_MAX:
+                d = p - k.Center
+                if n.dot(d - k.Axis * d.dot(k.Axis)) < 0:
+                    continue
+            a = math.degrees(math.acos(min(1.0, -n.z)))
+            if a < worst[0]:
+                worst = (round(a, 1), (round(p.x, 1), round(p.y, 1), round(p.z, 1)))
+    return worst
+
+
 def print_report(name, s):
     t = oriented(s, name)
-    floor = sum(f.Area for f in t.Faces if f.BoundBox.ZMax < 1e-4 and isinstance(f.Surface, Part.Plane))
-    bad, ledge = [], []
-    for f in t.Faces:
-        u0, u1, v0, v1 = f.ParameterRange
-        hit = [1 for i in range(6) for j in range(6) if f.isPartOfDomain(u0 + (u1 - u0) * (i + .5) / 6, v0 + (v1 - v0) * (j + .5) / 6)
-               and f.valueAt(u0 + (u1 - u0) * (i + .5) / 6, v0 + (v1 - v0) * (j + .5) / 6).z > 0.8
-               and f.normalAt(u0 + (u1 - u0) * (i + .5) / 6, v0 + (v1 - v0) * (j + .5) / 6).z < -0.7072]
-        if not hit:
-            continue
-        k = f.Surface
-        if getattr(k, "Radius", 99) <= 3.5:
-            continue
-        if 2 * f.Area / f.Length <= 3.5:
-            if isinstance(k, Part.Plane):
-                ledge.append((round(2 * f.Area / f.Length, 2), round(f.CenterOfMass.z, 1)))
-            continue
-        bad.append((type(k).__name__, round(f.Area, 1), round(f.CenterOfMass.z, 1)))
-    return round(floor, 1), bad, ledge
+    fl = [f for f in t.Faces if f.BoundBox.ZMax < 1e-4 and isinstance(f.Surface, Part.Plane)]
+    fb = bb(Part.makeCompound(fl))
+    L = layers(t)
+    return dict(floor=round(sum(f.Area for f in fl), 1), wall=round(min(2 * f.Area / f.Length for f in fl), 2), bed_min=round(min(fb.XLength, fb.YLength), 1),
+                height=round(bb(t).ZLength, 1), tilt=min_tilt(t), bad=L["bad"], bridges=L["bridges"])
+
+
+def print_reports(P):
+    groups, out = [], {}
+    for n, s in P.items():
+        t = oriented(s, n)
+        key = (round(s.Volume, 1), tuple(sorted(round(d, 1) for d in (bb(t).XLength, bb(t).YLength, bb(t).ZLength))))
+        for g in groups:
+            if g[0] == key:
+                g[1].append(n)
+                break
+        else:
+            groups.append((key, [n]))
+    for _, ms in groups:
+        out[ms[0]] = dict(print_report(ms[0], P[ms[0]]), twins=ms[1:])
+    return out
 
 
 def port(sh, ref, ax, sg):
@@ -841,8 +923,7 @@ def verify(P):
             sw = max(sw, *(vol(t, o) for o in fixed))
     rep["ears"] = dict(holes=[(round(x, 2), round(y, 2)) for x, y in ear_pos()], sweep=round(sw, 4), gap=round(gap, 3), yoke_face=round(min(dist(top, y) for y in yokes), 3),
                        wall=ear_wall(top), yoke_off=round(off, 3), size=(round(bb(top).XLength, 2), round(bb(top).YLength, 2)), top_vol=round(top.Volume, 1))
-    rep["print"] = {n: print_report(n, P[n]) for n in names}
-    rep["print"]["OutputPlug"] = print_report("OutputPlug", pl)
+    rep["print"] = print_reports(dict(P, OutputPlug=pl))
     rep["plastic_cm3"] = round(sum(s.Volume for s in P.values()) / 1000, 1)
     rep["volumes"] = {n: round(s.Volume, 1) for n, s in P.items()}
     rep["volumes"]["OutputPlug"] = round(pl.Volume, 1)
@@ -884,8 +965,13 @@ def check(rep):
     assert ea["sweep"] < 1e-3 and ea["gap"] >= 2.0 and ea["wall"] >= 3.0 and ea["yoke_face"] >= ea["yoke_off"] - 0.1, ea
     pg = rep["plug"]
     assert pg["case"] >= LINER_PLAY / 2 - 1e-3 and pg["spin"] >= 0.8 and pg["overlap"] < 1e-3 and pg["zsweep"] < 1e-3 and 0.2 <= sum(pg["play"]) <= 0.4, pg
-    assert all(f >= 5.0 and not b for f, b, _ in rep["print"].values()), {k: v for k, v in rep["print"].items() if v[0] < 5.0 or v[1]}
-    assert all(not l for n, (_, _, l) in rep["print"].items() if n not in ("Bushing_R", "CaseBottom", "PinionA", "PinionB", "SpiderGear_1", "SpiderGear_2")) and all(w <= 1.2 + 1e-2 for w, _ in rep["print"]["Bushing_R"][2]), {k: v[2] for k, v in rep["print"].items()}
+    for n, r in rep["print"].items():
+        ex = [EXEMPT[m] for m in [n] + r["twins"] if m in EXEMPT]
+        ex = ex[0] if ex else ()
+        assert "P1" in ex or r["tilt"][0] >= TILT_MIN - 0.01, (n, "P1 P4", r["tilt"])
+        assert "P5" in ex and max([o for _, o, _ in r["bad"]] + [0]) <= ex[ex.index("P5") + 1] or not r["bad"], (n, "P2 P3 P5", r["bad"])
+        assert "P6" in ex or (r["floor"] >= 60.0 and r["wall"] >= 0.8 and r["height"] <= 4 * r["bed_min"]), (n, "P6", r["floor"], r["wall"], r["bed_min"], r["height"])
+        assert all(sp <= BRIDGE_MAX for _, sp, _, _ in r["bridges"]), (n, r["bridges"])
 
 
 def main():

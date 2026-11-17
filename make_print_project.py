@@ -23,21 +23,26 @@ DEFLECTION = 0.02
 MIN_FLOOR_AREA = 5.0
 
 # document axis that points up on the bed; identical parts are detected from geometry
-UPS = {"WheelMount": {"Mount_R": "-X", "Mount_L": "+X", "Knuckle": "+X", "Stub": "+Z", "WheelHub": "-X"},
+UPS = {"DriveHub": {"HubCarrier": "-Y", "Knuckle": "-Y", "HubCarrier_L": "-Y", "Knuckle_L": "-Y", "StubYoke": "+Z", "Wheel": "+X", "Tyre": "-X", "PivotBush_1": "+Z", "PivotBush_2": "-Z", "Sleeve_1": "+X", "Sleeve_2": "+X"},
+       "WheelMount": {"Mount_R": "-X", "Mount_L": "+X", "Knuckle": "+X", "Stub": "+Z", "WheelHub": "-X"},
        "WheelMount2": {"Mount": "-Z", "Knuckle": "+Z", "Stub": "+Z", "WheelHub": "-X", "Sleeve_1": "+X", "Sleeve_2": "+X"},
        "MotorModule": {"Bracket": "+Y", "MotorGear": "-Y", "ShaftGear": "-Y", "ThroughShaft": "+Z"},
        "CvtModule": {"Lid": "-Z", "Disc": "+Z", "ThroughShaft": "+Z", "Wheel": "+Y", "Shuttle": "+X", "RollerSlider": "+Z", "Roller": "+Y", "ServoArm": "+Z"},
        "DriveShaft": {"JointYoke_1": "+X", "JointYoke_2": "-X", "JointYoke_3": "+X", "JointYoke_4": "-X", "JointCross_1": "+X", "JointCross_2": "-X", "SlideRod": "+Y", "SlideTube": "+X", "ShortLink": "+Y", "DoubleFork": "+Y"},
        "Gearbox3": {"Bracket": "+Y", "FrontPlate": "+Y", "MotorCarrier": "-Y", "MotorCap": "-Y", "MotorGear_B": "+Y", "MotorGear_A": "+Y", "MotorGear_C": "+Y", "SlideCarrier": "+Y", "SlideGear_A": "+Y", "SlideGear_B": "+Y", "SlideCap": "-Y", "Layshaft": "+Z", "ThroughShaft": "+Z", "T1": "-Y", "T2": "-Y", "ShiftFork": "-Y", "Rod_1": "+Z", "Rod_2": "+Z", "ServoArm": "-Z", "CasePan": "+Z", "ServoMount": "-X", "Sleeve_1": "+Y", "Sleeve_2": "+Y", "Sleeve_3": "+Y", "Sleeve_4": "+Y"}}
-COPIES = {"WheelMount": {"Mount_R": 1, "Mount_L": 1, "Knuckle": 2, "Stub": 2, "WheelHub": 2},
+COPIES = {"DriveHub": {"HubCarrier": 1, "Knuckle": 1, "HubCarrier_L": 1, "Knuckle_L": 1, "StubYoke": 1, "Wheel": 1, "Tyre": 1, "PivotBush_1": 2, "Sleeve_1": 2},
+          "WheelMount": {"Mount_R": 1, "Mount_L": 1, "Knuckle": 2, "Stub": 2, "WheelHub": 2},
           "WheelMount2": {"Mount": 1, "Knuckle": 1, "Stub": 1, "WheelHub": 1, "Sleeve_1": 2, "Sleeve_2": 2},
           "MotorModule": {"Bracket": 1, "MotorGear": 1, "ShaftGear": 1, "ThroughShaft": 1},
           "CvtModule": {"Lid": 1, "Disc": 1, "ThroughShaft": 1, "Wheel": 1, "Shuttle": 1, "RollerSlider": 1, "Roller": 1, "ServoArm": 1},
           "DriveShaft": {"JointYoke_1": 4, "JointCross_1": 2, "SlideRod": 1, "SlideTube": 1, "ShortLink": 1, "DoubleFork": 1},
           "Gearbox3": {"Bracket": 1, "FrontPlate": 1, "MotorCarrier": 1, "MotorCap": 1, "MotorGear_B": 1, "MotorGear_A": 1, "MotorGear_C": 1, "SlideCarrier": 1, "SlideGear_A": 1, "SlideGear_B": 1, "SlideCap": 1, "Layshaft": 1, "ThroughShaft": 1, "T1": 1, "T2": 1, "ShiftFork": 1, "Rod_1": 2, "Rod_2": 1, "ServoArm": 1, "CasePan": 1, "ServoMount": 1, "Sleeve_1": 4, "Sleeve_2": 4, "Sleeve_3": 4, "Sleeve_4": 4},
           "Differential": {"Carrier": 1, "Cap": 1, "Bushing_L": 1, "Bushing_R": 1, "SideGear_L": 2, "SpiderGear_1": 2, "SpiderPin": 1, "HalfShaft_L": 2, "PinionA": 2, "PinionShaftA": 2, "OutputPlug": 1, "IdlerRing": 1, "CaseTop": 1, "CaseBottom": 1, "Sleeve_1": 4}}
-MIRRORED = {"WheelMount": ("Mount_L",)}  # mirror images never share a print group
-SKIP = {"WheelMount2": ("Ref_Floor", "Ref_Disc", "Ref_KingpinBolt", "Ref_Washer", "Ref_LockBolt", "Ref_HubScrew", "Ref_JointYoke"),
+MIRRORED = {"WheelMount": ("Mount_L",), "DriveHub": ("HubCarrier_L", "Knuckle_L")}  # mirror images never share a print group
+SKIP = {"DriveHub": ("Ref_PivotScrew_U", "Ref_PivotScrew_L", "Ref_LockScrew", "Ref_HubScrew", "Ref_JointCross", "Ref_PinA", "Ref_PinB", "Ref_DoubleFork", "Ref_Floor",
+                     "Shown_HubCarrier", "Shown_Knuckle", "Shown_StubYoke", "Shown_Wheel", "Shown_Tyre", "Shown_PivotBush_1", "Shown_PivotBush_2", "Shown_Sleeve_1", "Shown_Sleeve_2",
+                     "Shown_PivotScrew_U", "Shown_PivotScrew_L", "Shown_HubScrew", "Shown_JointCross", "Shown_PinA", "Shown_PinB", "Shown_DoubleFork"),
+        "WheelMount2": ("Ref_Floor", "Ref_Disc", "Ref_KingpinBolt", "Ref_Washer", "Ref_LockBolt", "Ref_HubScrew", "Ref_JointYoke"),
         "DriveShaft": ("DummyPort_1", "DummyPort_2", "Shown_JointYoke_1", "Shown_JointYoke_2", "Shown_JointYoke_3", "Shown_JointYoke_4", "Shown_JointCross_1", "Shown_JointCross_2", "Shown_SlideRod", "Shown_SlideTube", "Shown_JointYoke_S1", "Shown_JointYoke_S2", "Shown_JointYoke_S3", "Shown_JointYoke_S4", "Shown_JointCross_S1", "Shown_JointCross_S2", "Shown_ShortLink", "Shown_JointYoke_D1", "Shown_JointYoke_D4", "Shown_JointCross_D1", "Shown_JointCross_D2", "Shown_DoubleFork"),
         "Gearbox3": ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts", "Ref_Heads", "Ref_Grubs")}
 UP = UPS.get(DOC) or {

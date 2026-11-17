@@ -39,7 +39,7 @@ COPIES = {"WheelMount": {"Mount_R": 1, "Mount_L": 1, "Knuckle": 2, "Stub": 2, "W
 MIRRORED = {"WheelMount": ("Mount_L",)}  # mirror images never share a print group
 SKIP = {"WheelMount2": ("Ref_Floor", "Ref_Disc", "Ref_KingpinBolt", "Ref_Washer", "Ref_LockBolt", "Ref_HubScrew", "Ref_JointYoke"),
         "DriveShaft": ("DummyPort_1", "DummyPort_2", "Shown_JointYoke_1", "Shown_JointYoke_2", "Shown_JointYoke_3", "Shown_JointYoke_4", "Shown_JointCross_1", "Shown_JointCross_2", "Shown_SlideRod", "Shown_SlideTube"),
-        "Gearbox3": ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts", "Ref_Heads")}
+        "Gearbox3": ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts", "Ref_Heads", "Ref_Grubs")}
 UP = UPS.get(DOC) or {
     "Carrier": "+X", "Cap": "-X", "Bushing_L": "+X", "Bushing_R": "+X",
     "SideGear_L": "+X", "SideGear_R": "-X", "SpiderGear_1": "+Y", "SpiderGear_2": "-Y",

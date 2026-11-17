@@ -37,7 +37,7 @@ COPIES = {"DriveHub": {"HubCarrier": 1, "Knuckle": 1, "HubCarrier_L": 1, "Knuckl
           "CvtModule": {"Lid": 1, "Disc": 1, "ThroughShaft": 1, "Wheel": 1, "Shuttle": 1, "RollerSlider": 1, "Roller": 1, "ServoArm": 1},
           "DriveShaft": {"JointYoke_1": 4, "JointCross_1": 2, "SlideRod": 1, "SlideTube": 1, "ShortLink": 1, "DoubleFork": 1},
           "Gearbox3": {"Bracket": 1, "FrontPlate": 1, "MotorCarrier": 1, "MotorCap": 1, "MotorGear_B": 1, "MotorGear_A": 1, "MotorGear_C": 1, "SlideCarrier": 1, "SlideGear_A": 1, "SlideGear_B": 1, "SlideCap": 1, "Layshaft": 1, "ThroughShaft": 1, "T1": 1, "T2": 1, "ShiftFork": 1, "Rod_1": 2, "Rod_2": 1, "ServoArm": 1, "CasePan": 1, "ServoMount": 1, "Sleeve_1": 4, "Sleeve_2": 4, "Sleeve_3": 4, "Sleeve_4": 4},
-          "Differential": {"Carrier": 1, "Cap": 1, "Bushing_L": 1, "Bushing_R": 1, "SideGear_L": 2, "SpiderGear_1": 2, "SpiderPin": 1, "HalfShaft_L": 2, "PinionA": 2, "PinionShaftA": 2, "OutputPlug": 1, "IdlerRing": 1, "CaseTop": 1, "CaseBottom": 1, "Sleeve_1": 4}}
+          "Differential": {"Carrier": 1, "Cap": 1, "Bushing_L": 1, "Bushing_R": 1, "SideGear_L": 2, "SpiderGear_1": 2, "SpiderPin": 1, "HalfShaft_L": 2, "PlugShaft_L": 2, "PinionA": 2, "PinionShaftA": 2, "OutputPlug": 1, "IdlerRing": 1, "CaseTop": 1, "CaseBottom": 1, "Sleeve_1": 4}}
 MIRRORED = {"WheelMount": ("Mount_L",), "DriveHub": ("HubCarrier_L", "Knuckle_L")}  # mirror images never share a print group
 SKIP = {"DriveHub": ("Ref_PivotScrew_U", "Ref_PivotScrew_L", "Ref_LockScrew", "Ref_HubScrew", "Ref_JointCross", "Ref_PinA", "Ref_PinB", "Ref_DoubleFork", "Ref_Floor",
                      "Shown_HubCarrier", "Shown_Knuckle", "Shown_StubYoke", "Shown_Wheel", "Shown_Tyre", "Shown_PivotBush_1", "Shown_PivotBush_2", "Shown_Sleeve_1", "Shown_Sleeve_2",
@@ -48,7 +48,7 @@ SKIP = {"DriveHub": ("Ref_PivotScrew_U", "Ref_PivotScrew_L", "Ref_LockScrew", "R
 UP = UPS.get(DOC) or {
     "Carrier": "+X", "Cap": "-X", "Bushing_L": "+X", "Bushing_R": "+X",
     "SideGear_L": "+X", "SideGear_R": "-X", "SpiderGear_1": "+Y", "SpiderGear_2": "-Y",
-    "SpiderPin": "-Z", "HalfShaft_L": "+Z", "HalfShaft_R": "+Z",
+    "SpiderPin": "-Z", "HalfShaft_L": "+Z", "HalfShaft_R": "+Z", "PlugShaft_L": "+Z", "PlugShaft_R": "+Z",
     "PinionA": "+Y", "PinionB": "-Y", "PinionShaftA": "+Z", "PinionShaftB": "+Z", "OutputPlug": "+Z",
     "IdlerRing": "-X", "CaseTop": "-Z", "CaseBottom": "+Z", "Sleeve_1": "+X", "Sleeve_2": "+X", "Sleeve_3": "+Y", "Sleeve_4": "+Y",
 }

@@ -12,6 +12,7 @@
 # Optional OutputPlug (parked 40 mm out along -y in the FCStd) replaces PinionB and PinionShaftB when the axle is not chained: a dia 11.5 barrel 8.0 long lies in the same -y pocket between the two lips (0.15 axial each way, 0.35 radial, better than the old 0.45 axial per side), its dia 10.2 necks pass the lip bores, and it closes the case.
 # Four bolt ears on CaseTop (4 mm thick, flush with the glue face, fully round outer end, 1.0 chamfer on the underside rim and two 1.8 wide 2 mm 45 degree webs under each ear set 1.0 in from the chamfered rim so no flat ledge hangs over it, where it meets the case end wall (clear of the dia 6 head and driver), dia 3.6 holes for M3x16 pan head bolts from below through the cardboard to a nut and washer on top): holes at x = +-45.23, y = +-36 from the axle centre (90.46 x 72 pattern).
 # Phases drawn: ring 0, iring 0, pinion 0; the bundle never moves relative to itself, so the mesh cannot block it. Inherited, not changed here: Carrier pilot wall 1.4 (asserted 1.2) and Cap clear hole dia 3.2. Lowest point 30.6 mm below the axle axis: wheels need radius over 31. Print (PLA, 0.4 nozzle, 0.2 layers, supports must stay OFF), measured on the shapes by print_report for every unique printed part in its print orientation (twins are tested once) and asserted in check(): P1 no down-facing face under 45 degrees from horizontal (faces sampled on a grid and along their edges; a horizontal round hole of dia 6 or less may stay round, a larger one would fail), CaseTop and CaseBottom ramps and domes sit at exactly 45.0 (no margin, left), HalfShaft flange flanks 48.2 (the 8.0 AF flat they lie on cannot move), OutputPlug 51.1; P2, P3, P5 every 0.2 layer is sliced (0.1 mm raster) and no pixel of a layer may lie more than 0.3 plus half a pixel (0.35) from the layer below (exact distance transform, no erosion), except a true bridge (simply connected, straight, 10 mm or less across, 80 percent of its rim on the layer below: the 3 mm glue grooves in CaseTop and the 6.6 mm roofs of the CaseBottom screw wells); P6 bed contact 60 mm2 or more, first layer wall 0.8 or more, height at most 4 x the smallest bed dimension. Changes: each CaseBottom screw well (dia 6.6) has a sacrificial 0.2 mm skin (SKIN, modelled as solid) across its dia 3.6 pass hole, so the roof is a 6.6 mm round bridge; assembly step: punch the skin with a 3.5 drill or the screw tip before fitting each M3x16. The slicer still puts about 1.7 g of auto support in these wells if supports are on, so keep supports off (with them off the roofs are legal bridges). CaseTop glue grooves sit at x -18, -8, 8, 18 (no cross grooves at y +-36) so none crosses another or runs half under a screw rib: all are straight 3 mm bridges. CaseBottom hollow cells in the y arms have their floor at print height HOLLOW_Z 9.4 so the 45 degree ramp never opens them (the old 0.1 mm skin across a 12 mm cell mouth at z 9.1 is gone). OutputPlug flat is 3.2 below the axis (neck flank 51 degrees). Exemptions by name (EXEMPT, each asserted at its measured value, nothing else is relaxed): SpiderPin P1 (lies on its 0.6 flat, flank 40.5 degrees, printed by the user and unchanged); Bushing_R P5 (1.2 wide flat ring under the flange, measured 1.22: both orientations have it because the tail sits on the other side of the flange, and a chamfer there would hit the Cap bore or the IdlerRing web, which stay as printed); PinionA and PinionB P5 (hex pocket roof 0.8 to 1.45 wide pierced by the bore, measured 1.5, printed by the user); SpiderGear_1 and 2 P5 (0.4 wide flat ledge at the hub, hub r 7.1 to 7.5, measured 0.42 at 12 tooth roots, toothed part printed by the user); CaseBottom P5 (the 45 degree ramp skin meets the round rim of each screw well and leaves 2 mm crescent bridges over the rim, measured 1.02, each anchored at both tips); Sleeve_1 to 4 P6 (bed 34.6 mm2: a placeholder tube of the exact PTFE size, 1.0 wall, 8 tall on 12 dia, brim it if it lifts). IdlerRing has a 0.28 step (r 19.62 to 19.9), under the 0.35 limit, so it needs no exemption. Everything else passes.
+# Plug-in half shaft variant: PlugShaft_L and PlugShaft_R are alternatives to HalfShaft_L/R (SHAFT_SET "Half" or "Plug" says which pair sits in the FCStd and which pair assembly() leaves out of the bundle, the other pair is parked 45 mm above the case; the HalfShaft checks and asserts run unchanged either way, verify_plug and check_plug add the PlugShaft ones). Each PlugShaft is one printed part, L and R identical, 2 copies: an 8.0 AF hex shank (tip x 2.65, like the HalfShaft hex) with a 2.4 long 45 degree hex nose (AF 3.2 at the tip), a shoulder 0.55 off the case end face (x 40.78), a 4.5 thick web (fork floor, full 18.5 x 8.4 section, 1.0 fillets where the floor meets the ear faces: a 1.2 web was too weak, the ear root moment twists it like a 1.2 x 8.4 beam, 52 MPa) and the JointYoke fork (constants PF_*, copied from drive_shaft.py build_yoke: ears 3.0 thick, gap 12.5, pin hole 3.4, dia 6.0 x 0.8 counterbores, pin axis 2.0 short of the cross centre, ear half width 4.4, ear tip a half octagon tangent to R 4.4 like the DoubleFork), so the kit JointCross and its M3x20 pin screws fit unchanged (verify_plug compares them with a JointYoke read from DriveShaft.FCStd, which is only opened and closed, never saved). No new fasteners. The joint centre sits at x 53.28 from the car centre line, 14.98 closer than the 68.26 of the 16 mm port plus clamp-on yoke, the posed JointCross, pins and mating fork stay 5.4 or more clear of both case halves and the bolt ears at 25 degrees bend in every direction (24 phases, 0 hits). Stops: inward the nose tip meets the SpiderPin (travel 0.15 like the flange), backup the shoulder against the case end face (gap 0.55 against at most 0.45 of tip travel at the far carrier float extreme, so it never touches in running); outward nothing in the differential holds a PlugShaft, the car (suspension, wheel hub) must. Fits are the same as the HalfShaft hex: 0.38 radial in the liner, 0.83 in the lips and bushing bores, 0.15 per flat in the 8.3 hex socket, full socket engagement over the whole gear float, side gear outward float and side_mesh unchanged, the 0.10 inward stop of the flange is gone: inward the gear is only held by the spiders, 0.19. Plug assembly: HalfShafts are not used, SideGear_L and R go into the Carrier alone (step 1 and 4), Sleeve_1 and 2 are laid into the CaseTop pockets before the bundle goes in (step 8, only Sleeve_3 and 4 still ride on the pinion shaft ports), the bundle is lowered over them (swept), CaseBottom and the screws close the case, then each PlugShaft is pushed in from outside, nose first, through the lip, liner and bushing into the side gear hex socket (turn it until the hex finds the socket, the 45 degree nose guides it) and pulled out the same way. Side gear centring: with no shaft the side gear can only be moved off the axis by the spider mesh (0.35 or less radially at its nominal place, 0.8 or less at its outward stop, from solids by bisection in verify_plug, asserted), the boss, bushing journal end, Carrier and Cap bores never limit it; the nose (AF 3.2 against the 8.3 socket) takes up to 2.3 of offset and guides the 8.0 hex in, asserted by a sweep with the gear at its worst offset against the shaft pushed 0.3 the other way, the offset closing at 0.8 per mm of travel, so no locating feature was added. Strength (500 N.mm, 15 N radial at the joint centre): hex torsion 5.0 MPa, bending at the lip 3.7, combined 9.4, fork ear root 5.5, web as a torsion beam under the ear root moment 4.5 (Roark rectangle, also the across-layer shear for the lying print), web bending 0.7, all 10 or less (asserted). Print: lying on the hex flat (+Z up), ears vertical walls, pin holes horizontal, nose flanks 45.0 like the case ramps, counterbores are teardrops with a 45 degree gable above them so no roof is bridged, no exemption and no raised cap; no retention: the PlugShaft is not held outward by the differential, and no snap-on keeper fits because the free axial gaps inside the closed case measured on the solids are only 0.2 (side gear back to bushing journal), 0.5 (bushing end to the inner lip) and 0.15 per side of the liner, none near the 2.5 needed, so the suspension and wheel chain must hold it. Walls 1.2 or more everywhere except the bottom of the dia 6.0 counterbores, 1.0 (the hex flat 4.0 from the axis sets the bed plane, 1.2 would need 4.2).
 import FreeCAD as App, Part, math
 import numpy as np
 from scipy import ndimage as ndi
@@ -101,6 +102,16 @@ HB = 30.6
 EAR_T, EAR_HOLE_D, EAR_R, EAR_DX, EAR_Y, EAR_TUCK, EAR_CH, EAR_WEB, EAR_WEB_W = 4.0, 3.6, 5.0, 5.0, 36.0, 0.8, 1.0, 2.0, 1.8
 BOLT_L, BOLT_D, BOLT_HEAD_D, BOLT_HEAD_H, DRIVER_D, DRIVER_L = 16.0, 3.0, 6.0, 3.2, 6.0, 60.0
 PLUG_R, PLUG_Y0, PLUG_OUT, PLUG_CH, PLUG_FLAT = PK_R - 0.35, YL0 - 0.5, 0.6, 0.5, 3.2
+SHAFT_SET = "Half"
+PF_EAR_T, PF_GAP, PF_PIN, PF_EAR_W, PF_CB, PF_CB_D, PF_SH, PF_AX, PF_SPHERE = 3.0, 12.5, 3.4, 4.4, 0.8, 6.0, 6.0, 2.0, 12.5
+PF_EAR_OUT = PF_GAP / 2 + PF_EAR_T
+PLG_GAP, PLG_WEB, PLG_NOSE, PLG_TIP_AF, PLG_PARK, PLG_TORQUE, BLK_HALF = 0.55, 4.5, 2.4, 3.2, 45.0, 500.0, 6.0
+PLG_FILLET = 1.0
+PLG_XS = XR + PLG_GAP
+PLG_X0 = PLG_XS + PLG_WEB
+PLG_PIN = PLG_X0 + PF_SH
+PLG_C = PLG_PIN + PF_AX
+DRIVE_SHAFT_DOC = "/home/mikhail/Documents/cad/RC Car/DriveShaft.FCStd"
 
 PX, LAYER, OVER, BRIDGE_MAX, HOLE_MAX, TILT_MIN, SKIN = 0.1, 0.2, 0.3, 10.0, 3.0, 45.0, 0.2
 GAP = 2 * OVER + PX
@@ -111,12 +122,12 @@ EXEMPT = dict(SpiderPin=("P1",), Bushing_R=("P5", 1.3), PinionA=("P5", 1.6), Spi
 
 PH = dict(spider=15.0, sideL=0.0, ring=0.0, pinion=0.0, iring=0.0)
 
-COLORS = dict(Carrier=(0.2, 0.5, 0.9), Cap=(0.9, 0.5, 0.1), Bushing_L=(0.9, 0.9, 0.2), Bushing_R=(0.9, 0.9, 0.2),
+COLORS = dict(PlugShaft_L=(0.7, 0.3, 0.8), PlugShaft_R=(0.7, 0.3, 0.8), Carrier=(0.2, 0.5, 0.9), Cap=(0.9, 0.5, 0.1), Bushing_L=(0.9, 0.9, 0.2), Bushing_R=(0.9, 0.9, 0.2),
               SideGear_L=(0.8, 0.2, 0.2), SideGear_R=(0.8, 0.2, 0.2), SpiderGear_1=(0.2, 0.8, 0.3), SpiderGear_2=(0.2, 0.8, 0.3),
               SpiderPin=(0.6, 0.6, 0.6), HalfShaft_L=(0.7, 0.3, 0.8), HalfShaft_R=(0.7, 0.3, 0.8), PinionA=(0.1, 0.8, 0.8),
               PinionB=(0.1, 0.8, 0.8), PinionShaftA=(0.7, 0.3, 0.8), PinionShaftB=(0.7, 0.3, 0.8), OutputPlug=(0.9, 0.7, 0.2), IdlerRing=(0.9, 0.4, 0.6),
               CaseTop=(0.5, 0.5, 0.55), CaseBottom=(0.4, 0.4, 0.45), Sleeve_1=(0.95, 0.95, 0.95), Sleeve_2=(0.95, 0.95, 0.95), Sleeve_3=(0.95, 0.95, 0.95), Sleeve_4=(0.95, 0.95, 0.95))
-PRINT_UP = dict(Carrier="+X", Cap="-X", Bushing_L="+X", Bushing_R="+X", SideGear_L="+X", SideGear_R="-X", SpiderGear_1="+Y",
+PRINT_UP = dict(PlugShaft_L="+Z", PlugShaft_R="+Z", Carrier="+X", Cap="-X", Bushing_L="+X", Bushing_R="+X", SideGear_L="+X", SideGear_R="-X", SpiderGear_1="+Y",
                 SpiderGear_2="-Y", SpiderPin="-Z", HalfShaft_L="+Z", HalfShaft_R="+Z", PinionA="+Y", PinionB="-Y",
                 PinionShaftA="+Z", PinionShaftB="+Z", OutputPlug="+Z", IdlerRing="-X", CaseTop="-Z", CaseBottom="+Z",
                 Sleeve_1="+X", Sleeve_2="+X", Sleeve_3="+Y", Sleeve_4="+Y")
@@ -313,6 +324,44 @@ def build_half_shaft(sign):
     s = hexprism(SHAFT_AF, SHAFT_X0, tip).fuse(cyl(FLANGE_D / 2, SHAFT_X0, FLANGE_X1))
     s = port_cut(s, SHAFT_X0, tip).cut(Part.makeCylinder(SHAFT_HOLE_D / 2, 20, V(tip - PORT_HOLE, 0, -10), V(0, 0, 1)))
     return (s if sign > 0 else mirror_x(s)).removeSplitter()
+
+
+def hex_wire(af, x):
+    r = af / math.sqrt(3)
+    return Part.makePolygon([V(x, r * math.cos(math.radians(a)), r * math.sin(math.radians(a))) for a in range(0, 361, 60)])
+
+
+def build_plug_shaft():
+    zb, r = SHAFT_AF / 2, PF_EAR_W
+    t = r * math.tan(math.pi / 8)
+    xe = PLG_PIN + r
+    prof = [(PLG_X0, -zb), (xe - (zb - t), -zb), (xe, -t), (xe, t), (PLG_PIN + t, r), (PLG_X0, r)]
+    s = box(PLG_XS, PLG_X0, -PF_EAR_OUT, PF_EAR_OUT, -zb, r)
+    for sg in (-1, 1):
+        y0 = PF_GAP / 2 if sg > 0 else -PF_EAR_OUT
+        s = s.fuse(prism([V(x, y0, z) for x, z in prof], V(0, PF_EAR_T, 0)))
+    s = s.removeSplitter()
+    fe = [e for e in s.Edges if len(e.Vertexes) == 2 and all(abs(v.X - PLG_X0) < 1e-6 and abs(abs(v.Y) - PF_GAP / 2) < 1e-6 for v in e.Vertexes) and abs(e.Vertexes[0].Z - e.Vertexes[1].Z) > 1]
+    assert len(fe) == 2
+    s = s.makeFillet(PLG_FILLET, fe)
+    k, w = PF_CB_D / 2, 1.2
+    zap = k * math.sqrt(2) + w * math.sqrt(2)
+    for sg in (-1, 1):
+        ya, yb = sorted((sg * (PF_EAR_OUT - PF_CB - 1.0), sg * PF_EAR_OUT))
+        s = s.fuse(prism([V(PLG_PIN + dx, ya, z) for dx, z in ((-(zap - 3.9), 3.9), (0, zap), (zap - 3.9, 3.9))], V(0, yb - ya, 0)))
+    s = s.cut(Part.makeCylinder(PF_PIN / 2, 30, V(PLG_PIN, -15, 0), V(0, 1, 0)))
+    for sg in (-1, 1):
+        y0, y1 = sorted((sg * (PF_EAR_OUT - PF_CB), sg * (PF_EAR_OUT + 1)))
+        d = k / math.sqrt(2)
+        tear = prism([V(PLG_PIN + dx, y0, z) for dx, z in ((-d, d), (0, k * math.sqrt(2)), (d, d), (0, 0))], V(0, y1 - y0, 0))
+        s = s.cut(Part.makeCylinder(k, y1 - y0, V(PLG_PIN, y0, 0), V(0, 1, 0)).fuse(tear))
+    nose = Part.makeLoft([hex_wire(PLG_TIP_AF, SHAFT_X0), hex_wire(SHAFT_AF, SHAFT_X0 + PLG_NOSE)], True, True)
+    return s.fuse(nose).fuse(hexprism(SHAFT_AF, SHAFT_X0 + PLG_NOSE, PLG_XS + 0.5)).removeSplitter()
+
+
+def plug_pair():
+    r = build_plug_shaft()
+    return mirror_x(r).removeSplitter(), r
 
 
 def build_plug(y_in=PLUG_Y0):
@@ -574,7 +623,7 @@ def side_mesh(P, rng, outs):
 
 
 def assembly(P):
-    bundle = [n for n in P if n not in ("CaseTop", "CaseBottom")]
+    bundle = [n for n in P if n not in ("CaseTop", "CaseBottom") and not (SHAFT_SET == "Plug" and n.startswith("HalfShaft"))]
     out = dict(lower=0.0, close=0.0)
     for dz in [-30 + 0.5 * i for i in range(55)] + [round(-3 + 0.1 * i, 1) for i in range(31)]:
         b = P["CaseBottom"].copy()
@@ -584,6 +633,21 @@ def assembly(P):
             t.translate(V(0, 0, dz))
             out["lower"] = max(out["lower"], vol(t, P["CaseTop"]))
             out["close"] = max(out["close"], vol(b, P[n]))
+    return {k: round(v, 4) for k, v in out.items()}
+
+
+def assembly_plug(P):
+    bundle = [n for n in P if n not in ("CaseTop", "CaseBottom", "Sleeve_1", "Sleeve_2") and not n.startswith("HalfShaft")]
+    fixed = [P["Sleeve_1"], P["Sleeve_2"]]
+    out = dict(lower=0.0, close=0.0)
+    for dz in [-30 + 0.5 * i for i in range(55)] + [round(-3 + 0.1 * i, 1) for i in range(31)]:
+        b = P["CaseBottom"].copy()
+        b.translate(V(0, 0, dz))
+        out["close"] = max(out["close"], *(vol(b, q) for q in fixed))
+        for n in bundle:
+            t = P[n].copy()
+            t.translate(V(0, 0, dz))
+            out["lower"] = max(out["lower"], *(vol(t, q) for q in fixed))
     return {k: round(v, 4) for k, v in out.items()}
 
 
@@ -974,6 +1038,250 @@ def check(rep):
         assert all(sp <= BRIDGE_MAX for _, sp, _, _ in r["bridges"]), (n, r["bridges"])
 
 
+def drive_ref(S, kit):
+    yk, cr, ok = kit["P"], kit["Cr"], False
+    try:
+        d = App.openDocument(DRIVE_SHAFT_DOC)
+        try:
+            ry, rc = d.getObject("JointYoke_1").Shape.copy(), d.getObject("JointCross_1").Shape.copy()
+        finally:
+            App.closeDocument(d.Name)
+        c = rc.BoundBox.Center
+        ry.translate(-c)
+        rc.translate(-c)
+        ok = abs(ry.Volume - yk.Volume) < 0.5 and abs(rc.Volume - cr.Volume) < 0.5 and abs(bb(ry).XMin - bb(yk).XMin) < 1e-3 and abs(bb(rc).XMin + BLK_HALF) < 1e-3
+        if ok:
+            yk, cr = ry, rc
+    except Exception:
+        pass
+    return yk, cr, ok
+
+
+def joint_fit(pr, S):
+    kit = S["joint_kit"]()
+    yk, cr, loaded = drive_ref(S, kit)
+    fork = pr.copy()
+    fork.translate(V(-PLG_C, 0, 0))
+    r4 = lambda v: round(v, 4)
+    return dict(loaded=loaded, ear_cross=(r4(dist(cr, yk)), r4(dist(cr, fork))), pin=(r4(dist(kit["A"], yk)), r4(dist(kit["A"], fork))),
+                head=(r4(dist(kit["B"], yk)), r4(dist(kit["B"], fork))), overlap=r4(max(vol(cr, fork), vol(kit["A"], fork), vol(kit["B"], fork))),
+                hole=[[s.isInside(V(-PF_AX + dx, PF_EAR_OUT - 1.5, dz), 1e-6, True) for dx, dz in ((1.65, 0), (-1.65, 0), (0, 1.65), (0, -1.65), (1.75, 0), (-1.75, 0), (0, 1.75), (0, -1.75))] for s in (yk, fork)])
+
+
+def joint_swing(pr, S, cs, th=25.0):
+    kit = S["joint_kit"]()
+    kit["P"] = pr.copy()
+    kit["P"].translate(V(-PLG_C, 0, 0))
+    near = [c.common(box(XR - 12, XR + 30, -45, 45, -40, 40)) for c in cs]
+    rep = dict(hits=[], case=99.0, th=th)
+    for ph in range(0, 360, 15):
+        pose = S["posed"](kit, th, ph)
+        pose.pop("Cp")
+        rep["hits"] += [(ph, h) for h in S["hits"](pose)]
+        mov = Part.makeCompound([pose[k] for k in ("A", "Cr", "Q", "B", "Cq")])
+        mov.translate(V(PLG_C, 0, 0))
+        rep["case"] = min(rep["case"], min(dist(mov, c) for c in near))
+    rep["case"] = round(rep["case"], 3)
+    rep["sphere_gap"] = round(PLG_C - PF_SPHERE - XR, 3)
+    rep["case_roll"] = round(min(dist(rot(pr, V(1, 0, 0), a), c) for a in range(0, 180, 15) for c in near), 3)
+    return rep
+
+
+def socket_span(g, sg):
+    xs = [sg * 0.05 * k for k in range(0, 360)]
+    hit = [x for x in xs if g.isInside(V(x, 0, 4.6), 1e-6, True)]
+    return min(abs(x) for x in hit), max(abs(x) for x in hit)
+
+
+def gear_free(P, n, dx):
+    g, sg = P["SideGear_" + n], (1 if n == "R" else -1)
+    blk = [P[m] for m in ("Carrier", "Cap", "SpiderGear_1", "SpiderGear_2", "SpiderPin", "Bushing_" + n)]
+    res = {}
+    for a in range(0, 360, 45):
+        ay, az = math.cos(math.radians(a)), math.sin(math.radians(a))
+        lo, hi = 0.0, 3.0
+        for _ in range(6):
+            mid = (lo + hi) / 2
+            t = g.copy()
+            t.translate(V(sg * dx, mid * ay, mid * az))
+            lo, hi = (lo, mid) if any(vol(t, b) > 1e-3 for b in blk) else (mid, hi)
+        res[a] = round(lo, 2)
+    return res
+
+
+def plug_insert(pl, P, n, free, sg):
+    X = V(1, 0, 0)
+    gr = P["SideGear_" + n]
+    sl = P["Sleeve_%d" % (2 if n == "R" else 1)]
+    allp = [P[m] for m in P if not m.startswith("HalfShaft")]
+    far = 160.0
+    env = hexprism(SHAFT_AF, SHAFT_X0, far).fuse(box(PLG_XS, far, -PF_EAR_OUT, PF_EAR_OUT, -SHAFT_AF / 2, PF_EAR_W + 2))
+    if sg < 0:
+        env = mirror_x(env)
+    rep = dict(slide=round(max(vol(env, b) for b in allp), 4), final=round(max(vol(pl, b) for b in allp), 4))
+    nog = [P[m] for m in P if not m.startswith("HalfShaft") and m not in ("SideGear_" + n, "SpiderGear_1", "SpiderGear_2", "SpiderPin")]
+    off = 0.0
+    for a in range(0, 360, 45):
+        t = hexprism(SHAFT_AF, SHAFT_X0, far)
+        t = mirror_x(t) if sg < 0 else t
+        t.translate(V(0, 0.3 * math.cos(math.radians(a)), 0.3 * math.sin(math.radians(a))))
+        off = max(off, max(vol(t, b) for b in nog))
+    rep["liner_offset"] = round(off, 4)
+    xm = socket_span(gr, sg)[1]
+    front = pl.common(box(min(0, sg * 18), max(0, sg * 18), -9, 9, -9, 9))
+    guided = 0.0
+    rate, s_plug = 0.8, 0.3
+    for dxk, fr in free.items():
+        for a, e in fr.items():
+            ay, az = math.cos(math.radians(a)), math.sin(math.radians(a))
+            rel = e + s_plug
+            xt = xm + 3.0
+            while xt >= SHAFT_X0 - 1e-9:
+                f = min(1.0, max(0.0, 1.0 - rate * max(0.0, xm - xt) / rel))
+                t = front.copy()
+                t.translate(V(sg * (xt - SHAFT_X0), -s_plug * f * ay, -s_plug * f * az))
+                q = gr.copy()
+                q.translate(V(sg * dxk, e * f * ay, e * f * az))
+                guided = max(guided, vol(t, q))
+                xt -= 0.2
+    rep["guided"] = round(guided, 4)
+    plain = 0.0
+    for fr in free.values():
+        for a, e in fr.items():
+            ay, az = math.cos(math.radians(a)), math.sin(math.radians(a))
+            t = pl.copy()
+            t.translate(V(0, -s_plug * ay, -s_plug * az))
+            q = gr.copy()
+            q.translate(V(0, e * ay, e * az))
+            plain = max(plain, vol(t, q))
+    rep["plain"] = round(plain, 4)
+    return rep
+
+
+def plug_stress(pl):
+    t, f_rad = PLG_TORQUE, 15.0
+    af = SHAFT_AF
+    a = af / math.sqrt(3)
+    tau = 16 * t / (math.pi * af ** 3)
+    i_hex = 5 * math.sqrt(3) / 16 * a ** 4
+    sig = f_rad * (PLG_C - XR) * a / i_hex
+    pin_f = t / (PF_GAP + PF_EAR_T)
+    zt, zb = PF_EAR_W, SHAFT_AF / 2
+    ear = 6 * pin_f * PF_SH / (PF_EAR_T * (zt + zb) ** 2)
+    xm = PLG_XS + PLG_WEB / 2
+    sec = pl.common(box(xm - 0.01, xm + 0.01, -PF_EAR_OUT - 1, PF_EAR_OUT + 1, -9, 9))
+    hz = bb(sec).ZLength
+    y = SHAFT_AF / 2 + 1.0
+    run = 0.0
+    while pl.isInside(V(PLG_XS + 0.01 + run, y, 0.0), 1e-6, True):
+        run += 0.02
+    m_ear = pin_f * PF_SH
+    web = m_ear * (3 * hz + 1.8 * run) / (hz ** 2 * run ** 2)
+    rad = f_rad * (PLG_C - PLG_XS) * PF_EAR_OUT / (run * (2 * PF_EAR_OUT) ** 3 / 12)
+    across = max(web, pin_f / (PF_EAR_T * run))
+    return dict(torsion=round(tau, 2), bending=round(sig, 2), von_mises=round(math.sqrt(sig ** 2 + 3 * tau ** 2), 2), ear_root=round(ear, 2), web_torsion=round(web, 2),
+                web_bend=round(rad, 2), across_layer=round(across, 2), web_x=round(run, 2), web_z=round(hz, 2), pin_N=round(pin_f, 1))
+
+
+def plug_walls(pl):
+    w = 99.0
+    for sg in (-1, 1):
+        y = sg * (PF_EAR_OUT - PF_CB / 2)
+        for k in range(24):
+            a = math.radians(15 * k + 7.5)
+            if math.cos(a) < -0.5:
+                continue
+            q = lambda r: V(PLG_PIN + r * math.cos(a), y, r * math.sin(a))
+            r = 2.0
+            while r < 8 and not pl.isInside(q(r), 1e-6, True):
+                r += 0.02
+            r0 = r
+            while r < 8 and pl.isInside(q(r), 1e-6, True):
+                r += 0.02
+            w = min(w, r - r0)
+    return round(w, 2)
+
+
+def verify_plug(P, rep):
+    S = {"NO_RUN": True, "__name__": "drive_shaft"}
+    exec(compile(open("/home/mikhail/Documents/cad/RC Car/drive_shaft.py").read(), "drive_shaft.py", "exec"), S)
+    pl_l, pl_r = plug_pair()
+    X = V(1, 0, 0)
+    cs = [P["CaseTop"], P["CaseBottom"]]
+    out = dict(vol=round(pl_r.Volume, 1), twin=abs(pl_l.Volume - pl_r.Volume) < 1e-6, size=tuple(round(v, 2) for v in (bb(pl_r).XLength, bb(pl_r).YLength, bb(pl_r).ZLength)),
+               joint_c=round(PLG_C, 3), old_c=round(XR + PORT_LEN + S["TIP_J"], 3), saved=round(XR + PORT_LEN + S["TIP_J"] - PLG_C, 3))
+    out["assembly"] = assembly_plug(P)
+    out["fit"] = joint_fit(pl_r, S)
+    out["swing"] = joint_swing(pl_r, S, cs)
+    out["stress"] = plug_stress(pl_r)
+    out["wall_cb"] = plug_walls(pl_r)
+    out["print"] = print_reports(dict(PlugShaft_R=pl_r, PlugShaft_L=pl_l))
+    sk = {"L": 1, "R": 2}
+    sgn = {"L": -1, "R": 1}
+    for n, pl in (("L", pl_l), ("R", pl_r)):
+        sg = sgn[n]
+        rest = [P[m] for m in P if not m.startswith(("HalfShaft", "Sleeve", "SideGear_" + n))] + [P["Sleeve_%d" % sk[n]]]
+        gr = P["SideGear_" + n]
+        tin = travel(pl, X, [P["SpiderPin"]], 0.5)
+        inward = tin[1] if n == "R" else tin[0]
+        cf = rep["carrier_float"]
+        ext = []
+        for sh in (cf[0], -cf[1]):
+            q = P["SpiderPin"].copy()
+            q.translate(V(sh, 0, 0))
+            tt = travel(pl, X, [q], 0.8)
+            ext.append(round(tt[1] if n == "R" else tt[0], 3))
+        shoulder = travel(pl, X, cs, 1.0)
+        ggo = travel(gr, X, rest + [pl], 0.5)
+        sp = socket_span(gr, sg)
+        outer = ggo[0] if n == "R" else ggo[1]
+        inner = ggo[1] if n == "R" else ggo[0]
+        full0 = SHAFT_X0 + PLG_NOSE
+        eng = [round(sp[1] - max(sp[0] - g, full0), 3) for g in (0.0, inner)]
+        d = {}
+        d["tip_gap"] = round(inward, 3)
+        d["tip_gap_ext"] = ext
+        d["shoulder_gap"] = round(shoulder[1] if n == "R" else shoulder[0], 3)
+        d["gear_out"] = round(outer, 3)
+        d["gear_in"] = round(inner, 3)
+        d["engage"] = eng
+        d["engage_half"] = round(sp[1] - sp[0], 3)
+        d["liner_hex"] = round(dist(pl, P["Sleeve_%d" % sk[n]]), 3)
+        d["bush"] = round(dist(pl, P["Bushing_" + n]), 3)
+        shank = pl.common(box(0, sg * XR, -9, 9, -9, 9))
+        d["lip"] = round(min(dist(shank, c.common(box(sg * (XR - 3), sg * XR, -9, 9, -9, 9))) for c in cs), 3)
+        d["overlap"] = round(max(vol(pl, P[m]) for m in P if not m.startswith("HalfShaft")), 4)
+        d["free"] = {dx: gear_free(P, n, dx) for dx in (0.0, round(outer, 2))}
+        d["ins"] = plug_insert(pl, P, n, d["free"], sg)
+        out[n] = d
+    return out
+
+
+def check_plug(pg, rep):
+    assert pg["twin"] and PLG_GAP >= 0.4 and PLG_GAP <= 0.6 and abs(PLG_C - (XR + PLG_GAP + PLG_WEB + PF_SH + PF_AX)) < 1e-9
+    assert not any(pg["assembly"].values()), pg["assembly"]
+    fit = pg["fit"]
+    assert fit["ear_cross"][0] == fit["ear_cross"][1] and fit["pin"][0] == fit["pin"][1] and fit["head"][0] == fit["head"][1] and fit["overlap"] < 1e-3, fit
+    assert fit["hole"][0] == fit["hole"][1] == [False] * 4 + [True] * 4, fit
+    sw = pg["swing"]
+    assert not sw["hits"] and sw["case"] >= 1.0 and sw["case_roll"] >= PLG_GAP - 1e-3, sw
+    st = pg["stress"]
+    assert max(st["torsion"], st["bending"], st["von_mises"], st["ear_root"], st["web_torsion"], st["web_bend"], st["across_layer"]) <= 10.0 and st["web_x"] >= PLG_WEB - 0.05, st
+    assert pg["wall_cb"] >= 1.0 - 1e-3, pg["wall_cb"]
+    for n in "LR":
+        d, hl = pg[n], rep["liner"][1 if n == "L" else 2]
+        assert abs(d["tip_gap"] - 0.15) < 0.01 and max(d["tip_gap_ext"]) <= PLG_GAP - 0.09 and abs(d["shoulder_gap"] - PLG_GAP) < 0.01, d
+        assert abs(d["gear_out"] - rep["half_float"][n]["gear_out"]) < 1e-6 and min(d["engage"]) >= d["engage_half"] - 1e-6, (d, rep["half_float"][n])
+        assert abs(d["liner_hex"] - hl["hex"]) < 1e-3 and d["bush"] >= LIP_BORE / 2 - SHAFT_AF / math.sqrt(3) - 1e-3 and d["lip"] >= 0.8 and d["overlap"] < 1e-3, d
+        i = d["ins"]
+        assert max(d["free"][0.0].values()) <= 0.35 and max(d["free"][round(d["gear_out"], 2)].values()) <= 0.8 and i["plain"] > 1e-3, d["free"]
+        assert i["slide"] < 1e-3 and i["final"] < 1e-3 and i["liner_offset"] < 1e-3 and i["guided"] < 1e-3, i
+    for nm, r in pg["print"].items():
+        ex = [EXEMPT[m] for m in [nm] + r["twins"] if m in EXEMPT]
+        assert not ex and r["tilt"][0] >= TILT_MIN - 0.01 and not r["bad"], (nm, r["tilt"], r["bad"])
+        assert r["floor"] >= 60.0 and r["wall"] >= 0.8 and r["height"] <= 4 * r["bed_min"] and all(sp <= BRIDGE_MAX for _, sp, _, _ in r["bridges"]), (nm, r)
+
+
 def main():
     old = App.listDocuments().get(DOC_NAME)
     if old:
@@ -981,11 +1289,14 @@ def main():
     doc = App.newDocument(DOC_NAME)
     P = build_parts(doc)
     plug = build_plug()
-    assert plug.isValid() and len(plug.Solids) == 1
-    for name, shp in P.items():
+    pl_l, pl_r = plug_pair()
+    assert plug.isValid() and len(plug.Solids) == 1 and pl_l.isValid() and pl_r.isValid() and len(pl_l.Solids) == len(pl_r.Solids) == 1
+    park = lambda s: s.translated(V(0, 0, PLG_PARK))
+    for name, shp in list(P.items()) + [("PlugShaft_L", pl_l), ("PlugShaft_R", pl_r)]:
         assert shp.isValid() and len(shp.Solids) == 1, name
         o = doc.addObject("Part::Feature", name)
-        o.Shape = shp
+        kind = name[:4] if name[:4] in ("Half", "Plug") else SHAFT_SET[:4]
+        o.Shape = shp if kind == SHAFT_SET[:4] else park(shp)
         if App.GuiUp:
             o.ViewObject.ShapeColor = COLORS[name]
     o = doc.addObject("Part::Feature", "OutputPlug")
@@ -995,6 +1306,9 @@ def main():
     rep = verify(P)
     print("report", rep, flush=True)
     check(rep)
+    pg = verify_plug(P, rep)
+    print("plugshaft", pg, flush=True)
+    check_plug(pg, rep)
     doc.recompute()
     doc.saveAs(OUT)
     return doc

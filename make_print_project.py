@@ -23,7 +23,8 @@ DEFLECTION = 0.02
 MIN_FLOOR_AREA = 5.0
 
 # document axis that points up on the bed; identical parts are detected from geometry
-UPS = {"DriveHub": {"HubCarrier": "-Y", "Knuckle": "-Y", "HubCarrier_L": "-Y", "Knuckle_L": "-Y", "StubYoke": "+Z", "Wheel": "+X", "Tyre": "-X", "PivotBush_1": "+Z", "PivotBush_2": "-Z", "Sleeve_1": "+X", "Sleeve_2": "+X"},
+UPS = {"PtfeJig": {"Puck": "+Z", "GoGauge": "+Z"},
+       "DriveHub": {"HubCarrier": "-Y", "Knuckle": "-Y", "HubCarrier_L": "-Y", "Knuckle_L": "-Y", "StubYoke": "+Z", "Wheel": "+X", "Tyre": "-X", "PivotBush_1": "+Z", "PivotBush_2": "-Z", "Sleeve_1": "+X", "Sleeve_2": "+X"},
        "WheelMount": {"Mount_R": "-X", "Mount_L": "+X", "Knuckle": "+X", "Stub": "+Z", "WheelHub": "-X"},
        "WheelMount2": {"Mount": "-Z", "Knuckle": "+Z", "Stub": "+Z", "WheelHub": "-X", "Sleeve_1": "+X", "Sleeve_2": "+X"},
        "MotorModule": {"Bracket": "+Y", "MotorGear": "-Y", "ShaftGear": "-Y", "ThroughShaft": "+Z"},
@@ -31,7 +32,8 @@ UPS = {"DriveHub": {"HubCarrier": "-Y", "Knuckle": "-Y", "HubCarrier_L": "-Y", "
        "DriveShaft": {"JointYoke_1": "+X", "JointYoke_2": "-X", "JointYoke_3": "+X", "JointYoke_4": "-X", "JointCross_1": "+X", "JointCross_2": "-X", "SlideRod": "+Y", "SlideTube": "+X", "ShortLink": "+Y", "DoubleFork": "+Y"},
        "RodFrame": {"AxleFrame_1": "+Z", "Link_1": "+Z", "Upright_R": "+Z", "Upright_L": "+Z", "PivotBush_1": "-Y", "Dowel_1": "-Z", "Shim_1": "+Z", "GearboxCradle": "+Z"},
        "Gearbox3": {"Bracket": "+Y", "FrontPlate": "+Y", "MotorCarrier": "-Y", "MotorCap": "-Y", "MotorGear_B": "+Y", "MotorGear_A": "+Y", "MotorGear_C": "+Y", "SlideCarrier": "+Y", "SlideGear_A": "+Y", "SlideGear_B": "+Y", "SlideCap": "-Y", "Layshaft": "+Z", "ThroughShaft": "+Z", "T1": "-Y", "T2": "-Y", "ShiftFork": "-Y", "Rod_1": "+Z", "Rod_2": "+Z", "ServoArm": "-Z", "CasePan": "+Z", "ServoMount": "-X", "Sleeve_1": "+Y", "Sleeve_2": "+Y", "Sleeve_3": "+Y", "Sleeve_4": "+Y"}}
-COPIES = {"DriveHub": {"HubCarrier": 1, "Knuckle": 1, "HubCarrier_L": 1, "Knuckle_L": 1, "StubYoke": 1, "Wheel": 1, "Tyre": 1, "PivotBush_1": 2, "Sleeve_1": 2},
+COPIES = {"PtfeJig": {"Puck": 1, "GoGauge": 1},
+          "DriveHub": {"HubCarrier": 1, "Knuckle": 1, "HubCarrier_L": 1, "Knuckle_L": 1, "StubYoke": 1, "Wheel": 1, "Tyre": 1, "PivotBush_1": 2, "Sleeve_1": 2},
           "WheelMount": {"Mount_R": 1, "Mount_L": 1, "Knuckle": 2, "Stub": 2, "WheelHub": 2},
           "WheelMount2": {"Mount": 1, "Knuckle": 1, "Stub": 1, "WheelHub": 1, "Sleeve_1": 2, "Sleeve_2": 2},
           "MotorModule": {"Bracket": 1, "MotorGear": 1, "ShaftGear": 1, "ThroughShaft": 1},

@@ -1,12 +1,12 @@
 # DriveHub: a wheel hub that is DRIVEN and STEERED with the drive joint centred on the kingpin inside a dished wheel (front wheel drive layout). One generator script, DriveHub.FCStd, print plate by make_print_project.py DriveHub.
 # Layout (document frame, the kingpin is the Z axis through the joint centre, the axle is the X axis, outboard is -X, ahead is +Y, axle 29.0 below the pad top): the JointCross centre lies on the kingpin axis AND on the wheel axle axis (measured in verify, axle_axis and kingpin_axis). StubYoke = a fork identical to the kit yoke (same ears, gap, pin hole and head counterbore, so JointCross and the M3x20 pins fit unchanged, ear tips are half octagons so it prints) on an 8.0 AF hex stub that runs outboard through the Knuckle. The stub fork carries the horizontal pin (along Y), the DoubleFork on the inboard side carries the vertical pin (along Z), so steering is absorbed by the vertical hinge and suspension travel by the horizontal one. Knuckle = octagonal barrel (17.3 across flats) with the two kit liner pockets (PTFE 10 ID x 12 OD x 8.0 as plain bearings, placeholder Sleeve_1 and Sleeve_2, teardrop roofs, lip, lead-ins as in wheel_mount2.py), a riser and two 6 mm arms at z +-14.5 to +-20.5 that reach over and under the 12.5 joint swing sphere to the kingpin pivots (arm face 14.5 from the joint centre, 2.0 outside the sphere), and a steering arm pointing rearward, -Y, 6 thick so the root sees 4.5 MPa across layers at 10 N (tie rod holes dia 3.6 at 20, 27, 34 behind the kingpin, z 16.5 to 20.5). HubCarrier = pad 40 x 33 x 2.6 (outline, four dia 5.0 holes at x +18 / +7.2 relative to the kingpin, top face 29.0 above the axle, as the wheel_mount2 Mount mirrored because outboard is -X), two lug blocks (z 21.9 to 29 and -29 to -21.9, bore dia 6.2, head counterbore dia 7.7), and ONE flared strut on the front (+Y) side joining them, open inboard and rearward so the drive link passes (strut inner face 13.8 off the axis, 1.3 outside the swing sphere). Left and right: StubYoke, Wheel, Tyre, PivotBush and Sleeves are shared; HubCarrier and Knuckle are NOT symmetric, so the other side uses HubCarrier_L and Knuckle_L, the exact mirror images (in the document and the print map, MIRRORED), which keeps both steering arms rearward so one straight tie rod links them.
 # Pivots (two, one from above, one from below): PivotBush (printed, flange dia 10 x 1.2, tube OD 5.6 ID 3.2) sits on the knuckle arm, passes the lug bore (0.3 radial) and is clamped to the arm by an M3x12 whose head seats on the bush end, so tightening can never clamp the lug: float 0.2 (flange to lug underside) + 0.2 (head to counterbore floor) = 0.4 total, the vertical load goes up through the flange on a printed thrust face (not through a screw head), the screw is fixed in the knuckle and turns with it, nothing can tighten up with steering, a loose screw cannot unthread past the 0.2 float. Thread: 6.0 mm in the arm (pilot dia 2.8, tip 1.2 below the arm). Head to counterbore 0.85 radial, tips and heads 0.8 or more off the joint parts (measured).
-# Wheel: WHEEL_D 110 tyre diameter, 26 wide, printed dished wheel: hub boss and flat plate (dia 72) with the kit hex socket (8.5 on 8.0 AF, 0.25 per side, M3x16 cross screw along Y through an access hole in the dish, spot face for the head), a 50 degree cone web (prints with no support) up to a flange and a 2.4 thick rim with a 0.7 inboard bead that the tyre snaps over (matching relief groove in the tyre); the Tyre is a plain TPU band (ID 102 on rim OD 104, 2 percent stretch) that butts against the rim flange (locating lip). The wheel centre plane is 11.7 outboard of the kingpin (scrub), the hub plate sits 13.1 beyond the tyre face (width over hubs 212.4 against 186.1 over tyres on a 160.1 track (inboard joint centre at 49.98); a larger plate radius closes the gap but pushes the wheel outboard, the 50 degree cone and the 8 mm stub engagement outboard of the knuckle limit it); the knuckle, arms and steering arm are inside the cavity with 5.0 or more to the dish.
+# Wheel: WHEEL_D 110 tyre diameter, 26 wide, printed dished wheel: hub boss and flat plate (dia 72) with the kit hex socket (8.5 on 8.0 AF, 0.25 per side, 6.0 deep, its floor 1.2 thick is a positive seat on the stub end face) and a CENTRE BOLT: one M3x12 screw and one M3 washer (dia 7 x 0.5) from the outer face, the washer sunk in a dia 7.4 x 1.15 recess (flat roof, 7.4 span, 0.2 sacrificial skin over the pierced roof), the head standing 2.55 proud of the wheel face, through a dia 3.5 hole in the floor, self threading 10.3 into a dia 2.8 axial pilot 12.0 deep in the stub end (1.7 of pilot beyond the tip); the clamp loop is screw, washer, wheel floor, stub end face, stub, screw thread, it never touches the knuckle; thrust gaps are 0.25 each side (0.5 float, the stub block is 3.15 thick, the wheel boss 5.55 long, the knuckle is unchanged), a 50 degree cone web (prints with no support) up to a flange and a 2.4 thick rim with a 0.7 inboard bead that the tyre snaps over (matching relief groove in the tyre); the Tyre is a plain TPU band (ID 102 on rim OD 104, 2 percent stretch) that butts against the rim flange (locating lip). The wheel centre plane is 11.7 outboard of the kingpin (scrub), the hub plate sits 13.1 beyond the tyre face (width over hubs 212.4 against 186.1 over tyres on a 160.1 track (inboard joint centre at 49.98); a larger plate radius closes the gap but pushes the wheel outboard, the 50 degree cone and the 8 mm stub engagement outboard of the knuckle limit it); the knuckle, arms and steering arm are inside the cavity with 5.0 or more to the dish.
 # Steering: stops on the HubCarrier (a block on the strut for one direction, the arm corner for the other) at 27.97 degrees each way, so the joint stays at or under 28; with the stops removed the wheel, knuckle, arm and screws are clear of the carrier to 30 (measured, wheel and tyre 10.5 or more); the joint itself is clear of every part at 0, 10, 20, 25 degrees at every 15 degrees of shaft rotation, with the DoubleFork also inclined 10 degrees in four directions; first contact is the kit joint limit (34.7 worst phase). Lock option: one extra M3x12 from below through the lower lug (clear dia 3.6, counterbore) into a pilot in the lower knuckle arm fixes the knuckle straight ahead (toe play +-2 degrees from the 0.3 radial in the clear hole).
-# Hardware per wheel: 2 x M3x12 pivot screws, 1 x M3x12 lock screw (optional), 1 x M3x16 hub screw, JointCross with 2 x M3x20 pins (inherited exception) for the joint, 2 PTFE liners 12 x 10 x 8 (Sleeve_1 and Sleeve_2 are printed placeholders), 2 PivotBush. Only M3x12 and M3x16 are new.
-# Assembly (each step is a straight slide with zero overlap in verify): 1 CrossJoint onto the stub fork, pin A with a dia 6 driver from the side, DoubleFork onto the cross, pin B from above with a dia 6 driver; 2 Sleeves into the Knuckle; 3 Knuckle over the stub hex tip from outboard; 4 bushes on the arms, the unit slides in from the rear (-Y) through the lug slots into the carrier; 5 pivot screws from above and below; 6 optional lock screw from below; 7 wheel onto the stub tip, 8 hub screw through the access hole, 9 tyre over the rim from inboard.
+# Hardware per wheel: 2 x M3x12 pivot screws, 1 x M3x12 lock screw (optional), 1 x M3x12 centre bolt with 1 M3 washer, JointCross with 2 x M3x20 pins (inherited exception) for the joint, 2 PTFE liners 12 x 10 x 8 (Sleeve_1 and Sleeve_2 are printed placeholders), 2 PivotBush. Only M3x12 is new (M3x16 is no longer used).
+# Assembly (each step is a straight slide with zero overlap in verify): 1 CrossJoint onto the stub fork, pin A with a dia 6 driver from the side, DoubleFork onto the cross, pin B from above with a dia 6 driver; 2 Sleeves into the Knuckle; 3 Knuckle over the stub hex tip from outboard; 4 bushes on the arms, the unit slides in from the rear (-Y) through the lug slots into the carrier; 5 pivot screws from above and below; 6 optional lock screw from below; 7 wheel onto the stub tip, 8 washer and M3x12 screw from the outer face along the axle into the pilot, 9 tyre over the rim from inboard.
 # Print (PLA, supports OFF): HubCarrier on its strut face (-Y up, 935 mm2 on the bed), Knuckle on the flat of the octagon (-Y up), StubYoke lying on its hex flat (+Z up), Wheel plate down (dia 87 plate) (+X up), Tyre on its inboard face (-X up), PivotBush flange down, Sleeves on end. Fork departure: the ear bottoms are cut flat at the hex flat (z -4.0) so the stub lies on one plane, which leaves 1.0 (not 1.2) of wall under the dia 6 head counterbore.
-# Unverified: printed fit and wear of the thrust faces (the wheel tilt couple is assumed to be carried by the hub boss face on the knuckle end face, see strength), the tie rod and a single rod for both sides, TPU stretch of the tyre, the lug slot strength after use, the far (diff side) joint beside the carrier strut when the DoubleFork is inclined 10 degrees.
+# Unverified: wheel hex engagement 6.0 (was 6.8, the head now stands 2.55 proud of the wheel face), thread cut in the printed pilot and its stripping torque, printed fit and wear of the thrust faces (the wheel tilt couple is assumed to be carried by the hub boss face on the knuckle end face, see strength), the tie rod and a single rod for both sides, TPU stretch of the tyre, the lug slot strength after use, the far (diff side) joint beside the carrier strut when the DoubleFork is inclined 10 degrees.
 import FreeCAD as App, Part, math
 from shapely.geometry import Polygon, Point, LineString
 from shapely.ops import unary_union
@@ -25,9 +25,9 @@ X, Y, Z = V(1, 0, 0), V(0, 1, 0), V(0, 0, 1)
 
 BOT = -SHAFT_AF / 2
 ROOT_X1 = -(AX + SH)
-BLOCK_T = 3.2
+BLOCK_T = 3.15
 BLOCK_X1 = ROOT_X1 - BLOCK_T
-G = 0.2
+G = 0.25
 LINER_BORE, LINER_OD, LINER_ID, LINER_L = 12.2, 12.0, 10.0, 8.0
 LIP_T, LIP_BORE, LINER_REC, LEAD = 1.6, 10.6, 0.1, 0.7
 KN_HALF = LIP_T / 2 + LINER_L + LINER_REC
@@ -35,10 +35,14 @@ KN_X1 = BLOCK_X1 - G
 KN_XC = KN_X1 - KN_HALF
 KN_X0 = KN_X1 - 2 * KN_HALF
 HUB_X0 = KN_X0 - G
-HUB_BOSS_L, PLATE_T0 = 5.6, 2.8
-HEX_END = HUB_X0 - HUB_BOSS_L - PLATE_T0 + 1.2 + 0.4
-SH_X = HUB_X0 - 3.65
-SH_HOLE = 2.8
+HUB_BOSS_L, PLATE_T0 = 5.55, 2.8
+FLOOR_T, SKIN, REC_D, REC_DEPTH, PILOT_L, SCREW_L = 1.2, 0.2, 7.4, 1.15, 12.0, 12.0
+WASH_D, WASH_ID, WASH_T, HOLE_D, SH_PILOT = 7.0, 3.2, 0.5, 3.5, 2.8
+P_FACE = HUB_X0 - HUB_BOSS_L - PLATE_T0
+REC_X0 = P_FACE + REC_DEPTH
+HEX_END = REC_X0 + FLOOR_T
+SH_X = HEX_END
+SCREW_X = REC_X0 - WASH_T
 
 
 def mv(s, x=0.0, y=0.0, z=0.0):
@@ -71,7 +75,7 @@ def build_stub():
     s = s.cut(ycyl(PIN_HOLE / 2, -15, 15, px))
     for sg in (-1, 1):
         s = s.cut(ycyl(HEAD_CB_D / 2, *sorted((sg * (EAR_OUT - HEAD_CB), sg * (EAR_OUT + 1))), px))
-    s = s.cut(ycyl(SH_HOLE / 2, -10, 10, SH_X))
+    s = s.cut(cyl(SH_PILOT / 2, HEX_END - 1, HEX_END + PILOT_L))
     return s.removeSplitter()
 
 
@@ -176,6 +180,10 @@ def build_carrier(stops=True):
     return c.removeSplitter()
 
 
+def build_washer():
+    return cyl(WASH_D / 2, SCREW_X, REC_X0).cut(cyl(WASH_ID / 2, SCREW_X - 1, REC_X0 + 1))
+
+
 def build_sleeve(x0, x1):
     return cyl(LINER_OD / 2, x0, x1).cut(cyl(LINER_ID / 2, x0 - 1, x1 + 1))
 
@@ -236,8 +244,7 @@ RIM_R = WHEEL_D / 2 - TYRE_T
 PLATE_R, PLATE_T, BOSS_R, CONE_DEG, WEB_T = 43.5, PLATE_T0, 9.0, 50.0, 2.4
 P0 = HUB_X0 - HUB_BOSS_L - PLATE_T
 P1 = P0 + PLATE_T
-SOCK_AF, SOCK_BOT = 8.5, P0 + 1.2
-WH_NEAR, WH_FAR = 3.4, 2.8
+SOCK_AF, SOCK_BOT = 8.5, HEX_END
 TAN_C = math.tan(math.radians(CONE_DEG))
 FLANGE_R = WHEEL_D / 2 - 0.5
 RF = P0 + (FLANGE_R - PLATE_R) * TAN_C
@@ -262,12 +269,9 @@ def build_wheel():
     w = w.fuse(revxp([(P1 - 0.5, 0), (P1 - 0.5, BOSS_R), (HUB_X0, BOSS_R), (HUB_X0, 0)]))
     w = w.removeSplitter()
     w = w.cut(hexprism(SOCK_AF, SOCK_BOT, HUB_X0 + 1)).cut(Part.makeCone(6.2, SOCK_AF / math.sqrt(3), 1.5, V(HUB_X0, 0, 0), -X))
-    w = w.cut(box(SH_X - 3.2, HUB_X0 + 1.0, -12, -8, -3.3, 3.3))
-    w = w.cut(ycyl(WH_NEAR / 2, -12, 0, SH_X)).cut(ycyl(WH_FAR / 2, 0, 12, SH_X))
-    t, hw = HUB_ACC_R / math.sqrt(2), HUB_ACC_R * math.sqrt(2) - HUB_ACC_ROOF
-    pp = [V(SH_X + v, -60, u) for u, v in ((-t, 0), (t, 0), (t, t), (hw, HUB_ACC_ROOF), (-hw, HUB_ACC_ROOF), (-t, t))]
-    acc = Part.Face(Part.makePolygon(pp + pp[:1])).extrude(V(0, 52, 0)).fuse(ycyl(HUB_ACC_R, -60, -8, SH_X)).removeSplitter()
-    return w.cut(acc).removeSplitter()
+    rc = cyl(REC_D / 2, P0 - 1.0, REC_X0)
+    w = w.cut(rc).cut(cyl(HOLE_D / 2, REC_X0 + SKIN, SOCK_BOT + 0.01))
+    return w.removeSplitter()
 
 
 def build_tyre():
@@ -378,7 +382,7 @@ def build_parts():
 def build_refs():
     kit = jkit()
     return dict(Ref_PivotScrew_U=screw(V(0, 0, Z_HEAD), -Z, PIV_L), Ref_PivotScrew_L=screw(V(0, 0, -Z_HEAD), Z, PIV_L),
-                Ref_LockScrew=screw(V(LOCK_X, LOCK_Y, -LUG_CB), Z, PIV_L), Ref_HubScrew=screw(V(SH_X, -8.0, 0), Y, 16.0),
+                Ref_LockScrew=screw(V(LOCK_X, LOCK_Y, -LUG_CB), Z, PIV_L), Ref_HubScrew=screw(V(SCREW_X, 0, 0), X, SCREW_L), Ref_HubWasher=build_washer(),
                 Ref_JointCross=kit["Cr"], Ref_PinA=kit["A"], Ref_PinB=kit["B"], Ref_DoubleFork=kit["DF"])
 
 
@@ -407,15 +411,17 @@ def core(p, d, length, head_d=HEAD_D, head_h=HEAD_H):
 
 def cores():
     return dict(A=core(V(-AX, -(EAR_OUT - HEAD_CB), 0), Y, 20.0, 5.5, 3.0), B=core(V(AX, 0, EAR_OUT - HEAD_CB), -Z, 20.0, 5.5, 3.0),
-                PU=core(V(0, 0, Z_HEAD), -Z, PIV_L), PL=core(V(0, 0, -Z_HEAD), Z, PIV_L), LK=core(V(LOCK_X, LOCK_Y, -LUG_CB), Z, PIV_L), HS=core(V(SH_X, -8.0, 0), Y, 16.0))
+                PU=core(V(0, 0, Z_HEAD), -Z, PIV_L), PL=core(V(0, 0, -Z_HEAD), Z, PIV_L), LK=core(V(LOCK_X, LOCK_Y, -LUG_CB), Z, PIV_L), SC=core(V(SCREW_X, 0, 0), X, SCREW_L),
+                WA=build_washer())
 
 
 def assembly(P, R):
     K, St, W, Ca = (P[n] for n in ("Knuckle", "StubYoke", "Wheel", "HubCarrier"))
+    W = W.cut(cyl(HOLE_D / 2, REC_X0 - 0.01, REC_X0 + SKIN + 0.01))
     S1, S2, B1, B2 = P["Sleeve_1"], P["Sleeve_2"], P["PivotBush_1"], P["PivotBush_2"]
     Cr, DF = R["Ref_JointCross"], R["Ref_DoubleFork"]
     C = cores()
-    A, B, PU, PL, LK, HS = (C[n] for n in ("A", "B", "PU", "PL", "LK", "HS"))
+    A, B, PU, PL, LK, SC, WA = (C[n] for n in ("A", "B", "PU", "PL", "LK", "SC", "WA"))
     r = {}
     r["1_cross_into_fork"] = sweep(dict(c=Cr), dict(S=St), X, 40.0)
     r["2_pinA_and_driver"] = sweep(dict(a=A, d=driver(V(-AX, -(EAR_OUT - HEAD_CB) - 3.0, 0), -Y)), dict(S=St), -Y, 40.0)
@@ -432,8 +438,11 @@ def assembly(P, R):
     r["8_lock_screw_and_driver"] = sweep(dict(s=LK, d=driver(V(LOCK_X, LOCK_Y, -LUG_CB - HEAD_H), -Z)), allfix, -Z, 40.0)
     r["9_wheel_onto_stub_tip"] = sweep(dict(w=W), allfix, -X, 60.0)
     allfix["w"] = W
-    r["10_hub_screw_and_driver"] = sweep(dict(s=HS, d=driver(V(SH_X, -8.0 - HEAD_H, 0), -Y)), allfix, -Y, 60.0)
-    own = dict(A="p", B="q", PU="u2", PL="l2")
+    r["10_washer_on_stud"] = sweep(dict(w=WA), allfix, -X, 40.0)
+    allfix["wa"] = WA
+    drv = Part.makeCylinder(2.0, 40.0, V(SCREW_X - HEAD_H, 0, 0), -X)
+    r["11_screw_and_driver_from_outside"] = sweep(dict(s=SC, d=drv), allfix, -X, 40.0)
+    own = dict(A="p", B="q", PU="u2", PL="l2", WA="wa")
     r["final_core_overlaps"] = {n: round(max(vol(c, b) for k, b in allfix.items() if k != own.get(n)), 4) for n, c in C.items() if n != "LK"}
     return r
 
@@ -525,18 +534,23 @@ def screw_clear(P, R):
     kit = dict(Cr=R["Ref_JointCross"], A=R["Ref_PinA"], B=R["Ref_PinB"], DF=R["Ref_DoubleFork"])
     car = P["HubCarrier"]
     res = dict(PU_joint=1e9, PL_joint=1e9, PU_carrier=1e9, PL_carrier=1e9, HS_knuckle=1e9, HS_carrier=1e9, HS_joint=1e9)
+    still = [P["Knuckle"], P["Sleeve_1"], P["Sleeve_2"], P["PivotBush_1"], P["PivotBush_2"], R["Ref_PivotScrew_U"], R["Ref_PivotScrew_L"]]
+    spin = [R["Ref_HubScrew"], R["Ref_HubWasher"]]
     for st in (0, 28, -28):
         for psi in range(0, 360, 45):
             j = joint_pose(kit, P["StubYoke"], st, psi)
             for nm, sc in (("PU", R["Ref_PivotScrew_U"]), ("PL", R["Ref_PivotScrew_L"])):
                 res[nm + "_joint"] = min([res[nm + "_joint"]] + [sc.distToShape(j[k])[0] for k in ("Cr", "DF", "A", "B", "Stub")])
+            h = rp(R["Ref_HubScrew"], O, X, psi)
+            res["HS_joint"] = min([res["HS_joint"]] + [h.distToShape(j[k])[0] for k in ("Cr", "DF", "A", "B")])
         c = rk(car, -st)
         for nm, sc in (("PU", R["Ref_PivotScrew_U"]), ("PL", R["Ref_PivotScrew_L"])):
             res[nm + "_carrier"] = min(res[nm + "_carrier"], sc.distToShape(c)[0])
         for rev in range(0, 360, 30):
-            h = rp(R["Ref_HubScrew"], O, X, rev)
-            res["HS_knuckle"] = min(res["HS_knuckle"], h.distToShape(P["Knuckle"])[0])
-            res["HS_carrier"] = min(res["HS_carrier"], h.distToShape(c)[0])
+            for sp in spin:
+                h = rp(sp, O, X, rev)
+                res["HS_knuckle"] = min([res["HS_knuckle"]] + [h.distToShape(o)[0] for o in still])
+                res["HS_carrier"] = min(res["HS_carrier"], h.distToShape(c)[0])
     return {k: round(v, 2) for k, v in res.items()}
 
 
@@ -580,6 +594,25 @@ def axis_of(s, r):
     return f[0].Surface.Center, f[0].Surface.Axis
 
 
+PULL_F, DRIVE_T2, LIM_IN, LIM_ACROSS, PUSHED_BEND, BEND_LIM = 150.0, 1000.0, 15.0, 8.0, 177.75, 1410.0
+
+
+def screw_strength():
+    eng = (SCREW_X + SCREW_L) - HEX_END
+    tau_hex = 32 * DRIVE_T2 * (SHAFT_AF / 2) / (math.pi * (SHAFT_AF ** 4 - SH_PILOT ** 4))
+    n_flat = DRIVE_T2 / (1.5 * SHAFT_AF)
+    hex_len = abs(HEX_END) - abs(HUB_X0)
+    bend = LOAD_V * BUMP_G * ((abs(HEX_END) + abs(HUB_X0)) / 2 - abs(SLV_B[0]))
+    bend_end = LOAD_V * BUMP_G * (abs(HEX_END) - abs(SLV_B[0]))
+    return dict(thread_engaged_mm=round(eng, 2), pilot_beyond_tip_mm=round(HEX_END + PILOT_L - (SCREW_X + SCREW_L), 2),
+                pullout_shear_MPa=round(PULL_F / (math.pi * SCREW_D * eng), 2),
+                hex_torsion_pilot_MPa=round(tau_hex, 2), hex_torsion_interlayer_MPa=round(tau_hex * math.sin(math.radians(30)), 2),
+                hex_flat_bearing_MPa=round(n_flat / (SHAFT_AF / math.sqrt(3) * hex_len), 2), hex_engagement_mm=round(hex_len, 2),
+                washer_bearing_MPa=round(PULL_F / (math.pi / 4 * (WASH_D ** 2 - WASH_ID ** 2)), 2),
+                floor_punch_MPa=round(PULL_F / (2 * math.pi * (WASH_D / 2) * FLOOR_T), 2),
+                stub_bend_knuckle_exit_Nmm=round(bend, 2), stub_bend_load_at_tip_Nmm=round(bend_end, 2), pilot_wall=round(SHAFT_AF / 2 - SH_PILOT / 2, 2))
+
+
 def strength(P):
     z_p = -(LUG_Z0 + LUG_CB) / 2
     rl = LOAD_S * (WHEEL_D / 2 + abs(z_p)) / (2 * abs(z_p))
@@ -609,13 +642,13 @@ def strength(P):
     face_in, face_out = 6.8, R_H
     z_face = math.pi / (4 * face_out) * (face_out ** 4 - face_in ** 4)
     z_boss = math.pi / (4 * BOSS_R) * (BOSS_R ** 4 - 4.4 ** 4)
-    tors = 16 * DRIVE_T / (math.pi * SHAFT_AF ** 3) / (1 - 2.8 / SHAFT_AF)
+    tors = 32 * DRIVE_T * (SHAFT_AF / 2) / (math.pi * (SHAFT_AF ** 4 - SH_PILOT ** 4))
     bush_len = LUG_CB - LUG_Z0
     flange_area = math.pi * ((FL_D / 2) ** 2 - (BORE_D / 2) ** 2) - BORE_D * (FL_D / 2 - BORE_D / 2)
     glue_area = sum(f.Area for f in P["HubCarrier"].Faces if isinstance(f.Surface, Part.Plane) and abs(f.BoundBox.ZMin - AXIS_DEPTH) < 1e-6 and abs(f.BoundBox.ZMax - AXIS_DEPTH) < 1e-6)
     m_pad = rl * (AXIS_DEPTH - PAD_T - z_p)
     sarm = 10.0 * (max(SARM_HOLES) - abs(ARM_YB)) * 6 / ((ARM_Z1 - SARM_Z0) * (2 * 4.0) ** 2)
-    return dict(sarm_root_MPa=round(sarm, 2), reaction_lower_N=round(rl, 1), reaction_upper_N=round(ru, 1), strut_max_MPa=round(worst[0], 2), strut_max_at_z=round(worst[1], 1),
+    return dict(screw_strength(), sarm_root_MPa=round(sarm, 2), reaction_lower_N=round(rl, 1), reaction_upper_N=round(ru, 1), strut_max_MPa=round(worst[0], 2), strut_max_at_z=round(worst[1], 1),
                 lug_bend_MPa=round(lug_sig, 2), stub_bend_bump_MPa=round(stub_shear_bend, 2), stub_if_couple_on_hex_MPa=round(m_tilt / z_stub, 1),
                 tilt_moment_Nmm=round(m_tilt, 0), thrust_face_bearing_MPa=round(m_tilt / z_face, 2), hub_boss_bend_MPa=round(m_tilt / z_boss, 2),
                 stub_torsion_MPa=round(tors, 2), bush_bearing_MPa=round(rl / (BUSH_OD * bush_len), 2), flange_bearing_MPa=round(LOAD_V * BUMP_G / flange_area, 2),
@@ -625,6 +658,9 @@ def strength(P):
 def fits(P, R):
     K, St, W, Ca = (P[n] for n in ("Knuckle", "StubYoke", "Wheel", "HubCarrier"))
     hexpart = St.common(box(HEX_END - 1, BLOCK_X1 - 0.01, -20, 20, -20, 20))
+    insock = St.common(box(HEX_END + 0.3, HUB_X0 - 0.4, -20, 20, -20, 20))
+    stt, wt = R["Ref_HubScrew"], R["Ref_HubWasher"]
+    wb = lambda s_: s_.BoundBox
     ob = lambda s_: s_.optimalBoundingBox(False, False)
     PU = R["Ref_PivotScrew_U"]
     flange = P["PivotBush_1"].common(box(-20, 20, -20, 20, ARM_Z1 - 0.01, Z_FL1 + 0.01))
@@ -633,13 +669,19 @@ def fits(P, R):
     ba, pa = axis_of(K, LINER_BORE / 2), axis_of(Ca, BORE_D / 2)
     ln = lambda c, a: Part.makeLine(c - a * 90, c + a * 90)
     jc = Part.Vertex(O)
+    sa = axis_of(stt, SCREW_D / 2)
     return dict(
         stub_in_liner=round(hexpart.distToShape(P["Sleeve_1"])[0], 3), stub_in_lip=round(hexpart.distToShape(K)[0], 3),
         sleeve_pocket=round(K.distToShape(moved(P["Sleeve_1"], X, 1.0))[0], 3),
         thrust_in=round(St.distToShape(K)[0], 3), thrust_out=round(W.distToShape(K)[0], 3),
         bush_bore_radial=round(bodyp.distToShape(Ca)[0], 3), flange_gap=round(flange.distToShape(Ca)[0], 3), head_floor_gap=round(head.distToShape(Ca)[0], 3),
         axle_axis=(round(abs(ba[1].x), 4), round(ln(*ba).distToShape(jc)[0], 5)), kingpin_axis=(round(abs(pa[1].z), 4), round(ln(*pa).distToShape(jc)[0], 5)),
-        hub_socket_radial=round(hexpart.distToShape(W)[0], 3),
+        hub_socket_radial=round(insock.distToShape(W)[0], 3), seat_dist=round(St.distToShape(W)[0], 6),
+        seat_mm2=round(sum(f.Area for f in St.Faces if isinstance(f.Surface, Part.Plane) and abs(f.BoundBox.XMin - HEX_END) < 1e-6 and abs(f.BoundBox.XMax - HEX_END) < 1e-6), 1),
+        head_proud=round(wb(W).XMin - wb(stt).XMin, 3), washer_sunk=round(wb(wt).XMin - wb(W).XMin, 3), washer_seat=round(wb(wt).XMax - REC_X0, 4),
+        screw_axis=(round(abs(sa[1].x), 4), round(ln(*sa).distToShape(jc)[0], 5)), screw_tip_to_joint=round(stt.distToShape(R["Ref_JointCross"])[0], 2),
+        head_recess_radial=round((REC_D - HEAD_D) / 2, 2), washer_recess_radial=round((REC_D - WASH_D) / 2, 2), gap_sum=round(W.distToShape(K)[0] + St.distToShape(K)[0], 3),
+        knuckle_span=(round(KN_X1, 6), round(KN_X0, 6), round(P0, 6)),
         thrust_in_mm2=round(sum(f.Area for f in St.Faces if isinstance(f.Surface, Part.Plane) and abs(f.BoundBox.XMin - BLOCK_X1) < 1e-6 and abs(f.BoundBox.XMax - BLOCK_X1) < 1e-6), 1),
         lock_play_deg=round(math.degrees(0.3 / math.hypot(LOCK_X, LOCK_Y)), 2))
 
@@ -649,7 +691,7 @@ def tracks():
     wc, tyre = kp + abs(XW), kp + abs(RF)
     old = kp + OLD_JOINT_TO_WHEEL
     return dict(kingpin_x=round(kp, 2), scrub_mm=round(abs(XW), 2), wheel_centre_x=round(wc, 2), track=round(2 * wc, 1), over_tyres=round(2 * tyre, 1),
-                over_hubs=round(2 * (kp + abs(P0)), 1), hub_beyond_tyre=round(abs(P0) - abs(RF), 1), old_track=round(2 * old, 1), saved_track=round(2 * (old - wc), 1))
+                over_hubs=round(2 * (kp + abs(P0)), 1), hub_beyond_tyre=round(abs(P0) - abs(RF), 1), over_screw_heads=round(2 * (kp + abs(SCREW_X) + HEAD_H), 1), head_beyond_tyre=round(abs(SCREW_X) + HEAD_H - abs(RF), 1), old_track=round(2 * old, 1), saved_track=round(2 * (old - wc), 1))
 
 
 def run_len(s_, p, d, length, step=0.02):
@@ -664,13 +706,7 @@ def run_len(s_, p, d, length, step=0.02):
 
 def wall_probe(P):
     W = P["Wheel"]
-    out = []
-    for y in (-10.0, -20.0, -30.0, -40.0):
-        for z in (0.0, 2.0):
-            out.append(run_len(W, V(SH_X, y, z - 0.0) + V(-math.sqrt(max(HUB_ACC_R ** 2 - z ** 2, 0.0)) - 0.005, 0, 0), -X, 6.0))
-    for y in (-9.0, -10.0):
-        out.append(run_len(W, V(SH_X - 3.2 - 0.005, y, 0.0), -X, 6.0))
-    return round(min(out), 2)
+    return round(min(run_len(W, V(SOCK_BOT - 0.005, y, 0.0), -X, 4.0) for y in (2.4, 3.0, 3.6)), 2)
 
 
 def joint_dist(P, R, pstep=10):
@@ -694,7 +730,7 @@ def verify(P, R):
     ob = lambda s_: s_.optimalBoundingBox(False, False)
     rep["size"] = {n: tuple(round(v, 1) for v in (ob(s_).XLength, ob(s_).YLength, ob(s_).ZLength)) for n, s_ in P.items()}
     rep["asm"] = assembly(P, R)
-    rep["asm"]["11_tyre_over_rim"] = tyre_sweep(P, R)
+    rep["asm"]["12_tyre_over_rim"] = tyre_sweep(P, R)
     rep["fits"] = fits(P, R)
     rep["ring"] = joint_ring(P, R)
     rep["first"] = joint_first(P, R)
@@ -715,6 +751,11 @@ def check(rep):
     assert all(v < 1e-3 for k, v in rep["asm"].items() if k[0].isdigit()) and not any(rep["asm"]["final_core_overlaps"].values()), rep["asm"]
     f = rep["fits"]
     assert f["stub_in_liner"] >= 0.3 and f["stub_in_lip"] >= 0.3 and f["sleeve_pocket"] >= 0.1 - 1e-6 and 0.25 - 1e-3 <= f["hub_socket_radial"] <= 0.5, f
+    assert f["seat_dist"] < 1e-6 and f["seat_mm2"] >= 40.0 and 0.0 <= f["head_proud"] <= 2.7 and f["washer_sunk"] >= 0.6 - 1e-9 and abs(f["washer_seat"]) < 1e-6, f
+    assert f["screw_axis"][0] == 1.0 and f["screw_axis"][1] < 1e-4 and f["screw_tip_to_joint"] >= 0.8, f
+    assert f["head_recess_radial"] >= 0.2 and f["washer_recess_radial"] >= 0.2 - 1e-9 and REC_D - 5.0 >= 0.4, f
+    assert 0.25 - 1e-6 <= f["thrust_in"] <= 0.3 and 0.25 - 1e-6 <= f["thrust_out"] <= 0.3 and 0.5 - 1e-6 <= f["gap_sum"] <= 0.6, f
+    assert f["knuckle_span"] == (-11.4, -29.2, -37.8), f
     assert abs(f["thrust_in"] - G) < 1e-3 and abs(f["thrust_out"] - G) < 1e-3 and f["thrust_in_mm2"] >= 20.0, f
     assert f["bush_bore_radial"] >= 0.3 - 1e-6 and abs(f["flange_gap"] - 0.2) < 1e-3 and 0.2 - 1e-3 <= f["head_floor_gap"] <= 0.25, f
     assert f["axle_axis"][0] == 1.0 and f["axle_axis"][1] < 1e-4 and f["kingpin_axis"][0] == 1.0 and f["kingpin_axis"][1] < 1e-4, f
@@ -727,16 +768,21 @@ def check(rep):
         assert min(d["Wheel"], d["Tyre"]) >= 2.0 and min(d.values()) >= 0.15, (a, d)
     assert min(v for k, v in c["dish_static"].items()) >= 2.0 and c["head_radial"] >= 0.8 - 1e-3, c
     sc = rep["screws"]
-    assert sc["PU_joint"] >= 0.8 and sc["PL_joint"] >= 0.8 and sc["HS_knuckle"] >= 0.8 and sc["HS_carrier"] >= 0.8, sc
+    assert sc["PU_joint"] >= 0.8 and sc["PL_joint"] >= 0.8 and sc["HS_knuckle"] >= 0.8 and sc["HS_carrier"] >= 0.8 and sc["HS_joint"] >= 0.8, sc
     st = rep["strength"]
     assert st["sarm_root_MPa"] <= 5.0, st
+    assert st["thread_engaged_mm"] >= 8.0 and st["pilot_beyond_tip_mm"] >= 1.0 and PILOT_L >= 10.0 and SCREW_L in STD_L and st["pullout_shear_MPa"] <= LIM_ACROSS, st
+    assert st["hex_torsion_pilot_MPa"] <= LIM_IN and st["hex_torsion_interlayer_MPa"] <= LIM_ACROSS and st["hex_flat_bearing_MPa"] <= LIM_ACROSS and st["hex_engagement_mm"] >= 6.0 - 1e-9, st
+    assert st["washer_bearing_MPa"] <= LIM_ACROSS and st["floor_punch_MPa"] <= LIM_ACROSS and st["pilot_wall"] >= 1.2, st
+    assert st["stub_bend_load_at_tip_Nmm"] <= BEND_LIM and st["stub_bend_knuckle_exit_Nmm"] <= PUSHED_BEND, st
+    assert FLOOR_T >= 1.2 - 1e-9 and REC_D <= SPAN_MAX and REC_DEPTH >= WASH_T + 0.6 - 1e-9 and abs(HEX_END - SOCK_BOT) < 1e-9 and HOLE_D - SCREW_D >= 0.4 and WASH_ID - SCREW_D >= 0.2, "recess"
     for k in ("strut_max_MPa", "lug_bend_MPa", "stub_bend_bump_MPa", "thrust_face_bearing_MPa", "hub_boss_bend_MPa", "stub_torsion_MPa", "bush_bearing_MPa", "flange_bearing_MPa"):
         assert st[k] <= ALLOW, (k, st)
     assert rep["track"]["scrub_mm"] <= 12.0 and rep["track"]["track"] < rep["track"]["old_track"], rep["track"]
     assert abs(rep["stub_cb_wall"] - 1.0) < 1e-6
     walls = (BOSS_R - SOCK_AF / math.sqrt(3), -ARM_YB - PIL_D / 2, ARM_YF - PIL_D / 2, ARM_EX - PIL_D / 2, LOCK_Y - ARM_YB - PIL_D / 2, ARM_YF - LOCK_Y - PIL_D / 2, (BUSH_OD - BUSH_ID) / 2, SARM_END_R - SARM_HOLE / 2)
     assert min(walls) >= 1.2 - 1e-9 and min(walls[1:6]) >= 2.0, walls
-    assert ARM_Z1 - ARM_Z0 >= 5.0 and all(L in STD_L for L in (PIV_L, 16.0)), (ARM_Z1 - ARM_Z0, PIV_L)
+    assert ARM_Z1 - ARM_Z0 >= 5.0 and all(L in STD_L for L in (PIV_L, SCREW_L)), (ARM_Z1 - ARM_Z0, PIV_L)
     for n, r in rep["thin"].items():
         assert r[0] <= 0.3 or n in NO_BED, (n, r)
     for n, r in rep["print"].items():
@@ -770,7 +816,7 @@ def display(doc, P, R):
     put(doc, "Shown_HubCarrier", mv(P["HubCarrier"], 0, SHOW_DY, 0))
     for n in ("Knuckle", "Wheel", "Tyre", "PivotBush_1", "PivotBush_2", "Sleeve_1", "Sleeve_2"):
         put(doc, "Shown_" + n, sh(P[n]))
-    for n, k in (("PivotScrew_U", "Ref_PivotScrew_U"), ("PivotScrew_L", "Ref_PivotScrew_L"), ("HubScrew", "Ref_HubScrew")):
+    for n, k in (("PivotScrew_U", "Ref_PivotScrew_U"), ("PivotScrew_L", "Ref_PivotScrew_L"), ("HubScrew", "Ref_HubScrew"), ("HubWasher", "Ref_HubWasher")):
         put(doc, "Shown_" + n, sh(R[k]))
     for n, k in (("StubYoke", "Stub"), ("JointCross", "Cr"), ("PinA", "A"), ("PinB", "B"), ("DoubleFork", "DF")):
         put(doc, "Shown_" + n, mv(rk(j[k], SHOW_DEG), 0, SHOW_DY, 0))

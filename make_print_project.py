@@ -74,7 +74,7 @@ def freecad_side(build):
     for o in doc.Objects:
         if o.TypeId != "Part::Feature" or not getattr(o, "Shape", None) or not o.Shape.Solids:
             continue
-        if o.Name in SKIP.get(DOC, ()):
+        if o.Name in SKIP.get(DOC, ()) or (o.Name.startswith("Sleeve") and not os.environ.get("PRINT_SLEEVES")):  # liners are cut from PTFE tube; PRINT_SLEEVES=1 adds printed placeholders
             continue
         if o.Name not in UP:
             fail("FAIL: part %s has no print orientation in UP" % o.Name)

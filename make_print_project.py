@@ -30,7 +30,7 @@ UPS = {"PtfeJig": {"Puck": "+Z", "GoGauge": "+Z"},
        "MotorModule": {"Bracket": "+Y", "MotorGear": "-Y", "ShaftGear": "-Y", "ThroughShaft": "+Z"},
        "CvtModule": {"Lid": "-Z", "Disc": "+Z", "ThroughShaft": "+Z", "Wheel": "+Y", "Shuttle": "+X", "RollerSlider": "+Z", "Roller": "+Y", "ServoArm": "+Z"},
        "DriveShaft": {"JointYoke_1": "+X", "JointYoke_2": "-X", "JointYoke_3": "+X", "JointYoke_4": "-X", "JointCross_1": "+X", "JointCross_2": "-X", "SlideRod": "+Y", "SlideTube": "+X", "ShortLink": "+Y", "DoubleFork": "+Y"},
-       "RodFrame": {"AxleFrame_1": "+Z", "Link_1": "+Z", "Upright_R": "+Z", "Upright_L": "+Z", "PivotBush_1": "-Y", "Dowel_1": "-Z", "Shim_1": "+Z", "GearboxCradle": "+Z"},
+       "RodFrame": {"BracketOut_1": "+Y", "BracketIn_1": "-Y", "CapOut_1": "+Y", "CapIn_1": "-Y", "SpringPad_1": "+Z", "SeatCup_1": "+Z", "GearboxCradle": "+Z"},
        "Gearbox3": {"Bracket": "+Y", "FrontPlate": "+Y", "MotorCarrier": "-Y", "MotorCap": "-Y", "MotorGear_B": "+Y", "MotorGear_A": "+Y", "MotorGear_C": "+Y", "SlideCarrier": "+Y", "SlideGear_A": "+Y", "SlideGear_B": "+Y", "SlideCap": "-Y", "Layshaft": "+Z", "ThroughShaft": "+Z", "T1": "-Y", "T2": "-Y", "ShiftFork": "-Y", "Rod_1": "+Z", "Rod_2": "+Z", "ServoArm": "-Z", "CasePan": "+Z", "ServoMount": "-X", "Sleeve_1": "+Y", "Sleeve_2": "+Y", "Sleeve_3": "+Y", "Sleeve_4": "+Y"}}
 COPIES = {"PtfeJig": {"Puck": 1, "GoGauge": 1},
           "DriveHub": {"HubCarrier": 1, "Knuckle": 1, "HubCarrier_L": 1, "Knuckle_L": 1, "StubYoke": 1, "Wheel": 1, "Tyre": 1, "PivotBush_1": 2, "Sleeve_1": 2},
@@ -40,16 +40,58 @@ COPIES = {"PtfeJig": {"Puck": 1, "GoGauge": 1},
           "CvtModule": {"Lid": 1, "Disc": 1, "ThroughShaft": 1, "Wheel": 1, "Shuttle": 1, "RollerSlider": 1, "Roller": 1, "ServoArm": 1},
           "DriveShaft": {"JointYoke_1": 4, "JointCross_1": 2, "SlideRod": 1, "SlideTube": 1, "ShortLink": 1, "DoubleFork": 1},
           "Gearbox3": {"Bracket": 1, "FrontPlate": 1, "MotorCarrier": 1, "MotorCap": 1, "MotorGear_B": 1, "MotorGear_A": 1, "MotorGear_C": 1, "SlideCarrier": 1, "SlideGear_A": 1, "SlideGear_B": 1, "SlideCap": 1, "Layshaft": 1, "ThroughShaft": 1, "T1": 1, "T2": 1, "ShiftFork": 1, "Rod_1": 2, "Rod_2": 1, "ServoArm": 1, "CasePan": 1, "ServoMount": 1, "Sleeve_1": 4, "Sleeve_2": 4, "Sleeve_3": 4, "Sleeve_4": 4},
-          "RodFrame": {"AxleFrame_1": 2, "Link_1": 8, "Upright_R": 2, "Upright_L": 2, "PivotBush_1": 32, "Dowel_1": 4, "Shim_1": 8, "GearboxCradle": 1},
+          "RodFrame": {"BracketOut_1": 2, "BracketIn_1": 2, "CapOut_1": 2, "CapIn_1": 2, "SpringPad_1": 4, "SeatCup_1": 4, "GearboxCradle": 1},
           "Differential": {"Carrier": 1, "Cap": 1, "Bushing_L": 1, "Bushing_R": 1, "SideGear_L": 2, "SpiderGear_1": 2, "SpiderPin": 1, "HalfShaft_L": 2, "PlugShaft_L": 2, "PinionA": 2, "PinionShaftA": 2, "OutputPlug": 1, "IdlerRing": 1, "CaseTop": 1, "CaseBottom": 1, "Sleeve_1": 4}}
-MIRRORED = {"WheelMount": ("Mount_L",), "DriveHub": ("HubCarrier_L", "Knuckle_L"), "RodFrame": ("Upright_L",)}  # mirror images never share a print group
+MIRRORED = {"WheelMount": ("Mount_L",), "DriveHub": ("HubCarrier_L", "Knuckle_L"), "RodFrame": ()}  # mirror images never share a print group
 SKIP = {"DriveHub": ("Ref_PivotScrew_U", "Ref_PivotScrew_L", "Ref_LockScrew", "Ref_HubScrew", "Ref_HubWasher", "Ref_JointCross", "Ref_PinA", "Ref_PinB", "Ref_DoubleFork", "Ref_Floor",
                      "Shown_HubCarrier", "Shown_Knuckle", "Shown_StubYoke", "Shown_Wheel", "Shown_Tyre", "Shown_PivotBush_1", "Shown_PivotBush_2", "Shown_Sleeve_1", "Shown_Sleeve_2",
                      "Shown_PivotScrew_U", "Shown_PivotScrew_L", "Shown_HubScrew", "Shown_HubWasher", "Shown_JointCross", "Shown_PinA", "Shown_PinB", "Shown_DoubleFork"),
         "WheelMount2": ("Ref_Floor", "Ref_Disc", "Ref_KingpinBolt", "Ref_Washer", "Ref_LockBolt", "Ref_HubScrew", "Ref_JointYoke"),
         "DriveShaft": ("DummyPort_1", "DummyPort_2", "Shown_JointYoke_1", "Shown_JointYoke_2", "Shown_JointYoke_3", "Shown_JointYoke_4", "Shown_JointCross_1", "Shown_JointCross_2", "Shown_SlideRod", "Shown_SlideTube", "Shown_JointYoke_S1", "Shown_JointYoke_S2", "Shown_JointYoke_S3", "Shown_JointYoke_S4", "Shown_JointCross_S1", "Shown_JointCross_S2", "Shown_ShortLink", "Shown_JointYoke_D1", "Shown_JointYoke_D4", "Shown_JointCross_D1", "Shown_JointCross_D2", "Shown_DoubleFork"),
-        "RodFrame": ('Ref_Bushes_All', 'Ref_CradleScrews', 'Ref_Diff_F', 'Ref_Diff_R', 'Ref_Dowels_All', 'Ref_Gearbox', 'Ref_Hubs_All', 'Ref_Kit_All', 'Ref_Links_All', 'Ref_Nuts_All', 'Ref_Rod_1', 'Ref_Rod_2', 'Ref_Screws_All', 'Ref_Shaft_F', 'Ref_Shaft_R', 'Ref_Shims_All', 'Ref_Springs_All', 'Ref_Uprights_All', 'Ref_Washers_All', 'Ref_Wheels_All', 'Shown_AxleFrame_2'),
+        "RodFrame": ("Shown_BracketOut_2", "Shown_BracketIn_2", "Shown_CapOut_2", "Shown_CapIn_2", "Shown_SpringPad_Rb", "Shown_SpringPad_Fa", "Shown_SpringPad_Fb", "Shown_SeatCup_Ra", "Shown_SeatCup_Rb", "Shown_SeatCup_Fa", "Shown_SeatCup_Fb", "Ref_Gearbox", "Ref_Axle_R", "Ref_Axle_F", "Ref_Springs_R", "Ref_Springs_F", "Ref_Screws", "Ref_Nuts", "Ref_Shaft_R", "Ref_Shaft_F", "Ref_Rod_1", "Ref_Rod_2"),
         "Gearbox3": ("Ref_Motor", "Ref_Servo", "Ref_Floor", "Ref_Bolts", "Ref_Heads", "Ref_Grubs")}
+UPS["Axle"] = {"HousingBottom": "+Z", "HousingTop": "-Z", "Carrier": "+X", "Cap": "-X", "SideGear_R": "-X", "SideGear_L": "+X", "SpiderGear_1": "-Y", "SpiderGear_2": "+Y",
+               "SpiderPin": "+Z", "Pinion": "-Y", "PinionShaft": "+Z", "PlugShaft_R": "+Z", "PlugShaft_L": "+Z", "Keeper_R": "+X", "Keeper_L": "-X", "Keeper_P": "+Y",
+               "Sleeve_1": "+X", "Sleeve_2": "+X", "Sleeve_3": "+X", "Sleeve_4": "+X", "Sleeve_5": "+Y", "Sleeve_6": "+Y", "JournalRing": "-Y", "JournalStub": "+Y", "Arm_N": "-Y", "Arm_W": "-Y", "Arm_N_L": "-Y", "Arm_W_L": "-Y"}
+COPIES["Axle"] = {"HousingBottom": 1, "HousingTop": 1, "Carrier": 1, "Cap": 1, "SideGear_R": 2, "SpiderGear_1": 2, "SpiderPin": 1, "Pinion": 1, "PinionShaft": 1, "PlugShaft_R": 2, "Keeper_R": 2, "Keeper_P": 1, "JournalRing": 1, "JournalStub": 1, "Sleeve_1": 6, "Arm_N": 1, "Arm_W": 1}
+MIRRORED["Axle"] = ("Arm_N_L", "Arm_W_L")
+
+
+class _AxleSkip(tuple):
+    # Ref_ objects are never printed; the narrow arms are the default plate, AXLE_WIDE=1 prints the wide arms instead
+    def __contains__(self, n):
+        wide = bool(os.environ.get("AXLE_WIDE"))
+        return n.startswith("Ref_") or n in (("Arm_N", "Arm_N_L") if wide else ("Arm_W", "Arm_W_L"))
+
+
+SKIP["Axle"] = _AxleSkip()
+UPS["Steering"] = {"SteerArm": "-Z", "SteerArm_L": "-Z", "TieRod_N": "+Z", "TieRod_W": "+Z", "ServoMount": "+Z", "Bellcrank": "-Z"}
+COPIES["Steering"] = {"SteerArm": 1, "SteerArm_L": 1, "TieRod_N": 1, "TieRod_W": 1, "ServoMount": 1, "Bellcrank": 1}
+MIRRORED["Steering"] = ("SteerArm_L",)
+
+
+class _SteerSkip(tuple):
+    # Ref_ objects are never printed; TieRod_N is the default plate, STEER_WIDE=1 prints TieRod_W instead
+    def __contains__(self, n):
+        return n.startswith("Ref_") or n == ("TieRod_N" if os.environ.get("STEER_WIDE") else "TieRod_W")
+
+
+SKIP["Steering"] = _SteerSkip()
+
+class _RodFrameSkip(tuple):
+    # RODFRAME_PLATE=1 (default) brackets and caps, 2 the cradle, 3 pads and seat cups , 4 seat cups (separate 256 x 256 plates)
+    def __contains__(self, n):
+        if tuple.__contains__(self, n):
+            return True
+        plate = os.environ.get("RODFRAME_PLATE", "1")
+        keep = {"1": ("BracketOut_1", "BracketIn_1", "CapOut_1", "CapIn_1"), "2": ("GearboxCradle",), "3": ("SpringPad_1",), "4": ("SeatCup_1",)}[plate]
+        return n in ("BracketOut_1", "BracketIn_1", "CapOut_1", "CapIn_1", "GearboxCradle", "SpringPad_1", "SeatCup_1") and n not in keep
+
+
+SKIP["RodFrame"] = _RodFrameSkip(SKIP["RodFrame"])
+if DOC == "RodFrame" and os.environ.get("RODFRAME_PLATE", "1") != "1":
+    OUT = os.path.join(HERE, "RodFrame_plate%s.3mf" % os.environ["RODFRAME_PLATE"])
+
 UP = UPS.get(DOC) or {
     "Carrier": "+X", "Cap": "-X", "Bushing_L": "+X", "Bushing_R": "+X",
     "SideGear_L": "+X", "SideGear_R": "-X", "SpiderGear_1": "+Y", "SpiderGear_2": "-Y",
@@ -85,7 +127,8 @@ def freecad_side(build):
         up = FreeCAD.Vector(*[(1 if sign == "+" else -1) if a == axis else 0 for a in "XYZ"])
         s = shapes[name].copy()
         s.transformShape(FreeCAD.Placement(FreeCAD.Vector(), FreeCAD.Rotation(up, FreeCAD.Vector(0, 0, 1))).toMatrix())
-        s.translate(FreeCAD.Vector(0, 0, -s.optimalBoundingBox(False, False).ZMin))
+        b0 = s.optimalBoundingBox(False, False)
+        s.translate(FreeCAD.Vector(-b0.Center.x, -b0.Center.y, -b0.ZMin))
         floor = sum(f.Area for f in s.Faces if f.BoundBox.ZMax < 1e-4 and isinstance(f.Surface, Part.Plane))
         if floor < MIN_FLOOR_AREA:
             fail("FAIL: %s has no planar floor face (area %.2f) when printed with %s up" % (name, floor, UP[name]))
